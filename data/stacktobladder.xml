@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<DDDefinition xmlns="http://www.cern.ch/cms/DDL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.cern.ch/cms/DDL ../../DetectorDescription/Schema/DDLSchema.xsd">
+
+<ConstantsSection label="stacktobladder.xml" eval="true">
+ <Constant name="zero"              value="0.0*fm"/>
+ <Constant name="STLadderWidth"         value="38.3*mm"/>
+ <Constant name="STLadderThick"         value="0.300*mm"/>
+ <Constant name="STLadderZ"             value="217.0*cm"/>
+ <Constant name="OSTTobModuleWidth"         value="[STLadderWidth]"/>
+ <Constant name="OSTTobModuleThick"         value="[STLadderThick]"/>
+ <Constant name="OSTTobModuleZ"             value="[STLadderZ]"/>
+ <Constant name="OSTTobModuleActiveWidth"   value="[STLadderWidth]"/>
+ <Constant name="OSTTobModuleActiveThick"   value="[STLadderThick]"/>
+ <Constant name="OSTTobModuleActiveZ"       value="[STLadderZ]"/>
+</ConstantsSection>
+
+<SolidSection label="stacktobladder.xml">
+ <Box name="OSTLadder"            dx="[STLadderWidth]/2"
+        dy="[STLadderThick]/2"   dz="[STLadderZ]/2"/>
+ <Box name="OSTTobModule"            dx="[OSTTobModuleWidth]/2"
+        dy="[OSTTobModuleThick]/2"   dz="[OSTTobModuleZ]/2"/>
+ <Box name="OSTTobModuleActive"      dx="[OSTTobModuleActiveWidth]/2"
+        dz="[OSTTobModuleActiveThick]/2"   dy="[OSTTobModuleActiveZ]/2"/>
+</SolidSection>
+
+<LogicalPartSection label="stacktobladder.xml">
+ <LogicalPart name="OSTLadder" category="unspecified">
+  <rSolid name="OSTLadder"/>
+  <rMaterial name="materials:Air"/>
+ </LogicalPart>
+ <LogicalPart name="OSTTobModule" category="sensitive">
+  <rSolid name="OSTTobModule"/>
+  <rMaterial name="materials:Silicon"/>
+ </LogicalPart>
+ <LogicalPart name="OSTTobModuleActive" category="sensitive">
+  <rSolid name="OSTTobModuleActive"/>
+  <rMaterial name="materials:Silicon"/>
+ </LogicalPart>
+</LogicalPartSection>
+
+<PosPartSection label="stacktobladder.xml">
+ <PosPart copyNumber="1">
+   <rParent name="stacktobladder:OSTLadder"/>
+   <rChild name="stacktobladder:OSTTobModule"/>
+ </PosPart>
+ <PosPart copyNumber="1">
+   <rParent name="stacktobladder:OSTTobModule"/>
+   <rChild name="stacktobladder:OSTTobModuleActive"/>
+   <rRotation name="pixbarladder:Z2XY"/>
+ </PosPart>
+</PosPartSection>
+</DDDefinition>
