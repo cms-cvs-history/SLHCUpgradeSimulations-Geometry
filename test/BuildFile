@@ -1,0 +1,12 @@
+# $Id$
+<environment>
+ <library file="FastsimHitNtuplizer.cc" name=FastsimHitNtuplizerExample>
+  <flags EDM_PLUGIN=1>
+  <use name=FWCore/Framework>
+  <use name=DataFormats/Common>
+  <use name=FWCore/ParameterSet>
+  <use name=SimTracker/TrackerHitAssociation>
+  <use name=RecoLocalTracker/SiPixelRecHits>
+ </library>
+</environment>
+
