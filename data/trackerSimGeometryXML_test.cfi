@@ -34,7 +34,8 @@ es_source = XMLIdealGeometryESSource
       "SLHCUpgradeSimulations/Geometry/data/stacktoblayer1.xml",
       "SLHCUpgradeSimulations/Geometry/data/stacktobladder.xml",
 
-      "Geometry/TrackerCommonData/data/pixbar.xml",
+      "SLHCUpgradeSimulations/Geometry/data/pixbar.xml",
+
       "Geometry/TrackerCommonData/data/pixfwdMaterials.xml",
       "Geometry/TrackerCommonData/data/pixfwdCommon.xml",
       "Geometry/TrackerCommonData/data/pixfwdPlaq.xml",
@@ -89,7 +90,9 @@ es_source = XMLIdealGeometryESSource
       "Geometry/TrackerCommonData/data/tiblayer1.xml",
       "Geometry/TrackerCommonData/data/tiblayer2.xml",
       "Geometry/TrackerCommonData/data/tiblayer3.xml",
-      "Geometry/TrackerCommonData/data/tib.xml",
+
+      "SLHCUpgradeSimulations/Geometry/data/tib.xml",
+
       "Geometry/TrackerCommonData/data/tidmaterial.xml",
       "Geometry/TrackerCommonData/data/tidmodpar.xml",
       "Geometry/TrackerCommonData/data/tidmodule0.xml",
@@ -140,7 +143,9 @@ es_source = XMLIdealGeometryESSource
       "Geometry/TrackerCommonData/data/tobrod5l.xml",
       "Geometry/TrackerCommonData/data/tobrod5h.xml",
       "Geometry/TrackerCommonData/data/tobrod5.xml",
-      "Geometry/TrackerCommonData/data/tob.xml",
+
+      "SLHCUpgradeSimulations/Geometry/data/tob.xml",
+
       "Geometry/TrackerCommonData/data/tecmaterial.xml",
       "Geometry/TrackerCommonData/data/tecmodpar.xml",
       "Geometry/TrackerCommonData/data/tecmodule0.xml",
@@ -206,8 +211,10 @@ es_source = XMLIdealGeometryESSource
       "Geometry/TrackerCommonData/data/trackertec.xml",
       "Geometry/TrackerCommonData/data/trackerother.xml",
       "Geometry/TrackerCommonData/data/tracker.xml",
-      "Geometry/TrackerCommonData/data/trackerStructureTopology.xml",
-      "Geometry/TrackerSimData/data/trackersens.xml",
+
+      "SLHCUpgradeSimulations/Geometry/data/trackerStructureTopology.xml",
+      "SLHCUpgradeSimulations/Geometry/data/trackersens.xml",
+
       "Geometry/TrackerSimData/data/trackerProdCuts.xml",
       "Geometry/TrackerSimData/data/trackerProdCutsBEAM.xml",
       "Geometry/CMSCommonData/data/FieldParameters.xml"

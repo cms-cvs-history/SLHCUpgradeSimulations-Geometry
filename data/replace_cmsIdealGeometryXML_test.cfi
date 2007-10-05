@@ -50,8 +50,8 @@ replace XMLIdealGeometryESSource = XMLIdealGeometryESSource {
                 "SLHCUpgradeSimulations/Geometry/data/stacktoblayer0.xml",
                 "SLHCUpgradeSimulations/Geometry/data/stacktoblayer1.xml",
                 "SLHCUpgradeSimulations/Geometry/data/stacktobladder.xml",
+                "SLHCUpgradeSimulations/Geometry/data/pixbar.xml",
 
-                "Geometry/TrackerCommonData/data/pixbar.xml",
                 "Geometry/TrackerCommonData/data/tibtidcommonmaterial.xml",
                 "Geometry/TrackerCommonData/data/tibmaterial.xml",
                 "Geometry/TrackerCommonData/data/tibmodpar.xml",
@@ -91,7 +91,9 @@ replace XMLIdealGeometryESSource = XMLIdealGeometryESSource {
                 "Geometry/TrackerCommonData/data/tiblayer1.xml",
                 "Geometry/TrackerCommonData/data/tiblayer2.xml",
                 "Geometry/TrackerCommonData/data/tiblayer3.xml",
-                "Geometry/TrackerCommonData/data/tib.xml",
+
+                "SLHCUpgradeSimulations/Geometry/data/tib.xml",
+
                 "Geometry/TrackerCommonData/data/tidmaterial.xml",
                 "Geometry/TrackerCommonData/data/tidmodpar.xml",
                 "Geometry/TrackerCommonData/data/tidmodule0.xml",
@@ -142,7 +144,9 @@ replace XMLIdealGeometryESSource = XMLIdealGeometryESSource {
                 "Geometry/TrackerCommonData/data/tobrod5l.xml",
                 "Geometry/TrackerCommonData/data/tobrod5h.xml",
                 "Geometry/TrackerCommonData/data/tobrod5.xml",
-                "Geometry/TrackerCommonData/data/tob.xml",
+
+                "SLHCUpgradeSimulations/Geometry/data/tob.xml",
+
                 "Geometry/TrackerCommonData/data/tecmaterial.xml",
                 "Geometry/TrackerCommonData/data/tecmodpar.xml",
                 "Geometry/TrackerCommonData/data/tecmodule0.xml",
@@ -233,10 +237,10 @@ replace XMLIdealGeometryESSource = XMLIdealGeometryESSource {
                 "Geometry/MuonCommonData/data/muonNumbering.xml",
 
                 # Tracker file to define structure ... is this for reco and/or sim only? 
-                "Geometry/TrackerCommonData/data/trackerStructureTopology.xml",
+                "SLHCUpgradeSimulations/Geometry/data/trackerStructureTopology.xml",
 
                 # Tracker SpecPar selection to define sensitive volumes 
-                "Geometry/TrackerSimData/data/trackersens.xml", 
+                "SLHCUpgradeSimulations/Geometry/data/trackersens.xml", 
 
                 # Tracker file to define amount of material ... is this for reco only
                 "Geometry/TrackerRecoData/data/trackerRecoMaterial.xml",           
