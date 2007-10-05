@@ -1,0 +1,104 @@
+<?xml version="1.0"?>
+<DDDefinition xmlns="http://www.cern.ch/cms/DDL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.cern.ch/cms/DDL ../../../DetectorDescription/Schema/DDLSchema.xsd">
+
+<ConstantsSection label="tib.xml" eval="true">
+ <Constant name="zero"         value="0.0*fm"/>
+ <Constant name="Rin"          value="22.20*cm"/>
+ <Constant name="Rin2"         value="53.00*cm"/>
+ <Constant name="Rout"         value="54.00*cm"/>
+ <Constant name="Zv1"          value="71.6*cm"/>
+ <Constant name="SupportT"     value="1.50*cm"/>
+ <Constant name="SupportDR"    value="1.50*cm"/>
+ <Constant name="SupportRin"   value="53.15*cm"/>
+ <Constant name="SupportRout"  value="53.20*cm"/>
+ <Constant name="SupportZ"     value="71.6*cm"/>
+ <Constant name="SideDiskT"    value="[SupportT]"/>
+ <Constant name="SideDiskZ"    value="([tibstringpar:StringL]+[SideDiskT])/2"/>
+</ConstantsSection>
+
+<SolidSection label="tib.xml">
+ <Tubs name="TIB"           rMin="[Rin]"  rMax="[Rout]"
+                            dz="[Zv1]"   
+                            startPhi="0*deg" deltaPhi="360*deg" />
+ <Tubs name="TIBOutSupport" rMin="[SupportRin]"     rMax="[SupportRout]"
+                            dz="[SupportZ]"
+                            startPhi="0*deg"        deltaPhi="360*deg"/>
+ <Tubs name="TIBSideDisk"   rMin="[Rin]"           rMax="[Rin2]"
+                            dz="[SideDiskT]/2"
+                            startPhi="0*deg"        deltaPhi="360*deg"/>
+</SolidSection>
+
+<LogicalPartSection label="tib.xml">
+ <LogicalPart name="TIB" category="unspecified">
+  <rSolid name="TIB"/>
+  <rMaterial name="materials:Air"/>
+ </LogicalPart>
+ <LogicalPart name="TIBOutSupport" category="unspecified">
+  <rSolid name="TIBOutSupport"/>
+  <rMaterial name="tibmaterial:TIB_outer_supp"/>
+ </LogicalPart>
+ <LogicalPart name="TIBSideDisk" category="unspecified">
+   <rSolid name="TIBSideDisk"/>
+   <rMaterial name="materials:Air"/>
+ </LogicalPart>
+</LogicalPartSection>
+
+<PosPartSection label="tib.xml">
+ <PosPart copyNumber="1">
+   <rParent name="tib:TIB"/>
+   <rChild name="tib:TIBOutSupport"/>
+ </PosPart>
+<!-- 
+ <PosPart copyNumber="1">
+   <rParent name="tib:TIB"/>
+   <rChild name="tiblayer0:TIBLayer0"/>
+ </PosPart>
+-->
+ <PosPart copyNumber="2">
+   <rParent name="tib:TIB"/>
+   <rChild name="tiblayer1:TIBLayer1"/>
+ </PosPart>
+ <PosPart copyNumber="3">
+   <rParent name="tib:TIB"/>
+   <rChild name="tiblayer2:TIBLayer2"/>
+ </PosPart>
+ <PosPart copyNumber="4">
+   <rParent name="tib:TIB"/>
+   <rChild name="tiblayer3:TIBLayer3"/>
+ </PosPart>
+</PosPartSection>
+
+<PosPart copyNumber="1">
+   <rParent name="tib:TIB"/>
+   <rChild name="tib:TIBSideDisk"/>
+  <Translation x="[zero]" y="[zero]" z="[SideDiskZ]" />
+ </PosPart>
+ <PosPart copyNumber="2">
+   <rParent name="tib:TIB"/>
+   <rChild name="tib:TIBSideDisk"/>
+  <rRotation name="tibstringpar:180D"/>
+  <Translation x="[zero]" y="[zero]" z="-[SideDiskZ]" />
+ </PosPart>
+
+<Algorithm name="track:DDTIBRadCableAlgo">
+  <rParent name="tib:TIBSideDisk"/>
+  <Numeric name="RMin"           value="[tib:Rin]"/>
+  <Numeric name="RMax"           value="[tib:Rin2]"/>
+  <Vector name="RadiusLo" type="numeric" nEntries="4">
+   [tiblayerpar:RadiusLo0], [tiblayerpar:RadiusLo1],
+   [tiblayerpar:RadiusLo2], [tiblayerpar:RadiusLo3]
+  </Vector>
+  <Numeric name="DeltaR"         value="[tiblayerpar:DRUpLo]"/>
+  <Numeric name="CylinderThick"  value="[tiblayerpar:CylinderT]"/>
+  <Numeric name="SupportThick"   value="[tib:SupportT]"/>
+  <Numeric name="SupportDR"      value="[tib:SupportDR]"/>
+  <String name="SupportMaterial" value="tibmaterial:TIB_disk"/>
+
+
+  <Vector name="StructureMaterial" type="string" nEntries="5">
+   tibmaterial:TIB_rib0, tibmaterial:TIB_rib1, tibmaterial:TIB_rib2,
+   tibmaterial:TIB_rib3, tibmaterial:TIB_rib4</Vector>
+</Algorithm>
+
+
+</DDDefinition>
