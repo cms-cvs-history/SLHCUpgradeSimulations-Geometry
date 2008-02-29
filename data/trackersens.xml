@@ -1,13 +1,17 @@
 <?xml version="1.0"?>
-<DDDefinition xmlns="http://www.cern.ch/cms/DDL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.cern.ch/cms/DDL ../../../DetectorDescription/Schema/DDLSchema.xsd">
+<DDDefinition xmlns="http://www.cern.ch/cms/DDL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.cern.ch/cms/DDL ../../../DetectorDescription/Schema/DDLSchema.xsd">
 
 <SpecParSection label="spec-pars.xml">
   <SpecPar name="ROUHitsTrackerPixelBarrel">
     <PartSelector path="//PixelBarrelActiveFull" />
     <PartSelector path="//PixelBarrelActiveHalf" />
-    <PartSelector path="//STModuleActive" />
-    <PartSelector path="//STTibModuleActive" />
-    <PartSelector path="//OSTTobModuleActive" />
+    <PartSelector path="//PixelBarrelActiveStack0" />
+    <PartSelector path="//PixelBarrelActiveStack1" />
+    <PartSelector path="//PixelBarrelActiveStack2" />
+    <PartSelector path="//PixelBarrelActiveStack3" />
+    <PartSelector path="//PixelBarrelActiveStack4" />
+    <PartSelector path="//PixelBarrelActiveStack5" />
     <Parameter name="SensitiveDetector" value="TkAccumulatingSensitiveDetector" />
     <Parameter name="ReadOutName" value="TrackerHitsPixelBarrel" />
   </SpecPar>
@@ -20,6 +24,7 @@
     <Parameter name="SensitiveDetector" value="TkAccumulatingSensitiveDetector" />
     <Parameter name="ReadOutName" value="TrackerHitsPixelEndcap" />
   </SpecPar>
+<!--
   <SpecPar name="ROUHitsTrackerTIB">
     <PartSelector path="//TIBActiveRphi0" />
     <PartSelector path="//TIBActiveSter0" />
@@ -44,6 +49,7 @@
     <Parameter name="SensitiveDetector" value="TkAccumulatingSensitiveDetector" />
     <Parameter name="ReadOutName" value="TrackerHitsTOB" />
   </SpecPar>
+-->
   <SpecPar name="ROUHitsTrackerTEC">
     <PartSelector path="//TECModule0RphiActive" />
     <PartSelector path="//TECModule0StereoActive" />
@@ -60,4 +66,3 @@
   </SpecPar>
 </SpecParSection>
 </DDDefinition>
- 
