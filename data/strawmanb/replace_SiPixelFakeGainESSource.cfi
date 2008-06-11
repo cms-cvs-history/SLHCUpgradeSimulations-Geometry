@@ -1,0 +1,5 @@
+replace SiPixelFakeGainESSource = SiPixelFakeGainESSource { 
+
+FileInPath file = "SLHCUpgradeSimulations/Geometry/data/strawmanb/PixelSkimmedGeometry.txt"
+
+}
