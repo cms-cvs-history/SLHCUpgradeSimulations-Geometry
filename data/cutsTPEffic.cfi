@@ -9,7 +9,7 @@ module cutsTPEffic = TrackingParticleSelector
     int32  minHit = 0
     bool signalOnly = true
     bool chargedOnly = true
-    bool stableOnly = false
+    bool stableOnly = true 
     vint32 pdgId = {}
 }
 
