@@ -6,9 +6,10 @@
  <Constant name="ModuleRadius"      value="[pixbar:RadiusStack2]"/>
  <Constant name="LayerDz"           value="[pixbar:LayerDzStack2]"/>
  <Constant name="PhiOffset"         value="[pixbar:PhiOffsetStack2]"/>
+ <Constant name="Layout"            value="[pixbar:LayoutStack2]"/>     
  <Constant name="CoolDz"            value="[pixbar:LayerDzStack2]"/>
  <Constant name="CoolSide"          value="[pixbarladderstack2:LadderWidth]/2-[pixbarladderstack2:HybridWidth]/2-[pixbarladderstack2:HybridOffset]"/>
- <Constant name="CoolThick"         value="[pixbarlayer:CoolThick]"/>
+ <Constant name="CoolThick"         value="0.05*mm"/>
  <Constant name="CoolWidth"         value="[pixbarladderstack2:ModuleThick]*2"/>
 </ConstantsSection>
 
@@ -30,6 +31,7 @@
   <Numeric name="LadderWidth"      value="[pixbarladderstack2:LadderWidth]"/>
   <Numeric name="LadderThick"      value="[pixbarladderstack2:LadderThick]"/>
   <Numeric name="ModuleOffset"     value="[pixbarlayerstack2:PhiOffset]"/>
+  <Numeric name="LayoutType"       value="[pixbarlayerstack2:Layout]"/>
 </Algorithm>
 
 </DDDefinition>

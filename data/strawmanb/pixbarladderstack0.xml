@@ -9,32 +9,35 @@
  <Constant name="SensorSeparation"  value="[pixbar:SeparationStack0]"/>
  <Constant name="SensorWidth"       value="[pixbar:SensorWidthStack0]"/>
  <Constant name="SensorThick"       value="[pixbar:SensorThickStack0]"/>
+ <Constant name="Overlap"           value="[pixbar:OverlapStack0]"/>
+ <Constant name="ZOverlap"          value="[Overlap]*[pixbar:ZOverlapStack0]"/>
 
- <Constant name="ModuleDz"          value="[Length]/[Modules]"/>
+ <Constant name="ModuleDz"          value="([Length]/[Modules])+[ZOverlap]"/>
  <Constant name="SensorDz"          value="[ModuleDz]-(0.2*cm)"/>
  <Constant name="ModuleZ"           value="-([Length]-[ModuleDz])/2"/>
  <Constant name="SensorEdge"        value="1.20*mm"/>
  <Constant name="ActiveWidth"       value="[SensorWidth]-2*[SensorEdge]"/>
  <Constant name="ActiveDz"          value="[SensorDz]-(0.18*cm)"/>
  <Constant name="HybridWidth"       value="[SensorWidth]+(3.0*mm)"/>
- <Constant name="HybridThick"       value="0.5*mm"/>
+ <Constant name="HybridThick"       value="0.2*mm"/>
  <Constant name="HybridDz"          value="[SensorDz]-(0.11*cm)"/>
- <Constant name="RCChipThick"       value="0.80*mm"/>
+ <Constant name="RCChipThick"       value="0.15*mm"/>
  <Constant name="RCChipDx"          value="3.20*mm"/>
  <Constant name="RCChipDz"          value="4.80*mm"/>
+ <Constant name="ZOffset"           value="[Overlap]*([SensorThick]+[HybridThick]+0.1*mm)"/>
 
  <Constant name="LadderWidth"       value="[CFStripWidth]"/>
  <Constant name="LadderThick"       value="[CFStripThick]+
            [ModuleThick]+[ReadoutBoxThick]"/>
  <Constant name="ModuleThick"       value="[SensorSeparation]/2+[SensorThick]"/>
  <Constant name="ModulesPerSide"    value="[Modules]/2"/>
- <Constant name="CFStripThick"      value="1.0*mm"/>
- <Constant name="CFStripWidth"      value="[SensorWidth]+(8.0*mm)"/>
- <Constant name="ModuleThick"       value="[SensorSeparation]/2+[SensorThick]"/>
+ <Constant name="CFStripThick"      value="0.35*mm"/>
+ <Constant name="CFStripWidth"      value="[SensorWidth]+(6.0*mm)"/>
+ <Constant name="ModuleThick"       value="[SensorSeparation]/2+[SensorThick]+[ZOffset]/2"/>
  <Constant name="ModulesPerSide"    value="[Modules]/2"/>
  <Constant name="ReadoutBoxThick"   value="[HybridThick]+[RCChipThick]"/>
- <Constant name="CableWidth"        value="6.70*mm"/>
- <Constant name="CableThick"        value="0.300*mm"/>
+ <Constant name="CableWidth"        value="3.35*mm"/>
+ <Constant name="CableThick"        value="0.125*mm"/>
  <Constant name="Cable1Length"      value="[Length]-7.0*cm"/>
  <Constant name="Cable2Length"      value="[Cable1Length]-7.0*cm"/>
  <Constant name="Cable3Length"      value="[Cable2Length]-7.0*cm"/>
@@ -101,12 +104,14 @@
  <Box name="PixelBarrelLadder"       dx="[LadderWidth]/2"
       dy="[LadderThick]/2" dz="[ExternalLength]/2"/>
  <Box name="PixelBarrelModuleBox"    dx="[LadderWidth]/2"
-      dy="[ModuleThick]/2"     dz="[Length]/2"/>
+      dy="[ModuleThick]/2"     dz="[ExternalLength]/2"/>
  <Box name="PixelBarrelCFStrip"      dx="[CFStripWidth]/2"
-      dy="[CFStripThick]/2"    dz="[Length]/2"/>
+      dy="[CFStripThick]/2"    dz="[ExternalLength]/2"/>
  <Box name="PixelBarrelCableBox"     dx="[LadderWidth]/2"
       dy="[CableBoxThick]/2"   dz="[ExternalLength]/2"/>
  <Box name="PixelBarrelReadoutBox"     dx="[LadderWidth]/2"
+      dy="[ReadoutBoxThick]/2" dz="[ExternalLength]/2"/>
+ <Box name="PixelBarrelReadout"     dx="[LadderWidth]/2"
       dy="[ReadoutBoxThick]/2" dz="[ModuleDz]/2"/>
  <Box name="PixelBarrelModule"       dx="[LadderWidth]/2"
       dy="[ModuleThick]/2"     dz="[ModuleDz]/2"/>
@@ -126,7 +131,7 @@
       dy="[ActiveDz]/2"        dz="[SensorThick]/2"/>
  <Box name="PixelBarrelHybrid"       dx="[HybridWidth]/2"
       dy="[HybridThick]/2"     dz="[HybridDz]/2"/>
- <Box name="PixelBarrelHybridTop"    dx="[HybridWidth]/5"
+ <Box name="PixelBarrelHybridTop"    dx="[HybridWidth]/8"
       dy="[HybridThick]/2"     dz="[HybridDz]/2"/>
 </SolidSection>
 
@@ -151,6 +156,10 @@
  </LogicalPart>
  <LogicalPart name="PixelBarrelReadoutBox" category="unspecified">
   <rSolid name="pixbarladderstack0:PixelBarrelReadoutBox"/>
+  <rMaterial name="materials:Air"/>
+ </LogicalPart>
+ <LogicalPart name="PixelBarrelReadout" category="unspecified">
+  <rSolid name="pixbarladderstack0:PixelBarrelReadout"/>   
   <rMaterial name="materials:Air"/>
  </LogicalPart>
  <LogicalPart name="PixelBarrelCFStrip" category="unspecified">
@@ -231,7 +240,6 @@
    <Translation x="[zero]" y="[ReadoutBoxY]" z="[zero]" />
  </PosPart>
 
-
  <PosPart copyNumber="1">
    <rParent name="pixbarladderstack0:PixelBarrelLadderDownStack0"/>
    <rChild name="pixbarladderstack0:PixelBarrelModuleBoxDown"/>
@@ -257,27 +265,27 @@
 
 
  <PosPart copyNumber="1">
-   <rParent name="pixbarladderstack0:PixelBarrelReadoutBox"/>
+   <rParent name="pixbarladderstack0:PixelBarrelReadout"/>
    <rChild name="pixbarladderstack0:PixelBarrelRCChip"/>
    <Translation x="[RCChipOffset]" y="[RCChipY]" z="-[RCChipZ]*2" />
  </PosPart>
  <PosPart copyNumber="2">
-   <rParent name="pixbarladderstack0:PixelBarrelReadoutBox"/>
+   <rParent name="pixbarladderstack0:PixelBarrelReadout"/>
    <rChild name="pixbarladderstack0:PixelBarrelRCChip"/>
    <Translation x="[RCChipOffset]" y="[RCChipY]" z="-[RCChipZ]" />
  </PosPart>
  <PosPart copyNumber="3">
-   <rParent name="pixbarladderstack0:PixelBarrelReadoutBox"/>
+   <rParent name="pixbarladderstack0:PixelBarrelReadout"/>
    <rChild name="pixbarladderstack0:PixelBarrelRCChip"/>
    <Translation x="[RCChipOffset]" y="[RCChipY]" z="[RCChipZ]" />
  </PosPart>
  <PosPart copyNumber="4">
-   <rParent name="pixbarladderstack0:PixelBarrelReadoutBox"/>
+   <rParent name="pixbarladderstack0:PixelBarrelReadout"/>
    <rChild name="pixbarladderstack0:PixelBarrelRCChip"/>   
    <Translation x="[RCChipOffset]" y="[RCChipY]" z="[RCChipZ]*2" />
  </PosPart>
  <PosPart copyNumber="1">
-   <rParent name="pixbarladderstack0:PixelBarrelReadoutBox"/>
+   <rParent name="pixbarladderstack0:PixelBarrelReadout"/>
    <rChild name="pixbarladderstack0:PixelBarrelHybridTop"/>
    <Translation x="[RCChipOffset]" y="[HybridTopY]" z="[zero]" />  
  </PosPart>
@@ -286,12 +294,12 @@
  <PosPart copyNumber="1">
    <rParent name="pixbarladderstack0:PixelBarrelModuleDown"/>
    <rChild name="pixbarladderstack0:PixelBarrelSensor"/>
-   <Translation x="[SensorOffset]" y="[SensorYd]" z="[zero]" />
+   <Translation x="[SensorOffset]" y="[SensorYd]-[ZOffset]" z="[zero]" />
  </PosPart>
  <PosPart copyNumber="1">
    <rParent name="pixbarladderstack0:PixelBarrelModuleDown"/>
    <rChild name="pixbarladderstack0:PixelBarrelHybrid"/>
-   <Translation x="[HybridOffset]" y="[HybridYd]" z="[zero]" />
+   <Translation x="[HybridOffset]" y="[HybridYd]-[ZOffset]" z="[zero]" />
  </PosPart>
 
 
@@ -354,27 +362,42 @@
 
 
 
-<Algorithm name="track:DDTrackerLinear">
+<Algorithm name="track:DDPixBarStackLinear">
   <rParent name="pixbarladderstack0:PixelBarrelModuleBoxUp"/>
   <String name="ChildName"    value="pixbarladderstack0:PixelBarrelModuleUp"/>
   <Numeric name="Number"      value="[Modules]"/>
   <Numeric name="Theta"       value="0*deg"/>
   <Numeric name="Phi"         value="0*deg"/>
   <Numeric name="Offset"      value="[ModuleZ]" />
-  <Numeric name="Delta"       value="[ModuleDz]"/>
+  <Numeric name="Delta"       value="[ModuleDz]-[ZOverlap]"/>
   <String name="Rotation"     value="pixbarladder:NULL" />
+  <Numeric name="ZOffset"     value="[ZOffset]"/>
   <Vector name="Center" type="numeric" nEntries="3"> 
     [zero], [zero], [zero] </Vector>
 </Algorithm>
-<Algorithm name="track:DDTrackerLinear">
+<Algorithm name="track:DDPixBarStackLinear">
+  <rParent name="pixbarladderstack0:PixelBarrelReadoutBox"/>
+  <String name="ChildName"    value="pixbarladderstack0:PixelBarrelReadout"/>
+  <Numeric name="Number"      value="[Modules]"/>
+  <Numeric name="Theta"       value="0*deg"/>
+  <Numeric name="Phi"         value="0*deg"/>
+  <Numeric name="Offset"      value="[ModuleZ]" />
+  <Numeric name="Delta"       value="[ModuleDz]-[ZOverlap]"/>
+  <String name="Rotation"     value="pixbarladder:NULL" />
+  <Numeric name="ZOffset"     value="[zero]"/> 
+  <Vector name="Center" type="numeric" nEntries="3">
+    [zero], [zero], [zero] </Vector>
+</Algorithm>
+<Algorithm name="track:DDPixBarStackLinear">
   <rParent name="pixbarladderstack0:PixelBarrelModuleBoxDown"/>
   <String name="ChildName"    value="pixbarladderstack0:PixelBarrelModuleDown"/>
   <Numeric name="Number"      value="[Modules]"/>
   <Numeric name="Theta"       value="0*deg"/>
   <Numeric name="Phi"         value="0*deg"/>
   <Numeric name="Offset"      value="[ModuleZ]" />
-  <Numeric name="Delta"       value="[ModuleDz]"/>
+  <Numeric name="Delta"       value="[ModuleDz]-[ZOverlap]"/>
   <String name="Rotation"     value="pixbarladder:NULL" />
+  <Numeric name="ZOffset"     value="[ZOffset]"/> 
   <Vector name="Center" type="numeric" nEntries="3"> 
     [zero], [zero], [zero] </Vector>
 </Algorithm>
