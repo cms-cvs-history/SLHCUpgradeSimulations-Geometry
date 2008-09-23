@@ -67,10 +67,10 @@
 // class decleration
 //
 
-class ModuleInfo : public edm::EDAnalyzer {
+class ModuleInfo_StrawmanA : public edm::EDAnalyzer {
 public:
-  explicit ModuleInfo( const edm::ParameterSet& );
-  ~ModuleInfo();
+  explicit ModuleInfo_StrawmanA( const edm::ParameterSet& );
+  ~ModuleInfo_StrawmanA();
   
   
   virtual void analyze( const edm::Event&, const edm::EventSetup& );
@@ -92,7 +92,7 @@ private:
 //
 // constructors and destructor
 //
-ModuleInfo::ModuleInfo( const edm::ParameterSet& ps )
+ModuleInfo_StrawmanA::ModuleInfo_StrawmanA( const edm::ParameterSet& ps )
 {
   fromDDD_ = ps.getParameter<bool>("fromDDD");
   printDDD_ = ps.getUntrackedParameter<bool>("printDDD", true);
@@ -101,7 +101,7 @@ ModuleInfo::ModuleInfo( const edm::ParameterSet& ps )
 }
 
 
-ModuleInfo::~ModuleInfo()
+ModuleInfo_StrawmanA::~ModuleInfo_StrawmanA()
 {
   
   // do anything here that needs to be done at desctruction time
@@ -116,12 +116,12 @@ ModuleInfo::~ModuleInfo()
 
 // ------------ method called to produce the data  ------------
 void
-ModuleInfo::analyze( const edm::Event& iEvent, const edm::EventSetup& iSetup )
+ModuleInfo_StrawmanA::analyze( const edm::Event& iEvent, const edm::EventSetup& iSetup )
 {
-  edm::LogInfo("ModuleInfo") << "begins";
+  edm::LogInfo("ModuleInfo_StrawmanA") << "begins";
   
   // output file
-  std::ofstream Output("ModuleInfo.log",std::ios::out);
+  std::ofstream Output("ModuleInfo_StrawmanA.log",std::ios::out);
   // TEC output as Martin Weber's
   std::ofstream TECOutput("TECLayout_CMSSW.dat",std::ios::out);
   // Numbering Scheme
@@ -140,8 +140,8 @@ ModuleInfo::analyze( const edm::Event& iEvent, const edm::EventSetup& iSetup )
   } else {
     iSetup.get<PGeometricDetRcd>().get( rDD );
   }
-  edm::LogInfo("ModuleInfo") << " Top node is  " << &(*rDD) << " " <<  (*rDD).name().name() << std::endl;
-  edm::LogInfo("ModuleInfo") << " And Contains  Daughters: " << (*rDD).deepComponents().size() << std::endl;
+  edm::LogInfo("ModuleInfo_StrawmanA") << " Top node is  " << &(*rDD) << " " <<  (*rDD).name().name() << std::endl;
+  edm::LogInfo("ModuleInfo_StrawmanA") << " And Contains  Daughters: " << (*rDD).deepComponents().size() << std::endl;
   CmsTrackerDebugNavigator nav;
   nav.dump(&(*rDD));
   //
@@ -923,5 +923,5 @@ ModuleInfo::analyze( const edm::Event& iEvent, const edm::EventSetup& iSetup )
 }
 
 //define this as a plug-in
-DEFINE_FWK_MODULE(ModuleInfo);
+DEFINE_FWK_MODULE(ModuleInfo_StrawmanA);
   
