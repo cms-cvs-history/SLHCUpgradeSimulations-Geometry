@@ -379,7 +379,7 @@ ModuleInfo_StrawmanB::analyze( const edm::Event& iEvent, const edm::EventSetup& 
 	unsigned int theLayer  = module.layer();
 	unsigned int theLadder = module.ladder();
 	unsigned int theModule = module.module();
-	if(theLayer > nlayersPXB) nlayersPXB=theLayer;
+	if((int)theLayer > nlayersPXB) nlayersPXB=theLayer;
 	if(name == "PixelBarrelActiveFull" || name == "PixelBarrelActiveFull1" || name == "PixelBarrelActiveFull2" || name == "PixelBarrelActiveFull3" ) pxb_full_L[theLayer-1]++;
 	if(name == "PixelBarrelActiveHalf" || name == "PixelBarrelActiveHalf1" || name == "PixelBarrelActiveHalf2" || name == "PixelBarrelActiveHalf3" ) pxb_half_L[theLayer-1]++;
 	
@@ -435,7 +435,7 @@ ModuleInfo_StrawmanB::analyze( const edm::Event& iEvent, const edm::EventSetup& 
 	unsigned int theDisk   = module.disk();
 	unsigned int theBlade  = module.blade();
 	unsigned int theModule = module.module();
-	if(theDisk > ndisksPXF) ndisksPXF=theDisk;
+	if((int)theDisk > ndisksPXF) ndisksPXF=theDisk;
 	if(name == "PixelForwardActive1x2") pxf_1x2_D[theDisk-1]++;
 	if(name == "PixelForwardActive1x5") pxf_1x5_D[theDisk-1]++;
 	if(name == "PixelForwardActive2x3") pxf_2x3_D[theDisk-1]++;
@@ -475,7 +475,7 @@ ModuleInfo_StrawmanB::analyze( const edm::Event& iEvent, const edm::EventSetup& 
 	unsigned int              theLayer  = module.layer();
 	std::vector<unsigned int> theString = module.string();
 	unsigned int              theModule = module.module();
-	if(theLayer > nlayersTIB) nlayersTIB=theLayer;
+	if((int)theLayer > nlayersTIB) nlayersTIB=theLayer;
 	if(name == "TIBActiveRphi0") tib_L12_rphi_L[theLayer-1]++;
 	if(name == "TIBActiveSter0") tib_L12_ster_L[theLayer-1]++;
 	if(name == "TIBActiveRphi2") tib_L34_rphi_L[theLayer-1]++;
@@ -517,7 +517,7 @@ ModuleInfo_StrawmanB::analyze( const edm::Event& iEvent, const edm::EventSetup& 
 	unsigned int         theDisk   = module.wheel();
 	unsigned int         theRing   = module.ring();
 	std::vector<unsigned int> theModule = module.module();
-	if(theDisk > ndisksTID) ndisksTID=theDisk;
+	if((int)theDisk > ndisksTID) ndisksTID=theDisk;
 	if(name == "TIDModule0RphiActive")   tid_r1_rphi_D[theDisk-1]++;
 	if(name == "TIDModule0StereoActive") tid_r1_ster_D[theDisk-1]++;
 	if(name == "TIDModule1RphiActive")   tid_r2_rphi_D[theDisk-1]++;
@@ -561,7 +561,7 @@ ModuleInfo_StrawmanB::analyze( const edm::Event& iEvent, const edm::EventSetup& 
 	unsigned int              theLayer  = module.layer();
 	std::vector<unsigned int> theRod    = module.rod();
 	unsigned int              theModule = module.module();
-	if(theLayer > nlayersTOB) nlayersTOB=theLayer;
+	if((int)theLayer > nlayersTOB) nlayersTOB=theLayer;
 	if(name == "TOBActiveRphi0") tob_L12_rphi_L[theLayer-1]++;
 	if(name == "TOBActiveSter0") tob_L12_ster_L[theLayer-1]++;
 	if(name == "TOBActiveRphi2") tob_L34_rphi_L[theLayer-1]++;
@@ -609,7 +609,7 @@ ModuleInfo_StrawmanB::analyze( const edm::Event& iEvent, const edm::EventSetup& 
 	unsigned int              theModule = module.module();
 	std::vector<unsigned int> thePetal  = module.petal();
 	unsigned int              theRing   = module.ring();
-	if(theWheel > nwheelsTEC) nwheelsTEC=theWheel;
+	if((int)theWheel > nwheelsTEC) nwheelsTEC=theWheel;
 	if(name == "TECModule0RphiActive")   tec_r1_rphi_D[theWheel-1]++;
 	if(name == "TECModule0StereoActive") tec_r1_ster_D[theWheel-1]++;
 	if(name == "TECModule1RphiActive")   tec_r2_rphi_D[theWheel-1]++;
@@ -902,7 +902,7 @@ ModuleInfo_StrawmanB::analyze( const edm::Event& iEvent, const edm::EventSetup& 
   //
   
  
- for(unsigned int i=0; i<nlayersPXB;i++){
+ for(unsigned int i=0; (int)i<nlayersPXB;i++){
     GeometryOutput << "   PXB Layer no. " << i+1<< std::endl;
     //GeometryOutput << "        pxbR_L is " <<  pxbR_L[i] << " [cm]" << std::endl;
     //GeometryOutput << "        Number of Half module in PXB layer no. " << i+1 << ": " << pxb_half_L[i] << std::endl;
@@ -917,7 +917,7 @@ ModuleInfo_StrawmanB::analyze( const edm::Event& iEvent, const edm::EventSetup& 
     GeometryOutput << std::endl;
     GeometryXLS <<"PXB"<<i+1<<" "<<pxbR_L[i]/(pxb_full_L[i]+pxb_half_L[i])<<" "<<0<<" "<<pxbZ_L[i]<<" "<<activeSurface_pxb_L[i]<<" "<<psi_pxb_L[i]<<" "<<(int)psi_pxb_L[i]*(int)psi_pxb_chan[i]<<" "<<pxb_full_L[i]+pxb_half_L[i]<<" "<<pxb_full_L[i]<<" "<<pxb_half_L[i]<<std::endl;
   }
-  for(unsigned int i=0; i<nlayersTIB;i++){
+  for(unsigned int i=0; (int)i<nlayersTIB;i++){
     GeometryOutput << "   TIB Layer no. " << i+1<< std::endl;
     GeometryOutput << "        Meam radius of layer no. " << i+1<< ": "<< tibR_L[i]/(tib_L12_rphi_L[i]+tib_L12_ster_L[i]+tib_L34_rphi_L[i])<< " [cm]"<< std::endl;
     GeometryOutput << "        Maximum length in Z of layer no. " << i+1<< ": "<< tibZ_L[i]<< " [cm]"<< std::endl;
@@ -930,7 +930,7 @@ ModuleInfo_StrawmanB::analyze( const edm::Event& iEvent, const edm::EventSetup& 
     GeometryOutput << std::endl;
     GeometryXLS <<"TIB"<<i+1<<" "<<tibR_L[i]/(tib_L12_rphi_L[i]+tib_L12_ster_L[i]+tib_L34_rphi_L[i])<<" "<<0<<" "<<tibZ_L[i]<<" "<<activeSurface_tib_L[i]<<" "<<tib_apv_L[i]<<" "<<(int)tib_apv_L[i]*chan_per_apv<<" "<<tib_L12_rphi_L[i]+tib_L12_ster_L[i]+tib_L34_rphi_L[i]<<" "<<tib_L12_rphi_L[i]<<" "<<tib_L12_ster_L[i]<<" "<<tib_L34_rphi_L[i]<<std::endl;
   }
-  for(unsigned int i=0; i<nlayersTOB;i++){
+  for(unsigned int i=0; (int)i<nlayersTOB;i++){
     GeometryOutput << "   TOB Layer no. " << i+1<< std::endl;
     GeometryOutput << "        Meam radius of layer no. " << i+1<< ": "<< tobR_L[i]/(tob_L12_rphi_L[i]+tob_L12_ster_L[i]+tob_L34_rphi_L[i]+tob_L56_rphi_L[i])<< " [cm]"<< std::endl;
     GeometryOutput << "        Maximum length in Z of layer no. " << i+1<< ": "<< tobZ_L[i]<< " [cm]"<< std::endl;
@@ -944,7 +944,7 @@ ModuleInfo_StrawmanB::analyze( const edm::Event& iEvent, const edm::EventSetup& 
     GeometryOutput << std::endl;
     GeometryXLS <<"TOB"<<i+1<<" "<<tobR_L[i]/(tob_L12_rphi_L[i]+tob_L12_ster_L[i]+tob_L34_rphi_L[i]+tob_L56_rphi_L[i])<<" "<<0<<" "<<tobZ_L[i]<<" "<<activeSurface_tob_L[i]<<" "<<tob_apv_L[i]<<" "<<(int)tob_apv_L[i]*chan_per_apv<<" "<<tob_L12_rphi_L[i]+tob_L12_ster_L[i]+tob_L34_rphi_L[i]+tob_L56_rphi_L[i]<<" "<<tob_L12_rphi_L[i]<<" "<<tob_L12_ster_L[i]<<" "<<tob_L34_rphi_L[i]<<" "<<tob_L56_rphi_L[i]<<std::endl;
   }
-  for(unsigned int i=0; i<ndisksPXF;i++){
+  for(unsigned int i=0; (int)i<ndisksPXF;i++){
     GeometryOutput << "   PXF Disk no. " << i+1<<" (numbers are the total for both sides)"<< std::endl;
     GeometryOutput << "        Minimum radius of disk no. " << i+1<< ": "<< pxfR_min_D[i]<< " [cm]"<< std::endl;
     GeometryOutput << "        Maximum radius of disk no. " << i+1<< ": "<< pxfR_max_D[i]<< " [cm]"<< std::endl;
@@ -960,7 +960,7 @@ ModuleInfo_StrawmanB::analyze( const edm::Event& iEvent, const edm::EventSetup& 
     GeometryOutput << std::endl;
     GeometryXLS <<"PXF"<<i+1<<" "<<pxfR_min_D[i]<<" "<<pxfR_max_D[i]<<" "<<pxfZ_D[i]/(pxf_1x2_D[i]+pxf_1x5_D[i]+pxf_2x3_D[i]+pxf_2x4_D[i]+pxf_2x5_D[i])<<" "<<activeSurface_pxf_D[i]<<" "<<psi_pxf_D[i]<<" "<<(int)psi_pxf_D[i]*chan_per_psi<<" "<<pxf_1x2_D[i]+pxf_1x5_D[i]+pxf_2x3_D[i]+pxf_2x4_D[i]+pxf_2x5_D[i]<<" "<<pxf_1x2_D[i]<<" "<<pxf_1x5_D[i]<<" "<<pxf_2x3_D[i]<<" "<<pxf_2x4_D[i]<<" "<<pxf_2x5_D[i]<<std::endl;  
   }
-  for(unsigned int i=0; i<ndisksTID;i++){
+  for(unsigned int i=0; (int)i<ndisksTID;i++){
     GeometryOutput << "   TID Disk no. " << i+1<<" (numbers are the total for both sides)"<< std::endl;
     GeometryOutput << "        Minimum radius of disk no. " << i+1<< ": "<< tidR_min_D[i]<< " [cm]"<< std::endl;
     GeometryOutput << "        Maximum radius of disk no. " << i+1<< ": "<< tidR_max_D[i]<< " [cm]"<< std::endl;
@@ -977,7 +977,7 @@ ModuleInfo_StrawmanB::analyze( const edm::Event& iEvent, const edm::EventSetup& 
     GeometryOutput << std::endl;
     GeometryXLS <<"TID"<<i+1<<" "<<tidR_min_D[i]<<" "<<tidR_max_D[i]<<" "<<tidZ_D[i]/tot<<" "<<activeSurface_tid_D[i]<<" "<<tid_apv_D[i]<<" "<<(int)tid_apv_D[i]*chan_per_apv<<" "<<tot<<" "<<tid_r1_rphi_D[i]<<" "<<tid_r1_ster_D[i]<<" "<<tid_r2_rphi_D[i]<<" "<<tid_r2_ster_D[i]<<" "<<tid_r3_rphi_D[i]<<std::endl;  
   }
-  for(unsigned int i=0; i<nwheelsTEC;i++){
+  for(unsigned int i=0; (int)i<nwheelsTEC;i++){
     GeometryOutput << "   TEC Disk no. " << i+1<<" (numbers are the total for both sides)"<< std::endl;
     GeometryOutput << "        Minimum radius of wheel no. " << i+1<< ": "<< tecR_min_D[i]<< " [cm]"<< std::endl;
     GeometryOutput << "        Maximum radius of wheel no. " << i+1<< ": "<< tecR_max_D[i]<< " [cm]"<< std::endl;
