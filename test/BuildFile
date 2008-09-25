@@ -1,22 +1,30 @@
-# $Id: BuildFile,v 1.1 2007/10/05 19:31:44 hcheung Exp $
+# $Id: BuildFile,v 1.2 2008/09/16 21:57:44 hcheung Exp $
 <environment>
- <library file="FastsimHitNtuplizer.cc" name=FastsimHitNtuplizerExample>
+ <library file="Geodebugger.cc" name=Geodebugger>
   <flags EDM_PLUGIN=1>
   <use name=FWCore/Framework>
   <use name=DataFormats/Common>
   <use name=FWCore/ParameterSet>
   <use name=SimTracker/TrackerHitAssociation>
+  <use name=SimDataFormats/HepMCProduct>
   <use name=RecoLocalTracker/SiPixelRecHits>
  </library>
-
-<library file="ModuleInfo_StrawmanA.cc" name=ModuleInfo_StrawmanA>
- <flags EDM_PLUGIN=1>
- <use name=FWCore/Framework> 
- <use name=Geometry/Records>
- <use name=Geometry/TrackerGeometryBuilder>
- <use name=Geometry/TrackerNumberingBuilder>
- <use name=Geometry/CommonDetUnit>
- <use name=CondFormats/Alignment>
-</library>
+ <library file="ModuleInfo_StrawmanA.cc" name=ModuleInfo_StrawmanA> 	 
+  <flags EDM_PLUGIN=1> 	 
+  <use name=FWCore/Framework>
+  <use name=Geometry/Records>
+  <use name=Geometry/TrackerGeometryBuilder>
+  <use name=Geometry/TrackerNumberingBuilder>
+  <use name=Geometry/CommonDetUnit>
+  <use name=CondFormats/Alignment>
+ </library>
+ <library file="ModuleInfo_StrawmanB.cc" name=ModuleInfo_StrawmanB>
+  <flags EDM_PLUGIN=1>
+  <use name=FWCore/Framework>
+  <use name=Geometry/Records>
+  <use name=Geometry/TrackerGeometryBuilder>
+  <use name=Geometry/TrackerNumberingBuilder>
+  <use name=Geometry/CommonDetUnit>
+  <use name=CondFormats/Alignment>
+ </library>
 </environment>
-
