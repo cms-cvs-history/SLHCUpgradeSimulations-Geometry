@@ -2,6 +2,35 @@
 <DDDefinition xmlns="http://www.cern.ch/cms/DDL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.cern.ch/cms/DDL ../../../DetectorDescription/Schema/DDLSchema.xsd">
   <SpecParSection label="spec-pars2.xml">
 
+<SpecPar name="TrackerRecMaterialPixelBarrelLayerStack0" eval="true">
+<PartSelector 
+path="//PixelBarrel/PixelBarrelLayerStack0/PixelBarrelLadderUpStack0/pixbarladderstack0:PixelBarrelModuleBoxUp/pixbarladderstack0:PixelBarrelModuleUp/pixbarladderstack0:PixelBarrelSensor/PixelBarrelActiveStack0"/>
+<PartSelector 
+path="//PixelBarrel/PixelBarrelLayerStack0/PixelBarrelLadderDownStack0/pixbarladderstack0:PixelBarrelModuleBoxDown/pixbarladderstack0:PixelBarrelModuleDown/pixbarladderstack0:PixelBarrelSensor/PixelBarrelActiveStack0"/>
+<PartSelector 
+path="//PixelBarrel/PixelBarrelLayerStack1/PixelBarrelLadderUpStack1/pixbarladderstack1:PixelBarrelModuleBoxUp/pixbarladderstack1:PixelBarrelModuleUp/pixbarladderstack1:PixelBarrelSensor/PixelBarrelActiveStack1"/>      
+<PartSelector 
+path="//PixelBarrel/PixelBarrelLayerStack1/PixelBarrelLadderDownStack1/pixbarladderstack1:PixelBarrelModuleBoxDown/pixbarladderstack1:PixelBarrelModuleDown/pixbarladderstack1:PixelBarrelSensor/PixelBarrelActiveStack1"/>
+<PartSelector 
+path="//PixelBarrel/PixelBarrelLayerStack2/PixelBarrelLadderUpStack2/pixbarladderstack2:PixelBarrelModuleBoxUp/pixbarladderstack2:PixelBarrelModuleUp/pixbarladderstack2:PixelBarrelSensor/PixelBarrelActiveStack2"/>      
+<PartSelector 
+path="//PixelBarrel/PixelBarrelLayerStack2/PixelBarrelLadderDownStack2/pixbarladderstack2:PixelBarrelModuleBoxDown/pixbarladderstack2:PixelBarrelModuleDown/pixbarladderstack2:PixelBarrelSensor/PixelBarrelActiveStack2"/>
+<PartSelector 
+path="//PixelBarrel/PixelBarrelLayerStack3/PixelBarrelLadderUpStack3/pixbarladderstack3:PixelBarrelModuleBoxUp/pixbarladderstack3:PixelBarrelModuleUp/pixbarladderstack3:PixelBarrelSensor/PixelBarrelActiveStack3"/>      
+<PartSelector 
+path="//PixelBarrel/PixelBarrelLayerStack3/PixelBarrelLadderDownStack3/pixbarladderstack3:PixelBarrelModuleBoxDown/pixbarladderstack3:PixelBarrelModuleDown/pixbarladderstack3:PixelBarrelSensor/PixelBarrelActiveStack3"/>
+<PartSelector 
+path="//PixelBarrel/PixelBarrelLayerStack4/PixelBarrelLadderUpStack4/pixbarladderstack4:PixelBarrelModuleBoxUp/pixbarladderstack4:PixelBarrelModuleUp/pixbarladderstack4:PixelBarrelSensor/PixelBarrelActiveStack4"/>      
+<PartSelector 
+path="//PixelBarrel/PixelBarrelLayerStack4/PixelBarrelLadderDownStack4/pixbarladderstack4:PixelBarrelModuleBoxDown/pixbarladderstack4:PixelBarrelModuleDown/pixbarladderstack4:PixelBarrelSensor/PixelBarrelActiveStack4"/>
+<PartSelector 
+path="//PixelBarrel/PixelBarrelLayerStack5/PixelBarrelLadderUpStack5/pixbarladderstack5:PixelBarrelModuleBoxUp/pixbarladderstack5:PixelBarrelModuleUp/pixbarladderstack5:PixelBarrelSensor/PixelBarrelActiveStack5"/>      
+<PartSelector 
+path="//PixelBarrel/PixelBarrelLayerStack5/PixelBarrelLadderDownStack5/pixbarladderstack5:PixelBarrelModuleBoxDown/pixbarladderstack5:PixelBarrelModuleDown/pixbarladderstack5:PixelBarrelSensor/PixelBarrelActiveStack5"/>
+<Parameter name="TrackerRadLength" value="0.03320166"/>
+<Parameter name="TrackerXi" value="6.474325e-05"/>
+</SpecPar>
+
     <SpecPar name="TrackerRecMaterialPixelBarrelLayer0" eval="true">
       <PartSelector path="//PixelBarrel/PixelBarrelLayer0/PixelBarrelLadderFull/PixelBarrelModuleBoxFull/PixelBarrelModuleFullPlus/PixelBarrelSensorFull/PixelBarrelActiveFull"/>
       <PartSelector path="//PixelBarrel/PixelBarrelLayer0/PixelBarrelLadderFull/PixelBarrelModuleBoxFull/PixelBarrelModuleFullMinus/PixelBarrelSensorFull/PixelBarrelActiveFull"/>
@@ -28,7 +57,6 @@
       <Parameter name="TrackerRadLength" value="0.0308845"/>
       <Parameter name="TrackerXi" value="5.87129e-05"/>
     </SpecPar>
-
 <!--
     <SpecPar name="TrackerRecMaterialTIBLayer0" eval="true">
       <PartSelector path="//TIB/TIBLayer0/TIBLayer0Down/TIBString0Lo1/TIBString0LoMin1/TIBModule0B/TIBWaferRphi0/TIBActiveRphi0"/>
@@ -120,7 +148,6 @@
       <Parameter name="TrackerXi" value="3.90167e-05"/>
     </SpecPar>
 -->
-
     <SpecPar name="TrackerRecMaterialPixelEndcapDisk1Fw" eval="true">
       <PartSelector path="//PixelForwardZPlus/PixelForwardDiskZPlus[1]/PixelForwardPanel3Right/PixelForwardPlaquette2x3Up/PixelForwardSensor2x3/PixelForwardActive2x3"/>
       <PartSelector path="//PixelForwardZPlus/PixelForwardDiskZPlus[1]/PixelForwardPanel3Right/PixelForwardPlaquette2x4Up/PixelForwardSensor2x4/PixelForwardActive2x4"/>
@@ -196,7 +223,6 @@
       <Parameter name="TrackerRadLength" value="0.0872984"/>
       <Parameter name="TrackerXi" value="0.000203406"/>
     </SpecPar>
-
 <!--
     <SpecPar name="TrackerRecMaterialTIDDisk1Fw" eval="true">
       <PartSelector path="//TIDF/TIDWheelF[1]/TIDRing0F/TIDModule0L/TIDModule0RphiWafer/TIDModule0RphiActive"/>
@@ -282,7 +308,6 @@
       <Parameter name="TrackerXi" value="0.000106574"/>
     </SpecPar>
 -->
-
     <SpecPar name="TrackerRecMaterialTECDisk0Fw" eval="true">
       <PartSelector path="//TEC[1]/TECWheels/TECWheelA[0]/TECPetalCont0F/TECRing0F/TECModule0/TECModule0RphiWafer/TECModule0RphiActive"/>
       <PartSelector path="//TEC[1]/TECWheels/TECWheelA[0]/TECPetalCont0F/TECRing0F/TECModule0/TECModule0StereoWafer/TECModule0StereoActive"/>
