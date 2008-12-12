@@ -44,13 +44,39 @@ process.load("Configuration.StandardSequences.MagneticField_38T_cff")
 process.VolumeBasedMagneticFieldESProducer.useParametrizedTrackerField = True
 
 # If you want to turn on/off pile-up
-process.famosPileUp.PileUpSimulator.averageNumber = 5.0
+process.famosPileUp.PileUpSimulator.averageNumber = 0.0
 # You may not want to simulate everything for your study
 process.famosSimHits.SimulateCalorimetry = False
 process.famosSimHits.SimulateTracking = True
 
-# Famos with everything !
-process.p1 = cms.Path(process.famosWithTracks)
+# taking these from FastSimulation/Validation/python/TrackValidation_HighPurity_cff.py
+# and e.g. FastSimulation/Validation/test/valTK_muon_100GeV_cfg.py
+process.load("SimGeneral.TrackingAnalysis.trackingParticles_cfi")
+process.mergedtruth.TrackerHitLabels = ['famosSimHitsTrackerHits']
+process.mergedtruth.simHitLabel = 'famosSimHits'
+
+#process.load("SLHCUpgradeSimulations.Geometry.cutsTPEffic_cfi")
+#process.load("SLHCUpgradeSimulations.Geometry.cutsTPFake_cfi")
+process.load("Validation.RecoTrack.cutsTPEffic_cfi")
+process.load("Validation.RecoTrack.cutsTPFake_cfi")
+
+process.load("SimTracker.TrackAssociation.TrackAssociatorByChi2_cfi")
+process.load("SimTracker.TrackAssociation.TrackAssociatorByHits_cfi")
+process.TrackAssociatorByHits.associateStrip = False
+process.TrackAssociatorByHits.associatePixel = False
+#process.TrackAssociatorByHits.ROUList = "TrackerHits"
+process.TrackAssociatorByHits.ROUList = ['famosSimHitsTrackerHits']
+
+process.load("Validation.RecoTrack.MultiTrackValidator_cff")
+process.multiTrackValidator.label = ['firstfilter']
+process.multiTrackValidator.associators = ['TrackAssociatorByHits']
+process.multiTrackValidator.UseAssociators = True
+process.multiTrackValidator.outputFile = "valid_muon_50GeV.root"
+
+
+# Famos with tracks
+process.p1 = cms.Path(process.famosWithTracks*process.trackerGSRecHitTranslator*process.trackingParticles)
+process.p1 *= process.cutsTPEffic*process.cutsTPFake*process.multiTrackValidator
 
 # To write out events (not need: FastSimulation _is_ fast!)
 process.o1 = cms.OutputModule(
