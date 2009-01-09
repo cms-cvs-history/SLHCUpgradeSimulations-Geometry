@@ -4,7 +4,7 @@ process = cms.Process("VALID")
 
 # Number of events to be generated
 process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(1000)
+    input = cms.untracked.int32(10000)
 )
 
 #Timing = cms.Service( )
@@ -46,7 +46,7 @@ process.VolumeBasedMagneticFieldESProducer.useParametrizedTrackerField = True
 # If you want to turn on/off pile-up
 process.famosPileUp.PileUpSimulator.averageNumber = 0.0
 # You may not want to simulate everything for your study
-process.famosSimHits.SimulateCalorimetry = False
+process.famosSimHits.SimulateCalorimetry = True
 process.famosSimHits.SimulateTracking = True
 
 # taking these from FastSimulation/Validation/python/TrackValidation_HighPurity_cff.py
@@ -68,7 +68,7 @@ process.TrackAssociatorByHits.associatePixel = False
 process.TrackAssociatorByHits.ROUList = ['famosSimHitsTrackerHits']
 
 process.load("Validation.RecoTrack.MultiTrackValidator_cff")
-process.multiTrackValidator.label = ['firstfilter']
+process.multiTrackValidator.label = ['generalTracks']
 process.multiTrackValidator.associators = ['TrackAssociatorByHits']
 process.multiTrackValidator.UseAssociators = True
 process.multiTrackValidator.outputFile = "valid_muon_50GeV.root"
