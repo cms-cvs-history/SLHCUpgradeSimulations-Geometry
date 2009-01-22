@@ -61,11 +61,16 @@ process.simSiPixelDigis.MissCalibrate = False
 process.simSiPixelDigis.AddPixelInefficiency = -1
 process.simSiStripDigis.ROUList =  ['famosSimHitsTrackerHits']
 
-process.load("Configuration.StandardSequences.DigiToRaw_cff")
+#process.load("Configuration.StandardSequences.DigiToRaw_cff")
 
-process.load("Configuration.StandardSequences.RawToDigi_cff")
+#process.load("Configuration.StandardSequences.RawToDigi_cff")
 
 process.load("Configuration.StandardSequences.Reconstruction_cff")
+process.siPixelClusters.src = 'simSiPixelDigis'
+process.siStripZeroSuppression.RawDigiProducersList[0].RawDigiProducer = 'simSiStripDigis'
+process.siStripZeroSuppression.RawDigiProducersList[1].RawDigiProducer = 'simSiStripDigis'
+process.siStripZeroSuppression.RawDigiProducersList[2].RawDigiProducer = 'simSiStripDigis'
+process.siStripClusters.DigiProducersList[0].DigiProducer= 'simSiStripDigis'
 
 process.load("SimGeneral.TrackingAnalysis.trackingParticles_cfi")
 process.mergedtruth.TrackerHitLabels = ['famosSimHitsTrackerHits']
@@ -104,9 +109,11 @@ process.options = cms.untracked.PSet( Rethrow = cms.untracked.vstring('ProductNo
 # Famos with tracks
 process.p1 = cms.Path(process.famosWithTrackerHits)
 process.p2 = cms.Path(process.trDigi)
-process.p3 = cms.Path(process.siPixelRawData*process.SiStripDigiToRaw*process.rawDataCollector)
-process.p4 = cms.Path(process.siPixelDigis*process.SiStripRawToDigis)
+#process.p3 = cms.Path(process.siPixelRawData*process.SiStripDigiToRaw*process.rawDataCollector)
+#process.p4 = cms.Path(process.siPixelDigis*process.SiStripRawToDigis)
 process.p5 = cms.Path(process.trackerlocalreco)
 process.p6 = cms.Path(process.offlineBeamSpot+process.recopixelvertexing*process.ckftracks)
 process.p7 = cms.Path(process.trackingParticles*process.cutsTPEffic*process.cutsTPFake*process.multiTrackValidator)
-process.schedule = cms.Schedule(process.p1,process.p2,process.p3,process.p4,process.p5,process.p6,process.p7,process.outpath)
+process.schedule = cms.Schedule(process.p1,process.p2,process.p5,process.p6,process.p7,process.outpath)
+# don't do the digi to raw, and raw to digi conversion
+#process.schedule = cms.Schedule(process.p1,process.p2,process.p3,process.p4,process.p5,process.p6,process.p7,process.outpath)
