@@ -43,6 +43,7 @@ process.load("FastSimulation.Configuration.CommonInputsFake_cff")
 process.load("FastSimulation.Configuration.FamosSequences_cff")
 # replace with strawmanB geometry
 process.load("SLHCUpgradeSimulations.Geometry.strawmanb_cmsIdealGeometryXML_cff")
+# speeds up job with lots more channels?
 process.SiPixelFakeGainOfflineESSource.file = 'SLHCUpgradeSimulations/Geometry/data/strawmanb/PixelSkimmedGeometry.txt'
 
 
@@ -65,6 +66,8 @@ process.simSiPixelDigis.ROUList =  ['famosSimHitsTrackerHits']
 process.simSiPixelDigis.MissCalibrate = False
 process.simSiPixelDigis.AddPixelInefficiency = -1
 process.simSiStripDigis.ROUList =  ['famosSimHitsTrackerHits']
+process.simSiPixelDigis.LorentzAngle_DB = False
+process.simSiPixelDigis.killModules = False
 
 #process.load("Configuration.StandardSequences.DigiToRaw_cff")
 
