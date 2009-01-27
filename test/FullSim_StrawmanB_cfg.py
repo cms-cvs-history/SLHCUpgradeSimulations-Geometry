@@ -11,6 +11,8 @@ process.load("SLHCUpgradeSimulations.Geometry.strawmanb_cmsIdealGeometryXML_cff"
 process.load("Configuration.StandardSequences.MagneticField_cff")
 
 process.load("Configuration.StandardSequences.FakeConditions_cff")
+process.SiPixelFakeGainOfflineESSource.file = 'SLHCUpgradeSimulations/Geometry/data/strawmanb/PixelSkimmedGeometry.txt'
+process.SiPixelFakeLorentzAngleESSource.file = 'SLHCUpgradeSimulations/Geometry/data/strawmanb/PixelSkimmedGeometry.txt'
 
 process.load("FWCore/MessageService/MessageLogger_cfi")
 #process.MessageLogger.destinations = cms.untracked.vstring("detailedInfo_fullmu50.txt")
@@ -55,11 +57,24 @@ process.load("Configuration.StandardSequences.VtxSmearedBetafuncEarlyCollision_c
 
 process.load("Configuration.StandardSequences.Reconstruction_cff")
 
+process.load("SimTracker.Configuration.SimTracker_cff")
+process.simSiPixelDigis.MissCalibrate = False
+process.simSiPixelDigis.AddPixelInefficiency = -1
+process.simSiPixelDigis.LorentzAngle_DB = False
+process.simSiPixelDigis.killModules = False
+
+process.siPixelClusters.src = 'simSiPixelDigis'
+process.siPixelClusters.MissCalibrate = False
+process.siStripZeroSuppression.RawDigiProducersList[0].RawDigiProducer = 'simSiStripDigis'
+process.siStripZeroSuppression.RawDigiProducersList[1].RawDigiProducer = 'simSiStripDigis'
+process.siStripZeroSuppression.RawDigiProducersList[2].RawDigiProducer = 'simSiStripDigis'
+process.siStripClusters.DigiProducersList[0].DigiProducer= 'simSiStripDigis'
+
 # Event output
 process.load("Configuration.EventContent.EventContent_cff")
 
 process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(1000)
+    input = cms.untracked.int32(100)
 )
 
 process.load("FastSimulation/Configuration/FlatPtMuonGun_cfi")
@@ -71,7 +86,7 @@ process.FlatRandomPtGunSource.PGunParameters.MaxEta = 2.5
 
 process.FEVT = cms.OutputModule("PoolOutputModule",
     process.FEVTSIMEventContent,
-    fileName = cms.untracked.string('/uscms_data/d1/cheung/slhc/testfull_muon_50GeV.root')
+    fileName = cms.untracked.string('/uscms_data/d1/cheung/slhc/testfullstrawb_muon_50GeV.root')
 )
 
 process.load("Validation.RecoTrack.cutsTPEffic_cfi")
@@ -84,7 +99,12 @@ process.load("Validation.RecoTrack.MultiTrackValidator_cff")
 process.multiTrackValidator.label = ['generalTracks']
 process.multiTrackValidator.associators = ['TrackAssociatorByHits']
 process.multiTrackValidator.UseAssociators = True
-process.multiTrackValidator.outputFile = "validfull_muon_50GeV.root"
+process.multiTrackValidator.outputFile = "validfullstrawb_muon_50GeV.root"
+
+#process.writedet = cms.EDProducer("SiPixelDetInfoFileWriter",
+#   FilePath = cms.untracked.string("PixelSkimmedGeometry_strawb.txt")
+#)
+
 
 process.Timing =  cms.Service("Timing")
 
@@ -99,5 +119,6 @@ process.p5 = cms.Path(process.RawToDigi)
 process.p6 = cms.Path(process.reconstruction)
 process.p7 = cms.Path(process.cutsTPEffic*process.cutsTPFake*process.multiTrackValidator)
 #process.p7 = cms.Path(process.trackingParticles*process.cutsTPEffic*process.cutsTPFake*process.multiTrackValidator)
+#process.p8 = cms.Path(process.writedet)
 process.outpath = cms.EndPath(process.FEVT)
 process.schedule = cms.Schedule(process.p0,process.p1,process.p2,process.p3,process.p4,process.p5,process.p6,process.p7,process.outpath)
