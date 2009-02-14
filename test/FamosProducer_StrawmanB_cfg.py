@@ -27,7 +27,7 @@ process.RandomNumberGeneratorService.simSiPixelDigis = cms.PSet(
 #  process.load("FastSimulation/Configuration/MinBiasEvents_cfi")
 # Generate muons with a flat pT particle gun, and with pT=10.
 process.load("FastSimulation/Configuration/FlatPtMuonGun_cfi")
-# replace FlatRandomPtGunSource.PGunParameters.PartID={13}
+process.FlatRandomPtGunSource.PGunParameters.PartID[0] = 13
 process.FlatRandomPtGunSource.PGunParameters.MinPt = 50.0
 process.FlatRandomPtGunSource.PGunParameters.MaxPt = 50.0
 process.FlatRandomPtGunSource.PGunParameters.MinEta = -2.5
@@ -76,10 +76,13 @@ process.simSiPixelDigis.killModules = False
 process.load("Configuration.StandardSequences.Reconstruction_cff")
 process.siPixelClusters.src = 'simSiPixelDigis'
 process.siPixelClusters.MissCalibrate = False
+process.siPixelRecHits.CPE = 'PixelCPEfromTrackAngle'
 process.siStripZeroSuppression.RawDigiProducersList[0].RawDigiProducer = 'simSiStripDigis'
 process.siStripZeroSuppression.RawDigiProducersList[1].RawDigiProducer = 'simSiStripDigis'
 process.siStripZeroSuppression.RawDigiProducersList[2].RawDigiProducer = 'simSiStripDigis'
 process.siStripClusters.DigiProducersList[0].DigiProducer= 'simSiStripDigis'
+process.MeasurementTracker.PixelCPE = 'PixelCPEfromTrackAngle'
+process.ttrhbwr.PixelCPE = 'PixelCPEfromTrackAngle'
 
 process.load("SimGeneral.TrackingAnalysis.trackingParticles_cfi")
 process.mergedtruth.TrackerHitLabels = ['famosSimHitsTrackerHits']
@@ -93,18 +96,32 @@ process.load("SimTracker.TrackAssociation.TrackAssociatorByHits_cfi")
 process.TrackAssociatorByHits.ROUList = ['famosSimHitsTrackerHits']
 
 process.load("Validation.RecoTrack.MultiTrackValidator_cff")
-process.multiTrackValidator.label = ['generalTracks']
+#process.multiTrackValidator.label = ['generalTracks']
+process.multiTrackValidator.label = ['ctfWithMaterialTracks']
 process.multiTrackValidator.sim = 'famosSimHits'
 process.multiTrackValidator.associators = ['TrackAssociatorByHits']
 process.multiTrackValidator.UseAssociators = True
 process.multiTrackValidator.outputFile = "validstrawb_muon_50GeV.root"
+
+process.load("SLHCUpgradeSimulations.Geometry.simpleTracking")
+# for a test of errors
+#process.Chi2MeasurementEstimator.nSigma = 3000.0
+#process.Chi2MeasurementEstimator.MaxChi2 = 30000.0
+
 
 #process.load("Validation.TrackerDigis.trackerDigisValidation_cff")
 #process.load("Validation.TrackerRecHits.trackerRecHitsValidation_cff")
 #process.pixRecHitsValid.ROUList = ['famosSimHitsTrackerHits']
 #process.stripRecHitsValid.ROUList = ['famosSimHitsTrackerHits']
 
-# To write out events (not need: FastSimulation _is_ fast!)
+process.ReadLocalMeasurement = cms.EDAnalyzer("StdHitNtuplizer",
+   src = cms.InputTag("siPixelRecHits"),
+   trackProducer = cms.InputTag("ctfWithMaterialTracks"),
+   #trackProducer = cms.InputTag("generalTracks"),
+   OutputFile = cms.string("stdgrechit_ntuple.root")
+)
+
+# To write out events 
 process.o1 = cms.OutputModule(
     "PoolOutputModule",
     outputCommands = cms.untracked.vstring('keep *',
@@ -116,7 +133,9 @@ process.outpath = cms.EndPath(process.o1)
 # Keep output to a nice level
 process.Timing =  cms.Service("Timing")
 process.load("FWCore/MessageService/MessageLogger_cfi")
-process.MessageLogger.destinations = cms.untracked.vstring("detailedInfo_strawb_mu50.txt")
+process.MessageLogger.destinations = cms.untracked.vstring("detailedInfo_strawb_mu50")
+#process.MessageLogger.detailedInfo_strawb_mu50 = cms.untracked.PSet(threshold = cms.untracked.string('DEBUG'))
+#process.MessageLogger.debugModules= cms.untracked.vstring("multiTrackValidator")
 
 # Make the job crash in case of missing product
 process.options = cms.untracked.PSet( Rethrow = cms.untracked.vstring('ProductNotFound') )
@@ -127,8 +146,11 @@ process.p2 = cms.Path(process.trDigi)
 #process.p3 = cms.Path(process.siPixelRawData*process.SiStripDigiToRaw*process.rawDataCollector)
 #process.p4 = cms.Path(process.siPixelDigis*process.SiStripRawToDigis)
 process.p5 = cms.Path(process.trackerlocalreco)
-process.p6 = cms.Path(process.offlineBeamSpot+process.recopixelvertexing*process.ckftracks)
+#process.p6 = cms.Path(process.offlineBeamSpot+process.recopixelvertexing*process.ckftracks)
+process.p6 = cms.Path(process.offlineBeamSpot+process.recopixelvertexing*process.simpleTracking)
 #process.p7 = cms.Path(process.trackerDigisValidation*process.trackerRecHitsValidation)
 process.p8 = cms.Path(process.trackingParticles*process.cutsTPEffic*process.cutsTPFake*process.multiTrackValidator)
-process.schedule = cms.Schedule(process.p1,process.p2,process.p5,process.p6,process.p8,process.outpath)
+process.p9 = cms.Path(process.ReadLocalMeasurement)
+#process.schedule = cms.Schedule(process.p1,process.p2,process.p5,process.p6,process.p8,process.outpath)
+process.schedule = cms.Schedule(process.p1,process.p2,process.p5,process.p6,process.p8,process.p9,process.outpath)
 #process.schedule = cms.Schedule(process.p1,process.p2,process.p3,process.p4,process.p5,process.p6,process.p7,process.p8,process.outpath)
