@@ -135,6 +135,19 @@ process.thlayerpairs.FPix.TTRHBuilder = cms.string('WithTrackAngle')
 process.thMeasurementTracker.PixelCPE = cms.string('PixelCPEfromTrackAngle')
 process.thWithMaterialTracks.TTRHBuilder = cms.string('WithTrackAngle')
 
+### to make the first step as in 1_8_4
+## not sure of fitter in 1_8_4 its called FittingSmootherRK
+process.preFilterFirstStepTracks.Fitter = 'KFFittingSmoother'
+## not sure about the propagator in 1_8_4 its called RungeKuttaTrackerPropagator
+process.preFilterFirstStepTracks.Propagator = 'PropagatorWithMaterial'
+process.newTrackCandidateMaker.doSeedingRegionRebuilding = False
+process.newTrackCandidateMaker.useHitsSplitting = False
+## these are tighter than in iterative tracking (3 and 0.3)
+process.newTrajectoryFilter.filterPset.minimumNumberOfHits = 5
+process.newTrajectoryFilter.filterPset.minPt = 0.9
+## keep all tracks from first step
+process.withLooseQuality.keepAllTracks = True
+
 # for a test of errors
 #process.Chi2MeasurementEstimator.nSigma = 30.0
 #process.Chi2MeasurementEstimator.MaxChi2 = 300.0
