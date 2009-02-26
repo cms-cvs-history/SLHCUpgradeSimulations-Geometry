@@ -4,7 +4,7 @@ process = cms.Process("Fastsimwdigi")
 
 # Number of events to be generated
 process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(1000)
+    input = cms.untracked.int32(10000)
 )
 
 # Include the RandomNumberGeneratorService definition
@@ -43,7 +43,7 @@ process.load("FastSimulation.Configuration.CommonInputsFake_cff")
 process.load("FastSimulation.Configuration.FamosSequences_cff")
 # replace with strawmanB geometry
 process.load("SLHCUpgradeSimulations.Geometry.strawmanb_cmsIdealGeometryXML_cff")
-# speeds up job with lots more channels?
+# does using an empty PixelSkimmedGeometry.txt file speeds up job with lots more channels?
 process.SiPixelFakeGainOfflineESSource.file = 'SLHCUpgradeSimulations/Geometry/data/strawmanb/PixelSkimmedGeometry.txt'
 process.SiPixelFakeLorentzAngleESSource.file = 'SLHCUpgradeSimulations/Geometry/data/strawmanb/PixelSkimmedGeometry.txt'
 
@@ -76,13 +76,10 @@ process.simSiPixelDigis.killModules = False
 process.load("Configuration.StandardSequences.Reconstruction_cff")
 process.siPixelClusters.src = 'simSiPixelDigis'
 process.siPixelClusters.MissCalibrate = False
-process.siPixelRecHits.CPE = 'PixelCPEfromTrackAngle'
 process.siStripZeroSuppression.RawDigiProducersList[0].RawDigiProducer = 'simSiStripDigis'
 process.siStripZeroSuppression.RawDigiProducersList[1].RawDigiProducer = 'simSiStripDigis'
 process.siStripZeroSuppression.RawDigiProducersList[2].RawDigiProducer = 'simSiStripDigis'
 process.siStripClusters.DigiProducersList[0].DigiProducer= 'simSiStripDigis'
-process.MeasurementTracker.PixelCPE = 'PixelCPEfromTrackAngle'
-process.ttrhbwr.PixelCPE = 'PixelCPEfromTrackAngle'
 
 process.load("SimGeneral.TrackingAnalysis.trackingParticles_cfi")
 process.mergedtruth.TrackerHitLabels = ['famosSimHitsTrackerHits']
@@ -96,32 +93,78 @@ process.load("SimTracker.TrackAssociation.TrackAssociatorByHits_cfi")
 process.TrackAssociatorByHits.ROUList = ['famosSimHitsTrackerHits']
 
 process.load("Validation.RecoTrack.MultiTrackValidator_cff")
-#process.multiTrackValidator.label = ['generalTracks']
-process.multiTrackValidator.label = ['ctfWithMaterialTracks']
+process.multiTrackValidator.label = ['generalTracks']
+### if using simple (non-iterative) or old (as in 1_8_4) tracking
+#process.multiTrackValidator.label = ['ctfWithMaterialTracks']
 process.multiTrackValidator.sim = 'famosSimHits'
 process.multiTrackValidator.associators = ['TrackAssociatorByHits']
 process.multiTrackValidator.UseAssociators = True
 process.multiTrackValidator.outputFile = "validstrawb_muon_50GeV.root"
 
-process.load("SLHCUpgradeSimulations.Geometry.simpleTracking")
+### if using simple (non-iterative) or old (as in 1_8_4) tracking
+#process.load("SLHCUpgradeSimulations.Geometry.simpleTracking")
+#process.load("SLHCUpgradeSimulations.Geometry.oldTracking")
+
+### make sure the correct (modified) error routine is used
+process.siPixelRecHits.CPE = 'PixelCPEfromTrackAngle'
+process.MeasurementTracker.PixelCPE = 'PixelCPEfromTrackAngle'
+process.ttrhbwr.PixelCPE = 'PixelCPEfromTrackAngle'
+process.mixedlayerpairs.BPix.TTRHBuilder = cms.string('WithTrackAngle')
+process.mixedlayerpairs.FPix.TTRHBuilder = cms.string('WithTrackAngle')
+process.pixellayertriplets.BPix.TTRHBuilder = cms.string('WithTrackAngle')
+process.pixellayertriplets.FPix.TTRHBuilder = cms.string('WithTrackAngle')
+process.ctfWithMaterialTracks.TTRHBuilder = cms.string('WithTrackAngle')
+#next may not be needed
+process.load("RecoTracker.TrackProducer.TrackRefitters_cff")
+process.TrackRefitter.TTRHBuilder = cms.string('WithTrackAngle')
+
+#next may not be needed
+process.load("RecoTracker.SiTrackerMRHTools.SiTrackerMultiRecHitUpdator_cff")
+process.siTrackerMultiRecHitUpdator.TTRHBuilder = cms.string('WithTrackAngle')
+
+#replace with correct component in cloned version (replace with original TTRH producer)
+process.preFilterFirstStepTracks.TTRHBuilder = cms.string('WithTrackAngle')
+process.secPixelRecHits.CPE = cms.string('PixelCPEfromTrackAngle')
+process.seclayertriplets.BPix.TTRHBuilder = cms.string('WithTrackAngle')
+process.seclayertriplets.FPix.TTRHBuilder = cms.string('WithTrackAngle')
+process.secMeasurementTracker.PixelCPE = cms.string('PixelCPEfromTrackAngle')
+process.secWithMaterialTracks.TTRHBuilder = cms.string('WithTrackAngle')
+process.thPixelRecHits.CPE = cms.string('PixelCPEfromTrackAngle')
+process.thlayerpairs.BPix.TTRHBuilder = cms.string('WithTrackAngle')
+process.thlayerpairs.FPix.TTRHBuilder = cms.string('WithTrackAngle')
+process.thMeasurementTracker.PixelCPE = cms.string('PixelCPEfromTrackAngle')
+process.thWithMaterialTracks.TTRHBuilder = cms.string('WithTrackAngle')
+
 # for a test of errors
-#process.Chi2MeasurementEstimator.nSigma = 3000.0
-#process.Chi2MeasurementEstimator.MaxChi2 = 30000.0
+#process.Chi2MeasurementEstimator.nSigma = 30.0
+#process.Chi2MeasurementEstimator.MaxChi2 = 300.0
 
-
+### for running rechits validation
 #process.load("Validation.TrackerDigis.trackerDigisValidation_cff")
 #process.load("Validation.TrackerRecHits.trackerRecHitsValidation_cff")
 #process.pixRecHitsValid.ROUList = ['famosSimHitsTrackerHits']
 #process.stripRecHitsValid.ROUList = ['famosSimHitsTrackerHits']
 
+### produce an ntuple with hits for analysis
 process.ReadLocalMeasurement = cms.EDAnalyzer("StdHitNtuplizer",
    src = cms.InputTag("siPixelRecHits"),
-   trackProducer = cms.InputTag("ctfWithMaterialTracks"),
-   #trackProducer = cms.InputTag("generalTracks"),
-   OutputFile = cms.string("stdgrechit_ntuple.root")
+   trackProducer = cms.InputTag("generalTracks"),
+   ### if using simple (non-iterative) or old (as in 1_8_4) tracking
+   #trackProducer = cms.InputTag("ctfWithMaterialTracks"),
+   OutputFile = cms.string("stdgrechit_ntuple.root"),
+   ### for using track hit association
+   associatePixel = cms.bool(True),
+   associateStrip = cms.bool(False),
+   associateRecoTracks = cms.bool(False),
+   ROUList = cms.vstring('famosSimHitsTrackerHits')
 )
 
-# To write out events 
+### modules to write out PixelSkimmedGeometry.txt file
+#process.writedet = cms.EDProducer("SiPixelDetInfoFileWriter",
+#   FilePath = cms.untracked.string("PixelSkimmedGeometry_strawb.txt")
+#)
+
+# To write out events
 process.o1 = cms.OutputModule(
     "PoolOutputModule",
     outputCommands = cms.untracked.vstring('keep *',
@@ -134,6 +177,7 @@ process.outpath = cms.EndPath(process.o1)
 process.Timing =  cms.Service("Timing")
 process.load("FWCore/MessageService/MessageLogger_cfi")
 process.MessageLogger.destinations = cms.untracked.vstring("detailedInfo_strawb_mu50")
+### to output debug messages for particular modules
 #process.MessageLogger.detailedInfo_strawb_mu50 = cms.untracked.PSet(threshold = cms.untracked.string('DEBUG'))
 #process.MessageLogger.debugModules= cms.untracked.vstring("multiTrackValidator")
 
@@ -146,11 +190,13 @@ process.p2 = cms.Path(process.trDigi)
 #process.p3 = cms.Path(process.siPixelRawData*process.SiStripDigiToRaw*process.rawDataCollector)
 #process.p4 = cms.Path(process.siPixelDigis*process.SiStripRawToDigis)
 process.p5 = cms.Path(process.trackerlocalreco)
-#process.p6 = cms.Path(process.offlineBeamSpot+process.recopixelvertexing*process.ckftracks)
-process.p6 = cms.Path(process.offlineBeamSpot+process.recopixelvertexing*process.simpleTracking)
+process.p6 = cms.Path(process.offlineBeamSpot+process.recopixelvertexing*process.ckftracks)
+#process.p6 = cms.Path(process.offlineBeamSpot+process.recopixelvertexing*process.simpleTracking)
+#process.p6 = cms.Path(process.oldTracking)
 #process.p7 = cms.Path(process.trackerDigisValidation*process.trackerRecHitsValidation)
 process.p8 = cms.Path(process.trackingParticles*process.cutsTPEffic*process.cutsTPFake*process.multiTrackValidator)
 process.p9 = cms.Path(process.ReadLocalMeasurement)
+#process.p9 = cms.Path(process.writedet)
 #process.schedule = cms.Schedule(process.p1,process.p2,process.p5,process.p6,process.p8,process.outpath)
 process.schedule = cms.Schedule(process.p1,process.p2,process.p5,process.p6,process.p8,process.p9,process.outpath)
 #process.schedule = cms.Schedule(process.p1,process.p2,process.p3,process.p4,process.p5,process.p6,process.p7,process.p8,process.outpath)
