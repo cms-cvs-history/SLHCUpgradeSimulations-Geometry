@@ -4,7 +4,7 @@ process = cms.Process("Fastsimwdigi")
 
 # Number of events to be generated
 process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(10000)
+    input = cms.untracked.int32(1000)
 )
 
 # Include the RandomNumberGeneratorService definition
@@ -28,6 +28,8 @@ process.RandomNumberGeneratorService.simSiPixelDigis = cms.PSet(
 # Generate muons with a flat pT particle gun, and with pT=10.
 process.load("FastSimulation/Configuration/FlatPtMuonGun_cfi")
 process.FlatRandomPtGunSource.PGunParameters.PartID[0] = 13
+## for 4 muons to test with vertex
+#process.FlatRandomPtGunSource.PGunParameters.PartID = cms.untracked.vint32(13,-13,13,-13)
 process.FlatRandomPtGunSource.PGunParameters.MinPt = 50.0
 process.FlatRandomPtGunSource.PGunParameters.MaxPt = 50.0
 process.FlatRandomPtGunSource.PGunParameters.MinEta = -2.5
@@ -137,11 +139,13 @@ process.thWithMaterialTracks.TTRHBuilder = cms.string('WithTrackAngle')
 
 ### to make the first step as in 1_8_4
 ## not sure of fitter in 1_8_4 its called FittingSmootherRK
-process.preFilterFirstStepTracks.Fitter = 'KFFittingSmoother'
+## newer iterative fitting allows hits with large chi2 to be removed and is better
+#process.preFilterFirstStepTracks.Fitter = 'KFFittingSmoother'
 ## not sure about the propagator in 1_8_4 its called RungeKuttaTrackerPropagator
-process.preFilterFirstStepTracks.Propagator = 'PropagatorWithMaterial'
-process.newTrackCandidateMaker.doSeedingRegionRebuilding = False
-process.newTrackCandidateMaker.useHitsSplitting = False
+## newer propagator accounts for non-uniformities in field in forward region is better
+#process.preFilterFirstStepTracks.Propagator = 'PropagatorWithMaterial'
+#process.newTrackCandidateMaker.doSeedingRegionRebuilding = False
+#process.newTrackCandidateMaker.useHitsSplitting = False
 ## these are tighter than in iterative tracking (3 and 0.3)
 process.newTrajectoryFilter.filterPset.minimumNumberOfHits = 5
 process.newTrajectoryFilter.filterPset.minPt = 0.9
