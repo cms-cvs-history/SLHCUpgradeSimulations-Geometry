@@ -74,7 +74,7 @@ process.siStripClusters.DigiProducersList[0].DigiProducer= 'simSiStripDigis'
 process.load("Configuration.EventContent.EventContent_cff")
 
 process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(100)
+    input = cms.untracked.int32(1000)
 )
 
 process.load("FastSimulation/Configuration/FlatPtMuonGun_cfi")
@@ -100,6 +100,51 @@ process.multiTrackValidator.label = ['generalTracks']
 process.multiTrackValidator.associators = ['TrackAssociatorByHits']
 process.multiTrackValidator.UseAssociators = True
 process.multiTrackValidator.outputFile = "validfullstrawb_muon_50GeV.root"
+
+### make sure the correct (modified) error routine is used
+process.siPixelRecHits.CPE = 'PixelCPEfromTrackAngle'
+process.MeasurementTracker.PixelCPE = 'PixelCPEfromTrackAngle'
+process.ttrhbwr.PixelCPE = 'PixelCPEfromTrackAngle'
+process.mixedlayerpairs.BPix.TTRHBuilder = cms.string('WithTrackAngle')
+process.mixedlayerpairs.FPix.TTRHBuilder = cms.string('WithTrackAngle')
+process.pixellayertriplets.BPix.TTRHBuilder = cms.string('WithTrackAngle')
+process.pixellayertriplets.FPix.TTRHBuilder = cms.string('WithTrackAngle')
+process.ctfWithMaterialTracks.TTRHBuilder = cms.string('WithTrackAngle')
+#next may not be needed
+process.load("RecoTracker.TrackProducer.TrackRefitters_cff")
+process.TrackRefitter.TTRHBuilder = cms.string('WithTrackAngle')
+
+#next may not be needed
+process.load("RecoTracker.SiTrackerMRHTools.SiTrackerMultiRecHitUpdator_cff")
+process.siTrackerMultiRecHitUpdator.TTRHBuilder = cms.string('WithTrackAngle')
+
+#replace with correct component in cloned version (replace with original TTRH producer)
+process.preFilterFirstStepTracks.TTRHBuilder = cms.string('WithTrackAngle')
+process.secPixelRecHits.CPE = cms.string('PixelCPEfromTrackAngle')
+process.seclayertriplets.BPix.TTRHBuilder = cms.string('WithTrackAngle')
+process.seclayertriplets.FPix.TTRHBuilder = cms.string('WithTrackAngle')
+process.secMeasurementTracker.PixelCPE = cms.string('PixelCPEfromTrackAngle')
+process.secWithMaterialTracks.TTRHBuilder = cms.string('WithTrackAngle')
+process.thPixelRecHits.CPE = cms.string('PixelCPEfromTrackAngle')
+process.thlayerpairs.BPix.TTRHBuilder = cms.string('WithTrackAngle')
+process.thlayerpairs.FPix.TTRHBuilder = cms.string('WithTrackAngle')
+process.thMeasurementTracker.PixelCPE = cms.string('PixelCPEfromTrackAngle')
+process.thWithMaterialTracks.TTRHBuilder = cms.string('WithTrackAngle')
+
+### to make the first step as in 1_8_4
+## not sure of fitter in 1_8_4 its called FittingSmootherRK
+## newer iterative fitting allows hits with large chi2 to be removed and is better
+#process.preFilterFirstStepTracks.Fitter = 'KFFittingSmoother'
+## not sure about the propagator in 1_8_4 its called RungeKuttaTrackerPropagator
+## newer propagator accounts for non-uniformities in field in forward region is better
+#process.preFilterFirstStepTracks.Propagator = 'PropagatorWithMaterial'
+#process.newTrackCandidateMaker.doSeedingRegionRebuilding = False
+#process.newTrackCandidateMaker.useHitsSplitting = False
+## these are tighter than in iterative tracking (3 and 0.3)
+process.newTrajectoryFilter.filterPset.minimumNumberOfHits = 5
+process.newTrajectoryFilter.filterPset.minPt = 0.9
+## keep all tracks from first step
+process.withLooseQuality.keepAllTracks = True
 
 ### modules to write out PixelSkimmedGeometry.txt file
 #process.writedet = cms.EDProducer("SiPixelDetInfoFileWriter",
