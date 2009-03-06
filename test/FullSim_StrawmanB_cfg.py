@@ -15,7 +15,7 @@ process.SiPixelFakeGainOfflineESSource.file = 'SLHCUpgradeSimulations/Geometry/d
 process.SiPixelFakeLorentzAngleESSource.file = 'SLHCUpgradeSimulations/Geometry/data/strawmanb/PixelSkimmedGeometry.txt'
 
 process.load("FWCore/MessageService/MessageLogger_cfi")
-#process.MessageLogger.destinations = cms.untracked.vstring("detailedInfo_fullstrawbmu50.txt")
+process.MessageLogger.destinations = cms.untracked.vstring("detailedInfo_fullstrawbmu50")
 
 # this config frament brings you the generator information
 process.load("Configuration.StandardSequences.Generator_cff")
@@ -146,6 +146,23 @@ process.newTrajectoryFilter.filterPset.minPt = 0.9
 ## keep all tracks from first step
 process.withLooseQuality.keepAllTracks = True
 
+### produce an ntuple with pixel hits for analysis
+process.ReadLocalMeasurement = cms.EDAnalyzer("StdHitNtuplizer",
+   src = cms.InputTag("siPixelRecHits"),
+   trackProducer = cms.InputTag("generalTracks"),
+   ### if using simple (non-iterative) or old (as in 1_8_4) tracking
+   #trackProducer = cms.InputTag("ctfWithMaterialTracks"),
+   OutputFile = cms.string("stdgrechitfull_ntuple.root"),
+   ### for using track hit association
+   associatePixel = cms.bool(True),
+   associateStrip = cms.bool(False),
+   associateRecoTracks = cms.bool(False),
+   ROUList = cms.vstring('g4SimHitsTrackerHitsPixelBarrelLowTof', 
+                         'g4SimHitsTrackerHitsPixelBarrelHighTof', 
+                         'g4SimHitsTrackerHitsPixelEndcapLowTof', 
+                         'g4SimHitsTrackerHitsPixelEndcapHighTof')
+)
+
 ### modules to write out PixelSkimmedGeometry.txt file
 #process.writedet = cms.EDProducer("SiPixelDetInfoFileWriter",
 #   FilePath = cms.untracked.string("PixelSkimmedGeometry_strawb.txt")
@@ -174,6 +191,7 @@ process.p7 = cms.Path(process.cutsTPEffic*process.cutsTPFake*process.multiTrackV
 #process.p7 = cms.Path(process.trackingParticles*process.cutsTPEffic*process.cutsTPFake*process.multiTrackValidator)
 #process.p8 = cms.Path(process.writedet)
 #process.p8 = cms.Path(process.navigationSchoolAnalyzer)
+process.p8 = cms.Path(process.ReadLocalMeasurement)
 process.outpath = cms.EndPath(process.FEVT)
-process.schedule = cms.Schedule(process.p0,process.p1,process.p2,process.p3,process.p4,process.p5,process.p6,process.p7,process.outpath)
-#process.schedule = cms.Schedule(process.p0,process.p1,process.p2,process.p3,process.p4,process.p5,process.p6,process.p7,process.p8,process.outpath)
+#process.schedule = cms.Schedule(process.p0,process.p1,process.p2,process.p3,process.p4,process.p5,process.p6,process.p7,process.outpath)
+process.schedule = cms.Schedule(process.p0,process.p1,process.p2,process.p3,process.p4,process.p5,process.p6,process.p7,process.p8,process.outpath)
