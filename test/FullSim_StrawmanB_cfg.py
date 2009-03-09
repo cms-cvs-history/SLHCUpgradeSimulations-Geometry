@@ -74,7 +74,7 @@ process.siStripClusters.DigiProducersList[0].DigiProducer= 'simSiStripDigis'
 process.load("Configuration.EventContent.EventContent_cff")
 
 process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(1000)
+    input = cms.untracked.int32(10000)
 )
 
 process.load("FastSimulation/Configuration/FlatPtMuonGun_cfi")
@@ -141,10 +141,10 @@ process.thWithMaterialTracks.TTRHBuilder = cms.string('WithTrackAngle')
 #process.newTrackCandidateMaker.doSeedingRegionRebuilding = False
 #process.newTrackCandidateMaker.useHitsSplitting = False
 ## these are tighter than in iterative tracking (3 and 0.3)
-process.newTrajectoryFilter.filterPset.minimumNumberOfHits = 5
-process.newTrajectoryFilter.filterPset.minPt = 0.9
+#process.newTrajectoryFilter.filterPset.minimumNumberOfHits = 5
+#process.newTrajectoryFilter.filterPset.minPt = 0.9
 ## keep all tracks from first step
-process.withLooseQuality.keepAllTracks = True
+#process.withLooseQuality.keepAllTracks = True
 
 ### produce an ntuple with pixel hits for analysis
 process.ReadLocalMeasurement = cms.EDAnalyzer("StdHitNtuplizer",

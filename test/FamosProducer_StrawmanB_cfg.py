@@ -17,7 +17,7 @@ process.RandomNumberGeneratorService.simSiPixelDigis = cms.PSet(
       engineName = cms.untracked.string('HepJamesRandom'))
 
 # Generate H -> ZZ -> l+l- l'+l'- (l,l'=e or mu), with mH=180GeV/c2
-#  process.load("FastSimulation.Configuration.HZZllll_cfi")
+#process.load("FastSimulation.Configuration.HZZllll_cfi")
 # Generate ttbar events
 #  process.load("FastSimulation/Configuration/ttbar_cfi")
 # Generate multijet events with different ptHAT bins
@@ -29,7 +29,7 @@ process.RandomNumberGeneratorService.simSiPixelDigis = cms.PSet(
 process.load("FastSimulation/Configuration/FlatPtMuonGun_cfi")
 process.FlatRandomPtGunSource.PGunParameters.PartID[0] = 13
 ## for 4 muons to test with vertex
-#process.FlatRandomPtGunSource.PGunParameters.PartID = cms.untracked.vint32(13,-13,13,-13)
+##process.FlatRandomPtGunSource.PGunParameters.PartID = cms.untracked.vint32(13,-13,13,-13)
 process.FlatRandomPtGunSource.PGunParameters.MinPt = 50.0
 process.FlatRandomPtGunSource.PGunParameters.MaxPt = 50.0
 process.FlatRandomPtGunSource.PGunParameters.MinEta = -2.5
@@ -147,10 +147,10 @@ process.thWithMaterialTracks.TTRHBuilder = cms.string('WithTrackAngle')
 #process.newTrackCandidateMaker.doSeedingRegionRebuilding = False
 #process.newTrackCandidateMaker.useHitsSplitting = False
 ## these are tighter than in iterative tracking (3 and 0.3)
-process.newTrajectoryFilter.filterPset.minimumNumberOfHits = 5
-process.newTrajectoryFilter.filterPset.minPt = 0.9
+#process.newTrajectoryFilter.filterPset.minimumNumberOfHits = 5
+#process.newTrajectoryFilter.filterPset.minPt = 0.9
 ## keep all tracks from first step
-process.withLooseQuality.keepAllTracks = True
+#process.withLooseQuality.keepAllTracks = True
 
 # for a test of errors
 #process.Chi2MeasurementEstimator.nSigma = 30.0
