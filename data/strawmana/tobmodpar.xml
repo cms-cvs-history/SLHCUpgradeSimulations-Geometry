@@ -66,6 +66,7 @@
  <Constant name="ActiveDx"   value="4.6848*cm"/>
  <Constant name="ActiveDy"   value="9.3067*cm"/>
  <Constant name="ActiveDy4"  value="[ActiveDy]/4"/>
+ <Constant name="WaferDy4"  value="[WaferDy]/4"/>
  <Constant name="ActiveDz"   value="[WaferDz]-[tracker:BackPlaneDz]"/>
  <Constant name="InactiveDy" value="0.1553*cm"/>
  <Constant name="GlueDx1"    value="4.6848*cm"/>
@@ -203,6 +204,8 @@
                          phiY="90*deg"    thetaZ="-90*deg" phiZ="0*deg"  />
   <Rotation name="Activ" thetaX="90*deg"  phiX="180*deg"   thetaY="90*deg"
                          phiY="270*deg"   thetaZ="0*deg"   phiZ="0*deg" />
+  <Rotation name="UnionSter" thetaX="90*deg"  phiX="-5.7295779513*deg"   thetaY="90*deg"
+                         phiY="84.2704220487*deg"   thetaZ="0*deg"   phiZ="0*deg" />
 </RotationSection>
 
 </DDDefinition>

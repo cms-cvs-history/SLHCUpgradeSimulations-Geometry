@@ -18,8 +18,8 @@
   <Numeric name="CoolSide"         value="[pixbarlayerlong1:CoolSide]"/>
   <Numeric name="CoolThick"        value="[pixbarlayerlong1:CoolThick]"/>
   <Numeric name="CoolDist"         value="[pixbarlayer3:CoolDist]"/>
-  <String name="CoolMaterial"      value="materials:C6F14_F2_-20C"/>
-  <String name="CoolTubeMaterial"  value="materials:Aluminium"/>
+  <String name="CoolMaterial"      value="materials:CO2_Upgrade"/>
+  <String name="CoolTubeMaterial"  value="materials:Steel_Upgrade"/>
   <Vector name="LadderName" type="string" nEntries="2">
     pixbarladderfull1:PixelBarrelLadderFull1, 
     pixbarladderhalf1:PixelBarrelLadderHalf1</Vector>

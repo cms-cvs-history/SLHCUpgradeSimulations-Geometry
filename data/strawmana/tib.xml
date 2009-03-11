@@ -45,11 +45,11 @@
    <rParent name="tib:TIB"/>
    <rChild name="tiblayer1:TIBLayer1"/>
  </PosPart>
- -->
  <PosPart copyNumber="3">
    <rParent name="tib:TIB"/>
    <rChild name="tiblayer2:TIBLayer2"/>
  </PosPart>
+ -->
  <PosPart copyNumber="4">
    <rParent name="tib:TIB"/>
    <rChild name="tiblayer3:TIBLayer3"/>

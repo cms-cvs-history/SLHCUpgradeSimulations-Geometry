@@ -20,8 +20,6 @@
       <PartSelector path="//PixelBarrelLayer3" />
       <PartSelector path="//PixelBarrelLayer4" />
       <PartSelector path="//PixelBarrelLayer5" />
-      <PartSelector path="//PixelBarrelLayer6" />
-      <PartSelector path="//PixelBarrelLayer7" />
       <Parameter name="TkDDDStructure" value="PixelBarrelLayer"/>
     </SpecPar>
 
@@ -32,8 +30,6 @@
       <PartSelector path="//PixelBarrelLadderFull1" />
       <PartSelector path="//PixelBarrelLadderHalf2" />
       <PartSelector path="//PixelBarrelLadderFull2" />
-      <PartSelector path="//PixelBarrelLadderHalf3" />
-      <PartSelector path="//PixelBarrelLadderFull3" />
       <Parameter name="TkDDDStructure" value="PixelBarrelLadder"/>
     </SpecPar>
 
@@ -45,8 +41,6 @@
       <PartSelector path="//PixelBarrelActiveHalf1" />
       <PartSelector path="//PixelBarrelActiveFull2" />
       <PartSelector path="//PixelBarrelActiveHalf2" />
-      <PartSelector path="//PixelBarrelActiveFull3" />
-      <PartSelector path="//PixelBarrelActiveHalf3" />
       <Parameter name="TkDDDStructure" value="PixelBarrelDet"/>
     </SpecPar>
 
@@ -90,7 +84,7 @@
       <PartSelector path="//TIBLayer0" />
       <PartSelector path="//TIBLayer1" />
       -->
-      <PartSelector path="//TIBLayer2" />
+ <!--     <PartSelector path="//TIBLayer2" /> -->
       <PartSelector path="//TIBLayer3" />
       <Parameter name="TkDDDStructure" value="TIBLayer"/>
     </SpecPar>
@@ -107,11 +101,12 @@
       <PartSelector path="//TIBString1LoPls1" />
       <PartSelector path="//TIBString1UpMin1" />
       <PartSelector path="//TIBString1UpPls1" />
-      -->
+      
       <PartSelector path="//TIBString2LoMin1" />
       <PartSelector path="//TIBString2LoPls1" />
       <PartSelector path="//TIBString2UpMin1" />
       <PartSelector path="//TIBString2UpPls1" />
+      -->
       <PartSelector path="//TIBString3LoMin1" />
       <PartSelector path="//TIBString3LoPls1" />
       <PartSelector path="//TIBString3UpMin1" />
@@ -176,39 +171,53 @@
     </SpecPar>
 
     <SpecPar name="TOBSubDetLayerPar">
-    <!--
+    
       <PartSelector path="//TOBLayer0" />
       <PartSelector path="//TOBLayer1" />
-      -->
+      
       <PartSelector path="//TOBLayer2" />
+      <!--
       <PartSelector path="//TOBLayer3" />
+      -->
       <PartSelector path="//TOBLayer4" />
       <PartSelector path="//TOBLayer5" />
       <Parameter name="TkDDDStructure" value="TOBLayer"/>
     </SpecPar>
 
     <SpecPar name="TOBSubDetRodPar">
-    <!--
+    
       <PartSelector path="//TOBRod0L" />
       <PartSelector path="//TOBRod0H" />
       <PartSelector path="//TOBRod1L" />
       <PartSelector path="//TOBRod1H" />
-      -->
+      
       <PartSelector path="//TOBRod2L" />
       <PartSelector path="//TOBRod2H" />
+      <!--
       <PartSelector path="//TOBRod3L" />
       <PartSelector path="//TOBRod3H" />
+      -->
       <PartSelector path="//TOBRod4L" />
       <PartSelector path="//TOBRod4H" />
       <PartSelector path="//TOBRod5L" />
       <PartSelector path="//TOBRod5H" />
       <Parameter name="TkDDDStructure" value="TOBRod"/>
     </SpecPar>
-
+<!--
     <SpecPar name="TOBSubDetGluedDetPar">
       <PartSelector path="//TOBModule0" />
       <Parameter name="TkDDDStructure" value="TOBGluedDet"/>
     </SpecPar>
+-->
+
+    <SpecPar name="TOBSubDetGluedDetPar">
+      <PartSelector path="//TOBModule0A" />
+      <PartSelector path="//TOBModule0B" />
+      <PartSelector path="//TOBModule0C" />
+      <PartSelector path="//TOBModule0D" />
+      <Parameter name="TkDDDStructure" value="TOBGluedDet"/>
+    </SpecPar>
+
 
     <SpecPar name="TOBSubDetDetPar">
       <PartSelector path="//TOBActiveRphi0" />
@@ -334,8 +343,6 @@
       <PartSelector path="//PixelBarrelActiveHalf1" />
       <PartSelector path="//PixelBarrelActiveFull2" />
       <PartSelector path="//PixelBarrelActiveHalf2" />
-      <PartSelector path="//PixelBarrelActiveFull3" />
-      <PartSelector path="//PixelBarrelActiveHalf3" />
       <PartSelector path="//PixelForwardActive1x2" />
       <PartSelector path="//PixelForwardActive1x5" />
       <PartSelector path="//PixelForwardActive2x3" />
@@ -353,9 +360,6 @@
 
       <PartSelector path="//PixelBarrelActiveFull2" />
       <PartSelector path="//PixelBarrelActiveHalf2" />
-
-      <PartSelector path="//PixelBarrelActiveFull3" />
-      <PartSelector path="//PixelBarrelActiveHalf3" />
 
       <PartSelector path="//PixelForwardActive1x2" />
       <PartSelector path="//PixelForwardActive1x5" />
@@ -376,7 +380,6 @@
       <PartSelector path="//PixelBarrelActiveFull" />
       <PartSelector path="//PixelBarrelActiveFull1" />
       <PartSelector path="//PixelBarrelActiveFull2" />
-      <PartSelector path="//PixelBarrelActiveFull3" />
       <PartSelector path="//PixelForwardActive2x3" />
       <PartSelector path="//PixelForwardActive2x4" />
       <PartSelector path="//PixelForwardActive2x5" />
@@ -387,7 +390,6 @@
       <PartSelector path="//PixelBarrelActiveHalf" />
       <PartSelector path="//PixelBarrelActiveHalf1" />
       <PartSelector path="//PixelBarrelActiveHalf2" />
-      <PartSelector path="//PixelBarrelActiveHalf3" />
       <PartSelector path="//PixelForwardActive1x2" />
       <PartSelector path="//PixelForwardActive1x5" />
       <Parameter name="PixelROC_X" value="1"/>
@@ -407,12 +409,6 @@
       <Parameter name="PixelROC_Y" value="2"/> <!-- 600um strixels -->
   </SpecPar>
   
-  <SpecPar name="PixelROC_Y2StrixPar">
-      <PartSelector path="//PixelBarrelActiveFull3" />
-      <PartSelector path="//PixelBarrelActiveHalf3" />
-      <Parameter name="PixelROC_Y" value="1"/> <!-- 1200um strixels -->
-  </SpecPar>
-
   <SpecPar name="PixelROC_Y2Par">
       <PartSelector path="//PixelForwardActive1x2" />
       <Parameter name="PixelROC_Y" value="2"/>

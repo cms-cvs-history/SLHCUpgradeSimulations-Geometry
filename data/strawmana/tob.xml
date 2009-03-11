@@ -3,7 +3,7 @@
 
 <ConstantsSection label="tob.xml" eval="true">
  <Constant name="zero"           value="0.0*fm"/>
- <Constant name="Rin1"           value="74.1*cm"/> <!--was 54.0cm increased to make room for second strixel couple -->
+ <Constant name="Rin1"           value="54.0*cm"/> <!--was 74.1cm when second strixel doublet was present-->
  <Constant name="Rin2"           value="58.0*cm"/>
  <Constant name="Rin3"           value="1.160*m"/>
  <Constant name="Rout1"          value="1.169*m"/>
@@ -740,7 +740,7 @@
    <rParent name="tob:TOBAlignTube4"/>
    <rChild name="tob:TOBAlignT4In"/>
  </PosPart>
-<!--
+
  <PosPart copyNumber="1">
    <rParent name="tob:TOB"/>
    <rChild name="tob:TOBLayer0"/>
@@ -749,15 +749,17 @@
    <rParent name="tob:TOB"/>
    <rChild name="tob:TOBLayer1"/>
  </PosPart>
- -->
+ 
  <PosPart copyNumber="1">
    <rParent name="tob:TOB"/>
    <rChild name="tob:TOBLayer2"/>
  </PosPart>
+ <!--
  <PosPart copyNumber="1">
    <rParent name="tob:TOB"/>
    <rChild name="tob:TOBLayer3"/>
  </PosPart>
+ -->
  <PosPart copyNumber="1">
    <rParent name="tob:TOB"/>
    <rChild name="tob:TOBLayer4"/>
@@ -826,6 +828,7 @@
    tobrodpar:NULL,  tobrodpar:NULL,  tobrodpar:NULL,  tobrodpar:NULL, 
    tobrodpar:NULL,  tobrodpar:NULL</Vector>
 </Algorithm>
+<!--
 <Algorithm name="track:DDTrackerZPosAlgo">
   <rParent name="tob:TOB"/>
   <String name="ChildName"    value="tob:TOBConnect1"/>
@@ -870,6 +873,7 @@
   <Numeric name="Radius"      value="0"/>
   <Vector name="Center" type="numeric" nEntries="3"> 0, 0, 0  </Vector>
 </Algorithm>
+-->
 <Algorithm name="track:DDTrackerZPosAlgo">
   <rParent name="tob:TOB"/>
   <String name="ChildName"    value="tob:TOBConnect3"/>
@@ -893,6 +897,7 @@
   <Numeric name="Radius"      value="0"/>
   <Vector name="Center" type="numeric" nEntries="3"> 0, 0, 0  </Vector>
 </Algorithm>
+<!--
 <Algorithm name="track:DDTrackerZPosAlgo">
   <rParent name="tob:TOB"/>
   <String name="ChildName"    value="tob:TOBConnect4"/>
@@ -914,6 +919,7 @@
   <Numeric name="Radius"      value="0"/>
   <Vector name="Center" type="numeric" nEntries="3"> 0, 0, 0  </Vector>
 </Algorithm>
+-->
 <Algorithm name="track:DDTrackerZPosAlgo">
   <rParent name="tob:TOB"/>
   <String name="ChildName"    value="tob:TOBConnect5"/>
@@ -960,7 +966,6 @@
   <Numeric name="Radius"      value="0"/>
   <Vector name="Center" type="numeric" nEntries="3"> 0, 0, 0  </Vector>
 </Algorithm>
-
 <Algorithm name="track:DDTrackerZPosAlgo">
   <rParent name="tob:TOB"/>
   <String name="ChildName"    value="tob:TOBMidRib0"/>
@@ -1251,24 +1256,21 @@
   <Numeric name="DiskDz"      value="[SideDiskDz]"/>
   <Numeric name="RMax"        value="[Rin3]"/>
   <Numeric name="CableT"      value="0.7*cm"/>
-  <Vector name="RodRin" type="numeric" nEntries="6">
-   [Layer0LowR], [Layer1LowR], [Layer2LowR], 
-   [Layer3LowR], [Layer4LowR], [Layer5LowR]
+  <Vector name="RodRin" type="numeric" nEntries="3">
+   [Layer2LowR], [Layer4LowR], [Layer5LowR]
   </Vector>
-  <Vector name="RodRout" type="numeric" nEntries="6">
-   [Layer0HighR], [Layer1HighR], [Layer2HighR], 
-   [Layer3HighR], [Layer4HighR], [Layer5HighR]
+  <Vector name="RodRout" type="numeric" nEntries="3">
+   [Layer2HighR], [Layer4HighR], [Layer5HighR]
   </Vector>
-  <Vector name="CableMaterial" type="string" nEntries="6">
-   tobmaterial:TOB_rad_services1, tobmaterial:TOB_rad_services2, 
-   tobmaterial:TOB_rad_services3, tobmaterial:TOB_rad_services4, 
+  <Vector name="CableMaterial" type="string" nEntries="3">
+   tobmaterial:TOB_rad_services3,  
    tobmaterial:TOB_rad_services5, tobmaterial:TOB_rad_services6
   </Vector>
   <Numeric name="ConnW"       value="4.0*cm"/>
   <Numeric name="ConnT"       value="2.3*cm"/>
-  <Vector name="ConnMaterial" type="string" nEntries="6">
-   tobmaterial:TOB_rib1, tobmaterial:TOB_rib2, tobmaterial:TOB_rib3, 
-   tobmaterial:TOB_rib4, tobmaterial:TOB_rib5, tobmaterial:TOB_rib6
+  <Vector name="ConnMaterial" type="string" nEntries="3">
+   tobmaterial:TOB_rib3, 
+   tobmaterial:TOB_rib5, tobmaterial:TOB_rib6
   </Vector>
   <Numeric name="CoolRin"       value="[zero]"/>
   <Numeric name="CoolRout1"     value="3.0*mm"/>
@@ -1277,18 +1279,18 @@
   <Numeric name="CoolDeltaPhi1" value="360*deg"/>
   <Numeric name="CoolStartPhi2" value="0*deg"/>
   <Numeric name="CoolDeltaPhi2" value="360*deg"/>
-  <Vector name="CoolR1" type="numeric" nEntries="6">
-   [Layer0CoolRa], [Layer1CoolRa], [Layer2CoolRa], 
-   [Layer3CoolRa], [Layer4CoolRa], [Layer5CoolRa]
+  <Vector name="CoolR1" type="numeric" nEntries="3">
+   [Layer2CoolRa], 
+   [Layer4CoolRa], [Layer5CoolRa]
   </Vector>
-  <Vector name="CoolR2" type="numeric" nEntries="6">
-   [Layer0CoolRr], [Layer1CoolRr], [Layer2CoolRr], 
-   [Layer3CoolRr], [Layer4CoolRr], [Layer5CoolRr]
+  <Vector name="CoolR2" type="numeric" nEntries="3">
+   [Layer2CoolRr], 
+   [Layer4CoolRr], [Layer5CoolRr]
   </Vector>
   <String  name="CoolMaterial1" value="materials:CuNi"/>
   <String  name="CoolMaterial2" value="materials:C6F14_F2_-30C"/>
-  <Vector name="RingName" type="string" nEntries="6">
-   1, 2, 3, 4, 5, 6
+  <Vector name="RingName" type="string" nEntries="3">
+   3, 5, 6
   </Vector>
 </Algorithm>
 

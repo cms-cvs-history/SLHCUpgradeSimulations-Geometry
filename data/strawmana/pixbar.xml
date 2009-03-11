@@ -4,11 +4,9 @@
 <ConstantsSection label="pixbar.xml" eval="true">
  <Constant name="zero"              value="0.0*fm"/>
  <Constant name="Rin1"              value="3.10*cm"/>
- <Constant name="Rin1ext"           value="54.0*cm"/>
  <Constant name="Rin2"              value="17.00*cm"/>
  <Constant name="Rin3"              value="18.50*cm"/>
  <Constant name="Rout1"             value="38.90*cm"/>
- <Constant name="Rout1ext"          value="74.10*cm"/>
  <Constant name="Rout2"             value="19.00*cm"/>
  <Constant name="Zv1"               value="30.00*cm"/>
  <Constant name="Zv1ext"            value="1.10*m"/>
@@ -75,7 +73,7 @@
 </RotationSection>
 
 <SolidSection label="pixbar.xml">
- <Polycone name="PixelBarrelIn" startPhi="0*deg" deltaPhi="360*deg">
+ <Polycone name="PixelBarrel" startPhi="0*deg" deltaPhi="360*deg">
   <ZSection z="-[Zv4]"     rMin="[Rin3]"       rMax="[Rout2]" />
   <ZSection z="-[Zv3]"     rMin="[Rin3]"       rMax="[Rout2]" />
   <ZSection z="-[Zv3]"     rMin="[Rin3]"       rMax="[Rout2]" />
@@ -90,10 +88,6 @@
   <ZSection z="[Zv3]"      rMin="[Rin3]"       rMax="[Rout2]" />
   <ZSection z="[Zv3]"      rMin="[Rin3]"       rMax="[Rout2]" />
   <ZSection z="[Zv4]"      rMin="[Rin3]"       rMax="[Rout2]" />
- </Polycone> 
- <Polycone name="PixelBarrelExt" startPhi="0*deg" deltaPhi="360*deg">
-  <ZSection z="-[Zv1ext]"     rMin="[Rin1ext]"       rMax="[Rout1ext]" />
-  <ZSection z="[Zv1ext]"      rMin="[Rin1ext]"       rMax="[Rout1ext]" />
  </Polycone> 
  <Tubs name="PixelBarrelSuppTub" rMin="[SupportRin]"     rMax="[Rout1]"
        dz="[SupportL]/2"         startPhi="0*deg"        deltaPhi="360*deg"/>
@@ -144,9 +138,6 @@
        dz="[ServT]/2"            startPhi="0*deg"        deltaPhi="360*deg"/>
 </SolidSection>
 
-<UnionSolid name="PixelBarrel" firstSolid="PixelBarrelIn" secondSolid="PixelBarrelExt">
-  <Translation x="0" y="0" z="0"/>
-</UnionSolid>
 
 <LogicalPartSection label="pixbar.xml">
  <LogicalPart name="PixelBarrel" category="unspecified">
@@ -415,14 +406,6 @@
    <PosPart copyNumber="1">
    <rParent name="pixbar:PixelBarrel"/>
    <rChild name="pixbarlayer5:PixelBarrelLayer5"/>
- </PosPart>
-   <PosPart copyNumber="1">
-   <rParent name="pixbar:PixelBarrel"/>
-   <rChild name="pixbarlayer6:PixelBarrelLayer6"/>
- </PosPart>
-   <PosPart copyNumber="1">
-   <rParent name="pixbar:PixelBarrel"/>
-   <rChild name="pixbarlayer7:PixelBarrelLayer7"/>
  </PosPart>
 </PosPartSection>
 
