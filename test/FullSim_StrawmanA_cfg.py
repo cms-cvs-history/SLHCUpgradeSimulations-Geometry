@@ -110,7 +110,7 @@ process.siStripClusters.DigiProducersList[0].DigiProducer= 'simSiStripDigis'
 process.load("Configuration.EventContent.EventContent_cff")
 
 process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(100)
+    input = cms.untracked.int32(20000)
 )
 
 process.load("FastSimulation/Configuration/FlatPtMuonGun_cfi")
@@ -189,6 +189,9 @@ process.thWithMaterialTracks.TTRHBuilder = cms.string('WithTrackAngle')
 ### produce an ntuple with pixel hits for analysis
 process.ReadLocalMeasurement = cms.EDAnalyzer("StdHitNtuplizer",
    src = cms.InputTag("siPixelRecHits"),
+   stereoRecHits = cms.InputTag("siStripMatchedRecHits","stereoRecHit"),
+   rphiRecHits = cms.InputTag("siStripMatchedRecHits","rphiRecHit"),
+   matchedRecHits = cms.InputTag("siStripMatchedRecHits","matchedRecHit"),
    trackProducer = cms.InputTag("generalTracks"),
    ### if using simple (non-iterative) or old (as in 1_8_4) tracking
    #trackProducer = cms.InputTag("ctfWithMaterialTracks"),
