@@ -7,7 +7,7 @@ process.maxEvents = cms.untracked.PSet(
     input = cms.untracked.int32(-1)
 )
 process.source = cms.Source("PoolSource",
-   fileNames = cms.untracked.vstring('file:/uscms_data/d1/cheung/slhc/test_muon_50GeV.root')
+   fileNames = cms.untracked.vstring('file:/uscms_data/d1/cheung/slhc/strawb_muon_50GeV.root')
 )
 
 
