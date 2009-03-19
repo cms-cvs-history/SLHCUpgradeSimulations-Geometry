@@ -62,6 +62,8 @@ process.simSiPixelDigis.MissCalibrate = False
 process.simSiPixelDigis.AddPixelInefficiency = -1
 process.simSiPixelDigis.LorentzAngle_DB = False
 process.simSiPixelDigis.killModules = False
+process.simSiPixelDigis.NumPixelBarrel = cms.int32(9)
+process.simSiPixelDigis.NumPixelEndcap = cms.int32(2)
 
 process.siPixelClusters.src = 'simSiPixelDigis'
 process.siPixelClusters.MissCalibrate = False

@@ -70,6 +70,8 @@ process.simSiPixelDigis.AddPixelInefficiency = -1
 process.simSiStripDigis.ROUList =  ['famosSimHitsTrackerHits']
 process.simSiPixelDigis.LorentzAngle_DB = False
 process.simSiPixelDigis.killModules = False
+process.simSiPixelDigis.NumPixelBarrel = cms.int32(9)
+process.simSiPixelDigis.NumPixelEndcap = cms.int32(2)
 
 #process.load("Configuration.StandardSequences.DigiToRaw_cff")
 
