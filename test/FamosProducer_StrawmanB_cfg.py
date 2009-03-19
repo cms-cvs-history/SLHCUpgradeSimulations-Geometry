@@ -4,7 +4,7 @@ process = cms.Process("Fastsimwdigi")
 
 # Number of events to be generated
 process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(1000)
+    input = cms.untracked.int32(20000)
 )
 
 # Include the RandomNumberGeneratorService definition
@@ -167,6 +167,9 @@ process.thWithMaterialTracks.TTRHBuilder = cms.string('WithTrackAngle')
 ### produce an ntuple with hits for analysis
 process.ReadLocalMeasurement = cms.EDAnalyzer("StdHitNtuplizer",
    src = cms.InputTag("siPixelRecHits"),
+   stereoRecHits = cms.InputTag("siStripMatchedRecHits","stereoRecHit"),
+   rphiRecHits = cms.InputTag("siStripMatchedRecHits","rphiRecHit"),
+   matchedRecHits = cms.InputTag("siStripMatchedRecHits","matchedRecHit"),
    trackProducer = cms.InputTag("generalTracks"),
    ### if using simple (non-iterative) or old (as in 1_8_4) tracking
    #trackProducer = cms.InputTag("ctfWithMaterialTracks"),
