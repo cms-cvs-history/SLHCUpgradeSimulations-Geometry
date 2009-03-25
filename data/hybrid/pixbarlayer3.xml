@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<DDDefinition xmlns="http://www.cern.ch/cms/DDL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.cern.ch/cms/DDL ../../../DetectorDescription/Schema/DDLSchema.xsd">
+
+<ConstantsSection label="pixbarlayer3.xml" eval="true">
+ <Constant name="Ladders"           value="[pixbar:Ladders3]"/> <!-- 74 or 66-->
+ <Constant name="CoolDist"          value="[pixbar:Radius3]"/> <!-- 18.55 or 16.55-->
+ <Constant name="CoolWidth"         value="0.18*cm"/>
+</ConstantsSection>
+
+<Algorithm name="track:DDPixBarLayerAlgo">
+  <rParent name="pixbarlayer3:PixelBarrelLayer3"/>
+  <String name="GeneralMaterial"   value="materials:Air"/>
+  <Numeric name="Ladders"          value="[pixbarlayer3:Ladders]"/>
+  <Numeric name="LayerDz"          value="[pixbarlayerlong1:LayerDz]"/>
+  <Numeric name="SensorEdge"       value="[pixbarladderhalf1:SensorEdge]"/>
+  <Numeric name="CoolDz"           value="[pixbarlayerlong1:CoolDz]"/>
+  <Numeric name="CoolWidth"        value="[pixbarlayer3:CoolWidth]"/>
+  <Numeric name="CoolSide"         value="[pixbarlayerlong1:CoolSide]"/>
+  <Numeric name="CoolThick"        value="[pixbarlayerlong1:CoolThick]"/>
+  <Numeric name="CoolDist"         value="[pixbarlayer3:CoolDist]"/>
+  <String name="CoolMaterial"      value="materials:CO2_Upgrade"/>
+  <String name="CoolTubeMaterial"  value="materials:Steel_Upgrade"/>
+  <Vector name="LadderName" type="string" nEntries="2">
+    pixbarladderfull1:PixelBarrelLadderFull1, 
+    pixbarladderhalf1:PixelBarrelLadderHalf1</Vector>
+  <Vector name="LadderWidth" type="numeric" nEntries="2">
+    [pixbarladderfull1:LadderWidth], [pixbarladderhalf1:LadderWidth]
+  </Vector>
+  <Vector name="LadderThick" type="numeric" nEntries="2">
+    [pixbarladderfull1:LadderThick], [pixbarladderhalf1:LadderThick]
+  </Vector>
+</Algorithm>
+
+</DDDefinition>
