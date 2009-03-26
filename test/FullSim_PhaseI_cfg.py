@@ -16,7 +16,7 @@ process.load("Configuration.StandardSequences.Services_cff")
 process.load("Configuration.StandardSequences.Geometry_cff")
 
 #PhaseI Geometry
-process.load("SLHCUpgradeSimulations.Geometry.PhaseI_cmsIdealGeometryXML_cff")
+process.load("SLHCUpgradeSimulations.Geometry.PhaseI_cmsSimIdealGeometryXML_cff")
 
 process.load("Configuration.StandardSequences.MagneticField_cff")
 
