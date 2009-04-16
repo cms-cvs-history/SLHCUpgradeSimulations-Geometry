@@ -4,7 +4,7 @@ process = cms.Process("VALID")
 
 # Number of events to be generated
 process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(10000)
+    input = cms.untracked.int32(20000)
 )
 
 #Timing = cms.Service( )
@@ -26,8 +26,8 @@ process.load("FastSimulation/Configuration/FlatPtMuonGun_cfi")
 # replace FlatRandomPtGunSource.PGunParameters.PartID={13}
 process.FlatRandomPtGunSource.PGunParameters.MinPt = 50.0
 process.FlatRandomPtGunSource.PGunParameters.MaxPt = 50.0
-process.FlatRandomPtGunSource.PGunParameters.MinEta = -2.5
-process.FlatRandomPtGunSource.PGunParameters.MaxEta = 2.5
+process.FlatRandomPtGunSource.PGunParameters.MinEta = -3.0
+process.FlatRandomPtGunSource.PGunParameters.MaxEta = 3.0
 # Generate di-electrons with pT=35 GeV
 # process.load("FastSimulation/Configuration/DiElectrons_cfi")
 
@@ -42,6 +42,9 @@ process.load("SLHCUpgradeSimulations.Geometry.strawmanb_cmsIdealGeometryXML_cff"
 #process.load("Configuration.StandardSequences.MagneticField_40T_cff")
 process.load("Configuration.StandardSequences.MagneticField_38T_cff")
 process.VolumeBasedMagneticFieldESProducer.useParametrizedTrackerField = True
+
+#process.load("Configuration.StandardSequences.VtxSmearedBetafuncEarlyCollision_cff")
+process.load("Configuration.StandardSequences.VtxSmearedGauss_cff")
 
 # If you want to turn on/off pile-up
 process.famosPileUp.PileUpSimulator.averageNumber = 0.0

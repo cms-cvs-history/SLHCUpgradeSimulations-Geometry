@@ -53,7 +53,8 @@ process.load("Configuration.StandardSequences.DigiToRaw_cff")
 
 process.load("Configuration.StandardSequences.RawToDigi_cff")
 
-process.load("Configuration.StandardSequences.VtxSmearedBetafuncEarlyCollision_cff")
+#process.load("Configuration.StandardSequences.VtxSmearedBetafuncEarlyCollision_cff")
+process.load("Configuration.StandardSequences.VtxSmearedGauss_cff")
 
 process.load("Configuration.StandardSequences.Reconstruction_cff")
 
@@ -62,8 +63,8 @@ process.simSiPixelDigis.MissCalibrate = False
 process.simSiPixelDigis.AddPixelInefficiency = -1
 process.simSiPixelDigis.LorentzAngle_DB = False
 process.simSiPixelDigis.killModules = False
-process.simSiPixelDigis.NumPixelBarrel = cms.int32(9)
-process.simSiPixelDigis.NumPixelEndcap = cms.int32(2)
+process.simSiPixelDigis.NumPixelBarrel = cms.int32(10)
+process.simSiPixelDigis.NumPixelEndcap = cms.int32(3)
 
 process.siPixelClusters.src = 'simSiPixelDigis'
 process.siPixelClusters.MissCalibrate = False
@@ -76,15 +77,15 @@ process.siStripClusters.DigiProducersList[0].DigiProducer= 'simSiStripDigis'
 process.load("Configuration.EventContent.EventContent_cff")
 
 process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(2000)
+    input = cms.untracked.int32(10000)
 )
 
 process.load("FastSimulation/Configuration/FlatPtMuonGun_cfi")
 # replace FlatRandomPtGunSource.PGunParameters.PartID={13}
 process.FlatRandomPtGunSource.PGunParameters.MinPt = 50.0
 process.FlatRandomPtGunSource.PGunParameters.MaxPt = 50.0
-process.FlatRandomPtGunSource.PGunParameters.MinEta = -2.5
-process.FlatRandomPtGunSource.PGunParameters.MaxEta = 2.5
+process.FlatRandomPtGunSource.PGunParameters.MinEta = -3.0
+process.FlatRandomPtGunSource.PGunParameters.MaxEta = 3.0
 
 process.FEVT = cms.OutputModule("PoolOutputModule",
     process.FEVTSIMEventContent,

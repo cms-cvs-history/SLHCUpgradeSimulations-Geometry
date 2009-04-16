@@ -4,7 +4,7 @@ process = cms.Process("Fastsimwdigi")
 
 # Number of events to be generated
 process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(20000)
+    input = cms.untracked.int32(10000)
 )
 
 # Include the RandomNumberGeneratorService definition
@@ -32,8 +32,8 @@ process.FlatRandomPtGunSource.PGunParameters.PartID[0] = 13
 ##process.FlatRandomPtGunSource.PGunParameters.PartID = cms.untracked.vint32(13,-13,13,-13)
 process.FlatRandomPtGunSource.PGunParameters.MinPt = 50.0
 process.FlatRandomPtGunSource.PGunParameters.MaxPt = 50.0
-process.FlatRandomPtGunSource.PGunParameters.MinEta = -2.5
-process.FlatRandomPtGunSource.PGunParameters.MaxEta = 2.5
+process.FlatRandomPtGunSource.PGunParameters.MinEta = -3.0
+process.FlatRandomPtGunSource.PGunParameters.MaxEta = 3.0
 # Generate di-electrons with pT=35 GeV
 # process.load("FastSimulation/Configuration/DiElectrons_cfi")
 
@@ -54,6 +54,9 @@ process.SiPixelFakeLorentzAngleESSource.file = 'SLHCUpgradeSimulations/Geometry/
 process.load("Configuration.StandardSequences.MagneticField_38T_cff")
 process.VolumeBasedMagneticFieldESProducer.useParametrizedTrackerField = True
 
+#process.load("Configuration.StandardSequences.VtxSmearedBetafuncEarlyCollision_cff")
+process.load("Configuration.StandardSequences.VtxSmearedGauss_cff")
+
 # If you want to turn on/off pile-up
 process.famosPileUp.PileUpSimulator.averageNumber = 0.0
 # You may not want to simulate everything for your study
@@ -70,8 +73,8 @@ process.simSiPixelDigis.AddPixelInefficiency = -1
 process.simSiStripDigis.ROUList =  ['famosSimHitsTrackerHits']
 process.simSiPixelDigis.LorentzAngle_DB = False
 process.simSiPixelDigis.killModules = False
-process.simSiPixelDigis.NumPixelBarrel = cms.int32(9)
-process.simSiPixelDigis.NumPixelEndcap = cms.int32(2)
+process.simSiPixelDigis.NumPixelBarrel = cms.int32(10)
+process.simSiPixelDigis.NumPixelEndcap = cms.int32(3)
 
 #process.load("Configuration.StandardSequences.DigiToRaw_cff")
 
