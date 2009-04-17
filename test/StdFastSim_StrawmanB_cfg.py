@@ -52,6 +52,12 @@ process.famosPileUp.PileUpSimulator.averageNumber = 0.0
 process.famosSimHits.SimulateCalorimetry = True
 process.famosSimHits.SimulateTracking = True
 
+## make occupancies more similar to full simulation
+#process.famosSimHits.ParticleFilter.etaMax = 3.0
+#process.famosSimHits.ParticleFilter.pTMin = 0.05
+#process.famosSimHits.TrackerSimHits.pTmin = 0.05
+#process.famosSimHits.TrackerSimHits.firstLoop = False
+
 # taking these from FastSimulation/Validation/python/TrackValidation_HighPurity_cff.py
 # and e.g. FastSimulation/Validation/test/valTK_muon_100GeV_cfg.py
 process.load("SimGeneral.TrackingAnalysis.trackingParticles_cfi")

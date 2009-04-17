@@ -63,6 +63,12 @@ process.famosPileUp.PileUpSimulator.averageNumber = 0.0
 process.famosSimHits.SimulateCalorimetry = True
 process.famosSimHits.SimulateTracking = True
 
+## make occupancies more similar to full simulation
+#process.famosSimHits.ParticleFilter.etaMax = 3.0
+#process.famosSimHits.ParticleFilter.pTMin = 0.05
+#process.famosSimHits.TrackerSimHits.pTmin = 0.05
+#process.famosSimHits.TrackerSimHits.firstLoop = False
+
 # Tracker Digis (Pixel + SiStrips)
 # returns sequence "trDigi"
 #
