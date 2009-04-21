@@ -4,7 +4,7 @@ process = cms.Process("Fastsimwdigi")
 
 # Number of events to be generated
 process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(10000)
+    input = cms.untracked.int32(1000)
 )
 
 # Include the RandomNumberGeneratorService definition
@@ -32,8 +32,8 @@ process.FlatRandomPtGunSource.PGunParameters.PartID[0] = 13
 ##process.FlatRandomPtGunSource.PGunParameters.PartID = cms.untracked.vint32(13,-13,13,-13)
 process.FlatRandomPtGunSource.PGunParameters.MinPt = 50.0
 process.FlatRandomPtGunSource.PGunParameters.MaxPt = 50.0
-process.FlatRandomPtGunSource.PGunParameters.MinEta = -2.5
-process.FlatRandomPtGunSource.PGunParameters.MaxEta = 2.5
+process.FlatRandomPtGunSource.PGunParameters.MinEta = -3.0
+process.FlatRandomPtGunSource.PGunParameters.MaxEta = 3.0
 # Generate di-electrons with pT=35 GeV
 # process.load("FastSimulation/Configuration/DiElectrons_cfi")
 
@@ -43,10 +43,11 @@ process.load("Configuration.StandardSequences.FakeConditions_cff")
 # Famos sequences (fake conditions)
 process.load("FastSimulation.Configuration.CommonInputsFake_cff")
 process.load("FastSimulation.Configuration.FamosSequences_cff")
-# replace with strawmanB geometry
+# replace with long barrel geometry
 process.load("SLHCUpgradeSimulations.Geometry.longbarrel_cmsIdealGeometryXML_cff")
 # does using an empty PixelSkimmedGeometry.txt file speeds up job with lots more channels?
-process.SiPixelFakeGainOfflineESSource.file = 'SLHCUpgradeSimulations/Geometry/data/longbarrel/PixelSkimmedGeometry.txt'
+process.SiPixelFakeGainOfflineESSource.file = 'SLHCUpgradeSimulations/Geometry/data/longbarrel/PixelSkimmedGeometry_empty.txt'
+#process.SiPixelFakeGainOfflineESSource.file = 'SLHCUpgradeSimulations/Geometry/data/longbarrel/PixelSkimmedGeometry.txt'
 process.SiPixelFakeLorentzAngleESSource.file = 'SLHCUpgradeSimulations/Geometry/data/longbarrel/PixelSkimmedGeometry.txt'
 
 # Parametrized magnetic field (new mapping, 4.0 and 3.8T)
@@ -70,8 +71,8 @@ process.simSiPixelDigis.AddPixelInefficiency = -1
 process.simSiStripDigis.ROUList =  ['famosSimHitsTrackerHits']
 process.simSiPixelDigis.LorentzAngle_DB = False
 process.simSiPixelDigis.killModules = False
-process.simSiPixelDigis.NumPixelBarrel = cms.int32(13)
-process.simSiPixelDigis.NumPixelEndcap = cms.int32(2)
+process.simSiPixelDigis.NumPixelBarrel = cms.int32(14)
+process.simSiPixelDigis.NumPixelEndcap = cms.int32(3)
 
 #process.load("Configuration.StandardSequences.DigiToRaw_cff")
 
@@ -104,7 +105,7 @@ process.multiTrackValidator.label = ['generalTracks']
 process.multiTrackValidator.sim = 'famosSimHits'
 process.multiTrackValidator.associators = ['TrackAssociatorByHits']
 process.multiTrackValidator.UseAssociators = True
-process.multiTrackValidator.outputFile = "validstrawb_muon_50GeV.root"
+process.multiTrackValidator.outputFile = "validLB_muon_50GeV.root"
 
 ### if using simple (non-iterative) or old (as in 1_8_4) tracking
 #process.load("SLHCUpgradeSimulations.Geometry.simpleTracking")
@@ -198,7 +199,7 @@ process.Timing =  cms.Service("Timing")
 process.load("FWCore/MessageService/MessageLogger_cfi")
 process.MessageLogger.destinations = cms.untracked.vstring("detailedInfo_longb_mu50")
 ### to output debug messages for particular modules
-#process.MessageLogger.detailedInfo_strawb_mu50 = cms.untracked.PSet(threshold = cms.untracked.string('DEBUG'))
+#process.MessageLogger.detailedInfo_LB_mu50 = cms.untracked.PSet(threshold = cms.untracked.string('DEBUG'))
 #process.MessageLogger.debugModules= cms.untracked.vstring("multiTrackValidator")
 
 # Make the job crash in case of missing product
@@ -218,6 +219,7 @@ process.p8 = cms.Path(process.trackingParticles*process.cutsTPEffic*process.cuts
 process.p9 = cms.Path(process.ReadLocalMeasurement)
 #process.p9 = cms.Path(process.writedet)
 #process.schedule = cms.Schedule(process.p1,process.p2,process.p5,process.p6,process.p8,process.outpath)
-process.schedule = cms.Schedule(process.p1,process.p2,process.p5,process.p9,process.outpath)
+process.schedule = cms.Schedule(process.p1,process.p2,process.p5,process.outpath)
+#process.schedule = cms.Schedule(process.p1,process.p2,process.p5,process.p9,process.outpath)
 #process.schedule = cms.Schedule(process.p1,process.p2,process.p5,process.p6,process.p8,process.p9,process.outpath)
 #process.schedule = cms.Schedule(process.p1,process.p2,process.p3,process.p4,process.p5,process.p6,process.p7,process.p8,process.outpath)
