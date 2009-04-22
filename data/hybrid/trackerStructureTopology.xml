@@ -25,8 +25,6 @@
     <SpecPar name="PixelBarrelLadderPar">
       <PartSelector path="//PixelBarrelLadderHalf" />
       <PartSelector path="//PixelBarrelLadderFull" />
-      <PartSelector path="//PixelBarrelLadderHalf1" />
-      <PartSelector path="//PixelBarrelLadderFull1" />
       <PartSelector path="//PixelBarrelLadderUpStack0" />
       <PartSelector path="//PixelBarrelLadderDownStack0" />
       <PartSelector path="//PixelBarrelLadderUpStack1" />
@@ -37,8 +35,6 @@
     <SpecPar name="PixelBarrelModulePar">
       <PartSelector path="//PixelBarrelActiveFull" />
       <PartSelector path="//PixelBarrelActiveHalf" />
-      <PartSelector path="//PixelBarrelActiveFull1" />
-      <PartSelector path="//PixelBarrelActiveHalf1" />
       <PartSelector path="//PixelBarrelActiveStack0" />
       <PartSelector path="//PixelBarrelActiveStack1" />
       <Parameter name="TkDDDStructure" value="PixelBarrelDet"/>
@@ -230,8 +226,6 @@
     <SpecPar name="PixelROCRowsPar">
       <PartSelector path="//PixelBarrelActiveFull" />
       <PartSelector path="//PixelBarrelActiveHalf" />
-      <PartSelector path="//PixelBarrelActiveFull1" />
-      <PartSelector path="//PixelBarrelActiveHalf1" />
       <PartSelector path="//PixelForwardActive1x2" />
       <PartSelector path="//PixelForwardActive1x5" />
       <PartSelector path="//PixelForwardActive2x3" />
@@ -243,8 +237,6 @@
     <SpecPar name="PixelROCColsPar">
       <PartSelector path="//PixelBarrelActiveFull" />
       <PartSelector path="//PixelBarrelActiveHalf" />
-      <PartSelector path="//PixelBarrelActiveFull1" />
-      <PartSelector path="//PixelBarrelActiveHalf1" />
       <PartSelector path="//PixelForwardActive1x2" />
       <PartSelector path="//PixelForwardActive1x5" />
       <PartSelector path="//PixelForwardActive2x3" />
@@ -255,7 +247,6 @@
 
     <SpecPar name="PixelROC_XPar">
       <PartSelector path="//PixelBarrelActiveFull" />
-      <PartSelector path="//PixelBarrelActiveFull1" />
       <PartSelector path="//PixelForwardActive2x3" />
       <PartSelector path="//PixelForwardActive2x4" />
       <PartSelector path="//PixelForwardActive2x5" />
@@ -264,7 +255,6 @@
 
     <SpecPar name="PixelROC_X_HalfPar">
       <PartSelector path="//PixelBarrelActiveHalf" />
-      <PartSelector path="//PixelBarrelActiveHalf1" />
       <PartSelector path="//PixelForwardActive1x2" />
       <PartSelector path="//PixelForwardActive1x5" />
       <Parameter name="PixelROC_X" value="1"/>
@@ -273,8 +263,6 @@
     <SpecPar name="PixelROC_YPar">
       <PartSelector path="//PixelBarrelActiveFull" />
       <PartSelector path="//PixelBarrelActiveHalf" />
-      <PartSelector path="//PixelBarrelActiveFull1" />
-      <PartSelector path="//PixelBarrelActiveHalf1" />
       <Parameter name="PixelROC_Y" value="8"/>
     </SpecPar>
   

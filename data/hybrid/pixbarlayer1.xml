@@ -2,9 +2,9 @@
 <DDDefinition xmlns="http://www.cern.ch/cms/DDL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.cern.ch/cms/DDL ../../../DetectorDescription/Schema/DDLSchema.xsd">
 
 <ConstantsSection label="pixbarlayer1.xml" eval="true">
- <Constant name="Ladders"           value="[pixbar:Ladders1]"/>
- <Constant name="CoolDist"          value="[pixbar:Radius1]"/>
- <Constant name="CoolWidth"         value="0.18*cm"/>
+ <Constant name="Ladders"           value="30"/>
+ <Constant name="CoolDist"          value="6.8*cm"/>
+ <Constant name="CoolWidth"         value="0.3432*cm"/>
 </ConstantsSection>
 
 <Algorithm name="track:DDPixBarLayerAlgo">
