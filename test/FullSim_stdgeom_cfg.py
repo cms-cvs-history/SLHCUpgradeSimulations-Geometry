@@ -11,6 +11,7 @@ process.load("Configuration.StandardSequences.MagneticField_cff")
 process.load("Configuration.StandardSequences.FakeConditions_cff")
 
 process.load("FWCore.MessageService.MessageLogger_cfi")
+process.MessageLogger.destinations = cms.untracked.vstring("detailedInfo_fullstdgeommu50")
 
 # this config frament brings you the generator information
 process.load("Configuration.StandardSequences.Generator_cff")
@@ -48,7 +49,8 @@ process.load("Configuration.StandardSequences.DigiToRaw_cff")
 
 process.load("Configuration.StandardSequences.RawToDigi_cff")
 
-process.load("Configuration.StandardSequences.VtxSmearedBetafuncEarlyCollision_cff")
+#process.load("Configuration.StandardSequences.VtxSmearedBetafuncEarlyCollision_cff")
+process.load("Configuration.StandardSequences.VtxSmearedGauss_cff")
 
 process.load("Configuration.StandardSequences.Reconstruction_cff")
 
@@ -56,19 +58,20 @@ process.load("Configuration.StandardSequences.Reconstruction_cff")
 process.load("Configuration.EventContent.EventContent_cff")
 
 process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(1000)
+    input = cms.untracked.int32(100)
 )
 
 process.load("FastSimulation/Configuration/FlatPtMuonGun_cfi")
 # replace FlatRandomPtGunSource.PGunParameters.PartID={13}
-process.FlatRandomPtGunSource.PGunParameters.MinPt = 50.0
+process.FlatRandomPtGunSource.PGunParameters.MinPt = 0.9
 process.FlatRandomPtGunSource.PGunParameters.MaxPt = 50.0
-process.FlatRandomPtGunSource.PGunParameters.MinEta = -2.5
-process.FlatRandomPtGunSource.PGunParameters.MaxEta = 2.5
+process.FlatRandomPtGunSource.PGunParameters.MinEta = -2.4
+process.FlatRandomPtGunSource.PGunParameters.MaxEta = 2.4
+process.FlatRandomPtGunSource.AddAntiParticle = cms.untracked.bool(True)
 
 process.FEVT = cms.OutputModule("PoolOutputModule",
     process.FEVTSIMEventContent,
-    fileName = cms.untracked.string('/uscms_data/d1/cheung/slhc/testfull_muon_50GeV.root')
+    fileName = cms.untracked.string('/uscms_data/d2/cheung/slhc/testfullstdg_muon_50GeV.root')
 )
 
 process.load("Validation.RecoTrack.cutsTPEffic_cfi")
@@ -78,12 +81,56 @@ process.load("SimTracker.TrackAssociation.TrackAssociatorByChi2_cfi")
 process.load("SimTracker.TrackAssociation.TrackAssociatorByHits_cfi")
 
 process.load("Validation.RecoTrack.MultiTrackValidator_cff")
-process.multiTrackValidator.label = ['generalTracks']
+#process.multiTrackValidator.label = ['generalTracks']
+### if using simple (non-iterative) or old (as in 1_8_4) tracking
+process.multiTrackValidator.label = ['ctfWithMaterialTracks']
 process.multiTrackValidator.associators = ['TrackAssociatorByHits']
 process.multiTrackValidator.UseAssociators = True
-process.multiTrackValidator.outputFile = "validfull_muon_50GeV.root"
+process.multiTrackValidator.outputFile = "validfullstdg_muon_50GeV.root"
+process.multiTrackValidator.nint = cms.int32(20)
+process.multiTrackValidator.nintpT = cms.int32(25)
+process.multiTrackValidator.maxpT = cms.double(50.0)
+
+##### with John's changes ##############################
+process.load("SLHCUpgradeSimulations.Geometry.oldTracking_wtriplets")
+# restrict vertex fining in trackingtruthprod to smaller volume (note: these numbers in mm)
+process.mergedtruth.volumeRadius = cms.double(100.0)
+process.mergedtruth.volumeZ = cms.double(900.0)
+process.mergedtruth.discardOutVolume = cms.bool(True)
+
+process.cutsTPEffic.ptMin = cms.double(2.5)
+process.cutsTPFake.ptMin = cms.double(2.0)
+process.cutsTPFake.tip = cms.double(10.0)
+process.cutsTPFake.lip = cms.double(90.0)
+############ end John's changes ###########################
+
+### produce an ntuple with pixel hits for analysis
+process.ReadLocalMeasurement = cms.EDAnalyzer("StdHitNtuplizer",
+   src = cms.InputTag("siPixelRecHits"),
+   stereoRecHits = cms.InputTag("siStripMatchedRecHits","stereoRecHit"),
+   rphiRecHits = cms.InputTag("siStripMatchedRecHits","rphiRecHit"),
+   matchedRecHits = cms.InputTag("siStripMatchedRecHits","matchedRecHit"),
+   #trackProducer = cms.InputTag("generalTracks"),
+   ### if using simple (non-iterative) or old (as in 1_8_4) tracking
+   trackProducer = cms.InputTag("ctfWithMaterialTracks"),
+   OutputFile = cms.string("stdgrechitfullstdg_ntuple.root"),
+   ### for using track hit association
+   associatePixel = cms.bool(True),
+   associateStrip = cms.bool(False),
+   associateRecoTracks = cms.bool(False),
+   ROUList = cms.vstring('g4SimHitsTrackerHitsPixelBarrelLowTof',
+                         'g4SimHitsTrackerHitsPixelBarrelHighTof',
+                         'g4SimHitsTrackerHitsPixelEndcapLowTof',
+                         'g4SimHitsTrackerHitsPixelEndcapHighTof')
+)
 
 process.Timing =  cms.Service("Timing")
+process.SimpleMemoryCheck = cms.Service("SimpleMemoryCheck",
+     oncePerEventMode = cms.untracked.bool(False),
+     showMallocInfo = cms.untracked.bool(False),
+     moduleMemorySummary = cms.untracked.bool(True),
+     ignoreTotal = cms.untracked.int32(5)
+)
 
 # need validation packages
 
@@ -93,8 +140,11 @@ process.p2 = cms.Path(process.pdigi)
 process.p3 = cms.Path(process.L1Emulator)
 process.p4 = cms.Path(process.DigiToRaw)
 process.p5 = cms.Path(process.RawToDigi)
-process.p6 = cms.Path(process.reconstruction)
-process.p7 = cms.Path(process.cutsTPEffic*process.cutsTPFake*process.multiTrackValidator)
-#process.p7 = cms.Path(process.trackingParticles*process.cutsTPEffic*process.cutsTPFake*process.multiTrackValidator)
+process.p6 = cms.Path(process.trackerlocalreco)
+process.p7 = cms.Path(process.oldTracking_wtriplets)
+#process.p7 = cms.Path(process.reconstruction)
+process.p8 = cms.Path(process.cutsTPEffic*process.cutsTPFake*process.multiTrackValidator)
+process.p9 = cms.Path(process.ReadLocalMeasurement)
 process.outpath = cms.EndPath(process.FEVT)
-process.schedule = cms.Schedule(process.p0,process.p1,process.p2,process.p3,process.p4,process.p5,process.p6,process.p7,process.outpath)
+#process.schedule = cms.Schedule(process.p0,process.p1,process.p2,process.p3,process.p4,process.p5,process.p6,process.p7,process.outpath)
+process.schedule = cms.Schedule(process.p0,process.p1,process.p2,process.p3,process.p4,process.p5,process.p6,process.p7,process.p8,process.p9)
