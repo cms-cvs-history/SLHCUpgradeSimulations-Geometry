@@ -57,6 +57,16 @@ process.VolumeBasedMagneticFieldESProducer.useParametrizedTrackerField = True
 #process.load("Configuration.StandardSequences.VtxSmearedBetafuncEarlyCollision_cff")
 process.load("Configuration.StandardSequences.VtxSmearedGauss_cff")
 
+# Replace std 10 TeV with 14 TeV pileup files and set the vertex smearing like signal
+import FastSimulation.Event.GaussianVertexGenerator_cfi as GaussSmearing
+process.famosPileUp.VertexGenerator = cms.PSet( GaussSmearing.myVertexGenerator )
+import FastSimulation.PileUpProducer.PileUpSimulator_cfi as Pileup14TeV
+process.famosPileUp.PileUpSimulator = cms.PSet( Pileup14TeV.PileUpSimulatorBlock.PileUpSimulator )
+
+# Make sure CoM energy is 14 TeV if we are using pythia for the signal source
+#process.PythiaSource.comEnergy = cms.untracked.double(14000.0)
+#process.PythiaSource.maxEventsToPrint = 1
+
 # If you want to turn on/off pile-up
 process.famosPileUp.PileUpSimulator.averageNumber = 0.0
 # You may not want to simulate everything for your study
