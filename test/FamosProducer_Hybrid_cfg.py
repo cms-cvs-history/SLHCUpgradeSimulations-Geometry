@@ -178,6 +178,18 @@ process.thlayerpairs.FPix.TTRHBuilder = cms.string('WithTrackAngle')
 process.thMeasurementTracker.PixelCPE = cms.string('PixelCPEfromTrackAngle')
 process.thWithMaterialTracks.TTRHBuilder = cms.string('WithTrackAngle')
 
+# Trigger Stub Code
+#process.load("SLHCUpgradeSimulations.L1Trigger.HitMatchingAlgorithmRegister_cfi")
+#process.load("SLHCUpgradeSimulations.L1Trigger.ClusteringAlgorithmRegister_cfi")
+#process.load("SLHCUpgradeSimulations.L1Trigger.TrackTriggerHitsFromPixelDigis_cfi")
+#process.load("SLHCUpgradeSimulations.L1Trigger.LocalStub_cfi")
+#process.load("SLHCUpgradeSimulations.L1Trigger.GlobalStub_cfi")
+#process.load("SLHCUpgradeSimulations.L1Trigger.Tracklet_cfi")
+#process.load("SLHCUpgradeSimulations.Utilities.StackedTrackerGeometry_cfi")
+#process.load("Configuration.StandardSequences.DigiToRaw_cff")
+#process.load("Configuration.StandardSequences.RawToDigi_cff")
+# End Trigger Stub Code
+
 ### produce an ntuple with hits for analysis
 process.ReadLocalMeasurement = cms.EDAnalyzer("StdHitNtuplizer",
    src = cms.InputTag("siPixelRecHits"),
@@ -228,3 +240,11 @@ process.p9 = cms.Path(process.ReadLocalMeasurement)
 #process.schedule = cms.Schedule(process.p1,process.p2,process.p3,process.p6,process.p8,process.p9,process.outpath)
 process.schedule = cms.Schedule(process.p1,process.p2,process.p3,process.p6,process.p8)
 
+# Trigger Stub Code
+#process.p3stub = cms.Path(process.siPixelRawData*process.SiStripDigiToRaw*process.rawDataCollector)
+#process.p4stub = cms.Path(process.siPixelDigis*process.SiStripRawToDigis)
+#process.p5stub = cms.Path(process.LocalStubsFromSimHits*process.GlobalStubsFromSimHits*process.TrackletsFromSimHits)
+#process.p6stub = cms.Path(process.LocalStubsFromPixelDigis*process.GlobalStubsFromPixelDigis*process.TrackletsFromPixelDigis)
+#process.p7stub = cms.Path(process.TrackTriggerHitsFromPixelDigis*process.LocalStubsFromTrackTriggerHits*process.GlobalStubsFromTrackTriggerHits*process.TrackletsFromTrackTriggerHits)
+#process.schedule = cms.Schedule(process.p1,process.p2,process.p3,process.p6,process.p8,process.p3stub,process.p4stub,process.p5stub,process.p6stub,process.p7stub,process.p9,process.outpath)
+# End Trigger Stub Code
