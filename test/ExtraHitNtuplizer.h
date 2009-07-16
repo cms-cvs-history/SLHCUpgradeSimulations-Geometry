@@ -79,7 +79,7 @@ process.ReadLocalMeasurement2 = cms.EDAnalyzer("ExtraHitNtuplizer",
                    const GeomDet* theGeom);
   //void fillPRecHit(const int subid, SiPixelRecHitCollection::const_iterator pixeliter,
   //                 const GeomDet* PixGeom);
-  void fillPRecHit(const int subid, const int layer_num,
+  void fillPRecHit(const int subid,
                    SiPixelRecHitCollection::const_iterator pixeliter,
                    const int num_simhit,
                    std::vector<PSimHit>::const_iterator closest_simhit,
@@ -87,7 +87,8 @@ process.ReadLocalMeasurement2 = cms.EDAnalyzer("ExtraHitNtuplizer",
                    edmNew::DetSet<SiPixelCluster>::const_iterator cluster,
                    float cluster_adc,
                    const int layers_struck,
-                   const int nlayers_struck);
+                   const int nlayers_struck,
+  		   int nstrk_lay,int nstrk_lad, int nstrk_mod);
   void fillPRecHit(const int subid, trackingRecHit_iterator pixeliter,
                    const GeomDet* PixGeom);
   void getthetaetaphi(
@@ -96,8 +97,8 @@ process.ReadLocalMeasurement2 = cms.EDAnalyzer("ExtraHitNtuplizer",
   void getlorentz( const PixelGeomDetUnit* pixDet,
                    float& xdrift, float& ydrift);
   void fillSimHit(std::vector<PSimHit>::const_iterator simhit_i,
-                                   bool sim_stack_high, bool sim_stack_low,
-                                   int num_stacks_struck, bool repeat);
+                                   int nstrk_lay,int nstrk_lad, int nstrk_mod);
+
   void fillStubSimHit(  cmsUpgrades::GlobalStub_PSimHit_Collection::const_iterator stubiter  );
   void fillStubDigiHit( cmsUpgrades::GlobalStub_PixelDigi_Collection::const_iterator stubiter);
 
@@ -149,29 +150,32 @@ process.ReadLocalMeasurement2 = cms.EDAnalyzer("ExtraHitNtuplizer",
 
 
   struct SimHit
-  {
+  { // No guarantee that it will work with disks and strips ...
     float x;      // X position of SimHit in Local Coord. (cm)
     float y;      // Y position of SimHit in Local Coord. (cm)
     float gx;     // X position of SimHit in Global Coord. (cm)
     float gy;     // Y position of SimHit in Global Coord. (cm)
     float gz;     // Z position of SimHit in Global Coord. (cm)
+    float gr;	  // R position of SimHit in Global Coord. (cm)
     float theta;  // Theta of SimHit
     float eta;    // Eta of SimHit
     float phi;    // Phi of SimHit
+    float spreadx;// Size of SimHit in X (units of cm)
+    float spready;// Size of SimHit in Y (units of cm)
+
     int subid;    // 1 = barrel, 2 = disk
     int layer;    // barrel layer, starting from interaction point
-    int ladder;   // even or odd ladder number
-    int nstrk;    // Number of strikes in one layer
-    bool strkh;   // 1 if the odd ladder was struck
-    bool strkl;   // 1 if the even ladder was struck
-    bool repeat;  // 0 if first hit in an even/odd ladder of the same layer, 1 if already hit.
-                  // For layers 1-3 0 only if first hit in layer.
+    int ladder;   // ladder number
+    int module;   // module number
+    int nstrk_layer;    // Number of SimHit strikes in the same layer
+    int nstrk_ladder;   // Number of SimHit strikes in the same ladder
+    int nstrk_module;	// Number of SimHit strikes in the same module
 
     void init();
   } simHit_;
   
   struct RecHit 
-  {
+  { // No guarantee that it will work with disks and strips ...
     float x;      // X position of RecHit in Local Coord. (cm)
     float y;      // Y position of RecHit in Local Coord. (cm)
     float xx;     // Err**2 in X position of RecHit (cm**2)
@@ -182,8 +186,14 @@ process.ReadLocalMeasurement2 = cms.EDAnalyzer("ExtraHitNtuplizer",
     float gx;     // X position of RecHit in Global Coord. (cm)
     float gy;     // Y position of RecHit in Global Coord. (cm)
     float gz;     // Z position of RecHit in Global Coord. (cm)
+    float gr;     // R position of RecHit in Global Coord. (cm)
     int subid;    // 1 = barrel, 2 = disk
     int layer;    // barrel layer, starting from interaction point
+    int ladder;   // ladder
+    int module;   // module
+    int nstrk_layer;    // Number of RecHit strikes in the same layer
+    int nstrk_ladder;   // Number of RecHit strikes in the same ladder
+    int nstrk_module;   // Number of RecHit strikes in the same module
     int nsimhit;  // Not really a valid variable...
     float hx, hy; // X,Y position of SimHit in Local Coord. (cm)
     float tx, ty; // Not really a valid variable...
@@ -197,8 +207,7 @@ process.ReadLocalMeasurement2 = cms.EDAnalyzer("ExtraHitNtuplizer",
     float pitchy;           // Pixel Pitch in Y (cm)
     float thickness;        // thickness of the pixel
     float cluster_adc;      // Total adc count for cluster (units of electrons)
-    int hlayersstruck;      // 1 if both layers of a stack were struck
-    int hnlayersstruck;     // number of hits in one stack
+    int hnlayersstruck;     // number of simhits in the same layer 
     float hphi, heta;       // phi, eta of SimHit
     float hgx, hgy, hgz;    // x,y,z position of SimHit in Global Coord. (cm)
 

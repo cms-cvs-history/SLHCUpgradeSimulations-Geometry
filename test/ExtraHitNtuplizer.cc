@@ -122,19 +122,19 @@ void ExtraHitNtuplizer::beginJob(const edm::EventSetup& es)
 
   pixeltree_->Branch("evt",    &evt_,      "run/I:evtnum/I", bufsize);
   pixeltree_->Branch("pixel_recHit", &recHit_, 
-    "x/F:y:xx:xy:yy:row:col:gx:gy:gz:subid/I:layer:nsimhit:hx/F:hy:tx:ty:theta:phi:eta:num_pix/I:spreadx:spready:hspreadx/F:hspready:pitchx:pitchy:thickness:cluster_adc:hlayersstruck/I:hnlayersstruck:hphi/F:heta:hgx:hgy:hgz", bufsize);
+    "x/F:y:xx:xy:yy:row:col:gx:gy:gz:gr:subid/I:layer:ladder:module:nstrk_layer:nstrk_ladder:nstrk_module:nsimhit:hx/F:hy:tx:ty:theta:phi:eta:num_pix/I:spreadx:spready:hspreadx/F:hspready:pitchx:pitchy:thickness:cluster_adc:hnlayersstruck/I:hphi/F:heta:hgx:hgy:hgz", bufsize);
   pixeltree2_->Branch("evt",    &evt_,      "run/I:evtnum/I", bufsize);
   pixeltree2_->Branch("pixel_recHit", &recHit_, 
-    "x/F:y:xx:xy:yy:row:col:gx:gy:gz:subid/I:layer:nsimhit:hx/F:hy:tx:ty:theta:phi", bufsize);
+    "x/F:y:xx:xy:yy:row:col:gx:gy:gz:gr:subid/I:layer:nsimhit:hx/F:hy:tx:ty:theta:phi", bufsize);
   
   // Strip Branches 
   striptree_->Branch("evt",    &evt_,      "run/I:evtnum/I", bufsize);
   striptree_->Branch("strip_recHit", &striprecHit_,
-    "x/F:y:xx:xy:yy:row:col:gx:gy:gz:subid/I:layer:nsimhit:hx/F:hy:tx:ty:theta:phi", bufsize);
+    "x/F:y:xx:xy:yy:row:col:gx:gy:gz:gr:subid/I:layer:nsimhit:hx/F:hy:tx:ty:theta:phi", bufsize);
 
   pixelsimhittree_->Branch("evt",    &evt_,      "run/I:evtnum/I", bufsize);
   pixelsimhittree_->Branch("pixel_simHit", &simHit_,  
-    "x/F:y:gx:gy:gz:theta:eta:phi:subid/I:layer:ladder:nstrk:strkh/B:strkl:repeat", bufsize);
+    "x/F:y:gx:gy:gz:gr:theta:eta:phi:spreadx:spready:subid/I:layer:ladder:module:nstrk_layer:nstrk_ladder:nstrk_module", bufsize);
 
   // geometry setup
   edm::ESHandle<TrackerGeometry>        geometry;
@@ -301,19 +301,11 @@ void ExtraHitNtuplizer::analyze(const edm::Event& e, const edm::EventSetup& es)
         e.getByLabel("famosSimHits", "TrackerHits", pixelSimHitHandle);
         const std::vector<PSimHit>* pixelSimHits=pixelSimHitHandle.product();
       int sim_stacks_struck=0,num_stacks_struck=0;
-      bool sim_stack_low=0,sim_stack_high=0;
       for (std::vector<PSimHit>::const_iterator simHitIter = pixelSimHits->begin(); simHitIter<pixelSimHits->end(); simHitIter++)
       {
-          if (layerNumber==PXBDetId(simHitIter->detUnitId()).layer()) {
+          if (subdetId==PXBDetId(simHitIter->detUnitId()).subdetId()&&layerNumber==PXBDetId(simHitIter->detUnitId()).layer()) {
              num_stacks_struck++;
-             if((PXBDetId(simHitIter->detUnitId()).ladder())%2==0) {sim_stack_low =1;}		 // Known to not be reliable for all geometries, use with caution
-             if((PXBDetId(simHitIter->detUnitId()).ladder())%2==1) {sim_stack_high=1;}       // Even and odd ladders comprise the two stack layers
-             //std::cout <<"\nextrahit num_stacks_struck = "<<num_stacks_struck<<" for layer,ladder number = "
-             //          <<layerNumber<<PXBDetId(simHitIter->detUnitId()).ladder();
           }
-      }
-      if (sim_stack_low&&sim_stack_high) {
-         sim_stacks_struck=1;
       }
       // End of check for simhit in both stack layers
       matched.clear();
@@ -346,25 +338,48 @@ void ExtraHitNtuplizer::analyze(const edm::Event& e, const edm::EventSetup& es)
         closest_simhit = closestit;
       } // end matched emtpy
       unsigned int subid = detId.subdetId();
-      int layer_num = 0;
+      int layer_num = 0,ladder=0,module=0;
       if ( (subid==1)||(subid==2) ) {
         // 1 = PXB, 2 = PXF
         if ( subid ==  PixelSubdetector::PixelBarrel ) {
 	  PXBDetId pxbid(detId.rawId());
 	  layer_num   = pxbid.layer();
+	  ladder      = pxbid.ladder();
+	  module      = pxbid.module();
         } else if ( subid ==  PixelSubdetector::PixelEndcap ) {
 	  PXFDetId pxfid(detId.rawId());
 	  layer_num   = pxfid.disk();
         }
-        int num_simhit = matched.size();
-        // *****************************************************************************************
-        // Fill the variables that will go into the ntuple 
-        fillPRecHit(subid, layer_num, iterRecHit, num_simhit, closest_simhit, geomDet,Cluster,cluster_adc,sim_stacks_struck,num_stacks_struck);
-        // *****************************************************************************************
-        fillEvt(e);
-        pixeltree_->Fill();
-        init();
-      }
+      int num_simhit = matched.size();
+      // Fill variables pertaining to the number of RecHits in same lay,lad,mod
+      int nstrk_lay = -1 , nstrk_lad= -1 , nstrk_mod = -1 ; // Stat from -1 since you should always find 1 match (itself)
+      edm::Handle<SiPixelRecHitCollection> recHitColl_b;
+      e.getByLabel( src_, recHitColl_b);
+      for (SiPixelRecHitCollection::const_iterator iterRecHit_b = recHitColl_b->begin();iterRecHit_b!=recHitColl_b->end();iterRecHit_b++){
+ 	  const DetId& detId_b = iterRecHit_b->geographicalId();
+	  //unsigned int subid_b = detId_b.subdetId();
+	  int lay_b    = PXBDetId(detId_b.rawId()).layer(); 
+	  int ladder_b = PXBDetId(detId_b.rawId()).ladder();
+	  int module_b = PXBDetId(detId_b.rawId()).module();
+	  if (detId.subdetId()==detId_b.subdetId()&&layer_num==lay_b){
+	    nstrk_lay++;
+	    if (ladder==ladder_b){
+	      nstrk_lad++;
+	      if (module==module_b){
+		nstrk_mod++;
+	      } // Same Module
+	    } // Same Ladder
+	  } // Same Layer
+      } // End look over RecHit_b
+      //
+      // *****************************************************************************************
+      // Fill the variables that will go into the ntuple 
+      fillPRecHit(subid, iterRecHit, num_simhit, closest_simhit, geomDet,Cluster,cluster_adc,sim_stacks_struck,num_stacks_struck, nstrk_lay, nstrk_lad, nstrk_mod);
+      // *****************************************************************************************
+      fillEvt(e);
+      pixeltree_->Fill();
+      init();
+      } // endif (subid==1)||(subid==2)
     } // end of rechit loop
   } // end of loop test on recHitColl size
 
@@ -373,32 +388,38 @@ void ExtraHitNtuplizer::analyze(const edm::Event& e, const edm::EventSetup& es)
       Handle< std::vector<PSimHit> > pixelSimHitHandle;
       e.getByLabel("famosSimHits", "TrackerHits", pixelSimHitHandle);
       const std::vector<PSimHit>* pixelSimHits=pixelSimHitHandle.product();
-            int sim_stacks_struck=0,num_stacks_struck=0;
-            bool sim_stack_low=0,sim_stack_high=0,repeat=0;
+            int sim_stacks_struck=0, nstrk_layer = -1, nstrk_ladder = -1, nstrk_module = -1; // Stat from -1 since you should always find 1 match (itself)
       for (std::vector<PSimHit>::const_iterator simHitIter = pixelSimHits->begin(); simHitIter<pixelSimHits->end(); simHitIter++)
-      {      sim_stacks_struck=0;num_stacks_struck=0;
-             sim_stack_low=0;sim_stack_high=0;repeat=0;    
-             int lay = PXBDetId(simHitIter->detUnitId()).layer() ;
-             int lad    = (PXBDetId(simHitIter->detUnitId()).ladder())%2 ;	 // Known to not be reliable for all geometries, use with caution
-             int ladder = (PXBDetId(simHitIter->detUnitId()).ladder())   ;
+      {      sim_stacks_struck =0; nstrk_layer = -1; nstrk_ladder = -1; nstrk_module = -1; // Stat from -1 since you should always find 1 match (itself)
+             DetId detId(simHitIter->detUnitId());
+ 	     unsigned int subdetId = detId.subdetId();
+             int lay    = (PXBDetId(simHitIter->detUnitId()).layer() ) ;
+             int ladder = (PXBDetId(simHitIter->detUnitId()).ladder()) ;
+	     int module = (PXBDetId(simHitIter->detUnitId()).module()) ;
              Handle< std::vector<PSimHit> > pixelSimHitHandle_b;
              e.getByLabel("famosSimHits", "TrackerHits", pixelSimHitHandle_b);
              const std::vector<PSimHit>* pixelSimHits_b=pixelSimHitHandle_b.product();
              for (std::vector<PSimHit>::const_iterator simHitIter_b = pixelSimHits_b->begin(); simHitIter_b<pixelSimHits_b->end(); simHitIter_b++)
              { // we need a sub loop to look at the other SimHits in the same layer...
-                  if (lay==PXBDetId(simHitIter_b->detUnitId()).layer()) 
-                  {
-                     num_stacks_struck++;
-                     int lad_b    = (PXBDetId(simHitIter_b->detUnitId()).ladder())%2 ;	 // Known to not be reliable for all geometries, use with caution
-                     int ladder_b = (PXBDetId(simHitIter_b->detUnitId()).ladder())   ;
-                     if((lad==lad_b)&&(ladder!=ladder_b)) {repeat=1;} // Only set to 1 if same stack layer, but not same ladder
-                     if(lad_b==0) {sim_stack_low =1;}
-                     if(lad_b==1) {sim_stack_high=1;}       // Even and odd ladders comprise the two stack layers
-                  }
+		DetId detId_b(simHitIter_b->detUnitId());
+		unsigned int subdetId_b = detId_b.subdetId();
+		if (subdetId==subdetId_b){
+		   int lay_b    = (PXBDetId(simHitIter_b->detUnitId()).layer() ) ;
+		   int ladder_b = (PXBDetId(simHitIter_b->detUnitId()).ladder()) ;
+		   int module_b = (PXBDetId(simHitIter_b->detUnitId()).module()) ;
+		   if (lay==lay_b){
+		      nstrk_layer++;
+		      if (ladder==ladder_b){
+			 nstrk_ladder++;
+			 if (module==module_b){
+			    nstrk_module++;
+			 } // Same Module
+		      } // Same Ladder
+		   } // Same Layer
+		} // Same DetID
              }
-        //std::cout <<"\nextrahit layer "<<lay<<" had tophit,bottomhit,n_hits = "<<sim_stack_high<<" , "<<sim_stack_low<<" , "<<num_stacks_struck ;
         // fill the ntuple
-        fillSimHit(simHitIter,sim_stack_high,sim_stack_low,num_stacks_struck,repeat);
+        fillSimHit(simHitIter,nstrk_layer,nstrk_ladder,nstrk_module);
         fillEvt(e);
         pixelsimhittree_->Fill();
         init();
@@ -506,8 +527,7 @@ void ExtraHitNtuplizer::fillStubDigiHit( cmsUpgrades::GlobalStub_PixelDigi_Colle
 
 
 void ExtraHitNtuplizer::fillSimHit(std::vector<PSimHit>::const_iterator simhit_i,
-                                   bool sim_stack_high, bool sim_stack_low,
-                                   int num_stacks_struck, bool repeat)
+                                   int nstrk_lay,int nstrk_lad,int nstrk_mod)
 {          
              DetId detId(simhit_i->detUnitId());
              const GeomDet* geomDet( theGeometry->idToDet(detId) );
@@ -518,30 +538,33 @@ void ExtraHitNtuplizer::fillSimHit(std::vector<PSimHit>::const_iterator simhit_i
     float sim_y1 = (*simhit_i).entryPoint().y();
     float sim_y2 = (*simhit_i).exitPoint().y();
     simHit_.y = 0.5*(sim_y1+sim_y2);
-    //simHit_.spreadx = (sim_x2-sim_x1); // To be physically comparable to previous variables this needs a Lorentz Drift correction.
-    //simHit_.spready = (sim_y2-sim_y1);
+    simHit_.spreadx = (sim_x2-sim_x1);
+    simHit_.spready = (sim_y2-sim_y1);
     LocalPoint lp (simHit_.x,simHit_.y);
     GlobalPoint GP = geomDet->surface().toGlobal(lp);
     simHit_.gx = GP.x();
     simHit_.gy = GP.y();
     simHit_.gz = GP.z();
-    simHit_.subid = detId.subdetId();
-    simHit_.layer = PXBDetId(simhit_i->detUnitId()).layer();
+    simHit_.gr = sqrt((GP.x()*GP.x())+(GP.y()*GP.y()));
+    simHit_.subid  = detId.subdetId();
+    simHit_.layer  = PXBDetId(simhit_i->detUnitId()).layer();
     simHit_.ladder = PXBDetId(simhit_i->detUnitId()).ladder();
-    simHit_.strkh = sim_stack_high;
-    simHit_.strkl = sim_stack_low;
-    simHit_.nstrk = num_stacks_struck;
-    simHit_.repeat = repeat;
+    simHit_.module = PXBDetId(simhit_i->detUnitId()).module();
+    simHit_.nstrk_layer  = nstrk_lay;
+    simHit_.nstrk_ladder = nstrk_lad;
+    simHit_.nstrk_module = nstrk_mod;
        double theta=21.0, eta=22.0, phi=23.0;
        ExtraHitNtuplizer::getthetaetaphi(double(GP.x()), double(GP.y()), double(GP.z()), theta, eta, phi);
     simHit_.theta =  float(theta);
     simHit_.eta = float(eta);
     simHit_.phi = float(phi);
-//       std::cout <<"\nExtrahit SimHit at layer, ladder = "<<(PXBDetId(simhit_i->detUnitId()).layer())
-//                                                   <<" , "<<(PXBDetId(simhit_i->detUnitId()).ladder())
-//                                            <<"\n\tat R = "<<sqrt((GP.x()*GP.x())+(GP.y()*GP.y()))
-//                                            <<" and eta= "<<eta<<"\n\twith sterio = "<<PXBDetId(simhit_i->detUnitId()).module();
-
+//    std::cout	<<"\nExtrahit SimHit: SubId   = "		<< simHit_.subid
+//             	<<"\n\tlayer, ladder , module = "		<< simHit_.layer	<<"\t, "<< simHit_.ladder	<<"\t, "<< simHit_.module
+//		<<"\n\tWith N hits in the same Lay,Lad,mod "	<< simHit_.nstrk_layer	<<"\t, "<< simHit_.nstrk_ladder	<<"\t, "<< simHit_.nstrk_module
+//		<<"\n\twith a Local X,Y       = "		<< simHit_.x		<<"\t, "<< simHit_.y
+//		<<"\n\tLocated at X,Y,Z       = "		<< simHit_.gx		<<"\t, "<< simHit_.gy		<<"\t, "<< simHit_.gz
+//		<<"\n\tLocated at R,Phi,Eta   = "		<< simHit_.gr		<<"\t, "<< simHit_.phi		<<"\t , "<< simHit_.eta
+//		;
 }
 
 
@@ -564,10 +587,10 @@ void ExtraHitNtuplizer::fillSRecHit(const int subid,
   striprecHit_.gx = GP.x();
   striprecHit_.gy = GP.y();
   striprecHit_.gz = GP.z();
+  striprecHit_.gr = sqrt((GP.x()*GP.x())+(GP.y()*GP.y()));
   striprecHit_.subid = subid;
 }
 void ExtraHitNtuplizer::fillPRecHit(const int subid, 
-                                  const int layer_num,
                                   SiPixelRecHitCollection::const_iterator pixeliter,
                                   const int num_simhit,
                                   std::vector<PSimHit>::const_iterator closest_simhit,
@@ -575,7 +598,8 @@ void ExtraHitNtuplizer::fillPRecHit(const int subid,
                                   edmNew::DetSet<SiPixelCluster>::const_iterator cluster,
                                   float cluster_adc,
                                   const int layers_struck,
-                                  const int nlayers_struck
+                                  const int nlayers_struck,
+				  int nstrk_lay,int nstrk_lad,int nstrk_mod
                                   )
 {
   LocalPoint lp = pixeliter->localPosition();
@@ -593,16 +617,18 @@ void ExtraHitNtuplizer::fillPRecHit(const int subid,
   recHit_.gx = GP.x();
   recHit_.gy = GP.y();
   recHit_.gz = GP.z();
+  recHit_.gr = sqrt((GP.x()*GP.x())+(GP.y()*GP.y()));
   recHit_.subid = subid;
-  recHit_.layer = layer_num;
   recHit_.nsimhit = num_simhit;
   recHit_.cluster_adc = cluster_adc;
+  recHit_.nstrk_layer  = nstrk_lay;
+  recHit_.nstrk_ladder = nstrk_lad;
+  recHit_.nstrk_module = nstrk_mod;
   double theta=21.0, eta=22.0, phi=23.0;
   ExtraHitNtuplizer::getthetaetaphi(double(GP.x()), double(GP.y()), double(GP.z()), theta, eta, phi);
   recHit_.theta = float(theta);
   recHit_.phi = float(phi);
   recHit_.eta = float(eta);
-  recHit_.hlayersstruck = layers_struck;		// Known to not be reliable for all geometries, use with caution
   recHit_.hnlayersstruck = nlayers_struck;
   recHit_.num_pix = cluster->size();
   recHit_.spreadx = cluster->sizeX();
@@ -621,6 +647,9 @@ void ExtraHitNtuplizer::fillPRecHit(const int subid,
     float xdrift,ydrift;
     getlorentz(pixDet,xdrift,ydrift);
   // Fill more things
+  recHit_.layer  = PXBDetId(detid).layer() ;
+  recHit_.ladder = PXBDetId(detid).ladder();
+  recHit_.module = PXBDetId(detid).module();
   recHit_.pitchx = thePitchX;  
   recHit_.pitchy = thePitchY;
   recHit_.thickness = theThickness;
@@ -665,6 +694,7 @@ void ExtraHitNtuplizer::fillPRecHit(const int subid,
   recHit_.gx = GP.x();
   recHit_.gy = GP.y();
   recHit_.gz = GP.z();
+  recHit_.gr = sqrt((GP.x()*GP.x())+(GP.y()*GP.y()));
   recHit_.subid = subid;
 }
 
@@ -710,7 +740,7 @@ void ExtraHitNtuplizer::getlorentz(const PixelGeomDetUnit* pixDet,
 // Possibly just use CondFormats/SiPixelObjects/interface/SiPixelLorentzAngle.h, look into later
 {  // This function does not work yet. Basic code taken out of PixelCPEBase.cc
    // No idea when I will fix it.    It was just an FYI thing here.
-   xdrift=-99.123;ydrift=-99.456;
+   xdrift=9999;ydrift=9999;
    float theThickness = pixDet->surface().bounds().thickness();
    // from PixelCPEBase::driftDirection( GlobalVector bfield )
    GlobalVector bfield = themag->inTesla(pixDet->surface().position()) ;  // This is the input for PixelCPEBase::driftDirection
@@ -766,16 +796,19 @@ void ExtraHitNtuplizer::SimHit::init()
   gx = dummy_float;
   gy = dummy_float;
   gz = dummy_float;
-  subid = 0;
-  layer = 0;
+  gr = dummy_float;
+  subid  = 0;
+  layer  = 0;
   ladder = 0;
-  nstrk = 0;
-  strkh = 0;
-  strkl = 0;
-  repeat = 0;
+  module = 0;
+  nstrk_layer  = 0;
+  nstrk_ladder = 0;
+  nstrk_module = 0;
   theta = dummy_float;
   eta = dummy_float;
   phi = dummy_float;
+  spreadx = dummy_float;
+  spready = dummy_float;
 }
 
 void ExtraHitNtuplizer::RecHit::init()
@@ -792,8 +825,14 @@ void ExtraHitNtuplizer::RecHit::init()
   gx = dummy_float;
   gy = dummy_float;
   gz = dummy_float;
+  gr = dummy_float;
   layer = 0;
+  ladder = 0;
+  module = 0;
   nsimhit = 0;
+  nstrk_layer  = 0;
+  nstrk_ladder = 0;
+  nstrk_module = 0;
   hx = dummy_float;
   hy = dummy_float;
   hgx = dummy_float;
@@ -815,7 +854,6 @@ void ExtraHitNtuplizer::RecHit::init()
   hspready = dummy_float;
   thickness = dummy_float;
   cluster_adc = dummy_float;
-  hlayersstruck = 0;
   hnlayersstruck = 0;
 }
 
