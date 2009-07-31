@@ -20,8 +20,8 @@
  <Constant name="SensorThickStack0"    value="0.200*mm"/>
  <Constant name="SensorThickStack1"    value="0.200*mm"/>
 
- <Constant name="LaddersStack0"        value="((8*[RadiusStack0]/[SensorWidthStack0])+1)"/>
- <Constant name="LaddersStack1"        value="((8*[RadiusStack1]/[SensorWidthStack1])+6)"/>
+ <Constant name="LaddersStack0"        value="((7*[RadiusStack0]/[SensorWidthStack0])+1)"/>
+ <Constant name="LaddersStack1"        value="((7*[RadiusStack1]/[SensorWidthStack1]))"/>
 
  <Constant name="PhiOffsetStack0"      value="0*deg"/>
  <Constant name="PhiOffsetStack1"      value="0*deg"/>
