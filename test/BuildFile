@@ -1,4 +1,4 @@
-# $Id: BuildFile,v 1.5 2008/09/25 20:33:30 hcheung Exp $
+# $Id: BuildFile,v 1.6 2009/02/20 19:57:25 brownson Exp $
 <environment>
  <library file="StdHitNtuplizer.cc" name=StdHitNtuplizerExample>
   <flags EDM_PLUGIN=1>
@@ -17,6 +17,16 @@
   <use name=SimTracker/TrackerHitAssociation>
   <use name=RecoLocalTracker/SiPixelRecHits>
  </library>
+
+<library file="ModuleInfo_Phase2.cc" name=ModuleInfo_Phase2>
+ <flags EDM_PLUGIN=1>
+ <use name=FWCore/Framework>
+ <use name=Geometry/Records>
+ <use name=Geometry/TrackerGeometryBuilder>
+ <use name=Geometry/TrackerNumberingBuilder>
+ <use name=Geometry/CommonDetUnit>
+ <use name=CondFormats/Alignment>
+</library>
 
 <library file="ModuleInfo_StrawmanA.cc" name=ModuleInfo_StrawmanA>
  <flags EDM_PLUGIN=1>
