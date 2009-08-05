@@ -22,8 +22,8 @@ process.load("Configuration.StandardSequences.MagneticField_cff")
 
 process.load("Configuration.StandardSequences.FakeConditions_cff")
 
-process.SiPixelFakeGainOfflineESSource.file = 'SLHCUpgradeSimulations/Geometry/data/PhaseI/PixelSkimmedGeometry.txt'
-process.SiPixelFakeLorentzAngleESSource.file = 'SLHCUpgradeSimulations/Geometry/data/PhaseI/PixelSkimmedGeometry.txt'
+process.SiPixelFakeGainOfflineESSource.file = 'SLHCUpgradeSimulations/Geometry/data/PhaseI/PixelSkimmedGeometry_phase1.txt'
+process.SiPixelFakeLorentzAngleESSource.file = 'SLHCUpgradeSimulations/Geometry/data/PhaseI/PixelSkimmedGeometry_phase1.txt'
 
 process.load("FWCore.MessageService.MessageLogger_cfi")
 
@@ -78,7 +78,7 @@ process.load("Configuration.EventContent.EventContent_cff")
 process.Timing = cms.Service("Timing")
 
 process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(20000)
+    input = cms.untracked.int32(200)
 )
 process.source = cms.Source("FlatRandomPtGunSource",
     PGunParameters = cms.untracked.PSet(
@@ -129,7 +129,7 @@ if (process.multiTrackValidator.label[0] == 'generalTracks'):
 else:
     process.multiTrackValidator.UseAssociators = cms.bool(True)
 ######
-process.multiTrackValidator.outputFile = cms.string('TrackVal.root')
+process.multiTrackValidator.outputFile = cms.string('TrackVal_1Disk.root')
 process.multiTrackValidator.maxpT = cms.double(150)
 process.multiTrackValidator.nintpT = cms.int32(300)
 #process.multiTrackValidator.associatormap = cms.InputTag("assoc2GsfTracks")
@@ -163,11 +163,39 @@ from SimTracker.TrackAssociation.trackMCMatchSequence_cff import *
 
  # standard "prescription of what to keep in edm::Event upon output
    #
+### modules to write out PixelSkimmedGeometry.txt file
+process.writedet = cms.EDProducer("SiPixelDetInfoFileWriter",
+   FilePath = cms.untracked.string("PixelSkimmedGeometry_phase1.txt")
+)
 
 process.FEVT = cms.OutputModule("PoolOutputModule",
     process.FEVTSIMEventContent,
-    fileName = cms.untracked.string('PhysVal.root')
+    fileName = cms.untracked.string('PhysVal_1Disk.root')
 )
+
+
+
+process.ReadLocalMeasurement = cms.EDAnalyzer("StdHitNtuplizer",
+   src = cms.InputTag("siPixelRecHits"),
+   stereoRecHits = cms.InputTag("siStripMatchedRecHits","stereoRecHit"),
+   rphiRecHits = cms.InputTag("siStripMatchedRecHits","rphiRecHit"),
+   matchedRecHits = cms.InputTag("siStripMatchedRecHits","matchedRecHit"),
+   #trackProducer = cms.InputTag("generalTracks"),
+   ### if using simple (non-iterative) or old (as in 1_8_4) tracking
+   trackProducer = cms.InputTag("ctfWithMaterialTracks"),
+   OutputFile = cms.string("phase1grechitfull_ntuple_1Disk.root"),
+   ### for using track hit association
+   associatePixel = cms.bool(True),
+   associateStrip = cms.bool(False),
+   associateRecoTracks = cms.bool(False),
+   ROUList = cms.vstring('g4SimHitsTrackerHitsPixelBarrelLowTof',
+                         'g4SimHitsTrackerHitsPixelBarrelHighTof',
+                         'g4SimHitsTrackerHitsPixelEndcapLowTof',
+                         'g4SimHitsTrackerHitsPixelEndcapHighTof')
+)
+
+
+
 
 process.p0 = cms.Path(process.pgen)
 process.p1 = cms.Path(process.psim)
@@ -185,6 +213,8 @@ process.myreco = cms.Sequence(mytrackerlocalreco+process.offlineBeamSpot+process
 process.p6 = cms.Path(process.myreco)
 process.mytrackMCMatchSequence = cms.Sequence(trackMCMatch*trackingParticleRecoTrackAsssociation)
 process.p7 = cms.Path(process.mytrackMCMatchSequence+process.cutsTPEffic*process.cutsTPFake*process.multiTrackValidator)
+process.p8 = cms.Path(process.writedet)
+process.p9 = cms.Path(process.ReadLocalMeasurement)
 process.outpath = cms.EndPath(process.FEVT)
 
-process.schedule = cms.Schedule(process.p0,process.p1,process.p2,process.p4,process.p5,process.p6,process.p7)
+process.schedule = cms.Schedule(process.p0,process.p1,process.p2,process.p4,process.p5,process.p6,process.p7,process.p9,process.outpath)
