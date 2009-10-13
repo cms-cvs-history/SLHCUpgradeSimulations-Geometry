@@ -87,17 +87,17 @@
       <Parameter name="TkDDDStructure" value="TOBLayer"/>
     </SpecPar>
 
-    <SpecPar name="TOBSubDetRodPar">    
+    <SpecPar name="TOBSubDetRodPar">   
+    <!-- 
       <PartSelector path="//TOBRod0L" />
       <PartSelector path="//TOBRod0H" />
       <PartSelector path="//TOBRod1L" />
       <PartSelector path="//TOBRod1H" />
-      <!--
+      -->
       <PartSelector path="//TOBRod2L" />
       <PartSelector path="//TOBRod2H" />
       <PartSelector path="//TOBRod3L" />
       <PartSelector path="//TOBRod3H" />
-      -->
       <PartSelector path="//TOBRod4L" />
       <PartSelector path="//TOBRod4H" />
       <PartSelector path="//TOBRod5L" />

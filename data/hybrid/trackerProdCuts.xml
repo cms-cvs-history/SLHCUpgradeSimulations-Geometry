@@ -10,8 +10,10 @@
     <Parameter name="ProdCutsForGamma" value="10*cm"/>
   </SpecPar>
   <SpecPar name="tracker-sens">
+  <!--
     <PartSelector path="//TOBActiveRphi0" />
     <PartSelector path="//TOBActiveSter0" />
+    -->
     <PartSelector path="//TOBActiveRphi2" />
     <PartSelector path="//TOBActiveRphi4" />
     <PartSelector path="//TECModule0RphiActive" />

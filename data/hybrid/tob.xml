@@ -1040,7 +1040,7 @@
  
 <Algorithm name="track:DDTrackerPhiAltAlgo">
   <rParent name="tob:TOBLayer0"/>
-  <String name="ChildName"    value="tobrod0:TOBRod0"/>
+  <String name="ChildName"    value="tobrod2:TOBRod2"/>
   <Numeric name="Tilt"        value="[DetectorTilt]"/>
   <Numeric name="StartAngle"  value="5.3571*deg"/>
   <Numeric name="RangeAngle"  value="360*deg"/>
@@ -1053,7 +1053,7 @@
 </Algorithm>
 <Algorithm name="track:DDTrackerPhiAltAlgo">
   <rParent name="tob:TOBLayer1"/>
-  <String name="ChildName"    value="tobrod1:TOBRod1"/>
+  <String name="ChildName"    value="tobrod3:TOBRod3"/>
   <Numeric name="Tilt"        value="[DetectorTilt]"/>
   <Numeric name="StartAngle"  value="2.1601*deg"/>
   <Numeric name="RangeAngle"  value="360*deg"/>
