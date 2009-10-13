@@ -68,14 +68,14 @@
       <Parameter name="TrackerRadLength" value="0.0521894"/>
       <Parameter name="TrackerXi" value="0.000103321"/>
     </SpecPar>
-
+<!--
     <SpecPar name="TrackerRecMaterialTOBLayer2" eval="true">
       <PartSelector path="//TOB/TOBLayer2/TOBRod2/TOBRod2L/TOBRodCentral2L/TOBModule2/TOBWaferRphi2/TOBActiveRphi2"/>
       <PartSelector path="//TOB/TOBLayer2/TOBRod2/TOBRod2H/TOBRodCentral2H/TOBModule2/TOBWaferRphi2/TOBActiveRphi2"/>
       <Parameter name="TrackerRadLength" value="0.0378782"/>
       <Parameter name="TrackerXi" value="7.47258e-05"/>
     </SpecPar>
-<!--
+
     <SpecPar name="TrackerRecMaterialTOBLayer3" eval="true">
       <PartSelector path="//TOB/TOBLayer3/TOBRod3/TOBRod3L/TOBRodCentral3L/TOBModule2/TOBWaferRphi2/TOBActiveRphi2"/>
       <PartSelector path="//TOB/TOBLayer3/TOBRod3/TOBRod3H/TOBRodCentral3H/TOBModule2/TOBWaferRphi2/TOBActiveRphi2"/>
