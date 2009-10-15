@@ -70,7 +70,7 @@
     </SpecPar>
     -->
     <SpecPar name="TrackerRecMaterialTOBLayer0" eval="true">
-      <PartSelector path="//TOB/TOBLayer0TOBRod2/TOBRod2L/TOBRodCentral2L/TOBModule2/TOBWaferRphi2/TOBActiveRphi2"/>
+      <PartSelector path="//TOB/TOBLayer0/TOBRod2/TOBRod2L/TOBRodCentral2L/TOBModule2/TOBWaferRphi2/TOBActiveRphi2"/>
       <PartSelector path="//TOB/TOBLayer0/TOBRod2/TOBRod2H/TOBRodCentral2H/TOBModule2/TOBWaferRphi2/TOBActiveRphi2"/>
       <Parameter name="TrackerRadLength" value="0.0378782"/>
       <Parameter name="TrackerXi" value="7.47258e-05"/>
