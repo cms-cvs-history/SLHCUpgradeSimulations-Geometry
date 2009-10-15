@@ -73,7 +73,7 @@ process.famosPileUp.PileUpSimulator = cms.PSet( Pileup14TeV.PileUpSimulatorBlock
 #process.PythiaSource.maxEventsToPrint = 1
 
 # If you want to turn on/off pile-up
-process.famosPileUp.PileUpSimulator.averageNumber = 0.0
+process.famosPileUp.PileUpSimulator.averageNumber = 5.0
 # You may not want to simulate everything for your study
 process.famosSimHits.SimulateCalorimetry = True
 process.famosSimHits.SimulateTracking = True
@@ -87,11 +87,25 @@ process.famosSimHits.TrackerSimHits.firstLoop = False
 process.load("SimTracker.Configuration.SimTracker_cff")
 process.simSiPixelDigis.ROUList =  ['famosSimHitsTrackerHits']
 process.simSiPixelDigis.MissCalibrate = False
-process.simSiPixelDigis.AddPixelInefficiency = -1
 process.simSiPixelDigis.LorentzAngle_DB = False
 process.simSiPixelDigis.killModules = False
 process.simSiPixelDigis.NumPixelBarrel = cms.int32(6)
 process.simSiPixelDigis.NumPixelEndcap = cms.int32(3)
+## set pixel inefficiency if we want it
+## 100% efficiency
+process.simSiPixelDigis.AddPixelInefficiency = -1
+## static efficiency
+#process.simSiPixelDigis.AddPixelInefficiency = 0         #--Hec (default = -1)
+#process.simSiPixelDigis.PixelEff     = 0.99              #--Hec (default = 1)
+#process.simSiPixelDigis.PixelColEff  = 0.99              #--Hec (default = 1)
+#process.simSiPixelDigis.PixelChipEff = 0.99              #--Hec (default = 1)
+#  Note only static is implemented for upgrade geometries
+#--PixelIneff = -1 Default Value  (No Inefficiency. eff=100%)
+#             = 0  Static Efficiency
+#             > 0  Luminosity rate dependent ineff
+#            1,2 - low-lumi rate dependent inefficency added
+#            10 - high-lumi inefficiency added
+
 
 #process.simSiStripDigis.Noise = False
 process.simSiStripDigis.ROUList =  ['famosSimHitsTrackerHits']
@@ -103,6 +117,14 @@ process.siStripZeroSuppression.RawDigiProducersList[0].RawDigiProducer = 'simSiS
 process.siStripZeroSuppression.RawDigiProducersList[1].RawDigiProducer = 'simSiStripDigis'
 process.siStripZeroSuppression.RawDigiProducersList[2].RawDigiProducer = 'simSiStripDigis'
 process.siStripClusters.DigiProducersList[0].DigiProducer= 'simSiStripDigis'
+#
+# change from default of 8bit ADC (255) for stack layers (1=1 bit, 7=3 bits)
+# need to change both digitizer and clusterizer
+#process.simSiPixelDigis.AdcFullScaleStack = cms.int32(1)
+#process.siPixelClusters.AdcFullScaleStack = cms.int32(1)
+# probably no need to change default stack layer start
+#process.simSiPixelDigis.FirstStackLayer = cms.int32(5)
+#process.siPixelClusters.FirstStackLayer = cms.int32(5)
 
 process.load("SimGeneral.TrackingAnalysis.trackingParticles_cfi")
 process.mergedtruth.TrackerHitLabels = ['famosSimHitsTrackerHits']
