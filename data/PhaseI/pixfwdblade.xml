@@ -102,7 +102,7 @@ Pixel Forward Blade
   <rChild name="pixfwdblade:PixelForwardSensor"/>
  </PosPart>
  <PosPart copyNumber="1">
-  <rParent name="pixfwdblade:PixelForwardSensor"/>
+  <rParent name="pixfwdblade:PixelForwardBlade"/>
   <rChild name="pixfwdblade:PixelForwardROChip"/>
   <Translation x="-[ROChipX]" y="3.5*([ROChipL]+[ROChipSpaceL])" z="-[ROChipZ]" />
  </PosPart>
