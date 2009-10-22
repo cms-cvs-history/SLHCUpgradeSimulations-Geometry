@@ -14,7 +14,7 @@
  <Constant name="Zv3"            value="2.820*m"/>
  <Constant name="RailL"          value="1.100*m"/>
  <Constant name="RailInR"        value="0.300*cm"/>
- <Constant name="RailInX"        value="54.433*cm"/>
+ <Constant name="RailInX"        value="44.418*cm"/>
  <Constant name="RailInY"        value="2.700*cm"/>
  <Constant name="AlPieceR0"      value="1.161*m"/>
  <Constant name="AlPieceR1"      value="1.164*m"/>
@@ -32,15 +32,15 @@
  <Constant name="AlPieceZ"       value="69.00*cm"/>
  <Constant name="CFTubeRin1"     value="1.142*m"/>
  <Constant name="CFTubeRout1"    value="1.160*m"/>
- <Constant name="CFTubeRin2"     value="55.00*cm"/>
- <Constant name="CFTubeRout2"    value="57.80*cm"/>
+ <Constant name="CFTubeRin2"     value="45.00*cm"/>
+ <Constant name="CFTubeRout2"    value="47.80*cm"/>
  <Constant name="CFTubeL1"       value="27.80*cm"/>
  <Constant name="CFTubeL2"       value="38.80*cm"/>
  <Constant name="CFTubeZ"        value="69.00*cm"/>
  <Constant name="NomexTubeRin1"  value="1.1425*m"/>
  <Constant name="NomexTubeRout1" value="1.1595*m"/>
- <Constant name="NomexTubeRin2"  value="55.05*cm"/>
- <Constant name="NomexTubeRout2" value="57.75*cm"/>
+ <Constant name="NomexTubeRin2"  value="45.05*cm"/>
+ <Constant name="NomexTubeRout2" value="47.75*cm"/>
  <Constant name="NomexTubeF1"    value="48.633*deg"/>
  <Constant name="NomexTubeF2"    value="29.346*deg"/>
  <Constant name="NomexTubeF3"    value="35.774*deg"/>
@@ -88,16 +88,16 @@
  <Constant name="ConnectRout3"   value="1.161*m"/>
  <Constant name="ConnectL3"      value="2.000*cm"/>
  <Constant name="ConnectDphi3"   value="3.46*deg"/>
- <Constant name="ConnectRin4"    value="57.80*cm"/>
- <Constant name="ConnectRout4"   value="58.10*cm"/>
+ <Constant name="ConnectRin4"    value="47.80*cm"/>
+ <Constant name="ConnectRout4"   value="48.10*cm"/>
  <Constant name="ConnectL4"      value="1.000*cm"/>
  <Constant name="ConnectDphi4"   value="9.89*deg"/>
- <Constant name="ConnectRin5"    value="54.90*cm"/>
- <Constant name="ConnectRout5"   value="55.00*cm"/>
+ <Constant name="ConnectRin5"    value="44.90*cm"/>
+ <Constant name="ConnectRout5"   value="45.00*cm"/>
  <Constant name="ConnectL5"      value="2.000*cm"/>
  <Constant name="ConnectDphi5"   value="7.30*deg"/>
- <Constant name="ConnectRin6"    value="57.80*cm"/>
- <Constant name="ConnectRout6"   value="57.90*cm"/>
+ <Constant name="ConnectRin6"    value="47.80*cm"/>
+ <Constant name="ConnectRout6"   value="47.90*cm"/>
  <Constant name="ConnectL6"      value="2.000*cm"/>
  <Constant name="ConnectDphi6"   value="6.93*deg"/>
  <Constant name="Layer0Rin"      value="48.20*cm"/>
@@ -136,7 +136,7 @@
  <Constant name="Layer5HighR"    value="109.60*cm"/>
  <Constant name="Layer5CoolRa"   value="112.20*cm"/>
  <Constant name="Layer5CoolRr"   value="113.20*cm"/>
- <Constant name="RibRin"         value="58.10*cm"/>
+ <Constant name="RibRin"         value="48.10*cm"/>
  <Constant name="RibRout"        value="115.70*cm"/>
  <Constant name="RibDZ"          value="0.350*cm"/>
  <Constant name="RibZ1"          value="109.0*cm"/>
@@ -346,7 +346,7 @@
  <Tubs name="TOBMidRib1"    rMin="[Layer0Rout]"     rMax="[Layer1Rin]"
                             dz="[RibDZ]"            startPhi="0*deg"
                             deltaPhi="360*deg"/>
- <Tubs name="TOBMidRib2"    rMin="[Layer1Rout]"     rMax="[Layer2Rin]"
+ <Tubs name="TOBMidRib2"    rMin="[Layer1Rout]"     rMax="[Layer4Rin]"
                             dz="[RibDZ]"            startPhi="0*deg"
                             deltaPhi="360*deg"/>
  <Tubs name="TOBMidRib3"    rMin="[Layer2Rout]"     rMax="[Layer3Rin]"
@@ -633,7 +633,7 @@
 </LogicalPartSection>
 
 <PosPartSection label="tob.xml">
-<!-- <PosPart copyNumber="1">
+<PosPart copyNumber="1">
    <rParent name="tob:TOB"/>
    <rChild name="tob:TOBRailIn"/>
   <Translation x="[RailInX]" y="[RailInY]" z="[zero]" />
@@ -740,7 +740,7 @@
    <rParent name="tob:TOBAlignTube4"/>
    <rChild name="tob:TOBAlignT4In"/>
  </PosPart>
--->
+    
  <PosPart copyNumber="1">
    <rParent name="tob:TOB"/>
    <rChild name="tob:TOBLayer0"/>
@@ -769,7 +769,7 @@
    <rParent name="tob:TOB"/>
    <rChild name="tob:TOBLayer5"/>
  </PosPart>
-<!--
+     
  <PosPart copyNumber="1">
    <rParent name="tob:TOB"/>
    <rChild name="tob:TOBSideDisk"/>
@@ -802,7 +802,7 @@
    <rParent name="tob:TOB"/>
    <rChild name="tob:TOBAxCabCont"/>
   <Translation x="[zero]" y="[zero]" z="-[AxCableZ]" />
- </PosPart>-->
+ </PosPart>
 </PosPartSection>
 <!--
 <Algorithm name="track:DDTrackerZPosAlgo">
@@ -829,7 +829,6 @@
    tobrodpar:NULL,  tobrodpar:NULL,  tobrodpar:NULL,  tobrodpar:NULL, 
    tobrodpar:NULL,  tobrodpar:NULL</Vector>
 </Algorithm>-->
-<!--
 <Algorithm name="track:DDTrackerZPosAlgo">
   <rParent name="tob:TOB"/>
   <String name="ChildName"    value="tob:TOBConnect1"/>
@@ -874,7 +873,6 @@
   <Numeric name="Radius"      value="0"/>
   <Vector name="Center" type="numeric" nEntries="3"> 0, 0, 0  </Vector>
 </Algorithm>
---><!--
 <Algorithm name="track:DDTrackerZPosAlgo">
   <rParent name="tob:TOB"/>
   <String name="ChildName"    value="tob:TOBConnect3"/>
@@ -897,8 +895,7 @@
   <Numeric name="StartAngle"  value="0*deg"/>
   <Numeric name="Radius"      value="0"/>
   <Vector name="Center" type="numeric" nEntries="3"> 0, 0, 0  </Vector>
-</Algorithm>-->
-<!--
+</Algorithm>
 <Algorithm name="track:DDTrackerZPosAlgo">
   <rParent name="tob:TOB"/>
   <String name="ChildName"    value="tob:TOBConnect4"/>
@@ -920,7 +917,6 @@
   <Numeric name="Radius"      value="0"/>
   <Vector name="Center" type="numeric" nEntries="3"> 0, 0, 0  </Vector>
 </Algorithm>
---><!--
 <Algorithm name="track:DDTrackerZPosAlgo">
   <rParent name="tob:TOB"/>
   <String name="ChildName"    value="tob:TOBConnect5"/>
@@ -997,6 +993,7 @@
   <Vector name="Rotations" type="string" nEntries="4">
    tobrodpar:NULL,  tobrodpar:NULL,  tobrodpar:NULL,  tobrodpar:NULL</Vector>
 </Algorithm>
+<!--
 <Algorithm name="track:DDTrackerZPosAlgo">
   <rParent name="tob:TOB"/>
   <String name="ChildName"    value="tob:TOBMidRib3"/>
@@ -1016,7 +1013,7 @@
   -[RibZ1], -[RibZ2],  [RibZ2],  [RibZ1] </Vector>
   <Vector name="Rotations" type="string" nEntries="4">
    tobrodpar:NULL,  tobrodpar:NULL,  tobrodpar:NULL,  tobrodpar:NULL</Vector>
-</Algorithm>
+</Algorithm> -->
 <Algorithm name="track:DDTrackerZPosAlgo">
   <rParent name="tob:TOB"/>
   <String name="ChildName"    value="tob:TOBMidRib5"/>
@@ -1036,7 +1033,7 @@
   -[RibZ1], -[RibZ2],  [RibZ2],  [RibZ1] </Vector>
   <Vector name="Rotations" type="string" nEntries="4">
    tobrodpar:NULL,  tobrodpar:NULL,  tobrodpar:NULL,  tobrodpar:NULL</Vector>
-</Algorithm>-->
+</Algorithm>
  
 <Algorithm name="track:DDTrackerPhiAltAlgo">
   <rParent name="tob:TOBLayer0"/>
