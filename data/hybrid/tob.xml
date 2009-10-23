@@ -1254,20 +1254,20 @@
   <Numeric name="DiskDz"      value="[SideDiskDz]"/>
   <Numeric name="RMax"        value="[Rin3]"/>
   <Numeric name="CableT"      value="0.7*cm"/>
-  <Vector name="RodRin" type="numeric" nEntries="3">
-   [Layer2LowR], [Layer4LowR], [Layer5LowR]
+  <Vector name="RodRin" type="numeric" nEntries="4">
+   [Layer0LowR], [Layer1LowR], [Layer4LowR], [Layer5LowR]
   </Vector>
-  <Vector name="RodRout" type="numeric" nEntries="3">
-   [Layer2HighR], [Layer4HighR], [Layer5HighR]
+  <Vector name="RodRout" type="numeric" nEntries="4">
+   [Layer0HighR], [Layer1HighR], [Layer4HighR], [Layer5HighR]
   </Vector>
-  <Vector name="CableMaterial" type="string" nEntries="3">
-   tobmaterial:TOB_rad_services3,  
+  <Vector name="CableMaterial" type="string" nEntries="4">
+   tobmaterial:TOB_rad_services1, tobmaterial:TOB_rad_services2,
    tobmaterial:TOB_rad_services5, tobmaterial:TOB_rad_services6
   </Vector>
   <Numeric name="ConnW"       value="4.0*cm"/>
   <Numeric name="ConnT"       value="2.3*cm"/>
-  <Vector name="ConnMaterial" type="string" nEntries="3">
-   tobmaterial:TOB_rib3, 
+  <Vector name="ConnMaterial" type="string" nEntries="4">
+   tobmaterial:TOB_rib1, tobmaterial:TOB_rib2,
    tobmaterial:TOB_rib5, tobmaterial:TOB_rib6
   </Vector>
   <Numeric name="CoolRin"       value="[zero]"/>
@@ -1277,18 +1277,18 @@
   <Numeric name="CoolDeltaPhi1" value="360*deg"/>
   <Numeric name="CoolStartPhi2" value="0*deg"/>
   <Numeric name="CoolDeltaPhi2" value="360*deg"/>
-  <Vector name="CoolR1" type="numeric" nEntries="3">
-   [Layer2CoolRa], 
+  <Vector name="CoolR1" type="numeric" nEntries="4">
+   [Layer0CoolRa], [Layer1CoolRa],
    [Layer4CoolRa], [Layer5CoolRa]
   </Vector>
-  <Vector name="CoolR2" type="numeric" nEntries="3">
-   [Layer2CoolRr], 
+  <Vector name="CoolR2" type="numeric" nEntries="4">
+   [Layer0CoolRr], [Layer1CoolRr],
    [Layer4CoolRr], [Layer5CoolRr]
   </Vector>
   <String  name="CoolMaterial1" value="materials:CuNi"/>
   <String  name="CoolMaterial2" value="materials:C6F14_F2_-30C"/>
-  <Vector name="RingName" type="string" nEntries="3">
-   3, 5, 6
+  <Vector name="RingName" type="string" nEntries="4">
+   1, 2, 5, 6
   </Vector>
 </Algorithm>
 
