@@ -11,7 +11,7 @@ process.load("Configuration.StandardSequences.MagneticField_cff")
 process.load("Configuration.StandardSequences.FakeConditions_cff")
 
 process.load("FWCore.MessageService.MessageLogger_cfi")
-process.MessageLogger.destinations = cms.untracked.vstring("detailedInfo_fullstdgeommu50")
+#process.MessageLogger.destinations = cms.untracked.vstring("detailedInfo_fullstdgeommu50")
 
 # this config frament brings you the generator information
 process.load("Configuration.StandardSequences.Generator_cff")
@@ -54,15 +54,28 @@ process.load("Configuration.StandardSequences.VtxSmearedGauss_cff")
 
 process.load("Configuration.StandardSequences.Reconstruction_cff")
 
+process.load("SimTracker.Configuration.SimTracker_cff")
+process.simSiPixelDigis.MissCalibrate = False
+process.simSiPixelDigis.AddPixelInefficiency = -1
+process.simSiPixelDigis.LorentzAngle_DB = False
+process.simSiPixelDigis.killModules = False
+
+process.siPixelClusters.src = 'simSiPixelDigis'
+process.siPixelClusters.MissCalibrate = False
+process.siStripZeroSuppression.RawDigiProducersList[0].RawDigiProducer = 'simSiStripDigis'
+process.siStripZeroSuppression.RawDigiProducersList[1].RawDigiProducer = 'simSiStripDigis'
+process.siStripZeroSuppression.RawDigiProducersList[2].RawDigiProducer = 'simSiStripDigis'
+process.siStripClusters.DigiProducersList[0].DigiProducer= 'simSiStripDigis'
+
 # Event output
 process.load("Configuration.EventContent.EventContent_cff")
 
 process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(100)
+    input = cms.untracked.int32(1000)
 )
 
 process.load("FastSimulation/Configuration/FlatPtMuonGun_cfi")
-# replace FlatRandomPtGunSource.PGunParameters.PartID={13}
+process.FlatRandomPtGunSource.PGunParameters.PartID[0] = 13
 process.FlatRandomPtGunSource.PGunParameters.MinPt = 0.9
 process.FlatRandomPtGunSource.PGunParameters.MaxPt = 50.0
 process.FlatRandomPtGunSource.PGunParameters.MinEta = -2.4
@@ -83,7 +96,10 @@ process.load("SimTracker.TrackAssociation.TrackAssociatorByHits_cfi")
 process.load("Validation.RecoTrack.MultiTrackValidator_cff")
 #process.multiTrackValidator.label = ['generalTracks']
 ### if using simple (non-iterative) or old (as in 1_8_4) tracking
-process.multiTrackValidator.label = ['ctfWithMaterialTracks']
+#process.multiTrackValidator.label = ['ctfWithMaterialTracks']
+process.multiTrackValidator.label = ['cutsRecoTracks']
+process.multiTrackValidator.label_tp_effic = cms.InputTag("cutsTPEffic")
+process.multiTrackValidator.label_tp_fake = cms.InputTag("cutsTPFake")
 process.multiTrackValidator.associators = ['TrackAssociatorByHits']
 process.multiTrackValidator.UseAssociators = True
 process.multiTrackValidator.outputFile = "validfullstdg_muon_50GeV.root"
@@ -98,10 +114,18 @@ process.mergedtruth.volumeRadius = cms.double(100.0)
 process.mergedtruth.volumeZ = cms.double(900.0)
 process.mergedtruth.discardOutVolume = cms.bool(True)
 
-process.cutsTPEffic.ptMin = cms.double(2.5)
-process.cutsTPFake.ptMin = cms.double(2.0)
+#process.cutsTPEffic.ptMin = cms.double(2.5)
+#process.cutsTPFake.ptMin = cms.double(2.0)
 process.cutsTPFake.tip = cms.double(10.0)
 process.cutsTPFake.lip = cms.double(90.0)
+#NB: tracks are already filtered by the generalTracks sequence
+#for additional cuts use the cutsRecoTracks filter:
+process.load("Validation.RecoTrack.cutsRecoTracks_cfi")
+process.cutsRecoTracks.src = cms.InputTag("ctfWithMaterialTracks")
+process.cutsRecoTracks.quality = cms.string('')
+process.cutsRecoTracks.minHit = cms.int32(3)
+#process.cutsRecoTracks.minHit = cms.int32(8)
+#process.cutsRecoTracks.minHit = cms.int32(6)
 ############ end John's changes ###########################
 
 ### produce an ntuple with pixel hits for analysis
@@ -138,13 +162,13 @@ process.p0 = cms.Path(process.pgen)
 process.p1 = cms.Path(process.psim)
 process.p2 = cms.Path(process.pdigi)
 process.p3 = cms.Path(process.L1Emulator)
-process.p4 = cms.Path(process.DigiToRaw)
-process.p5 = cms.Path(process.RawToDigi)
+#process.p4 = cms.Path(process.DigiToRaw)
+#process.p5 = cms.Path(process.RawToDigi)
 process.p6 = cms.Path(process.trackerlocalreco)
 process.p7 = cms.Path(process.offlineBeamSpot+process.oldTracking_wtriplets)
 #process.p7 = cms.Path(process.reconstruction)
-process.p8 = cms.Path(process.cutsTPEffic*process.cutsTPFake*process.multiTrackValidator)
+process.p8 = cms.Path(process.cutsTPEffic*process.cutsTPFake*process.cutsRecoTracks*process.multiTrackValidator)
 process.p9 = cms.Path(process.ReadLocalMeasurement)
 process.outpath = cms.EndPath(process.FEVT)
 #process.schedule = cms.Schedule(process.p0,process.p1,process.p2,process.p3,process.p4,process.p5,process.p6,process.p7,process.outpath)
-process.schedule = cms.Schedule(process.p0,process.p1,process.p2,process.p3,process.p4,process.p5,process.p6,process.p7,process.p8)
+process.schedule = cms.Schedule(process.p0,process.p1,process.p2,process.p3,process.p6,process.p7,process.p8)

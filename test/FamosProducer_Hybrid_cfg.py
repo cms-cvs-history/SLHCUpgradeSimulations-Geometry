@@ -28,6 +28,7 @@ process.RandomNumberGeneratorService.simSiPixelDigis = cms.PSet(
 # Generate muons with a flat pT particle gun
 process.load("FastSimulation/Configuration/FlatPtMuonGun_cfi")
 process.FlatRandomPtGunSource.PGunParameters.PartID[0] = 13
+#process.FlatRandomPtGunSource.PGunParameters.PartID[0] = 211
 ## for 4 muons to test with vertex
 #process.FlatRandomPtGunSource.PGunParameters.PartID = cms.untracked.vint32(13,-13,13,-13)
 ## for opposite sign back-to-back dimuon pairs
@@ -145,13 +146,14 @@ process.TrackAssociatorByHits.ROUList = ['famosSimHitsTrackerHits']
 process.load("Validation.RecoTrack.MultiTrackValidator_cff")
 #process.multiTrackValidator.label = ['generalTracks']
 ### if using simple (non-iterative) or old (as in 1_8_4) tracking
-process.multiTrackValidator.label = ['ctfWithMaterialTracks']
+#process.multiTrackValidator.label = ['ctfWithMaterialTracks']
+process.multiTrackValidator.label = ['cutsRecoTracks']
+process.multiTrackValidator.label_tp_effic = cms.InputTag("cutsTPEffic")
+process.multiTrackValidator.label_tp_fake = cms.InputTag("cutsTPFake")
 process.multiTrackValidator.sim = 'famosSimHits'
 process.multiTrackValidator.associators = ['TrackAssociatorByHits']
 process.multiTrackValidator.UseAssociators = True
 process.multiTrackValidator.outputFile = "validhybrid_muon_50GeV.root"
-#process.multiTrackValidator.label_tp_effic = cms.InputTag("mergedtruth")
-#process.multiTrackValidator.label_tp_fake = cms.InputTag("mergedtruth")
 process.multiTrackValidator.nint = cms.int32(20)
 process.multiTrackValidator.nintpT = cms.int32(25)
 process.multiTrackValidator.maxpT = cms.double(50.0)
@@ -176,10 +178,19 @@ process.mergedtruth.volumeRadius = cms.double(100.0)
 process.mergedtruth.volumeZ = cms.double(900.0)
 process.mergedtruth.discardOutVolume = cms.bool(True)
 
-process.cutsTPEffic.ptMin = cms.double(2.5)
-process.cutsTPFake.ptMin = cms.double(2.0)
+#process.cutsTPEffic.ptMin = cms.double(2.5)
+#process.cutsTPFake.ptMin = cms.double(2.0)
 process.cutsTPFake.tip = cms.double(10.0)
 process.cutsTPFake.lip = cms.double(90.0)
+
+#NB: tracks are already filtered by the generalTracks sequence
+#for additional cuts use the cutsRecoTracks filter:
+process.load("Validation.RecoTrack.cutsRecoTracks_cfi")
+process.cutsRecoTracks.src = cms.InputTag("ctfWithMaterialTracks")
+process.cutsRecoTracks.quality = cms.string('')
+process.cutsRecoTracks.minHit = cms.int32(3)
+#process.cutsRecoTracks.minHit = cms.int32(8)
+#process.cutsRecoTracks.minHit = cms.int32(6)
 ############ end John's changes ###########################
 
 ### make sure the correct (modified) error routine is used
@@ -255,8 +266,15 @@ process.outpath = cms.EndPath(process.o1)
 process.options = cms.untracked.PSet( Rethrow = cms.untracked.vstring('ProductNotFound') )
 
 process.Timing =  cms.Service("Timing")
+process.SimpleMemoryCheck = cms.Service("SimpleMemoryCheck",
+     oncePerEventMode = cms.untracked.bool(False),
+     showMallocInfo = cms.untracked.bool(False),
+     moduleMemorySummary = cms.untracked.bool(True),
+     ignoreTotal = cms.untracked.int32(2)
+)
+
 process.load("FWCore/MessageService/MessageLogger_cfi")
-process.MessageLogger.destinations = cms.untracked.vstring("detailedInfo_hybrid_mu50")
+#process.MessageLogger.destinations = cms.untracked.vstring("detailedInfo_hybrid_mu50")
 ### to output debug messages for particular modules
 # process.MessageLogger.detailedInfo_strawb_mu50 = cms.untracked.PSet(threshold = cms.untracked.string('DEBUG'))
 # process.MessageLogger.debugModules= cms.untracked.vstring("*")
@@ -269,7 +287,7 @@ process.p2 = cms.Path(process.trDigi)
 process.p3 = cms.Path(process.trackerlocalreco)
 process.p6 = cms.Path(process.oldTracking_wtriplets)
 #process.p6 = cms.Path(process.offlineBeamSpot+process.recopixelvertexing*process.ckftracks)
-process.p8 = cms.Path(process.trackingParticles*process.cutsTPEffic*process.cutsTPFake*process.multiTrackValidator)
+process.p8 = cms.Path(process.trackingParticles*process.cutsTPEffic*process.cutsTPFake*process.cutsRecoTracks*process.multiTrackValidator)
 process.p9 = cms.Path(process.ReadLocalMeasurement)
 #process.schedule = cms.Schedule(process.p1,process.p2,process.p3,process.p6,process.p8,process.p9,process.outpath)
 process.schedule = cms.Schedule(process.p1,process.p2,process.p3,process.p6,process.p8)
