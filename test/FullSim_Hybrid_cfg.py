@@ -16,7 +16,7 @@ process.SiPixelFakeGainOfflineESSource.file = 'SLHCUpgradeSimulations/Geometry/d
 process.SiPixelFakeLorentzAngleESSource.file = 'SLHCUpgradeSimulations/Geometry/data/hybrid/PixelSkimmedGeometry.txt'
 
 process.load("FWCore.MessageService.MessageLogger_cfi")
-process.MessageLogger.destinations = cms.untracked.vstring("detailedInfo_fullhybridmu50")
+#process.MessageLogger.destinations = cms.untracked.vstring("detailedInfo_fullhybridmu50")
 
 # this config frament brings you the generator information
 process.load("Configuration.StandardSequences.Generator_cff")
@@ -127,7 +127,10 @@ process.load("SimTracker.TrackAssociation.TrackAssociatorByHits_cfi")
 process.load("Validation.RecoTrack.MultiTrackValidator_cff")
 #process.multiTrackValidator.label = ['generalTracks']
 ### if using simple (non-iterative) or old (as in 1_8_4) tracking
-process.multiTrackValidator.label = ['ctfWithMaterialTracks']
+#process.multiTrackValidator.label = ['ctfWithMaterialTracks']
+process.multiTrackValidator.label = ['cutsRecoTracks']
+process.multiTrackValidator.label_tp_effic = cms.InputTag("cutsTPEffic")
+process.multiTrackValidator.label_tp_fake = cms.InputTag("cutsTPFake")
 process.multiTrackValidator.associators = ['TrackAssociatorByHits']
 process.multiTrackValidator.UseAssociators = True
 process.multiTrackValidator.outputFile = "validfullhybrid_muon_50GeV.root"
@@ -154,10 +157,19 @@ process.mergedtruth.volumeRadius = cms.double(100.0)
 process.mergedtruth.volumeZ = cms.double(900.0)
 process.mergedtruth.discardOutVolume = cms.bool(True)
 
-process.cutsTPEffic.ptMin = cms.double(2.5)
-process.cutsTPFake.ptMin = cms.double(2.0)
+#process.cutsTPEffic.ptMin = cms.double(2.5)
+#process.cutsTPFake.ptMin = cms.double(2.0)
 process.cutsTPFake.tip = cms.double(10.0)
 process.cutsTPFake.lip = cms.double(90.0)
+
+#NB: tracks are already filtered by the generalTracks sequence
+#for additional cuts use the cutsRecoTracks filter:
+process.load("Validation.RecoTrack.cutsRecoTracks_cfi")
+process.cutsRecoTracks.src = cms.InputTag("ctfWithMaterialTracks")
+process.cutsRecoTracks.quality = cms.string('')
+process.cutsRecoTracks.minHit = cms.int32(3)
+#process.cutsRecoTracks.minHit = cms.int32(8)
+#process.cutsRecoTracks.minHit = cms.int32(6)
 ############ end John's changes ###########################
 
 ### make sure the correct (modified) error routine is used
@@ -229,12 +241,12 @@ process.p3 = cms.Path(process.L1Emulator)
 process.p5 = cms.Path(process.trackerlocalreco)
 process.p6 = cms.Path(process.offlineBeamSpot+process.oldTracking_wtriplets)
 #process.p6 = cms.Path(process.reconstruction)
-process.p7 = cms.Path(process.cutsTPEffic*process.cutsTPFake*process.multiTrackValidator)
+process.p7 = cms.Path(process.cutsTPEffic*process.cutsTPFake*process.cutsRecoTracks*process.multiTrackValidator)
 #process.p8 = cms.Path(process.writedet)
 #process.p8 = cms.Path(process.navigationSchoolAnalyzer)
 process.p8 = cms.Path(process.ReadLocalMeasurement)
 process.outpath = cms.EndPath(process.FEVT)
 #process.schedule = cms.Schedule(process.p0,process.p1,process.p2,process.p3,process.p5,process.p6,process.p7,process.p8,process.outpath)
-process.schedule = cms.Schedule(process.p0,process.p1,process.p2,process.p3,process.p5,process.p6,process.p7)
+process.schedule = cms.Schedule(process.p0,process.p1,process.p2,process.p3,process.p5,process.p6,process.p7,process.p8)
 
 
