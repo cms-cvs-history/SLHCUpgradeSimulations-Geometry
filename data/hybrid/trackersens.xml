@@ -5,8 +5,6 @@
   <SpecPar name="ROUHitsTrackerPixelBarrel">
     <PartSelector path="//PixelBarrelActiveFull" />
     <PartSelector path="//PixelBarrelActiveHalf" />
-    <PartSelector path="//PixelBarrelActiveFull1" />
-    <PartSelector path="//PixelBarrelActiveHalf1" />
     <PartSelector path="//PixelBarrelActiveStack0" />
     <PartSelector path="//PixelBarrelActiveStack1" />
     <Parameter name="SensitiveDetector" value="TkAccumulatingSensitiveDetector" />
