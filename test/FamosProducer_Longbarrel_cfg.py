@@ -158,10 +158,10 @@ process.TrackAssociatorByHits.ROUList = ['famosSimHitsTrackerHits']
 process.load("Validation.RecoTrack.MultiTrackValidator_cff")
 #process.multiTrackValidator.label = ['generalTracks']
 ### if using simple (non-iterative) or old (as in 1_8_4) tracking
-#process.multiTrackValidator.label = ['ctfWithMaterialTracks']
-process.multiTrackValidator.label = ['cutsRecoTracks']
-process.multiTrackValidator.label_tp_effic = cms.InputTag("cutsTPEffic")
-process.multiTrackValidator.label_tp_fake = cms.InputTag("cutsTPFake")
+process.multiTrackValidator.label = ['ctfWithMaterialTracks']
+#process.multiTrackValidator.label = ['cutsRecoTracks']
+#process.multiTrackValidator.label_tp_effic = cms.InputTag("cutsTPEffic")
+#process.multiTrackValidator.label_tp_fake = cms.InputTag("cutsTPFake")
 process.multiTrackValidator.sim = 'famosSimHits'
 process.multiTrackValidator.associators = ['TrackAssociatorByHits']
 process.multiTrackValidator.UseAssociators = True
@@ -189,17 +189,15 @@ process.mergedtruth.volumeRadius = cms.double(100.0)
 process.mergedtruth.volumeZ = cms.double(900.0)
 process.mergedtruth.discardOutVolume = cms.bool(True)
 
-#process.cutsTPEffic.ptMin = cms.double(2.5)
-#process.cutsTPFake.ptMin = cms.double(2.0)
-process.cutsTPFake.tip = cms.double(10.0)
-process.cutsTPFake.lip = cms.double(90.0)
+#process.cutsTPFake.tip = cms.double(10.0)
+#process.cutsTPFake.lip = cms.double(90.0)
 
 #NB: tracks are already filtered by the generalTracks sequence
 #for additional cuts use the cutsRecoTracks filter:
-process.load("Validation.RecoTrack.cutsRecoTracks_cfi")
-process.cutsRecoTracks.src = cms.InputTag("ctfWithMaterialTracks")
-process.cutsRecoTracks.quality = cms.string('')
-process.cutsRecoTracks.minHit = cms.int32(3)
+#process.load("Validation.RecoTrack.cutsRecoTracks_cfi")
+#process.cutsRecoTracks.src = cms.InputTag("ctfWithMaterialTracks")
+#process.cutsRecoTracks.quality = cms.vstring('')
+#process.cutsRecoTracks.minHit = cms.int32(3)
 #process.cutsRecoTracks.minHit = cms.int32(8)
 #process.cutsRecoTracks.minHit = cms.int32(6)
 ############ end John's changes ###########################
@@ -288,8 +286,9 @@ process.p2 = cms.Path(process.trDigi*process.trackingParticles)
 process.p3 = cms.Path(process.pixeltrackerlocalreco)
 process.p6 = cms.Path(process.oldTracking_wtriplets)
 #process.p6 = cms.Path(process.offlineBeamSpot+process.recopixelvertexing*process.ckftracks)
-process.p8 = cms.Path(process.cutsTPEffic*process.cutsTPFake*process.cutsRecoTracks*process.multiTrackValidator)
+process.p8 = cms.Path(process.cutsTPEffic*process.cutsTPFake*process.multiTrackValidator)
+#process.p8 = cms.Path(process.cutsTPEffic*process.cutsTPFake*process.cutsRecoTracks*process.multiTrackValidator)
 process.p9 = cms.Path(process.ReadLocalMeasurement)
 #process.schedule = cms.Schedule(process.p1,process.p2,process.p3,process.p6,process.p8,process.p9,process.outpath)
-process.schedule = cms.Schedule(process.p1,process.p2,process.p3,process.p6,process.p8,process.p9)
+process.schedule = cms.Schedule(process.p0,process.p1,process.p2,process.p3,process.p6,process.p8,process.p9)
 
