@@ -50,7 +50,7 @@ Pixel Forward Blade
  <Constant name="BumpBondT"          value="0.030*mm"/>
  <Constant name="BumpROChipT"        value="[ROChipT]+[BumpBondT]"/>
  <Constant name="VHDIT"              value="0.300*mm"/>
- <Constant name="BladeBaseT"         value="1.00*mm"/>
+ <Constant name="BladeBaseT"         value="0.8*mm"/>
  <Constant name="ModuleZ"            value="[BladeBaseT]/2+[ModuleT]"/>
  <Constant name="BumpROChipZ"        value="-[ModuleT]/2+[GlueT]+[BumpROChipT]/2"/>
  <Constant name="VHDIZ"              value="-[ModuleT]/2+2*[GlueT]+[ROChipT]+[BumpBondT]+[WaferT]+[VHDIT]/2"/>

@@ -1,151 +1,73 @@
 <?xml version="1.0"?>
 <DDDefinition xmlns="http://www.cern.ch/cms/DDL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.cern.ch/cms/DDL ../../../DetectorDescription/Schema/DDLSchema.xsd">
-    
-<!-- 
-
-== CMS Forward Pixels Geometry Phase 1 ==
-
-Author:  Pratima Jindal, Purdue University Calumet
-         July 2009
-
-== Subsystem or component described by the file ==
-
-Forward Pixels Outer disk.
-
-== Root volume and its reference frame ==
-
-Two root volumes are defined: 
-
-  PixelForwardDiskZPlus   (Disks for Z+ endcap)
-  PixelForwardDiskZMinus  (Disks for Z- endcap)
-
-X horizontal<br>
-Y vertical pointing up<br>
-Z along the beam line perpendicular to the disk plane, points away from IP<br>
-
-Origin at the center of the disk.<br>
-
-== Positioning ==
-
-Anchor point coincides with the root reference frame origin.
-Disks are positioned into endcaps without any rotations.
-  
- -->
-
-
-<ConstantsSection label="Input" eval="true">
-  
-  <Constant name="InnerRingRMax"        value="[OuterRingRMin]-[pixfwdblade:WedgeSideL]"/>
-  <Constant name="InnerRingRMin"        value="[InnerRingRMax]-1.0*mm"/>
-  <Constant name="InnerRingHalfWidth"   value="15.0*mm"/>
-  <Constant name="OuterRingRMax"        value="160.0*mm"/>
-  <Constant name="OuterRingRMin"        value="[OuterRingRMax]-3.0*mm"/>
-  <Constant name="OuterRingHalfWidth"   value="15.0*mm"/>
-
-
-</ConstantsSection>
-
-<!-- Disk root -->
 
 <ConstantsSection label="pixfwdOuterDisk.xml" eval="true">
- <Constant name="DiskRmin"         value="[InnerRingRMin]"/>
- <Constant name="DiskRmax"         value="[OuterRingRMax]"/>
- <Constant name="DiskHalfWidth"    value="[OuterRingHalfWidth]"/> 
+  
+  <Constant name="OuterRingRMax"      value="160.0*mm"/>
+  <Constant name="OuterRingRMin"      value="[OuterRingRMax]-3.0*mm"/>
+  <Constant name="OuterRingHalfWidth" value="31.0*mm"/>
+  <Constant name="OuterRingZ"         value="-[pixfwdDisks:DiskHalfWidth]+[OuterRingHalfWidth]"/>
+  <Constant name="InnerRingRMax"      value="[OuterRingRMin]-[pixfwdblade:WedgeSideL]"/>
+  <Constant name="InnerRingRMin"      value="[InnerRingRMax]-1.0*mm"/>
+  <Constant name="InnerRingHalfWidth" value="14.0*mm"/>
+  <Constant name="InnerRingZ"         value="-[pixfwdDisks:DiskHalfWidth]+[InnerRingHalfWidth]"/>
 </ConstantsSection>
  
 
 <SolidSection label="pixfwdOuterDisk.xml">
-<Tubs name="PixelForwardOuterDisk" rMin="[DiskRmin]" rMax="[DiskRmax]" dz="[DiskHalfWidth]" startPhi="0." deltaPhi="360*deg" /> 
+  <Tubs name="PixelForwardOuterDiskInnerRing"  startPhi="0." deltaPhi="360*deg"
+   rMin="[InnerRingRMin]" rMax="[InnerRingRMax]" dz="[InnerRingHalfWidth]" />
+
+  <Tubs name="PixelForwardOuterDiskOuterRing"  startPhi="0." deltaPhi="360*deg"
+   rMin="[OuterRingRMin]" rMax="[OuterRingRMax]" dz="[OuterRingHalfWidth]" />
 </SolidSection>
  
 <LogicalPartSection label="pixfwdOuterDisk.xml">
- <LogicalPart name="PixelForwardOuterDiskZPlus" category="envelope">
-  <rSolid name="PixelForwardOuterDisk"/>
-  <rMaterial name="materials:Air"/>
+ <LogicalPart name="PixelForwardOuterDiskInnerRing" category="support">
+  <rSolid name="PixelForwardOuterDiskInnerRing"/>
+  <rMaterial name="materials:Aluminium"/>
  </LogicalPart>
- <LogicalPart name="PixelForwardOuterDiskZMinus" category="envelope">
-  <rSolid name="PixelForwardOuterDisk"/>
-  <rMaterial name="materials:Air"/>
+
+ <LogicalPart name="PixelForwardOuterDiskOuterRing" category="support">
+  <rSolid name="PixelForwardOuterDiskOuterRing"/>
+  <rMaterial name="materials:Aluminium"/>
  </LogicalPart>
 </LogicalPartSection>
 
-<!-- Support rings -->
- 
-<SolidSection label="Rings">
-  <Tubs name="PixelForwardOuterDiskInnerRing" rMin="[InnerRingRMin]" rMax="[InnerRingRMax]" dz="[InnerRingHalfWidth]" startPhi="0." deltaPhi="360*deg" />
-  <Tubs name="PixelForwardOuterDiskOuterRing" rMin="[OuterRingRMin]" rMax="[OuterRingRMax]" dz="[OuterRingHalfWidth]" startPhi="0." deltaPhi="360*deg" />
-</SolidSection>
- 
-<LogicalPartSection label="Rings">
 
-  <LogicalPart name="PixelForwardOuterDiskInnerRing" category="support">
-    <rSolid name="PixelForwardOuterDiskInnerRing"/>
-    <rMaterial name="materials:Aluminium"/>
-  </LogicalPart>
-  
-
-  <LogicalPart name="PixelForwardOuterDiskOuterRing" category="support">
-    <rSolid name="PixelForwardOuterDiskOuterRing"/>
-    <rMaterial name="materials:Aluminium"/>
-  </LogicalPart>
-  
- 
-</LogicalPartSection>
-
-
-<PosPartSection label="Rings">
-
-  <!-- Z Plus Disk -->
+<PosPartSection label="pixfwdOuterDisk.xml">
+  <PosPart copyNumber="1">
+    <rParent name="pixfwdDisks:PixelForwardDisk"/>
+    <rChild name="pixfwdOuterDisk:PixelForwardOuterDiskInnerRing"/>
+    <Translation x="0.*mm" y="0.*mm" z="[InnerRingZ]"/>
+  </PosPart>
 
   <PosPart copyNumber="1">
-    <rParent name="PixelForwardOuterDiskZPlus"/>
-    <rChild name="PixelForwardOuterDiskInnerRing"/>
+    <rParent name="pixfwdDisks:PixelForwardDisk"/>
+    <rChild name="pixfwdOuterDisk:PixelForwardOuterDiskOuterRing"/>
+    <Translation x="0.*mm" y="0.*mm" z="[OuterRingZ]"/>
   </PosPart>
- 
-
-  <PosPart copyNumber="1">
-    <rParent name="PixelForwardOuterDiskZPlus"/>
-    <rChild name="PixelForwardOuterDiskOuterRing"/>
-  </PosPart>
- 
-
-
-  <!-- Z Minus Disk -->
-
-  <PosPart copyNumber="1">
-    <rParent name="PixelForwardOuterDiskZMinus"/>
-    <rChild name="PixelForwardOuterDiskInnerRing"/>
-  </PosPart>
- 
-
-  <PosPart copyNumber="1">
-    <rParent name="PixelForwardOuterDiskZMinus"/>
-    <rChild name="PixelForwardOuterDiskOuterRing"/>
-  </PosPart>
- 
-
- 
 </PosPartSection>
 
 <!-- Blades -->
 
-  <!-- Z Plus Disk -->
-
-<Algorithm name="track:DDPixFwdOuterDisks">
-  <rParent name="pixfwdOuterDisk:PixelForwardOuterDiskZPlus"/>
-  <Numeric name="Endcap"   value="1." />
-  <String  name="Child"    value="pixfwdblade:PixelForwardBlade"/>
+<Algorithm name="track:DDPixFwdDiskAlgo">
+  <rParent name="pixfwdDisks:PixelForwardDisk"/>
+  <String  name="ChildName"        value="pixfwdblade:PixelForwardBlade"/> 
+  <Numeric name="StartCopyNo"      value="22"/>
+  <Numeric name="NumberOfBlades"   value="34"/>
+  <Numeric name="BladeAngle"       value="-20*deg"/>
+  <Numeric name="BladeTilt"        value="0*deg"/>
+  <Numeric name="BladeCommonZ"     value="0.0*mm"/>
+  <Vector  name="BladeZShift" type="numeric" nEntries="34">
+   -26.42*mm,-23.92*mm,-21.42*mm,-18.92*mm,-16.42*mm,-13.92*mm,-11.42*mm, -8.92*mm,
+   -26.42*mm,-23.92*mm,-21.42*mm,-18.92*mm,-16.42*mm,-13.92*mm,-11.42*mm, -8.92*mm, -6.42*mm,
+   -26.42*mm,-23.92*mm,-21.42*mm,-18.92*mm,-16.42*mm,-13.92*mm,-11.42*mm, -8.92*mm,
+   -26.42*mm,-23.92*mm,-21.42*mm,-18.92*mm,-16.42*mm,-13.92*mm,-11.42*mm, -8.92*mm, -6.42*mm
+  </Vector>
+  <Numeric name="AnchorRadius"     value="121.4*mm"/>
+  <String  name="RotationName"     value="pixfwdOuterDisk:PixOuter"/>
+  <String  name="FlagString"       value="YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY"/>
 </Algorithm>
-
-  <!-- Z Minus Disk -->
-
-<Algorithm name="track:DDPixFwdOuterDisks">
-  <rParent name="pixfwdOuterDisk:PixelForwardOuterDiskZMinus"/>
-  <Numeric name="Endcap"   value="-1." />
-  <String  name="Child"    value="pixfwdblade:PixelForwardBlade"/>
-  <String  name="ChildRotation"    value="pixfwdCommon:ReflectionX"/>
-</Algorithm>
-
-
 
 </DDDefinition>
