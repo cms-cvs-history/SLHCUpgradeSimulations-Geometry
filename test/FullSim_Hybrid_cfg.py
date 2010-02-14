@@ -14,7 +14,8 @@ process.load("Configuration.StandardSequences.FrontierConditions_GlobalTag_cff")
 process.GlobalTag.globaltag = 'MC_31X_V8::All'
 
 process.siPixelFakeGainOfflineESSource = cms.ESSource("SiPixelFakeGainOfflineESSource",
-    file = cms.FileInPath('SLHCUpgradeSimulations/Geometry/data/hybrid/PixelSkimmedGeometry.txt')
+#    file = cms.FileInPath('SLHCUpgradeSimulations/Geometry/data/hybrid/PixelSkimmedGeometry.txt')
+    file = cms.FileInPath('SLHCUpgradeSimulations/Geometry/data/hybrid/EmptyPixelSkimmedGeometry.txt')
 )
 process.es_prefer_fake_gain = cms.ESPrefer("SiPixelFakeGainOfflineESSource","siPixelFakeGainOfflineESSource")
 
@@ -23,8 +24,57 @@ process.siPixelFakeLorentzAngleESSource = cms.ESSource("SiPixelFakeLorentzAngleE
 )
 process.es_prefer_fake_lorentz = cms.ESPrefer("SiPixelFakeLorentzAngleESSource","siPixelFakeLorentzAngleESSource")
 
+process.load("CalibTracker.SiStripESProducers.fake.SiStripNoisesFakeESSource_cfi")
+process.SiStripNoisesGenerator.NoiseStripLengthSlope=51. #dec mode
+process.SiStripNoisesGenerator.NoiseStripLengthQuote=630.
+
+process.siStripNoisesFakeESSource  = cms.ESSource("SiStripNoisesFakeESSource")
+process.es_prefer_fake_strip_noise = cms.ESPrefer("SiStripNoisesFakeESSource",
+                                                  "siStripNoisesFakeESSource")
+
+process.load("CalibTracker.SiStripESProducers.fake.SiStripQualityFakeESSource_cfi")
+
+process.siStripQualityFakeESSource  = cms.ESSource("SiStripQualityFakeESSource")
+process.es_prefer_fake_strip_quality = cms.ESPrefer("SiStripQualityFakeESSource",
+                                                     "siStripQualityFakeESSource")
+
+process.load("CalibTracker.SiStripESProducers.fake.SiStripPedestalsFakeESSource_cfi")
+
+process.siStripPedestalsFakeESSource  = cms.ESSource("SiStripPedestalsFakeESSource")
+process.es_prefer_fake_strip_pedestal = cms.ESPrefer("SiStripPedestalsFakeESSource",
+                                                     "siStripPedestalsFakeESSource")
+
+process.load("CalibTracker.SiStripESProducers.fake.SiStripLorentzAngleFakeESSource_cfi")
+
+process.siStripLorentzAngleFakeESSource  = cms.ESSource("SiStripLorentzAngleFakeESSource")
+process.es_prefer_fake_strip_LA = cms.ESPrefer("SiStripLorentzAngleFakeESSource",
+                                               "siStripLorentzAngleFakeESSource")
+
+process.siStripLorentzAngleSimFakeESSource  = cms.ESSource("SiStripLorentzAngleSimFakeESSource")
+process.es_prefer_fake_strip_LA_sim = cms.ESPrefer("SiStripLorentzAngleSimFakeESSource",
+                                                   "siStripLorentzAngleSimFakeESSource")
+
+process.load("CalibTracker.SiStripESProducers.fake.SiStripApvGainFakeESSource_cfi")
+process.SiStripApvGainGenerator.MeanGain=1.0
+process.SiStripApvGainGenerator.SigmaGain=0.0
+process.SiStripApvGainGenerator.genMode = cms.string("default")
+
+process.myStripApvGainFakeESSource = cms.ESSource("SiStripApvGainFakeESSource")
+process.es_prefer_myStripApvGainFakeESSource  = cms.ESPrefer("SiStripApvGainFakeESSource",
+                                                  "myStripApvGainFakeESSource")
+
+process.myStripApvGainSimFakeESSource  = cms.ESSource("SiStripApvGainSimFakeESSource")
+process.es_prefer_myStripApvGainSimFakeESSource = cms.ESPrefer("SiStripApvGainSimFakeESSource",
+                                                               "myStripApvGainSimFakeESSource")
+
+process.load("CalibTracker.SiStripESProducers.fake.SiStripThresholdFakeESSource_cfi")
+
+process.siStripThresholdFakeESSource  = cms.ESSource("SiStripThresholdFakeESSource")
+process.es_prefer_fake_strip_threshold = cms.ESPrefer("SiStripThresholdFakeESSource",
+                                                     "siStripThresholdFakeESSource")
+
 process.load("FWCore.MessageService.MessageLogger_cfi")
-process.MessageLogger.destinations = cms.untracked.vstring("detailedInfo_fullhybridmu50")
+#process.MessageLogger.destinations = cms.untracked.vstring("detailedInfo_fullhybridmu50")
 
 # this config frament brings you the generator information
 process.load("Configuration.StandardSequences.Generator_cff")
@@ -103,10 +153,18 @@ process.simSiStripDigis.ROUList = cms.vstring("g4SimHitsTrackerHitsTOBLowTof",
 #process.siStripZeroSuppression.RawDigiProducersList[1].RawDigiProducer = 'simSiStripDigis'
 #process.siStripZeroSuppression.RawDigiProducersList[2].RawDigiProducer = 'simSiStripDigis'
 #process.siStripClusters.DigiProducersList[0].DigiProducer= 'simSiStripDigis'
-process.siStripZeroSuppression.RawDigiProducersList[0].RawDigiProducer = 'simSiStripDigis'
-process.siStripZeroSuppression.RawDigiProducersList[1].RawDigiProducer = 'simSiStripDigis'
-process.siStripZeroSuppression.RawDigiProducersList[2].RawDigiProducer = 'simSiStripDigis'
-process.siStripClusters.DigiProducersList[0].DigiProducer= 'simSiStripDigis'
+#process.siStripZeroSuppression.RawDigiProducersList[0].RawDigiProducer = 'simSiStripDigis'
+#process.siStripZeroSuppression.RawDigiProducersList[1].RawDigiProducer = 'simSiStripDigis'
+#process.siStripZeroSuppression.RawDigiProducersList[2].RawDigiProducer = 'simSiStripDigis'
+#process.siStripClusters.DigiProducersList[0].DigiProducer= 'simSiStripDigis'
+
+process.siStripZeroSuppression.RawDigiProducersList = cms.VInputTag(cms.InputTag('simSiStripDigis','VirginRaw'),
+                                                                    cms.InputTag('simSiStripDigis','ProcessedRaw'),
+                                                                    cms.InputTag('simSiStripDigis','ScopeMode'))
+process.siStripClusters.DigiProducersList = cms.VInputTag(cms.InputTag('simSiStripDigis','ZeroSuppressed'),
+                                                          cms.InputTag('siStripZeroSuppression','VirginRaw'),
+                                                          cms.InputTag('siStripZeroSuppression','ProcessedRaw'),
+                                                          cms.InputTag('siStripZeroSuppression','ScopeMode'))
 
 #
 # change from default of 8bit ADC (255) for stack layers (1=1 bit, 7=3 bits)
@@ -122,7 +180,7 @@ process.siStripClusters.DigiProducersList[0].DigiProducer= 'simSiStripDigis'
 process.load("Configuration.EventContent.EventContent_cff")
 
 process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(100)
+    input = cms.untracked.int32(10000)
 )
 
 process.load("FastSimulation/Configuration/FlatPtMuonGun_cfi")
@@ -210,7 +268,7 @@ process.pixellayertriplets.BPix.TTRHBuilder = cms.string('WithTrackAngle')
 process.pixellayertriplets.FPix.TTRHBuilder = cms.string('WithTrackAngle')
 process.ctfWithMaterialTracks.TTRHBuilder = cms.string('WithTrackAngle')
 
-process.MeasurementTracker.stripClusterProducer=cms.string('')
+#process.MeasurementTracker.stripClusterProducer=cms.string('')
 process.MeasurementTracker.inactiveStripDetectorLabels = cms.VInputTag()
 process.MeasurementTracker.UseStripModuleQualityDB     = cms.bool(False)
 process.MeasurementTracker.UseStripAPVFiberQualityDB   = cms.bool(False)
@@ -271,8 +329,8 @@ process.anal = cms.EDAnalyzer("EventContentAnalyzer")
 
 process.p0 = cms.Path(process.generator+process.pgen)
 process.p1 = cms.Path(process.psim)
-#process.p2 = cms.Path(process.pdigi)
-process.p2 = cms.Path(process.anal*process.pdigi)
+process.p2 = cms.Path(process.pdigi)
+#process.p2 = cms.Path(process.anal*process.pdigi)
 process.p3 = cms.Path(process.L1Emulator)
 #process.p4 = cms.Path(process.DigiToRaw)
 #process.p5 = cms.Path(process.RawToDigi)
