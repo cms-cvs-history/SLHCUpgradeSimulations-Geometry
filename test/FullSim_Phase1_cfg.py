@@ -123,6 +123,8 @@ process.load("SimTracker.Configuration.SimTracker_cff")
 process.simSiPixelDigis.MissCalibrate = False
 process.simSiPixelDigis.LorentzAngle_DB = False
 process.simSiPixelDigis.killModules = False
+process.simSiPixelDigis.useDB = False
+process.simSiPixelDigis.DeadModules_DB = False
 process.simSiPixelDigis.NumPixelBarrel = cms.int32(4)
 process.simSiPixelDigis.NumPixelEndcap = cms.int32(3)
 ## set pixel inefficiency if we want it
@@ -193,7 +195,7 @@ process.MeasurementTracker.UseStripAPVFiberQualityDB   = cms.bool(False)
 process.load("Configuration.EventContent.EventContent_cff")
 
 process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(10)
+    input = cms.untracked.int32(1000)
 )
 
 process.load("FastSimulation/Configuration/FlatPtMuonGun_cfi")
