@@ -289,18 +289,18 @@ process.multiTrackValidator.maxpT = cms.double(50.0)
 process.multiTrackValidator.skipHistoFit = False
 ##### with John's changes ##############################
 process.load("SLHCUpgradeSimulations.Geometry.oldTracking_wtriplets")
-#process.pixellayertriplets.layerList = cms.vstring('BPix1+BPix2+BPix3',
-#        'BPix1+BPix3+BPix4',
-#        'BPix2+BPix3+BPix4',
-#        'BPix1+BPix2+BPix4',
-#        'BPix1+BPix2+FPix1_pos',
-#        'BPix1+BPix2+FPix1_neg',
-#        'BPix1+FPix1_pos+FPix2_pos',
-#        'BPix1+FPix1_neg+FPix2_neg',
-#        'BPix1+FPix2_pos+FPix3_pos',
-#        'BPix1+FPix2_neg+FPix3_neg',
-#        'FPix1_pos+FPix2_pos+FPix3_pos',
-#        'FPix1_neg+FPix2_neg+FPix3_neg')
+process.pixellayertriplets.layerList = cms.vstring('BPix1+BPix2+BPix3',
+        'BPix1+BPix3+BPix4',
+        'BPix2+BPix3+BPix4',
+        'BPix1+BPix2+BPix4',
+        'BPix1+BPix2+FPix1_pos',
+        'BPix1+BPix2+FPix1_neg',
+        'BPix1+FPix1_pos+FPix2_pos',
+        'BPix1+FPix1_neg+FPix2_neg',
+        'BPix1+FPix2_pos+FPix3_pos',
+        'BPix1+FPix2_neg+FPix3_neg',
+        'FPix1_pos+FPix2_pos+FPix3_pos',
+        'FPix1_neg+FPix2_neg+FPix3_neg')
 # restrict vertex fining in trackingtruthprod to smaller volume (note: these numbers in mm)
 process.mergedtruth.volumeRadius = cms.double(100.0)
 process.mergedtruth.volumeZ = cms.double(900.0)
@@ -406,8 +406,8 @@ process.anal = cms.EDAnalyzer("EventContentAnalyzer")
 
 process.p0 = cms.Path(process.generator+process.pgen)
 process.p1 = cms.Path(process.psim)
-#process.p2 = cms.Path(process.pdigi)
-process.p2 = cms.Path(process.anal*process.pdigi)
+process.p2 = cms.Path(process.pdigi)
+#process.p2 = cms.Path(process.anal*process.pdigi)
 process.p3 = cms.Path(process.L1Emulator)
 #process.p4 = cms.Path(process.DigiToRaw)
 #process.p5 = cms.Path(process.RawToDigi)
@@ -419,8 +419,6 @@ process.p8 = cms.Path(process.cutsTPEffic*process.cutsTPFake*process.multiTrackV
 process.p9 = cms.Path(process.ReadLocalMeasurement)
 #process.p9 = cms.Path(process.TPanal)
 process.outpath = cms.EndPath(process.FEVT)
-#process.schedule = cms.Schedule(process.p0,process.p1,process.p2,process.p3,process.p4,process.p5,process.p6,process.p7,process.outpath)
-#process.schedule = cms.Schedule(process.p0,process.p1,process.p2,process.p3,process.p4,process.p5,process.p6,process.p7,process.p8,process.p9)
 #process.schedule = cms.Schedule(process.p0,process.p1,process.p2,process.p3,process.p4,process.p5,process.p6,process.p7,process.p8)
 process.schedule = cms.Schedule(process.p0,process.p1,process.p2,process.p3,process.p6,process.p7,process.p8,process.p9)
 #process.schedule = cms.Schedule(process.p0,process.p1,process.p2,process.p3,process.p6,process.p7,process.p8)
