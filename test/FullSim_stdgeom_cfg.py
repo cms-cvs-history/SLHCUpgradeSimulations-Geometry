@@ -24,8 +24,6 @@ process.siPixelFakeLorentzAngleESSource = cms.ESSource("SiPixelFakeLorentzAngleE
 )
 process.es_prefer_fake_lorentz = cms.ESPrefer("SiPixelFakeLorentzAngleESSource","siPixelFakeLorentzAngleESSource")
 
-process.TrackerDigiGeometryESModule.applyAlignment = False
-
 process.load("CalibTracker.SiStripESProducers.fake.SiStripNoisesFakeESSource_cfi")
 process.SiStripNoisesGenerator.NoiseStripLengthSlope=51. #dec mode
 process.SiStripNoisesGenerator.NoiseStripLengthQuote=630.
@@ -75,6 +73,8 @@ process.siStripThresholdFakeESSource  = cms.ESSource("SiStripThresholdFakeESSour
 process.es_prefer_fake_strip_threshold = cms.ESPrefer("SiStripThresholdFakeESSource",
                                                      "siStripThresholdFakeESSource")
 
+process.TrackerDigiGeometryESModule.applyAlignment = False
+
 process.load("FWCore.MessageService.MessageLogger_cfi")
 #process.MessageLogger.destinations = cms.untracked.vstring("detailedInfo_fullstdgeommu50")
 
@@ -91,7 +91,6 @@ process.load("Configuration.StandardSequences.Generator_cff")
 #           cal=ecal+ecal-0-suppression+hcal), muon=csc+dt+rpc)
 #
 process.load("Configuration.StandardSequences.Simulation_cff")
-#process.TrackerDigiGeometryESModule.applyAlignment = False
 
 # please note the IMPORTANT: 
 # in order to operate Digis, one needs to include Mixing module 
@@ -122,12 +121,15 @@ process.load("Configuration.StandardSequences.Reconstruction_cff")
 
 process.load("SimTracker.Configuration.SimTracker_cff")
 process.simSiPixelDigis.MissCalibrate = False
-process.simSiPixelDigis.AddPixelInefficiency = -1
 process.simSiPixelDigis.LorentzAngle_DB = False
 process.simSiPixelDigis.killModules = False
+process.simSiPixelDigis.useDB = False
+process.simSiPixelDigis.DeadModules_DB = False
+
+process.simSiPixelDigis.AddPixelInefficiency = -1
 
 process.siPixelClusters.src = 'simSiPixelDigis'
-#process.siPixelClusters.MissCalibrate = False
+process.siPixelClusters.MissCalibrate = False
 #process.siStripZeroSuppression.RawDigiProducersList[0].RawDigiProducer = 'simSiStripDigis'
 #process.siStripZeroSuppression.RawDigiProducersList[1].RawDigiProducer = 'simSiStripDigis'
 #process.siStripZeroSuppression.RawDigiProducersList[2].RawDigiProducer = 'simSiStripDigis'
@@ -144,15 +146,20 @@ process.siStripClusters.DigiProducersList = cms.VInputTag(cms.InputTag('simSiStr
 #process.MeasurementTracker.inactiveStripDetectorLabels = cms.VInputTag('')
 #process.MeasurementTracker.stripClusterProducer=cms.string('')
 ## needed to avoid RAW2DIGI and DIGI2Raw
-process.MeasurementTracker.inactiveStripDetectorLabels = cms.VInputTag()
+#process.MeasurementTracker.inactiveStripDetectorLabels = cms.VInputTag()
 #
-process.MeasurementTracker.UseStripModuleQualityDB     = cms.bool(False)
-process.MeasurementTracker.UseStripAPVFiberQualityDB   = cms.bool(False)
+#process.MeasurementTracker.UseStripModuleQualityDB     = cms.bool(False)
+#process.MeasurementTracker.UseStripAPVFiberQualityDB   = cms.bool(False)
 #process.MeasurementTracker.MaskBadAPVFibers            = cms.bool(False)
 #process.MeasurementTracker.UseStripStripQualityDB      = cms.bool(False)
 #process.MeasurementTracker.UsePixelModuleQualityDB   = cms.bool(False)
 #process.MeasurementTracker.UsePixelROCQualityDB      = cms.bool(False)
 #process.MeasurementTracker.PixelCPE = cms.string('PixelCPEGeneric')
+##Ivan's version
+#process.MeasurementTracker.stripClusterProducer=cms.string('')
+process.MeasurementTracker.inactiveStripDetectorLabels = cms.VInputTag()
+process.MeasurementTracker.UseStripModuleQualityDB     = cms.bool(False)
+process.MeasurementTracker.UseStripAPVFiberQualityDB   = cms.bool(False)
 
 
 # Event output
@@ -266,5 +273,4 @@ process.p8 = cms.Path(process.cutsTPEffic*process.cutsTPFake*process.multiTrackV
 process.p9 = cms.Path(process.ReadLocalMeasurement)
 process.outpath = cms.EndPath(process.FEVT)
 #process.schedule = cms.Schedule(process.p0,process.p1,process.p2,process.p3,process.p4,process.p5,process.p6,process.p7,process.outpath)
-process.schedule = cms.Schedule(process.p0,process.p1,process.p2,process.p3,process.p4,process.p5,process.p6,process.p7,process.p8,process.p9)
-#process.schedule = cms.Schedule(process.p0,process.p1,process.p2,process.p3,process.p6,process.p7,process.p7a, process.p7b,process.p7c,process.p8,process.p9)
+process.schedule = cms.Schedule(process.p0,process.p1,process.p2,process.p3,process.p6,process.p7,process.p8,process.p9)

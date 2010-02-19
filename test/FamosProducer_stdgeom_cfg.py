@@ -37,7 +37,6 @@ process.generator.PGunParameters.MaxPt = 50.0
 process.generator.PGunParameters.MinEta = -2.4
 process.generator.PGunParameters.MaxEta = 2.4
 process.generator.AddAntiParticle = True
-
 # Generate di-electrons with pT=35 GeV
 # process.load("FastSimulation/Configuration/DiElectrons_cfi")
 
@@ -60,8 +59,6 @@ process.siPixelFakeLorentzAngleESSource = cms.ESSource("SiPixelFakeLorentzAngleE
     file = cms.FileInPath('SLHCUpgradeSimulations/Geometry/data/stdgeom/PixelSkimmedGeometry_stdgeom.txt')
 )
 process.es_prefer_fake_lorentz = cms.ESPrefer("SiPixelFakeLorentzAngleESSource","siPixelFakeLorentzAngleESSource")
-
-process.TrackerDigiGeometryESModule.applyAlignment = False
 
 process.load("CalibTracker.SiStripESProducers.fake.SiStripNoisesFakeESSource_cfi")
 process.SiStripNoisesGenerator.NoiseStripLengthSlope=51. #dec mode
@@ -112,6 +109,7 @@ process.siStripThresholdFakeESSource  = cms.ESSource("SiStripThresholdFakeESSour
 process.es_prefer_fake_strip_threshold = cms.ESPrefer("SiStripThresholdFakeESSource",
                                                      "siStripThresholdFakeESSource")
 
+process.TrackerDigiGeometryESModule.applyAlignment = False
 
 # Parametrized magnetic field (new mapping, 4.0 and 3.8T)
 #process.load("Configuration.StandardSequences.MagneticField_40T_cff")
@@ -148,6 +146,10 @@ process.simSiPixelDigis.ROUList =  ['famosSimHitsTrackerHits']
 process.simSiPixelDigis.MissCalibrate = False
 process.simSiPixelDigis.LorentzAngle_DB = False
 process.simSiPixelDigis.killModules = False
+process.simSiPixelDigis.useDB = False
+process.simSiPixelDigis.DeadModules_DB = False
+
+process.simSiPixelDigis.AddPixelInefficiency = -1
 
 #process.simSiStripDigis.Noise = False
 process.simSiStripDigis.ROUList =  ['famosSimHitsTrackerHits']
@@ -172,9 +174,7 @@ process.load("SimGeneral.TrackingAnalysis.trackingParticles_cfi")
 process.mergedtruth.simHitCollections.tracker = ['famosSimHitsTrackerHits']
 process.mergedtruth.simHitCollections.pixel = []
 process.mergedtruth.simHitCollections.muon = []
-##process.mergedtruth.TrackerHitLabels = ['famosSimHitsTrackerHits']
 process.mergedtruth.simHitLabel = 'famosSimHits'
-#process.mergedtruth.mergedBremsstrahlung = cms.bool(False)
 
 process.load("Validation.RecoTrack.cutsTPEffic_cfi")
 process.load("Validation.RecoTrack.cutsTPFake_cfi")
@@ -220,8 +220,8 @@ process.mergedtruth.volumeRadius = cms.double(100.0)
 process.mergedtruth.volumeZ = cms.double(900.0)
 process.mergedtruth.discardOutVolume = cms.bool(True)
 
-#process.cutsTPFake.tip = cms.double(10.0)
-#process.cutsTPFake.lip = cms.double(90.0)
+process.cutsTPFake.tip = cms.double(10.0)
+process.cutsTPFake.lip = cms.double(90.0)
 
 #NB: tracks are already filtered by the generalTracks sequence
 #for additional cuts use the cutsRecoTracks filter:
