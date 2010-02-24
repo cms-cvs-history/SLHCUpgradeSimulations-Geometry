@@ -172,25 +172,25 @@ process.multiTrackValidator.maxpT = cms.double(50.0)
 process.multiTrackValidator.skipHistoFit = False
 ##### with John's changes ##############################
 process.load("SLHCUpgradeSimulations.Geometry.oldTracking_wtriplets")
-#process.pixellayertriplets.layerList = cms.vstring('BPix1+BPix2+BPix3',
-#        'BPix1+BPix3+BPix4',
-#        'BPix2+BPix3+BPix4',
-#        'BPix1+BPix2+BPix4',
-#        'BPix1+BPix2+FPix1_pos',
-#        'BPix1+BPix2+FPix1_neg',
-#        'BPix1+FPix1_pos+FPix2_pos',
-#        'BPix1+FPix1_neg+FPix2_neg',
-#        'BPix1+FPix2_pos+FPix3_pos',
-#        'BPix1+FPix2_neg+FPix3_neg',
-#        'FPix1_pos+FPix2_pos+FPix3_pos',
-#        'FPix1_neg+FPix2_neg+FPix3_neg')
+process.pixellayertriplets.layerList = cms.vstring('BPix1+BPix2+BPix3',
+        'BPix1+BPix3+BPix4',
+        'BPix2+BPix3+BPix4',
+        'BPix1+BPix2+BPix4',
+        'BPix1+BPix2+FPix1_pos',
+        'BPix1+BPix2+FPix1_neg',
+        'BPix1+FPix1_pos+FPix2_pos',
+        'BPix1+FPix1_neg+FPix2_neg',
+        'BPix1+FPix2_pos+FPix3_pos',
+        'BPix1+FPix2_neg+FPix3_neg',
+        'FPix1_pos+FPix2_pos+FPix3_pos',
+        'FPix1_neg+FPix2_neg+FPix3_neg')
 # restrict vertex fining in trackingtruthprod to smaller volume (note: these numbers in mm) 
 process.mergedtruth.volumeRadius = cms.double(100.0)
 process.mergedtruth.volumeZ = cms.double(900.0)
 process.mergedtruth.discardOutVolume = cms.bool(True)
 
-#process.cutsTPFake.tip = cms.double(10.0)
-#process.cutsTPFake.lip = cms.double(90.0)
+process.cutsTPFake.tip = cms.double(10.0)
+process.cutsTPFake.lip = cms.double(90.0)
 
 #NB: tracks are already filtered by the generalTracks sequence
 #for additional cuts use the cutsRecoTracks filter:
@@ -242,9 +242,9 @@ process.thWithMaterialTracks.TTRHBuilder = cms.string('WithTrackAngle')
 ### produce an ntuple with hits for analysis
 process.ReadLocalMeasurement = cms.EDAnalyzer("StdHitNtuplizer",
    src = cms.InputTag("siPixelRecHits"),
-   stereoRecHits = cms.InputTag("siStripMatchedRecHits","stereoRecHit"),
-   rphiRecHits = cms.InputTag("siStripMatchedRecHits","rphiRecHit"),
-   matchedRecHits = cms.InputTag("siStripMatchedRecHits","matchedRecHit"),
+   stereoRecHits = cms.InputTag(""),
+   rphiRecHits = cms.InputTag(""),
+   matchedRecHits = cms.InputTag(''),
    simtrackHits = cms.InputTag("famosSimHits"),
    #trackProducer = cms.InputTag("generalTracks"),
    ### if using simple (non-iterative) or old (as in 1_8_4) tracking
@@ -271,7 +271,7 @@ process.options = cms.untracked.PSet( Rethrow = cms.untracked.vstring('ProductNo
 
 process.Timing =  cms.Service("Timing")
 process.load("FWCore/MessageService/MessageLogger_cfi")
-process.MessageLogger.destinations = cms.untracked.vstring("detailedInfo_long_mu50")
+#process.MessageLogger.destinations = cms.untracked.vstring("detailedInfo_long_mu50")
 ### to output debug messages for particular modules
 # process.MessageLogger.detailedInfo_strawb_mu50 = cms.untracked.PSet(threshold = cms.untracked.string('DEBUG'))
 # process.MessageLogger.debugModules= cms.untracked.vstring("*")
@@ -290,5 +290,6 @@ process.p8 = cms.Path(process.cutsTPEffic*process.cutsTPFake*process.multiTrackV
 #process.p8 = cms.Path(process.cutsTPEffic*process.cutsTPFake*process.cutsRecoTracks*process.multiTrackValidator)
 process.p9 = cms.Path(process.ReadLocalMeasurement)
 #process.schedule = cms.Schedule(process.p1,process.p2,process.p3,process.p6,process.p8,process.p9,process.outpath)
-process.schedule = cms.Schedule(process.p0,process.p1,process.p2,process.p3,process.p6,process.p8,process.p9)
+process.schedule = cms.Schedule(process.p0,process.p1,process.p2,process.p3,process.p6,process.p8)
+#process.schedule = cms.Schedule(process.p0,process.p1,process.p2,process.p3,process.p6,process.p8,process.p9)
 
