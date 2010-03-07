@@ -54,26 +54,20 @@
 <Algorithm name="track:DDPixFwdDiskAlgo">
   <rParent name="pixfwdDisks:PixelForwardDisk"/>
   <String  name="ChildName"        value="pixfwdblade:PixelForwardBlade"/> 
-  <Numeric name="StartCopyNo"      value="24"/>
-  <Numeric name="NumberOfBlades"   value="36"/>
+  <Numeric name="StartCopyNo"      value="22"/>
+  <Numeric name="NumberOfBlades"   value="34"/>
   <Numeric name="BladeAngle"       value="-20*deg"/>
   <Numeric name="BladeTilt"        value="0*deg"/>
-  <Numeric name="BladeCommonZ"     value="-10.54*mm"/>
-<!--  <Vector  name="BladeZShift" type="numeric" nEntries="36">
+  <Numeric name="BladeCommonZ"     value="0.0*mm"/>
+  <Vector  name="BladeZShift" type="numeric" nEntries="34">
+   -26.42*mm,-23.92*mm,-21.42*mm,-18.92*mm,-16.42*mm,-13.92*mm,-11.42*mm, -8.92*mm,
    -26.42*mm,-23.92*mm,-21.42*mm,-18.92*mm,-16.42*mm,-13.92*mm,-11.42*mm, -8.92*mm, -6.42*mm,
-   -26.42*mm,-23.92*mm,-21.42*mm,-18.92*mm,-16.42*mm,-13.92*mm,-11.42*mm, -8.92*mm, -6.42*mm,
-   -26.42*mm,-23.92*mm,-21.42*mm,-18.92*mm,-16.42*mm,-13.92*mm,-11.42*mm, -8.92*mm, -6.42*mm,
+   -26.42*mm,-23.92*mm,-21.42*mm,-18.92*mm,-16.42*mm,-13.92*mm,-11.42*mm, -8.92*mm,
    -26.42*mm,-23.92*mm,-21.42*mm,-18.92*mm,-16.42*mm,-13.92*mm,-11.42*mm, -8.92*mm, -6.42*mm
-  </Vector> -->
-  <Vector  name="BladeZShift" type="numeric" nEntries="36">
-   0*mm,0*mm,0*mm,0*mm,0*mm,0*mm,0*mm, 0*mm, 0*mm,
-   0*mm,0*mm,0*mm,0*mm,0*mm,0*mm,0*mm, 0*mm, 0*mm,
-   0*mm,0*mm,0*mm,0*mm,0*mm,0*mm,0*mm, 0*mm, 0*mm,
-   0*mm,0*mm,0*mm,0*mm,0*mm,0*mm,0*mm, 0*mm, 0*mm
   </Vector>
-   <Numeric name="AnchorRadius"     value="121.4*mm"/>
+  <Numeric name="AnchorRadius"     value="121.4*mm"/>
   <String  name="RotationName"     value="pixfwdOuterDisk:PixOuter"/>
-  <String  name="FlagString"       value="YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY"/>
+  <String  name="FlagString"       value="YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY"/>
 </Algorithm>
 
 </DDDefinition>
