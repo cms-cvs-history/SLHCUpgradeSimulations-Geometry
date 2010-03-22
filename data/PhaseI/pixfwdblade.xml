@@ -42,8 +42,8 @@ Pixel Forward Blade
  <Constant name="ModuleL"            value="[SensitiveL]+2*[SideWidth]"/>
  <Constant name="ModuleW"            value="2*[ROChipW]+[ROChipSpaceW]"/>
  <Constant name="ModuleT"            value="0.900*mm"/>
- <Constant name="ModuleX"            value="0.5*([WedgeBot]+[ModuleL]*sin([WedgeAngle])-[ModuleW]*cos([WedgeAngle]))-[SideGap]/cos([WedgeAngle])"/>
- <Constant name="ModuleY"            value="0.5*([ModuleL]/cos([WedgeAngle])-[WedgeH]+([ModuleW]-[ModuleL]*tan([WedgeAngle]))*sin([WedgeAngle]))"/>
+ <Constant name="ModuleX"            value="0.5*([WedgeBot]+[WaferL]*sin([WedgeAngle])-[WaferW]*cos([WedgeAngle]))-[SideGap]/cos([WedgeAngle])"/>
+ <Constant name="ModuleY"            value="0.5*([WaferL]/cos([WedgeAngle])-[WedgeH]+([WaferW]-[WaferL]*tan([WedgeAngle]))*sin([WedgeAngle]))"/>
  <Constant name="GlueL"              value="[SensitiveL]+2*[SideWidth]"/>
  <Constant name="GlueW"              value="2*[ROChipW]+[ROChipSpaceW]"/>
  <Constant name="GlueT"              value="0.050*mm"/>
