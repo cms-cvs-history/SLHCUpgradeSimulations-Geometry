@@ -118,6 +118,7 @@ process.load("Configuration.StandardSequences.RawToDigi_cff")
 process.load("Configuration.StandardSequences.VtxSmearedGauss_cff")
 
 process.load("Configuration.StandardSequences.Reconstruction_cff")
+process.ctfWithMaterialTracks.TTRHBuilder = cms.string('WithTrackAngle')
 
 process.load("SimTracker.Configuration.SimTracker_cff")
 process.simSiPixelDigis.MissCalibrate = False
