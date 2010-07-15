@@ -10,8 +10,8 @@ process = cms.Process('RECO')
 # import of standard configurations
 process.load('Configuration.StandardSequences.Services_cff')
 process.load('FWCore.MessageService.MessageLogger_cfi')
-process.load('Configuration.StandardSequences.MixingNoPileUp_cff')
-#process.load("SLHCUpgradeSimulations.Geometry.mixLowLumPU_Phase1_R34F16_cff")
+#process.load('Configuration.StandardSequences.MixingNoPileUp_cff')
+process.load("SLHCUpgradeSimulations.Geometry.mixLowLumPU_Phase1_R34F16_cff")
 process.load('Configuration.StandardSequences.GeometryExtended_cff')
 process.load('Configuration.StandardSequences.MagneticField_38T_cff')
 process.load('Configuration.StandardSequences.Reconstruction_cff')
@@ -57,8 +57,8 @@ process.options = cms.untracked.PSet(
 )
 # Input source
 process.source = cms.Source("PoolSource",
-  fileNames = cms.untracked.vstring('file:/uscms_data/d2/cheung/slhc/r34v25/muon/TenMuon_RAWSIM_0pu.root')
-#  fileNames = cms.untracked.vstring('/store/user/cheung/slhc_r34v25_336_10mu/slhc_r34v25_336_10mu/beecc745d5b81c616cb1a592abb88bf6/Muon_RAWSIM_1_1.root')
+#  fileNames = cms.untracked.vstring('file:/uscms_data/d2/cheung/slhc/r34v25/muon/TenMuon_RAWSIM_0pu.root')
+  fileNames = cms.untracked.vstring('/store/user/cheung/slhc_r34v25_336_10mu/slhc_r34v25_336_10mu/beecc745d5b81c616cb1a592abb88bf6/Muon_RAWSIM_1_1.root')
 )
 
 # Output definition
@@ -71,23 +71,23 @@ process.source = cms.Source("PoolSource",
 #        filterName = cms.untracked.string('')
 #    )
 #)
-extendAOD = cms.untracked.vstring(
-  'drop *',
-        'keep *_source_*_*',
-        'keep *_VtxSmeared_*_*',
-        'keep SimTracks_g4SimHits_*_*',
-        'keep SimVertexs_g4SimHits_*_*',
-        'keep *_offlinePrimaryVertices_*_*',
-        'keep *_offlinePrimaryVerticesWithBS_*_*',
-        'keep recoTracks_ctfWithMaterialTracks_*_*')
-#        'keep recoTracks_generalTracks_*_*')
-
-process.AODSIMEventContent.outputCommands.extend(extendAOD)
-
-process.output = cms.OutputModule("PoolOutputModule",
-         outputCommands = process.AODSIMEventContent.outputCommands,
-         fileName = cms.untracked.string('file:/uscms_data/d2/cheung/slhc/r34v25/muon/reco.root')
-)
+#extendAOD = cms.untracked.vstring(
+#  'drop *',
+#        'keep *_source_*_*',
+#        'keep *_VtxSmeared_*_*',
+#        'keep SimTracks_g4SimHits_*_*',
+#        'keep SimVertexs_g4SimHits_*_*',
+#        'keep *_offlinePrimaryVertices_*_*',
+#        'keep *_offlinePrimaryVerticesWithBS_*_*',
+#        'keep recoTracks_ctfWithMaterialTracks_*_*')
+##        'keep recoTracks_generalTracks_*_*')
+#
+#process.AODSIMEventContent.outputCommands.extend(extendAOD)
+#
+#process.output = cms.OutputModule("PoolOutputModule",
+#         outputCommands = process.AODSIMEventContent.outputCommands,
+#         fileName = cms.untracked.string('file:/uscms_data/d2/cheung/slhc/r34v25/muon/reco.root')
+#)
 
 # Additional output definition
 
@@ -110,9 +110,6 @@ process.load("SLHCUpgradeSimulations.Geometry.fakeConditions_Phase1_cff")
 process.load("SLHCUpgradeSimulations.Geometry.recoFromSimDigis_cff")
 
 process.ctfWithMaterialTracks.TTRHBuilder = 'WithTrackAngle'
-
-## uncomment for changes for small pixel size
-#process.load("SLHCUpgradeSimulations.Geometry.smallPixelSizeChanges_cff")
 
 ### Now Validation and other user functions #########################################
 process.load("Validation.RecoTrack.cutsTPEffic_cfi")
@@ -188,6 +185,9 @@ process.ReadLocalMeasurement = cms.EDAnalyzer("StdHitNtuplizer",
 process.anal = cms.EDAnalyzer("EventContentAnalyzer")
 
 ### back to standard commands
+## extra settings
+process.load('RecoVertex.BeamSpotProducer.BeamSpotFakeConditionsSimpleGaussian_cff')
+process.es_prefer_beamspot = cms.ESPrefer("BeamSpotFakeConditions","") 
 
 process.load("RecoVertex.Configuration.RecoVertex_cff")
 process.offlinePrimaryVertices.TrackLabel = cms.InputTag("ctfWithMaterialTracks")
@@ -203,9 +203,10 @@ process.mix_step = cms.Path(process.mix)
 process.reconstruction_step = cms.Path(process.trackerlocalreco*process.offlineBeamSpot+process.oldTracking_wtriplets)
 process.debug_step = cms.Path(process.anal)
 process.validation_step = cms.Path(process.cutsTPEffic*process.cutsTPFake*process.multiTrackValidator)
-process.user_step = cms.Path(process.vertexreco*process.slhcSimpleVertexAnalysis*process.ReadLocalMeasurement)
+#process.user_step = cms.Path(process.vertexreco*process.slhcSimpleVertexAnalysis*process.ReadLocalMeasurement)
+process.user_step = cms.Path(process.vertexreco*process.slhcSimpleVertexAnalysis)
 process.endjob_step = cms.Path(process.endOfProcess)
-process.out_step = cms.EndPath(process.output)
+#process.out_step = cms.EndPath(process.output)
 
 # Schedule definition
 #process.schedule = cms.Schedule(process.mix_step,process.reconstruction_step,process.debug_step,process.validation_step,process.user_step,process.endjob_step,process.out_step)
