@@ -69,7 +69,8 @@ void DDPixFwdDiskAlgo::execute() {
     if (flagString[iBlade] == flagSelector[0]) {
       std::string rotstr = DDSplit(rotName).first +dbl_to_string(double(copy));
 
-      double phi  = (iBlade+0.5)*deltaPhi - 90.*CLHEP::deg;
+      double phi  = (iBlade+0.5)*deltaPhi;
+//      double phi  = (iBlade+0.5)*deltaPhi - 90.*CLHEP::deg;
       double phix = std::atan2(std::sin(phi)*std::cos(bladeAngle),
 			       std::cos(phi)*std::cos(bladeAngle));
       double thetx= std::acos(-std::sin(bladeAngle));
