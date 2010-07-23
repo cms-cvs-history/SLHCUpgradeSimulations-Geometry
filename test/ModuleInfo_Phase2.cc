@@ -306,12 +306,9 @@ ModuleInfo_Phase2::analyze( const edm::Event& iEvent, const edm::EventSetup& iSe
     Output << std::fixed << std::setprecision(6); // set as default 6 decimal digits
     std::bitset<32> binary_rawid(rawid);
     Output << " ******** raw Id = " << rawid << " (" << binary_rawid << ") ";
-
-    //    if ( fromDDD_ && printDDD_ ) {
-    //      Output << "\t nav type = " << detNavType;
-    //    } 
-    //nav_type typedef changed in 3_6_2; comment out for now.  idr 10/6/10
-
+    if ( fromDDD_ && printDDD_ ) {
+      Output << "\t nav type = " << detNavType;
+    } 
     Output << std::endl;
     int subdetid = modules[i]->geographicalID().subdetId();
     double volume = modules[i]->volume() / 1000; // mm3->cm3
@@ -776,12 +773,9 @@ ModuleInfo_Phase2::analyze( const edm::Event& iEvent, const edm::EventSetup& iSe
     
     // NumberingScheme
     NumberingOutput << rawid;
-
-    //    if ( fromDDD_ && printDDD_ ) {
-    //      NumberingOutput << " " << detNavType;
-    //    }
-    //nav_type typedef changed in 3_6_2; comment out for now.  idr 10/6/10
-
+    if ( fromDDD_ && printDDD_ ) {
+      NumberingOutput << " " << detNavType;
+    }
     NumberingOutput << " "
 		    << std::fixed << std::setprecision(4) << modules[i]->translation().X() << " "
 		    << std::fixed << std::setprecision(4) << modules[i]->translation().Y() << " "

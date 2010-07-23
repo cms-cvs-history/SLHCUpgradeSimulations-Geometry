@@ -188,4 +188,4 @@ void NeutRadtuple::lyr::init()
 }
 
 //define this as a plug-in                                                                                                    
-DEFINE_FWK_MODULE(NeutRadtuple);
+DEFINE_ANOTHER_FWK_MODULE(NeutRadtuple);

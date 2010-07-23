@@ -11,7 +11,7 @@ process.load("SLHCUpgradeSimulations.Geometry.PhaseI_cmsSimIdealGeometryXML_cff"
 process.load("Configuration.StandardSequences.MagneticField_cff")
 
 process.load("Configuration.StandardSequences.FrontierConditions_GlobalTag_cff")
-process.GlobalTag.globaltag = 'MC_36Y_V9::All'
+process.GlobalTag.globaltag = 'MC_31X_V8::All'
 
 process.siPixelFakeGainOfflineESSource = cms.ESSource("SiPixelFakeGainOfflineESSource",
 #    file = cms.FileInPath('SLHCUpgradeSimulations/Geometry/data/PhaseI/PixelSkimmedGeometry_phase1.txt')
@@ -24,20 +24,9 @@ process.siPixelFakeLorentzAngleESSource = cms.ESSource("SiPixelFakeLorentzAngleE
 )
 process.es_prefer_fake_lorentz = cms.ESPrefer("SiPixelFakeLorentzAngleESSource","siPixelFakeLorentzAngleESSource")
 
-#process.siPixelFakeTemplateDBObjectESSource = cms.ESSource("SiPixelFakeTemplateDBObjectESSource",
-#    siPixelTemplateCalibrations = cms.vstring(
-#    "CalibTracker/SiPixelESProducers/data/template_summary_zp0001.out",
-#    "CalibTracker/SiPixelESProducers/data/template_summary_zp0004.out",
-#    "CalibTracker/SiPixelESProducers/data/template_summary_zp0011.out",
-#    "CalibTracker/SiPixelESProducers/data/template_summary_zp0012.out"),
-#    Version = cms.double(1.3)
-#)
-#process.es_prefer_fake_template = cms.ESPrefer("SiPixelFakeTemplateDBObjectESSource","siPixelFakeTemplateDBObjectESSource")
-
 process.load("CalibTracker.SiStripESProducers.fake.SiStripNoisesFakeESSource_cfi")
-process.SiStripNoisesGenerator.NoiseStripLengthSlope=cms.vdouble(51.) #dec mode
-process.SiStripNoisesGenerator.NoiseStripLengthQuote=cms.vdouble(630.)
-process.SiStripNoisesGenerator.printDebug = 0
+process.SiStripNoisesGenerator.NoiseStripLengthSlope=51. #dec mode
+process.SiStripNoisesGenerator.NoiseStripLengthQuote=630.
 
 process.siStripNoisesFakeESSource  = cms.ESSource("SiStripNoisesFakeESSource")
 process.es_prefer_fake_strip_noise = cms.ESPrefer("SiStripNoisesFakeESSource",
@@ -50,7 +39,6 @@ process.es_prefer_fake_strip_quality = cms.ESPrefer("SiStripQualityFakeESSource"
                                                      "siStripQualityFakeESSource")
 
 process.load("CalibTracker.SiStripESProducers.fake.SiStripPedestalsFakeESSource_cfi")
-process.SiStripPedestalsGenerator.printDebug = 0
 
 process.siStripPedestalsFakeESSource  = cms.ESSource("SiStripPedestalsFakeESSource")
 process.es_prefer_fake_strip_pedestal = cms.ESPrefer("SiStripPedestalsFakeESSource",
@@ -70,7 +58,6 @@ process.load("CalibTracker.SiStripESProducers.fake.SiStripApvGainFakeESSource_cf
 process.SiStripApvGainGenerator.MeanGain=1.0
 process.SiStripApvGainGenerator.SigmaGain=0.0
 process.SiStripApvGainGenerator.genMode = cms.string("default")
-process.SiStripApvGainGenerator.printDebug = 0
 
 process.myStripApvGainFakeESSource = cms.ESSource("SiStripApvGainFakeESSource")
 process.es_prefer_myStripApvGainFakeESSource  = cms.ESPrefer("SiStripApvGainFakeESSource",
@@ -87,8 +74,6 @@ process.es_prefer_fake_strip_threshold = cms.ESPrefer("SiStripThresholdFakeESSou
                                                      "siStripThresholdFakeESSource")
 
 process.TrackerDigiGeometryESModule.applyAlignment = False
-#print process.TrackerGeometricDetESModule.fromDDD
-#print process.TrackerDigiGeometryESModule.fromDDD,process.TrackerDigiGeometryESModule.applyAlignment
 
 process.load("FWCore.MessageService.MessageLogger_cfi")
 #process.MessageLogger.destinations = cms.untracked.vstring("detailedInfo_fullph1geommu50")
@@ -133,13 +118,7 @@ process.load("Configuration.StandardSequences.RawToDigi_cff")
 process.load("Configuration.StandardSequences.VtxSmearedGauss_cff")
 
 process.load("Configuration.StandardSequences.Reconstruction_cff")
-
-process.PixelCPEGenericESProducer.UseErrorsFromTemplates = cms.bool(False)
-process.PixelCPEGenericESProducer.TruncatePixelCharge = cms.bool(False)
-process.PixelCPEGenericESProducer.LoadTemplatesFromDB = cms.bool(False)
-#print process.PixelCPEGenericESProducer.TruncatePixelCharge
-#print process.PixelCPEGenericESProducer.LoadTemplatesFromDB
-#print process.PixelCPEGenericESProducer.UseErrorsFromTemplates
+process.ctfWithMaterialTracks.TTRHBuilder = cms.string('WithTrackAngle')
 
 process.load("SimTracker.Configuration.SimTracker_cff")
 process.simSiPixelDigis.MissCalibrate = False
@@ -152,7 +131,6 @@ process.simSiPixelDigis.NumPixelEndcap = cms.int32(3)
 ## set pixel inefficiency if we want it
 ## 100% efficiency
 process.simSiPixelDigis.AddPixelInefficiency = -1
-
 ## static efficiency
 #process.simSiPixelDigis.AddPixelInefficiency = 0         #--Hec (default = -1)
 #process.simSiPixelDigis.PixelEff     = 0.99              #--Hec (default = 1)
@@ -203,6 +181,7 @@ process.MeasurementTracker.inactiveStripDetectorLabels = cms.VInputTag()
 process.MeasurementTracker.UseStripModuleQualityDB     = cms.bool(False)
 process.MeasurementTracker.UseStripAPVFiberQualityDB   = cms.bool(False)
 #Prevent strips...
+
 
 #
 # change from default of 8bit ADC (255) for stack layers (1=1 bit, 7=3 bits)
@@ -367,8 +346,6 @@ process.cutsTPFake.lip = cms.double(90.0)
 ###process.siStripApvGainFakeESSource = cms.ESSource("SiStripApvGainFakeESSource")
 ###process.es_prefer_fake_strip_gain = cms.ESPrefer("SiStripApvGainFakeESSource","siStripApvGainFakeESSource")
 
-process.siPixelRecHits.CPE = cms.string('PixelCPEGeneric')
-process.ctfWithMaterialTracks.TTRHBuilder = cms.string('WithTrackAngle')
 
 
 ### produce an ntuple with pixel hits for analysis

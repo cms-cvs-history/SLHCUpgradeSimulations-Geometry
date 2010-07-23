@@ -1,11 +1,9 @@
-# $Id: BuildFile,v 1.8 2010/01/05 20:52:08 hcheung Exp $
+# $Id: BuildFile,v 1.9 2010/03/18 19:44:12 hcheung Exp $
 <environment>
  <library file="StdHitNtuplizer.cc" name=StdHitNtuplizerExample>
   <flags EDM_PLUGIN=1>
   <use name=FWCore/Framework>
   <use name=DataFormats/Common>
-  <use name=DataFormats/TrackReco>
-  <use name=DataFormats/StdDictionaries>
   <use name=FWCore/ParameterSet>
   <use name=SimTracker/TrackerHitAssociation>
   <use name=RecoLocalTracker/SiPixelRecHits>
