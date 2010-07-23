@@ -10,70 +10,9 @@ process.load("Configuration.StandardSequences.MagneticField_cff")
 
 #process.load("Configuration.StandardSequences.FakeConditions_cff")
 process.load("Configuration.StandardSequences.FrontierConditions_GlobalTag_cff")
-process.GlobalTag.globaltag = 'MC_31X_V8::All'
-#process.GlobalTag.globaltag = 'MC_31X_V9::All'
-#process.GlobalTag.globaltag = 'STARTUP3X_V8L::All'
+process.GlobalTag.globaltag = 'MC_3XY_V9A::All'
 
-process.siPixelFakeGainOfflineESSource = cms.ESSource("SiPixelFakeGainOfflineESSource",
-    file = cms.FileInPath('SLHCUpgradeSimulations/Geometry/data/stdgeom/PixelSkimmedGeometry_stdgeom.txt')
-)
-process.es_prefer_fake_gain = cms.ESPrefer("SiPixelFakeGainOfflineESSource","siPixelFakeGainOfflineESSource")
-
-process.siPixelFakeLorentzAngleESSource = cms.ESSource("SiPixelFakeLorentzAngleESSource",
-    file = cms.FileInPath('SLHCUpgradeSimulations/Geometry/data/stdgeom/PixelSkimmedGeometry_stdgeom.txt')
-)
-process.es_prefer_fake_lorentz = cms.ESPrefer("SiPixelFakeLorentzAngleESSource","siPixelFakeLorentzAngleESSource")
-
-process.load("CalibTracker.SiStripESProducers.fake.SiStripNoisesFakeESSource_cfi")
-process.SiStripNoisesGenerator.NoiseStripLengthSlope=51. #dec mode
-process.SiStripNoisesGenerator.NoiseStripLengthQuote=630.
-
-process.siStripNoisesFakeESSource  = cms.ESSource("SiStripNoisesFakeESSource")
-process.es_prefer_fake_strip_noise = cms.ESPrefer("SiStripNoisesFakeESSource",
-                                                  "siStripNoisesFakeESSource")
-
-process.load("CalibTracker.SiStripESProducers.fake.SiStripQualityFakeESSource_cfi")
-
-process.siStripQualityFakeESSource  = cms.ESSource("SiStripQualityFakeESSource")
-process.es_prefer_fake_strip_quality = cms.ESPrefer("SiStripQualityFakeESSource",
-                                                     "siStripQualityFakeESSource")
-
-process.load("CalibTracker.SiStripESProducers.fake.SiStripPedestalsFakeESSource_cfi")
-
-process.siStripPedestalsFakeESSource  = cms.ESSource("SiStripPedestalsFakeESSource")
-process.es_prefer_fake_strip_pedestal = cms.ESPrefer("SiStripPedestalsFakeESSource",
-                                                     "siStripPedestalsFakeESSource")
-
-process.load("CalibTracker.SiStripESProducers.fake.SiStripLorentzAngleFakeESSource_cfi")
-
-process.siStripLorentzAngleFakeESSource  = cms.ESSource("SiStripLorentzAngleFakeESSource")
-process.es_prefer_fake_strip_LA = cms.ESPrefer("SiStripLorentzAngleFakeESSource",
-                                               "siStripLorentzAngleFakeESSource")
-
-process.siStripLorentzAngleSimFakeESSource  = cms.ESSource("SiStripLorentzAngleSimFakeESSource")
-process.es_prefer_fake_strip_LA_sim = cms.ESPrefer("SiStripLorentzAngleSimFakeESSource",
-                                                   "siStripLorentzAngleSimFakeESSource")
-
-process.load("CalibTracker.SiStripESProducers.fake.SiStripApvGainFakeESSource_cfi")
-process.SiStripApvGainGenerator.MeanGain=1.0
-process.SiStripApvGainGenerator.SigmaGain=0.0
-process.SiStripApvGainGenerator.genMode = cms.string("default")
-
-process.myStripApvGainFakeESSource = cms.ESSource("SiStripApvGainFakeESSource")
-process.es_prefer_myStripApvGainFakeESSource  = cms.ESPrefer("SiStripApvGainFakeESSource",
-                                                  "myStripApvGainFakeESSource")
-
-process.myStripApvGainSimFakeESSource  = cms.ESSource("SiStripApvGainSimFakeESSource")
-process.es_prefer_myStripApvGainSimFakeESSource = cms.ESPrefer("SiStripApvGainSimFakeESSource",
-                                                               "myStripApvGainSimFakeESSource")
-
-process.load("CalibTracker.SiStripESProducers.fake.SiStripThresholdFakeESSource_cfi")
-
-process.siStripThresholdFakeESSource  = cms.ESSource("SiStripThresholdFakeESSource")
-process.es_prefer_fake_strip_threshold = cms.ESPrefer("SiStripThresholdFakeESSource",
-                                                     "siStripThresholdFakeESSource")
-
-process.TrackerDigiGeometryESModule.applyAlignment = False
+process.load("SLHCUpgradeSimulations.Geometry.fakeConditions_stdgeom_cff")
 
 process.load("FWCore.MessageService.MessageLogger_cfi")
 #process.MessageLogger.destinations = cms.untracked.vstring("detailedInfo_fullstdgeommu50")
@@ -128,39 +67,9 @@ process.simSiPixelDigis.DeadModules_DB = False
 
 process.simSiPixelDigis.AddPixelInefficiency = -1
 
-process.siPixelClusters.src = 'simSiPixelDigis'
-process.siPixelClusters.MissCalibrate = False
-#process.siStripZeroSuppression.RawDigiProducersList[0].RawDigiProducer = 'simSiStripDigis'
-#process.siStripZeroSuppression.RawDigiProducersList[1].RawDigiProducer = 'simSiStripDigis'
-#process.siStripZeroSuppression.RawDigiProducersList[2].RawDigiProducer = 'simSiStripDigis'
-#process.siStripClusters.DigiProducersList[0].DigiProducer= 'simSiStripDigis'
-process.siStripZeroSuppression.RawDigiProducersList = cms.VInputTag( cms.InputTag('simSiStripDigis','VirginRaw'), 
-                                                                     cms.InputTag('simSiStripDigis','ProcessedRaw'),
-                                                                     cms.InputTag('simSiStripDigis','ScopeMode'))
-process.siStripClusters.DigiProducersList = cms.VInputTag(cms.InputTag('simSiStripDigis','ZeroSuppressed'),
-                                                          cms.InputTag('siStripZeroSuppression','VirginRaw'),
-                                                          cms.InputTag('siStripZeroSuppression','ProcessedRaw'),
-                                                          cms.InputTag('siStripZeroSuppression','ScopeMode'))
-## more needed for strips from RecoTracker/MeasurementDet/python/MeasurementTrackerESProducer_cfi.py
-#process.MeasurementTracker.inactiveStripDetectorLabels = cms.VInputTag('siStripDigis')
-#process.MeasurementTracker.inactiveStripDetectorLabels = cms.VInputTag('')
-#process.MeasurementTracker.stripClusterProducer=cms.string('')
-## needed to avoid RAW2DIGI and DIGI2Raw
-#process.MeasurementTracker.inactiveStripDetectorLabels = cms.VInputTag()
-#
-#process.MeasurementTracker.UseStripModuleQualityDB     = cms.bool(False)
-#process.MeasurementTracker.UseStripAPVFiberQualityDB   = cms.bool(False)
-#process.MeasurementTracker.MaskBadAPVFibers            = cms.bool(False)
-#process.MeasurementTracker.UseStripStripQualityDB      = cms.bool(False)
-#process.MeasurementTracker.UsePixelModuleQualityDB   = cms.bool(False)
-#process.MeasurementTracker.UsePixelROCQualityDB      = cms.bool(False)
-#process.MeasurementTracker.PixelCPE = cms.string('PixelCPEGeneric')
-##Ivan's version
-#process.MeasurementTracker.stripClusterProducer=cms.string('')
-process.MeasurementTracker.inactiveStripDetectorLabels = cms.VInputTag()
-process.MeasurementTracker.UseStripModuleQualityDB     = cms.bool(False)
-process.MeasurementTracker.UseStripAPVFiberQualityDB   = cms.bool(False)
+process.load("SLHCUpgradeSimulations.Geometry.recoFromSimDigis_cff")
 
+process.ctfWithMaterialTracks.TTRHBuilder = 'WithTrackAngle'
 
 # Event output
 process.load("Configuration.EventContent.EventContent_cff")
