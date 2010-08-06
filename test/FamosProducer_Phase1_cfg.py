@@ -176,6 +176,15 @@ process.pixellayertriplets.BPix.TTRHBuilder = cms.string('WithTrackAngle')
 process.pixellayertriplets.FPix.TTRHBuilder = cms.string('WithTrackAngle')
 process.ctfWithMaterialTracks.TTRHBuilder = cms.string('WithTrackAngle')
 
+process.load("RecoLocalTracker.SiPixelRecHits.PixelCPEGeneric_cfi")
+process.PixelCPEGenericESProducer.Upgrade = True
+process.PixelCPEGenericESProducer.SmallPitch = False
+process.PixelCPEGenericESProducer.UseErrorsFromTemplates = False
+process.PixelCPEGenericESProducer.TruncatePixelCharge = False
+process.PixelCPEGenericESProducer.IrradiationBiasCorrection = False
+process.PixelCPEGenericESProducer.DoCosmics = False
+process.PixelCPEGenericESProducer.LoadTemplatesFromDB = False
+
 #next may not be needed
 process.load("RecoTracker.TrackProducer.TrackRefitters_cff")
 process.TrackRefitter.TTRHBuilder = cms.string('WithTrackAngle')

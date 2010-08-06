@@ -62,6 +62,15 @@ process.load("SLHCUpgradeSimulations.Geometry.recoFromSimDigis_cff")
 
 process.ctfWithMaterialTracks.TTRHBuilder = cms.string('WithTrackAngle')
 
+process.load("RecoLocalTracker.SiPixelRecHits.PixelCPEGeneric_cfi")
+process.PixelCPEGenericESProducer.Upgrade = True
+process.PixelCPEGenericESProducer.SmallPitch = False
+process.PixelCPEGenericESProducer.UseErrorsFromTemplates = False
+process.PixelCPEGenericESProducer.TruncatePixelCharge = False
+process.PixelCPEGenericESProducer.IrradiationBiasCorrection = False
+process.PixelCPEGenericESProducer.DoCosmics = False
+process.PixelCPEGenericESProducer.LoadTemplatesFromDB = False
+
 process.load("SimTracker.Configuration.SimTracker_cff")
 process.simSiPixelDigis.MissCalibrate = False
 process.simSiPixelDigis.LorentzAngle_DB = False

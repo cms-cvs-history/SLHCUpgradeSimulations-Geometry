@@ -20,7 +20,7 @@ process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_cff')
 process.load('Configuration.EventContent.EventContent_cff')
 
 process.configurationMetadata = cms.untracked.PSet(
-    version = cms.untracked.string('$Revision: 1.155 $'),
+    version = cms.untracked.string('$Revision: 1.1.2.1 $'),
     annotation = cms.untracked.string('step2/stdgeom nevts:100'),
     name = cms.untracked.string('PyReleaseValidation')
 )
@@ -93,6 +93,13 @@ process.load("SLHCUpgradeSimulations.Geometry.recoFromSimDigis_cff")
 
 process.ctfWithMaterialTracks.TTRHBuilder = 'WithTrackAngle'
 
+process.load("RecoLocalTracker.SiPixelRecHits.PixelCPEGeneric_cfi")
+process.PixelCPEGenericESProducer.UseErrorsFromTemplates = False
+process.PixelCPEGenericESProducer.TruncatePixelCharge = False
+process.PixelCPEGenericESProducer.IrradiationBiasCorrection = False
+process.PixelCPEGenericESProducer.DoCosmics = False
+process.PixelCPEGenericESProducer.LoadTemplatesFromDB = False
+
 ### Now Validation and other user functions #########################################
 process.load("Validation.RecoTrack.cutsTPEffic_cfi")
 process.load("Validation.RecoTrack.cutsTPFake_cfi")
@@ -164,9 +171,23 @@ process.ReadLocalMeasurement = cms.EDAnalyzer("StdHitNtuplizer",
 process.anal = cms.EDAnalyzer("EventContentAnalyzer")
 
 ### back to standard commands
-## extra settings
-#process.load('RecoVertex.BeamSpotProducer.BeamSpotFakeConditionsSimpleGaussian_cff')
-#process.es_prefer_beamspot = cms.ESPrefer("BeamSpotFakeConditions","")
+
+process.load("RecoTracker.TrackProducer.TrackRefitters_cff")
+process.Refitter = process.TrackRefitter.clone()
+process.Refitter.src = 'ctfWithMaterialTracks'
+process.Refitter.TTRHBuilder= cms.string("WithTrackAngle")
+
+process.load("SLHCUpgradeSimulations.Validation.SLHCPixelHitAnalyzer_cfi")
+process.SLHCPixelHitAnalyzer.trajectoryInput = cms.string('Refitter')
+process.SLHCPixelHitAnalyzer.useAllPixel = cms.bool(False)
+process.SLHCPixelHitAnalyzer.isCosmic = cms.bool(False)
+process.SLHCPixelHitAnalyzer.isSim = cms.bool(True)
+process.SLHCPixelHitAnalyzer.OutputFile = cms.string('pixelhitdata.root')
+
+process.TFileService = cms.Service("TFileService",
+                                   fileName = cms.string("pixelhitdata.root"),
+                                   closeFileFast = cms.untracked.bool(True)
+                                   )
 
 process.load("RecoVertex.Configuration.RecoVertex_cff")
 process.offlinePrimaryVertices.TrackLabel = cms.InputTag("ctfWithMaterialTracks")
@@ -182,6 +203,7 @@ process.mix_step = cms.Path(process.mix)
 process.reconstruction_step = cms.Path(process.trackerlocalreco*process.offlineBeamSpot+process.oldTracking_wtriplets)
 process.debug_step = cms.Path(process.anal)
 process.validation_step = cms.Path(process.cutsTPEffic*process.cutsTPFake*process.multiTrackValidator)
+process.user_step0 = cms.Path(process.Refitter*process.SLHCPixelHitAnalyzer)
 #process.user_step = cms.Path(process.ReadLocalMeasurement)
 process.user_step = cms.Path(process.vertexreco*process.slhcSimpleVertexAnalysis*process.ReadLocalMeasurement)
 process.endjob_step = cms.Path(process.endOfProcess)
@@ -189,5 +211,5 @@ process.endjob_step = cms.Path(process.endOfProcess)
 
 # Schedule definition
 #process.schedule = cms.Schedule(process.mix_step,process.reconstruction_step,process.debug_step,process.validation_step,process.user_step,process.endjob_step,process.out_step)
-process.schedule = cms.Schedule(process.mix_step,process.reconstruction_step,process.validation_step,process.user_step,process.endjob_step)
+process.schedule = cms.Schedule(process.mix_step,process.reconstruction_step,process.validation_step,process.user_step0,process.user_step,process.endjob_step)
 #process.schedule = cms.Schedule(process.mix_step,process.reconstruction_step,process.validation_step,process.endjob_step)

@@ -11,7 +11,7 @@ process = cms.Process('RECO')
 process.load('Configuration.StandardSequences.Services_cff')
 process.load('FWCore.MessageService.MessageLogger_cfi')
 process.load('Configuration.StandardSequences.MixingNoPileUp_cff')
-#process.load("SLHCUpgradeSimulations.Geometry.mixLowLumPU_Phase1_R34F16_cff")
+#process.load("SLHCUpgradeSimulations.Geometry.mixLowLumPU_Phase1_R39F16_cff")
 process.load('Configuration.StandardSequences.GeometryExtended_cff')
 process.load('Configuration.StandardSequences.MagneticField_38T_cff')
 process.load('Configuration.StandardSequences.Reconstruction_cff')
@@ -20,8 +20,8 @@ process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_cff')
 process.load('Configuration.EventContent.EventContent_cff')
 
 process.configurationMetadata = cms.untracked.PSet(
-    version = cms.untracked.string('$Revision: 1.1 $'),
-    annotation = cms.untracked.string('step2/Phase1/R34F16 nevts:100'),
+    version = cms.untracked.string('$Revision: 1.1.2.1 $'),
+    annotation = cms.untracked.string('step2/Phase1/r39v27 nevts:100'),
     name = cms.untracked.string('PyReleaseValidation')
 )
 process.maxEvents = cms.untracked.PSet(
@@ -111,6 +111,15 @@ process.load("SLHCUpgradeSimulations.Geometry.recoFromSimDigis_cff")
 
 process.ctfWithMaterialTracks.TTRHBuilder = 'WithTrackAngle'
 
+process.load("RecoLocalTracker.SiPixelRecHits.PixelCPEGeneric_cfi")
+process.PixelCPEGenericESProducer.Upgrade = True
+process.PixelCPEGenericESProducer.SmallPitch = False
+process.PixelCPEGenericESProducer.UseErrorsFromTemplates = False
+process.PixelCPEGenericESProducer.TruncatePixelCharge = False
+process.PixelCPEGenericESProducer.IrradiationBiasCorrection = False
+process.PixelCPEGenericESProducer.DoCosmics = False
+process.PixelCPEGenericESProducer.LoadTemplatesFromDB = False
+
 ## uncomment for changes for small pixel size
 #process.load("SLHCUpgradeSimulations.Geometry.smallPixelSizeChanges_cff")
 
@@ -189,6 +198,23 @@ process.anal = cms.EDAnalyzer("EventContentAnalyzer")
 
 ### back to standard commands
 
+process.load("RecoTracker.TrackProducer.TrackRefitters_cff")
+process.Refitter = process.TrackRefitter.clone()
+process.Refitter.src = 'ctfWithMaterialTracks'
+process.Refitter.TTRHBuilder= cms.string("WithTrackAngle")
+
+process.load("SLHCUpgradeSimulations.Validation.SLHCPixelHitAnalyzer_cfi")
+process.SLHCPixelHitAnalyzer.trajectoryInput = cms.string('Refitter')
+process.SLHCPixelHitAnalyzer.useAllPixel = cms.bool(False)
+process.SLHCPixelHitAnalyzer.isCosmic = cms.bool(False)
+process.SLHCPixelHitAnalyzer.isSim = cms.bool(True)
+process.SLHCPixelHitAnalyzer.OutputFile = cms.string('pixelhitdata.root')
+
+process.TFileService = cms.Service("TFileService",
+                                   fileName = cms.string("pixelhitdata.root"),
+                                   closeFileFast = cms.untracked.bool(True)
+                                   )
+
 process.load("RecoVertex.Configuration.RecoVertex_cff")
 process.offlinePrimaryVertices.TrackLabel = cms.InputTag("ctfWithMaterialTracks")
 process.offlinePrimaryVerticesWithBS.TrackLabel = cms.InputTag("ctfWithMaterialTracks")
@@ -203,6 +229,7 @@ process.mix_step = cms.Path(process.mix)
 process.reconstruction_step = cms.Path(process.trackerlocalreco*process.offlineBeamSpot+process.oldTracking_wtriplets)
 process.debug_step = cms.Path(process.anal)
 process.validation_step = cms.Path(process.cutsTPEffic*process.cutsTPFake*process.multiTrackValidator)
+process.user_step0 = cms.Path(process.Refitter*process.SLHCPixelHitAnalyzer)
 process.user_step = cms.Path(process.vertexreco*process.slhcSimpleVertexAnalysis*process.ReadLocalMeasurement)
 process.endjob_step = cms.Path(process.endOfProcess)
 process.out_step = cms.EndPath(process.output)
@@ -210,5 +237,5 @@ process.out_step = cms.EndPath(process.output)
 # Schedule definition
 #process.schedule = cms.Schedule(process.mix_step,process.reconstruction_step,process.debug_step,process.validation_step,process.user_step,process.endjob_step,process.out_step)
 #process.schedule = cms.Schedule(process.mix_step,process.reconstruction_step,process.validation_step,process.user_step,process.endjob_step,process.out_step)
-process.schedule = cms.Schedule(process.mix_step,process.reconstruction_step,process.validation_step,process.user_step,process.endjob_step)
+process.schedule = cms.Schedule(process.mix_step,process.reconstruction_step,process.validation_step,process.user_step0,process.user_step,process.endjob_step)
 #process.schedule = cms.Schedule(process.mix_step,process.reconstruction_step,process.validation_step,process.endjob_step)
