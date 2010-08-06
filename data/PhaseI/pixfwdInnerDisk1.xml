@@ -94,7 +94,7 @@
   <Numeric name="NumberOfBlades"   value="22"/>
   <Numeric name="BladeAngle"       value="-20*deg"/>
   <Numeric name="BladeTilt"        value="12*deg"/>
-  <Numeric name="BladeCommonZ"     value="0.0*mm"/>
+  <Numeric name="BladeCommonZ"     value="-4.75*mm"/>
   <Vector name="BladeZShift" type="numeric" nEntries="22">
     -9.97*mm, -5.45*mm, -0.93*mm,  3.59*mm,  8.11*mm, 
     -9.97*mm, -5.45*mm, -0.93*mm,  3.59*mm,  8.11*mm, 12.62*mm,
