@@ -137,6 +137,7 @@ process.load("Configuration.StandardSequences.Reconstruction_cff")
 process.PixelCPEGenericESProducer.UseErrorsFromTemplates = cms.bool(False)
 process.PixelCPEGenericESProducer.TruncatePixelCharge = cms.bool(False)
 process.PixelCPEGenericESProducer.LoadTemplatesFromDB = cms.bool(False)
+process.PixelCPEGenericESProducer.Upgrade = cms.bool(True)
 #print process.PixelCPEGenericESProducer.TruncatePixelCharge
 #print process.PixelCPEGenericESProducer.LoadTemplatesFromDB
 #print process.PixelCPEGenericESProducer.UseErrorsFromTemplates
