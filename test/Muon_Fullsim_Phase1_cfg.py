@@ -1,17 +1,17 @@
 # Auto generated configuration file
 # using: 
-# Revision: 1.155 
+# Revision: 1.172.2.5 
 # Source: /cvs_server/repositories/CMSSW/CMSSW/Configuration/PyReleaseValidation/python/ConfigBuilder.py,v 
-# with command line options: Configuration/Generator/python/SingleMuPt10_cfi.py -s GEN,SIM,DIGI,L1,DIGI2RAW,HLT,RAW2DIGI,L1Reco -n 100 --conditions MC_3XY_V9A::All --datatier GEN-SIM-RAW --eventcontent RAWSIM --beamspot Gauss --python_filename Muon_Fullsim_cfg.py --no_exec
+# with command line options: Configuration/Generator/python/SingleMuPt10_cfi.py -s GEN,SIM,DIGI,L1,DIGI2RAW,HLT,RAW2DIGI,L1Reco -n 100 --conditions DESIGN_36_V10::All --datatier GEN-SIM-RAW --eventcontent RAWSIM --beamspot Gauss --python_filename Muon_Fullsim_cfg.py --no_exec
 import FWCore.ParameterSet.Config as cms
 
 process = cms.Process('HLT')
 
 # import of standard configurations
 process.load('Configuration.StandardSequences.Services_cff')
+process.load('SimGeneral.HepPDTESSource.pythiapdt_cfi')
 process.load('FWCore.MessageService.MessageLogger_cfi')
-#process.load('Configuration.StandardSequences.MixingNoPileUp_cff')
-process.load("SLHCUpgradeSimulations.Geometry.mixLowLumPU_Phase1_R34F16_cff")
+process.load('Configuration.StandardSequences.MixingNoPileUp_cff')
 process.load('Configuration.StandardSequences.GeometryExtended_cff')
 process.load('Configuration.StandardSequences.MagneticField_38T_cff')
 process.load('Configuration.StandardSequences.Generator_cff')
@@ -28,40 +28,15 @@ process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_cff')
 process.load('Configuration.EventContent.EventContent_cff')
 
 process.configurationMetadata = cms.untracked.PSet(
-    version = cms.untracked.string('$Revision: 1.155 $'),
-    annotation = cms.untracked.string('Phase1_R34/16F/MuPt1-100_cfi.py nevts:100'),
+    version = cms.untracked.string('$Revision: 1.172.2.5 $'),
+    annotation = cms.untracked.string('Configuration/Generator/python/SingleMuPt10_cfi.py Altered nevts:100'),
     name = cms.untracked.string('PyReleaseValidation')
 )
 process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(10)
+    input = cms.untracked.int32(100)
 )
 process.options = cms.untracked.PSet(
-    Rethrow = cms.untracked.vstring('OtherCMS', 
-        'StdException', 
-        'Unknown', 
-        'BadAlloc', 
-        'BadExceptionType', 
-        'ProductNotFound', 
-        'DictionaryNotFound', 
-        'InsertFailure', 
-        'Configuration', 
-        'LogicError', 
-        'UnimplementedFeature', 
-        'InvalidReference', 
-        'NullPointerError', 
-        'NoProductSpecified', 
-        'EventTimeout', 
-        'EventCorruption', 
-        'ScheduleExecutionFailure', 
-        'EventProcessorFailure', 
-        'FileInPathError', 
-        'FileOpenError', 
-        'FileReadError', 
-        'FatalRootError', 
-        'MismatchedInputFiles', 
-        'ProductDoesNotSupportViews', 
-        'ProductDoesNotSupportPtr', 
-        'NotFound')
+
 )
 # Input source
 process.source = cms.Source("EmptySource")
@@ -70,9 +45,10 @@ process.source = cms.Source("EmptySource")
 process.output = cms.OutputModule("PoolOutputModule",
     splitLevel = cms.untracked.int32(0),
     outputCommands = process.RAWSIMEventContent.outputCommands,
-    fileName = cms.untracked.string('/uscms_data/d2/cheung/slhc/R34F16/muon/Muon_RAWSIM.root'),
+    fileName = cms.untracked.string('/uscms_data/d2/brownson/slhc/QuadMuPt10_cfi_py_GEN_SIM_DIGI_L1_DIGI2RAW_HLT_RAW2DIGI_L1Reco.root'),
     dataset = cms.untracked.PSet(
-        dataTier = cms.untracked.string('GEN-SIM-RAW'),
+        # Adding USER to data tier to scare off non-SLHC people who may try to use it
+        dataTier = cms.untracked.string('GEN-SIM-RAW-USER'),
         filterName = cms.untracked.string('')
     ),
     SelectEvents = cms.untracked.PSet(
@@ -83,7 +59,7 @@ process.output = cms.OutputModule("PoolOutputModule",
 # Additional output definition
 
 # Other statements
-process.GlobalTag.globaltag = 'MC_3XY_V9A::All'
+process.GlobalTag.globaltag = 'DESIGN_36_V10::All'
 process.generator = cms.EDProducer("FlatRandomPtGunProducer",
     PGunParameters = cms.PSet(
         MaxPt = cms.double(50.0),
@@ -95,23 +71,14 @@ process.generator = cms.EDProducer("FlatRandomPtGunProducer",
         MinPhi = cms.double(-3.14159265359)
     ),
     Verbosity = cms.untracked.int32(0),
-    psethack = cms.string('Four mu pt 0.9-50'),
+    psethack = cms.string('Quad mu pt 0.9-50'),
     AddAntiParticle = cms.bool(True),
     firstRun = cms.untracked.uint32(1)
 )
-process.ProductionFilterSequence = cms.Sequence(process.generator)
 
 ### PhaseI Geometry and modifications ###############################################
-
 process.load("SLHCUpgradeSimulations.Geometry.PhaseI_cmsSimIdealGeometryXML_cff")
 process.Timing =  cms.Service("Timing")
-
-process.mix.input.nbPileupEvents = cms.PSet(
-  averageNumber = cms.double(5.0)
-  #sigmaInel = cms.double(80.0),
-  #Lumi = cms.double(2.0)
-)
-
 from SimTracker.Configuration.SimTracker_EventContent_cff import *
 from SimGeneral.Configuration.SimGeneral_EventContent_cff import *
 
@@ -129,8 +96,9 @@ process.siPixelFakeLorentzAngleESSource = cms.ESSource("SiPixelFakeLorentzAngleE
 process.es_prefer_fake_lorentz = cms.ESPrefer("SiPixelFakeLorentzAngleESSource","siPixelFakeLorentzAngleESSource")
 
 process.load("CalibTracker.SiStripESProducers.fake.SiStripNoisesFakeESSource_cfi")
-process.SiStripNoisesGenerator.NoiseStripLengthSlope=51. #dec mode
-process.SiStripNoisesGenerator.NoiseStripLengthQuote=630.
+# Next two lines are antiquated in form, and we use the proper values by default
+#process.SiStripNoisesGenerator.NoiseStripLengthSlope=51. #dec mode
+#process.SiStripNoisesGenerator.NoiseStripLengthQuote=630.
 
 process.siStripNoisesFakeESSource  = cms.ESSource("SiStripNoisesFakeESSource")
 process.es_prefer_fake_strip_noise = cms.ESPrefer("SiStripNoisesFakeESSource",
@@ -162,7 +130,6 @@ process.load("CalibTracker.SiStripESProducers.fake.SiStripApvGainFakeESSource_cf
 process.SiStripApvGainGenerator.MeanGain=1.0
 process.SiStripApvGainGenerator.SigmaGain=0.0
 process.SiStripApvGainGenerator.genMode = cms.string("default")
-
 process.myStripApvGainFakeESSource = cms.ESSource("SiStripApvGainFakeESSource")
 process.es_prefer_myStripApvGainFakeESSource  = cms.ESPrefer("SiStripApvGainFakeESSource",
                                                   "myStripApvGainFakeESSource")
@@ -178,7 +145,6 @@ process.es_prefer_fake_strip_threshold = cms.ESPrefer("SiStripThresholdFakeESSou
                                                      "siStripThresholdFakeESSource")
 
 process.TrackerDigiGeometryESModule.applyAlignment = False
-
 process.simSiPixelDigis.MissCalibrate = False
 process.simSiPixelDigis.LorentzAngle_DB = False
 process.simSiPixelDigis.killModules = False
@@ -195,6 +161,7 @@ process.MeasurementTracker.UseStripAPVFiberQualityDB   = cms.bool(False)
 process.mergedtruth.volumeRadius = cms.double(100.0)
 process.mergedtruth.volumeZ = cms.double(900.0)
 process.mergedtruth.discardOutVolume = cms.bool(True)
+
 
 ### back to standard job commands ##################################################
 
@@ -217,4 +184,4 @@ process.schedule = cms.Schedule(process.generation_step,process.simulation_step,
 process.schedule.extend([process.endjob_step,process.out_step])
 # special treatment in case of production filter sequence  
 for path in process.paths: 
-    getattr(process,path)._seq = process.ProductionFilterSequence*getattr(process,path)._seq
+    getattr(process,path)._seq = process.generator*getattr(process,path)._seq
