@@ -28,7 +28,7 @@ process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_cff')
 process.load('Configuration.EventContent.EventContent_cff')
 
 process.configurationMetadata = cms.untracked.PSet(
-    version = cms.untracked.string('$Revision: 1.172.2.5 $'),
+    version = cms.untracked.string('$Revision: 1.2 $'),
     annotation = cms.untracked.string('Configuration/Generator/python/SingleMuPt10_cfi.py Altered nevts:100'),
     name = cms.untracked.string('PyReleaseValidation')
 )
@@ -45,10 +45,10 @@ process.source = cms.Source("EmptySource")
 process.output = cms.OutputModule("PoolOutputModule",
     splitLevel = cms.untracked.int32(0),
     outputCommands = process.RAWSIMEventContent.outputCommands,
-    fileName = cms.untracked.string('/uscms_data/d2/brownson/slhc/QuadMuPt10_cfi_py_GEN_SIM_DIGI_L1_DIGI2RAW_HLT_RAW2DIGI_L1Reco.root'),
+    fileName = cms.untracked.string('QuadMuPt10_cfi_py_GEN_SIM_DIGI_L1_USER.root'),
     dataset = cms.untracked.PSet(
         # Adding USER to data tier to scare off non-SLHC people who may try to use it
-        dataTier = cms.untracked.string('GEN-SIM-RAW-USER'),
+        dataTier = cms.untracked.string('GEN-SIM-USER'),
         filterName = cms.untracked.string('')
     ),
     SelectEvents = cms.untracked.PSet(
