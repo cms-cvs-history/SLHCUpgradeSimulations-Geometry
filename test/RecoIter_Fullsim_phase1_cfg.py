@@ -91,6 +91,9 @@ process.mix.playback = True
 process.load("SLHCUpgradeSimulations.Geometry.fakeConditions_Phase1_cff")
 process.load("SLHCUpgradeSimulations.Geometry.recoFromSimDigis_cff")
 process.load("SLHCUpgradeSimulations.Geometry.upgradeTracking_phase1_cff")
+## for quadruplet seeding instead use the following
+#process.load("SLHCUpgradeSimulations.Geometry.upgradeTracking_phase1_quad_wo45_cff")
+
 
 process.ctfWithMaterialTracks.TTRHBuilder = 'WithTrackAngle'
 
