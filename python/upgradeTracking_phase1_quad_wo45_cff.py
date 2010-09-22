@@ -43,7 +43,9 @@ stepOneSeedFromTriplets.SeedMergerPSet.mergeTriplets = cms.bool(False)
 stepOnemixedlayertriplets = RecoTracker.TkSeedingLayers.MixedLayerTriplets_cfi.mixedlayertriplets.clone()
 stepOnemixedlayertriplets.ComponentName = cms.string('stepOneMixedLayerTriplets')
 stepOnemixedlayertriplets.layerList = cms.vstring('BPix1+BPix2+BPix3',
+                                                 'BPix1+BPix2+BPix4',
                                                  'BPix2+BPix3+BPix4',
+                                                 'BPix1+BPix3+BPix4',
                                                  'BPix1+BPix2+FPix1_pos',
                                                  'BPix1+BPix2+FPix1_neg',
                                                  'BPix1+BPix3+FPix1_pos',
