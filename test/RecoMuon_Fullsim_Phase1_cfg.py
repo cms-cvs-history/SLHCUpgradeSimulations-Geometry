@@ -20,7 +20,7 @@ process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_cff')
 process.load('Configuration.EventContent.EventContent_cff')
 
 process.configurationMetadata = cms.untracked.PSet(
-    version = cms.untracked.string('$Revision: 1.172.2.5 $'),
+    version = cms.untracked.string('$Revision: 1.3 $'),
     annotation = cms.untracked.string('step2 nevts:100'),
     name = cms.untracked.string('PyReleaseValidation')
 )
@@ -60,7 +60,7 @@ process.source = cms.Source("PoolSource",
 process.GlobalTag.globaltag = 'DESIGN_36_V10::All'
 
 ### PhaseI Geometry and modifications ###############################################
-process.load("SLHCUpgradeSimulations.Geometry.PhaseI_cmsSimIdealGeometryXML_cff")
+process.load("SLHCUpgradeSimulations.Geometry.PhaseI_cmsSimIdealGeometryXML_R39F16_cff")
 process.Timing =  cms.Service("Timing")
 process.mix.playback = True
 #process.MessageLogger.destinations = cms.untracked.vstring("detailedInfo_fullph1geom")
