@@ -141,57 +141,52 @@ process.thMeasurementTracker.UsePixelROCQualityDB        = cms.bool(False)
 process.fourthMeasurementTracker.inactiveStripDetectorLabels = cms.VInputTag()
 process.fifthMeasurementTracker.inactiveStripDetectorLabels = cms.VInputTag()
 
-### Now Validation and other user functions #########################################
+### Now Validation ##################################################################
 process.load("Validation.RecoTrack.cutsTPEffic_cfi")
 process.load("Validation.RecoTrack.cutsTPFake_cfi")
 
 process.load("SimTracker.TrackAssociation.TrackAssociatorByChi2_cfi")
 process.load("SimTracker.TrackAssociation.TrackAssociatorByHits_cfi")
 
-#process.load("Validation.RecoTrack.MultiTrackValidator_cff")
 process.load('Configuration.StandardSequences.Validation_cff')
-#process.trackValidator.label = ['generalTracks']
+### look look at OOTB generalTracks and high purity collections
+### for high purity also look at 6 and 8 hit requirements
+### some definitions in Validation/RecoTrack/python/TrackValidation_cff.py
+
+import PhysicsTools.RecoAlgos.recoTrackSelector_cfi
+
+process.cutsRecoTracksHpw6hits = PhysicsTools.RecoAlgos.recoTrackSelector_cfi.recoTrackSelector.clone()
+process.cutsRecoTracksHpw6hits.quality=cms.vstring("highPurity")
+process.cutsRecoTracksHpw6hits.minHit=cms.int32(6)
+
+process.cutsRecoTracksHpw8hits = PhysicsTools.RecoAlgos.recoTrackSelector_cfi.recoTrackSelector.clone()
+process.cutsRecoTracksHpw8hits.quality=cms.vstring("highPurity")
+process.cutsRecoTracksHpw8hits.minHit=cms.int32(8)
+
 process.trackValidator.label=cms.VInputTag(cms.InputTag("generalTracks"),
-                                   cms.InputTag("zeroStepTracksWithQuality"),
-                                   cms.InputTag("preMergingFirstStepTracksWithQuality"),
-                                   cms.InputTag("firstStepTracksWithQuality"),
-                                   cms.InputTag("secStep"),
-                                   cms.InputTag("thStep")
-                                   )
+                                           cms.InputTag("cutsRecoTracksHp"),
+                                           cms.InputTag("cutsRecoTracksHpw6hits"),
+                                           cms.InputTag("cutsRecoTracksHpw8hits"),
+                                           cms.InputTag("cutsRecoTracksZeroHp"),
+                                           cms.InputTag("cutsRecoTracksFirstHp"),
+                                           cms.InputTag("cutsRecoTracksSecondHp"),
+                                           cms.InputTag("cutsRecoTracksThirdHp")
+                                           )
 process.trackValidator.associators = ['TrackAssociatorByHits']
 process.trackValidator.UseAssociators = True
 process.trackValidator.nint = cms.int32(20)
 process.trackValidator.nintpT = cms.int32(25)
 process.trackValidator.maxpT = cms.double(50.0)
-#process.multiTrackValidator.label = ['generalTracks']
-#### if using simple (non-iterative) or old (as in 1_8_4) tracking
-##process.multiTrackValidator.label = ['ctfWithMaterialTracks']
-##process.multiTrackValidator.label = ['cutsRecoTracks']
-##process.multiTrackValidator.label_tp_effic = cms.InputTag("cutsTPEffic")
-##process.multiTrackValidator.label_tp_fake = cms.InputTag("cutsTPFake")
-#process.multiTrackValidator.associators = ['TrackAssociatorByHits']
-#process.multiTrackValidator.UseAssociators = True
-##process.multiTrackValidator.outputFile = "validfullstdg_muon_50GeV.root"
-#process.multiTrackValidator.nint = cms.int32(20)
-#process.multiTrackValidator.nintpT = cms.int32(25)
-#process.multiTrackValidator.maxpT = cms.double(50.0)
-##process.multiTrackValidator.skipHistoFit = False
 
-##### with John's changes ##############################
-# restrict vertex of tracks used in fake validator for matching
-#process.cutsTPFake.tip = cms.double(10.0)
-#process.cutsTPFake.lip = cms.double(90.0)
-#NB: tracks are already filtered by the generalTracks sequence
-#for additional cuts use the cutsRecoTracks filter:
-#process.load("Validation.RecoTrack.cutsRecoTracks_cfi")
-#process.cutsRecoTracks.src = cms.InputTag("ctfWithMaterialTracks")
-#process.cutsRecoTracks.algorithm = cms.vstring()
-#process.cutsRecoTracks.quality = cms.vstring()
-##process.cutsRecoTracks.quality = cms.string('')
-#process.cutsRecoTracks.minHit = cms.int32(3)
-#process.cutsRecoTracks.minHit = cms.int32(8)
-#process.cutsRecoTracks.minHit = cms.int32(6)
-############ end John's changes ###########################
+process.slhcTracksValidation = cms.Sequence(process.cutsRecoTracksHp*
+                                 process.cutsRecoTracksHpw6hits*
+                                 process.cutsRecoTracksHpw8hits*
+                                 process.cutsRecoTracksZeroHp*
+                                 process.cutsRecoTracksFirstHp*
+                                 process.cutsRecoTracksSecondHp*
+                                 process.cutsRecoTracksThirdHp*
+                                 process.trackValidator)
+#######################################################################################
 process.ReadLocalMeasurement = cms.EDAnalyzer("StdHitNtuplizer",
    src = cms.InputTag("siPixelRecHits"),
    stereoRecHits = cms.InputTag("siStripMatchedRecHits","stereoRecHit"),
@@ -286,7 +281,8 @@ process.SimpleMemoryCheck = cms.Service("SimpleMemoryCheck",
 process.mix_step = cms.Path(process.mix)
 process.reconstruction_step = cms.Path(process.trackerlocalreco*process.offlineBeamSpot+process.recopixelvertexing*process.ckftracks_wodEdXandSteps4and5)
 process.debug_step = cms.Path(process.anal)
-process.validation_step = cms.Path(process.cutsTPEffic*process.cutsTPFake*process.trackerSeedValidator*process.trackValidator)
+#process.validation_step = cms.Path(process.cutsTPEffic*process.cutsTPFake*process.trackerSeedValidator*process.trackValidator)
+process.validation_step = cms.Path(process.cutsTPEffic*process.cutsTPFake*process.trackerSeedValidator*process.slhcTracksValidation)
 process.user_step0 = cms.Path(process.vertexreco*process.slhcSimpleVertexAnalysis*process.Refitter*process.SLHCPixelHitAnalyzer)
 #process.user_step0 = cms.Path(process.Refitter*process.SLHCAllPixelHitAnalyzer)
 process.user_step = cms.Path(process.ReadLocalMeasurement)
