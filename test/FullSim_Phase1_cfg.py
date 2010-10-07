@@ -4,14 +4,12 @@ process = cms.Process("Fullsim")
 
 process.load("Configuration.StandardSequences.Services_cff")
 
-process.load("Configuration.StandardSequences.Geometry_cff")
-#PhaseI Geometry
-process.load("SLHCUpgradeSimulations.Geometry.PhaseI_cmsSimIdealGeometryXML_cff")
+process.load("SLHCUpgradeSimulations.Geometry.PhaseI_cmsSimIdealGeometryXML_R39F16_cff")
 
 process.load("Configuration.StandardSequences.MagneticField_cff")
 
 process.load("Configuration.StandardSequences.FrontierConditions_GlobalTag_cff")
-process.GlobalTag.globaltag = 'MC_36Y_V9::All'
+process.GlobalTag.globaltag = 'DESIGN_36_V10::All'
 
 process.siPixelFakeGainOfflineESSource = cms.ESSource("SiPixelFakeGainOfflineESSource",
 #    file = cms.FileInPath('SLHCUpgradeSimulations/Geometry/data/PhaseI/PixelSkimmedGeometry_phase1.txt')
@@ -218,7 +216,7 @@ process.MeasurementTracker.UseStripAPVFiberQualityDB   = cms.bool(False)
 process.load("Configuration.EventContent.EventContent_cff")
 
 process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(1000)
+    input = cms.untracked.int32(25)
 )
 
 process.load("FastSimulation/Configuration/FlatPtMuonGun_cfi")

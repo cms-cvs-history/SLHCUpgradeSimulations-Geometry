@@ -12,7 +12,7 @@ process.load('Configuration.StandardSequences.Services_cff')
 process.load('SimGeneral.HepPDTESSource.pythiapdt_cfi')
 process.load('FWCore.MessageService.MessageLogger_cfi')
 process.load('Configuration.StandardSequences.MixingNoPileUp_cff')
-process.load('Configuration.StandardSequences.GeometryExtended_cff')
+process.load("SLHCUpgradeSimulations.Geometry.PhaseI_cmsSimIdealGeometryXML_R39F16_cff")
 process.load('Configuration.StandardSequences.MagneticField_38T_cff')
 process.load('Configuration.StandardSequences.Reconstruction_cff')
 process.load('Configuration.StandardSequences.EndOfProcess_cff')
@@ -20,7 +20,7 @@ process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_cff')
 process.load('Configuration.EventContent.EventContent_cff')
 
 process.configurationMetadata = cms.untracked.PSet(
-    version = cms.untracked.string('$Revision: 1.3 $'),
+    version = cms.untracked.string('$Revision: 1.4 $'),
     annotation = cms.untracked.string('step2 nevts:100'),
     name = cms.untracked.string('PyReleaseValidation')
 )
@@ -60,12 +60,12 @@ process.source = cms.Source("PoolSource",
 process.GlobalTag.globaltag = 'DESIGN_36_V10::All'
 
 ### PhaseI Geometry and modifications ###############################################
-process.load("SLHCUpgradeSimulations.Geometry.PhaseI_cmsSimIdealGeometryXML_R39F16_cff")
 process.Timing =  cms.Service("Timing")
 process.mix.playback = True
 #process.MessageLogger.destinations = cms.untracked.vstring("detailedInfo_fullph1geom")
 
 process.load("SLHCUpgradeSimulations.Geometry.fakeConditions_Phase1_cff")
+process.load("SLHCUpgradeSimulations.Geometry.fakeConditions_Phase1_R39F16_cff")
 process.load("SLHCUpgradeSimulations.Geometry.recoFromSimDigis_cff")
 process.ctfWithMaterialTracks.TTRHBuilder = 'WithTrackAngle'
 process.PixelCPEGenericESProducer.UseErrorsFromTemplates = cms.bool(False)
