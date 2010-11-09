@@ -20,6 +20,17 @@
 #include "DataFormats/TrackReco/interface/Track.h"
 #include "DataFormats/TrackReco/interface/TrackFwd.h"
 
+#include "DataFormats/SiPixelDetId/interface/PixelSubdetector.h"
+#include "DataFormats/SiStripDetId/interface/SiStripDetId.h"
+
+#include "DataFormats/SiPixelDetId/interface/PXBDetId.h"
+#include "DataFormats/SiPixelDetId/interface/PXFDetId.h"
+#include "DataFormats/SiStripDetId/interface/TIBDetId.h"
+#include "DataFormats/SiStripDetId/interface/TIDDetId.h"
+#include "DataFormats/SiStripDetId/interface/TOBDetId.h"
+#include "DataFormats/SiStripDetId/interface/TECDetId.h"
+#include "DataFormats/SiStripDetId/interface/StripSubdetector.h" 
+
 #include "SimDataFormats/Track/interface/SimTrack.h"
 #include "SimDataFormats/Track/interface/SimTrackContainer.h"
 #include "SimDataFormats/Vertex/interface/SimVertex.h"
@@ -30,6 +41,15 @@
 #include "SimTracker/TrackAssociation/interface/TrackAssociatorByHits.h"
 #include "SimTracker/Records/interface/TrackAssociatorRecord.h"
 #include "SimDataFormats/TrackingAnalysis/interface/TrackingParticle.h"
+
+// Geometry
+#include "MagneticField/Engine/interface/MagneticField.h"
+#include "Geometry/TrackerGeometryBuilder/interface/TrackerGeometry.h"
+#include "Geometry/Records/interface/TrackerDigiGeometryRecord.h"
+#include "Geometry/TrackerTopology/interface/RectangularPixelTopology.h"
+#include "Geometry/TrackerGeometryBuilder/interface/PixelTopologyBuilder.h"
+#include "Geometry/CommonDetUnit/interface/GeomDetType.h"
+#include "Geometry/CommonDetUnit/interface/GeomDetUnit.h"
 
 // For ROOT
 #include <TROOT.h>
@@ -86,13 +106,17 @@ void TPNtuplizer::beginJob(const edm::EventSetup& es)
  
   tfile_ = new TFile ( outputFile.c_str() , "RECREATE" );
   tptree_ = new TTree("TPNtuple","Tracking Particle analyzer ntuple");
+  shtree_ = new TTree("SHNtuple","Simtrack analyzer ntuple");
 
   int bufsize = 64000;
 
   //Common Branch
   tptree_->Branch("evt", &evt_, "run/I:evtnum:numtp:nseltp:nfdtp:numtk:nasstk", bufsize);
   tptree_->Branch("tpart", &tp_, 
-    "tpn/I:bcross:tevt:charge:stable:status:pdgid:mathit:signal:llived:sel:gpsz:gpstat:pt/F:eta:tip:lip:p:e:phi:theta:rap:qual", bufsize);
+    "tpn/I:bcross:tevt:charge:stable:status:pdgid:mathit:signal:llived:sel:gpsz:gpstat:npix:nbpix:nfpix:ndiff:nbdiff:nfdiff:pt/F:eta:tip:lip:p:e:phi:theta:rap:qual", bufsize);
+  shtree_->Branch("simtrk_simhit", &simtrk_simhit_,
+    "subid/I:layer:gx/F:gy:gz", bufsize);
+
   
   // in beginRun in MTV
   if (UseAssociators_) {
@@ -109,6 +133,12 @@ void TPNtuplizer::analyze(const edm::Event& event, const edm::EventSetup& es)
 {
   using namespace reco;
 
+  // geometry setup
+  edm::ESHandle<TrackerGeometry>        geometry;
+
+  es.get<TrackerDigiGeometryRecord>().get(geometry);
+  const TrackerGeometry*  theGeometry = &(*geometry);
+
   edm::Handle<TrackingParticleCollection>  TPCollectionHeff ;
   event.getByLabel(label_tp_effic_,TPCollectionHeff);
   const TrackingParticleCollection tPCeff = *(TPCollectionHeff.product());
@@ -116,6 +146,66 @@ void TPNtuplizer::analyze(const edm::Event& event, const edm::EventSetup& es)
   edm::Handle<TrackingParticleCollection>  TPCollectionHfake ;
   event.getByLabel(label_tp_fake_,TPCollectionHfake);
   const TrackingParticleCollection tPCfake = *(TPCollectionHfake.product());
+
+  // Loop over all TP and get the hit information
+  //std::cout << "number of TP in event = " << tPCeff.size() << std::endl;
+  for (TrackingParticleCollection::size_type i=0; i<tPCeff.size(); i++){
+    TrackingParticleRef tpr(TPCollectionHeff, i);
+    TrackingParticle* tp=const_cast<TrackingParticle*>(tpr.get());
+    if( (! tpSelector_(*tp))) continue;
+    //int num_simhit = tp->matchedHit();
+    //std::cout << "TP = " << i << " number of simhit = " << num_simhit << std::endl;
+    std::vector<PSimHit> simhits = tp->trackPSimHit();
+    //std::cout << "TP = " << i << " size of simhit vector = " << simhits.size() << std::endl;
+    //std::cout << "TP = " << i << " end-begin vector = " << tp->pSimHit_end() - tp->pSimHit_begin()<< std::endl;
+    std::string detname ;
+    int layer=0;
+    for (unsigned int j=0; j<simhits.size(); j++){
+      DetId theDetUnitId(simhits[j].detUnitId());
+      int detector = theDetUnitId.det();
+      int subdetector = theDetUnitId.subdetId();
+      if(detector != DetId::Tracker) continue;
+      if ( subdetector ==  PixelSubdetector::PixelBarrel ) {
+        detname = "PXB";
+        PXBDetId pxbid(theDetUnitId.rawId());
+        layer = pxbid.layer();
+      } else if ( subdetector ==  PixelSubdetector::PixelEndcap ) {
+        detname = "PXF";
+        PXFDetId pxfid(theDetUnitId.rawId());
+        layer = pxfid.disk();
+      } else if ( subdetector == StripSubdetector::TIB) {
+        detname = "TIB";
+        TIBDetId tibid(theDetUnitId.rawId());
+        layer = tibid.layer();
+      } else if ( subdetector ==  StripSubdetector::TOB ) {
+        detname = "TOB";
+        TOBDetId tobid(theDetUnitId.rawId());
+        layer = tobid.layer();
+      } else if ( subdetector ==  StripSubdetector::TID) {
+        detname = "TID";
+        TIDDetId tidid(theDetUnitId.rawId());
+        layer = tidid.wheel();
+      } else if ( subdetector ==  StripSubdetector::TEC ) {
+        detname = "TEC";
+        TECDetId tecid(theDetUnitId.rawId());
+        layer = tecid.wheel();
+      }
+      //std::cout << "       simhit " << j << " " << detname << " layer/disk = " << layer << std::endl;
+      const GeomDet* geomDet( theGeometry->idToDet(theDetUnitId) );
+      float simhitx = 0.5 * ( simhits[j].entryPoint().x() + simhits[j].exitPoint().x() );
+      float simhity = 0.5 * ( simhits[j].entryPoint().y() + simhits[j].exitPoint().y() );
+      LocalPoint lp(simhitx,simhity,0.);
+      GlobalPoint GP = geomDet->surface().toGlobal(lp);
+      float hitgx = GP.x();
+      float hitgy = GP.y();
+      float hitgz = GP.z();
+      //std::cout << "       x " << hitgx << " y = " << hitgy << " z = " << hitgz << " r = " 
+      //          << sqrt(hitgx*hitgx+hitgy*hitgy)<< std::endl;
+      fill_simtrk_simhit(subdetector, layer, hitgx, hitgy, hitgz);
+      shtree_->Fill();
+      simtrk_simhit_.init();
+    }
+  }
 
   for (unsigned int ww=0;ww<associators_.size();ww++){
     // get some numbers for this event - very inefficient!
@@ -270,6 +360,47 @@ void TPNtuplizer::fillTP(const int num, const int matched_hit, const float quali
   tp_.theta = tp->theta();
   tp_.rap = tp->rapidity();
   tp_.qual = quality;
+  // count the number of pixel hits for seeding study
+  std::vector<PSimHit> simhits = tp->trackPSimHit();
+  unsigned int layer=0;
+  int npixhits = 0;
+  int nbpixhits = 0;
+  int nfpixhits = 0;
+  int ndiffpixhits = 0;
+  int ndiffbpixhits = 0;
+  int ndifffpixhits = 0;
+  // choose values to work for phase 1 also
+  std::vector<bool> bpix_layerhit(4,false);
+  std::vector<bool> fpix_diskhit(3,false);
+  for (unsigned int j=0; j<simhits.size(); j++){
+    DetId theDetUnitId(simhits[j].detUnitId());
+    int detector = theDetUnitId.det();
+    int subdetector = theDetUnitId.subdetId();
+    if(detector != DetId::Tracker) continue;
+    if ( subdetector ==  PixelSubdetector::PixelBarrel ) {
+      nbpixhits++;
+      PXBDetId pxbid(theDetUnitId.rawId());
+      layer = pxbid.layer();
+      if(layer > 0 && layer <=4) bpix_layerhit[layer-1]=true;
+    } else if ( subdetector ==  PixelSubdetector::PixelEndcap ) {
+      nfpixhits++;
+      PXFDetId pxfid(theDetUnitId.rawId());
+      layer = pxfid.disk();
+      if(layer > 0 && layer <=3) fpix_diskhit[layer-1]=true;
+    }
+  }
+  npixhits = nbpixhits + nfpixhits;
+  for (unsigned int j=0; j<bpix_layerhit.size(); j++)
+     if(bpix_layerhit[j]) ++ndiffbpixhits;
+  for (unsigned int j=0; j<fpix_diskhit.size(); j++)
+     if(fpix_diskhit[j]) ++ndifffpixhits;
+  ndiffpixhits = ndiffbpixhits + ndifffpixhits;
+  tp_.npix = npixhits;
+  tp_.nbpix = nbpixhits;
+  tp_.nfpix = nfpixhits;
+  tp_.ndiff = ndiffpixhits;
+  tp_.nbdiff = ndiffbpixhits;
+  tp_.nfdiff = ndifffpixhits;
 }
 
 void TPNtuplizer::fillEvt(const int numtp, const int nseltp, const int nfdtp,
@@ -283,6 +414,17 @@ void TPNtuplizer::fillEvt(const int numtp, const int nseltp, const int nfdtp,
    evt_.numtk = numtk;
    evt_.nasstk = nasstk;
 }
+
+void TPNtuplizer::fill_simtrk_simhit(const int subid, const int layer, const float gx, 
+              const float gy, const float gz)
+{
+  simtrk_simhit_.subid = subid;
+  simtrk_simhit_.layer = layer;
+  simtrk_simhit_.gx = gx;
+  simtrk_simhit_.gy = gy;
+  simtrk_simhit_.gz = gz;
+}
+
 
 void TPNtuplizer::init()
 {
@@ -317,6 +459,12 @@ void TPNtuplizer::myTp::init()
   sel = dummy_int;
   gpsz = dummy_int;
   gpstat = dummy_int;
+  npix = dummy_int;
+  nbpix = dummy_int;
+  nfpix = dummy_int;
+  ndiff = dummy_int;
+  nbdiff = dummy_int;
+  nfdiff = dummy_int;
   pt = dummy_float;
   eta = dummy_float;
   tip = dummy_float;
@@ -328,6 +476,18 @@ void TPNtuplizer::myTp::init()
   rap = dummy_float;
   qual = dummy_float;
 }
+
+void TPNtuplizer::mysimhit::init()
+{
+  int dummy_int = 9999;
+  float dummy_float = 9999.0;
+  subid = dummy_int;
+  layer = dummy_int;
+  gx = dummy_float;
+  gy = dummy_float;
+  gz = dummy_float;
+}
+
 
 //define this as a plug-in
 DEFINE_ANOTHER_FWK_MODULE(TPNtuplizer);

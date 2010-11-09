@@ -18,7 +18,7 @@
 
 #include "SimDataFormats/TrackingAnalysis/interface/TrackingParticle.h"
 
-#include "PhysicsTools/RecoAlgos/interface/TrackingParticleSelector.h"
+#include "CommonTools/RecoAlgos/interface/TrackingParticleSelector.h"
 #include "SimTracker/TrackAssociation/interface/TrackAssociatorBase.h"
 
 class TTree;
@@ -40,6 +40,8 @@ class TPNtuplizer : public edm::EDAnalyzer
                const int numtk, const int nasstk, const edm::Event& );
   void fillTP(const int num, const int matched_hit, const float quality, 
               const int selected, const TrackingParticle* tp );
+  void fill_simtrk_simhit(const int subid, const int layer, const float gx, 
+              const float gy, const float gz);
 
  private:
   edm::ParameterSet conf_;
@@ -65,14 +67,23 @@ class TPNtuplizer : public edm::EDAnalyzer
   {
     // signal is really in-time (with signal crossing)
     int tpn, bcross, tevt, charge, stable, status, pdgid, mathit, signal, llived, sel, gpsz, gpstat;
+    int npix, nbpix, nfpix, ndiff, nbdiff, nfdiff;
     float pt, eta, tip, lip;
     float p, e, phi, theta, rap;
     float qual;
     void init();
   } tp_;
 
+  struct mysimhit
+  {
+    int subid, layer;
+    float gx, gy, gz;
+    void init();
+  } simtrk_simhit_;
+
   TFile * tfile_;
   TTree * tptree_;
+  TTree * shtree_;
 };
 
 #endif
