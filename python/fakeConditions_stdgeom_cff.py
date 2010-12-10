@@ -33,9 +33,9 @@ siStripLorentzAngleFakeESSource  = cms.ESSource("SiStripLorentzAngleFakeESSource
 es_prefer_fake_strip_LA = cms.ESPrefer("SiStripLorentzAngleFakeESSource",
                                                "siStripLorentzAngleFakeESSource")
 
-siStripLorentzAngleSimFakeESSource  = cms.ESSource("SiStripLorentzAngleSimFakeESSource")
-es_prefer_fake_strip_LA_sim = cms.ESPrefer("SiStripLorentzAngleSimFakeESSource",
-                                                   "siStripLorentzAngleSimFakeESSource")
+#siStripLorentzAngleSimFakeESSource  = cms.ESSource("SiStripLorentzAngleSimFakeESSource")
+#es_prefer_fake_strip_LA_sim = cms.ESPrefer("SiStripLorentzAngleSimFakeESSource",
+#                                                   "siStripLorentzAngleSimFakeESSource")
 
 from CalibTracker.SiStripESProducers.fake.SiStripApvGainFakeESSource_cfi import *
 SiStripApvGainGenerator.MeanGain=cms.double(1.0)
@@ -46,9 +46,9 @@ myStripApvGainFakeESSource = cms.ESSource("SiStripApvGainFakeESSource")
 es_prefer_myStripApvGainFakeESSource  = cms.ESPrefer("SiStripApvGainFakeESSource",
                                                   "myStripApvGainFakeESSource")
 
-myStripApvGainSimFakeESSource  = cms.ESSource("SiStripApvGainSimFakeESSource")
-es_prefer_myStripApvGainSimFakeESSource = cms.ESPrefer("SiStripApvGainSimFakeESSource",
-                                                               "myStripApvGainSimFakeESSource")
+#myStripApvGainSimFakeESSource  = cms.ESSource("SiStripApvGainSimFakeESSource")
+#es_prefer_myStripApvGainSimFakeESSource = cms.ESPrefer("SiStripApvGainSimFakeESSource",
+#                                                               "myStripApvGainSimFakeESSource")
 
 from CalibTracker.SiStripESProducers.fake.SiStripThresholdFakeESSource_cfi import *
 siStripThresholdFakeESSource  = cms.ESSource("SiStripThresholdFakeESSource")
