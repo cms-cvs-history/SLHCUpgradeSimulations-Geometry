@@ -11,12 +11,9 @@ process = cms.Process('RECO')
 process.load('Configuration.StandardSequences.Services_cff')
 process.load('SimGeneral.HepPDTESSource.pythiapdt_cfi')
 process.load('FWCore.MessageService.MessageLogger_cfi')
-#process.load('Configuration.StandardSequences.MixingNoPileUp_cff')
-process.load("SLHCUpgradeSimulations.Geometry.mixLowLumPU_Phase1_R39F16_cff")
+process.load('Configuration.StandardSequences.MixingNoPileUp_cff')
 process.load("SLHCUpgradeSimulations.Geometry.PhaseI_cmsSimIdealGeometryXML_R39F16_cff")
 process.load('Configuration.StandardSequences.MagneticField_38T_cff')
-process.load('SLHCUpgradeSimulations.Geometry.Digi_Phase1_cff')
-process.load('Configuration.StandardSequences.SimL1Emulator_cff')
 process.load('Configuration.StandardSequences.Reconstruction_cff')
 process.load('Configuration.StandardSequences.EndOfProcess_cff')
 process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_cff')
@@ -28,23 +25,16 @@ process.configurationMetadata = cms.untracked.PSet(
     name = cms.untracked.string('PyReleaseValidation')
 )
 process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(5)
+    input = cms.untracked.int32(-1)
 )
 process.options = cms.untracked.PSet(
-  wantSummary = cms.untracked.bool(True)
 
 )
 # Input source
 process.source = cms.Source("PoolSource",
-#    fileNames = cms.untracked.vstring(
-#    '/store/relval/CMSSW_3_6_3_SLHC1/RelValFourMuons/GEN-SIM-RAW/DESIGN_36_V10-v1/0021/F8F01ED5-B1BC-DF11-AABF-0026189438BC.root',
-#    '/store/relval/CMSSW_3_6_3_SLHC1/RelValFourMuons/GEN-SIM-RAW/DESIGN_36_V10-v1/0021/38041CE5-60BC-DF11-85EC-002618943970.root'  )
     fileNames = cms.untracked.vstring(
-    '/store/relval/CMSSW_3_6_3_SLHC1/RelValTTbar/GEN-SIM/DESIGN_36_V10_UpSimGeometry_special-v1/0031/F6363EDF-12CB-DF11-9206-0030486792F0.root')
-#    fileNames = cms.untracked.vstring(
-#    '/store/relval/CMSSW_3_6_3_SLHC1/RelValTTbar/GEN-SIM/DESIGN_36_V10_UpSimGeometry_special-v1/0031/B083C3B3-02CB-DF11-8196-00261894392B.root')
-#    fileNames = cms.untracked.vstring(
-#    '/store/relval/CMSSW_3_6_3_SLHC1_patch1/RelValTTbar/GEN-SIM/DESIGN_36_V10_PU_LowLumiPileUp_Gauss_special-v1/0666/F4E4B87D-D100-E011-A900-003048678FAE.root')
+       '/store/relval/CMSSW_3_6_3_SLHC1/RelValFourMuons/GEN-SIM-RAW/DESIGN_36_V10-v1/0021/F8F01ED5-B1BC-DF11-AABF-0026189438BC.root',
+       '/store/relval/CMSSW_3_6_3_SLHC1/RelValFourMuons/GEN-SIM-RAW/DESIGN_36_V10-v1/0021/38041CE5-60BC-DF11-85EC-002618943970.root'  )
 )
 
 # Output definition
@@ -73,24 +63,10 @@ process.output.outputCommands = cms.untracked.vstring('drop *','keep *_MEtoEDMCo
 process.GlobalTag.globaltag = 'DESIGN_36_V10::All'
 
 ### PhaseI Geometry and modifications ###############################################
+#process.load("SLHCUpgradeSimulations.Geometry.PhaseI_cmsSimIdealGeometryXML_R39F16_cff")
 process.Timing =  cms.Service("Timing")
-## no playback when doing digis
-#process.mix.playback = True
+process.mix.playback = True
 #process.MessageLogger.destinations = cms.untracked.vstring("detailedInfo_fullph1geom")
-
-### if pileup we need to set the number
-process.mix.input.nbPileupEvents = cms.PSet(
-  averageNumber = cms.double(50.0)
-)
-### if doing inefficiency at <PU>=50
-process.simSiPixelDigis.AddPixelInefficiency = 20
-## also for strips TIB inefficiency if we want
-## TIB1,2 inefficiency at 20%
-#process.simSiStripDigis.Inefficiency = 20
-## TIB1,2 inefficiency at 50%
-#process.simSiStripDigis.Inefficiency = 30
-## TIB1,2 inefficiency at 99% (i.e. dead)
-#process.simSiStripDigis.Inefficiency = 40
 
 process.load("SLHCUpgradeSimulations.Geometry.fakeConditions_Phase1_cff")
 process.load("SLHCUpgradeSimulations.Geometry.fakeConditions_Phase1_R39F16_cff")
@@ -150,7 +126,6 @@ process.load("Validation.RecoTrack.cutsTPFake_cfi")
 
 process.load("SimTracker.TrackAssociation.TrackAssociatorByChi2_cfi")
 process.load("SimTracker.TrackAssociation.TrackAssociatorByHits_cfi")
-process.load('SimTracker.TrackAssociation.quickTrackAssociatorByHits_cfi')
 
 process.load('Configuration.StandardSequences.Validation_cff')
 ### look look at OOTB generalTracks and high purity collections
@@ -172,25 +147,23 @@ process.trackValidator.label=cms.VInputTag(cms.InputTag("generalTracks"),
                                            cms.InputTag("cutsRecoTracksHpw6hits"),
                                            cms.InputTag("cutsRecoTracksHpw8hits"),
                                            cms.InputTag("cutsRecoTracksZeroHp"),
-                                           cms.InputTag("cutsRecoTracksFirstHp")
-#                                           cms.InputTag("cutsRecoTracksSecondHp"),
-#                                           cms.InputTag("cutsRecoTracksThirdHp")
+                                           cms.InputTag("cutsRecoTracksFirstHp"),
+                                           cms.InputTag("cutsRecoTracksSecondHp"),
+                                           cms.InputTag("cutsRecoTracksThirdHp")
                                            )
-#process.trackValidator.associators = ['TrackAssociatorByHits']
-process.trackValidator.associators = cms.vstring('quickTrackAssociatorByHits')
+process.trackValidator.associators = ['TrackAssociatorByHits']
 process.trackValidator.UseAssociators = True
 process.trackValidator.nint = cms.int32(20)
-process.trackValidator.nintpT = cms.int32(100)
-process.trackValidator.maxpT = cms.double(200.0)
-process.trackValidator.outputFile = "validfullP1.root"
+process.trackValidator.nintpT = cms.int32(25)
+process.trackValidator.maxpT = cms.double(50.0)
 
 process.slhcTracksValidation = cms.Sequence(process.cutsRecoTracksHp*
                                  process.cutsRecoTracksHpw6hits*
                                  process.cutsRecoTracksHpw8hits*
                                  process.cutsRecoTracksZeroHp*
                                  process.cutsRecoTracksFirstHp*
-#                                 process.cutsRecoTracksSecondHp*
-#                                 process.cutsRecoTracksThirdHp*
+                                 process.cutsRecoTracksSecondHp*
+                                 process.cutsRecoTracksThirdHp*
                                  process.trackValidator)
 
 ############ end John's changes ###########################
@@ -212,21 +185,29 @@ process.ReadLocalMeasurement = cms.EDAnalyzer("StdHitNtuplizer",
                          'g4SimHitsTrackerHitsPixelEndcapHighTof')
 )
 process.anal = cms.EDAnalyzer("EventContentAnalyzer")
+## already in fake conditions don't add here (might overide?)
+#process.load("RecoVertex.BeamSpotProducer.BeamSpotFakeParameters_cfi")
 
-## need this at the end as the validation config redefines random seed with just mix
-process.load("IOMC.RandomEngine.IOMC_cff")
+### SLHC Calo Trigger Upgrade ######################################################
+process.load("SLHCUpgradeSimulations.L1CaloTrigger.SLHCCaloTriggerAnalysis_cfi")
+
+#Load Scales
+process.load("L1TriggerConfig.L1ScalesProducers.L1CaloInputScalesConfig_cff")
+process.load("L1TriggerConfig.L1ScalesProducers.L1CaloScalesConfig_cff")
+
+process.load("SLHCUpgradeSimulations.L1CaloTrigger.SLHCCaloTrigger_cff")
+#process.TFileService= cms.Service("TFileService",
+#                                  fileName= cms.string("histograms_QuadMuon.root")
+#                                  )
 
 ### back to standard job commands ##################################################
 
 # Path and EndPath definitions
+#process.reconstruction_step 	= cms.Path(process.reconstruction)
 process.mix_step 		= cms.Path(process.mix)
-process.digitisation_step = cms.Path(process.pdigi)
-process.L1simulation_step = cms.Path(process.SimL1Emulator)
-
 process.reconstruction_step 	= cms.Path(process.trackerlocalreco*
 						process.offlineBeamSpot+
-                                                process.recopixelvertexing*process.ckftracks_wodEdXandSteps2345)
-#                                                process.recopixelvertexing*process.ckftracks_wodEdXandSteps4and5)
+                                                process.recopixelvertexing*process.ckftracks_wodEdXandSteps4and5)
 process.debug_step 		= cms.Path(process.anal)
 process.validation_step 	= cms.Path(process.cutsTPEffic*
 						process.cutsTPFake*
@@ -237,7 +218,5 @@ process.out_step 		= cms.EndPath(process.output)
 
 # Schedule definition
 #process.schedule = cms.Schedule(process.reconstruction_step,process.endjob_step,process.out_step)
-#process.schedule = cms.Schedule(process.mix_step,process.reconstruction_step,process.validation_step,process.user_step,process.endjob_step,process.out_step)
-#process.schedule = cms.Schedule(process.mix_step,process.reconstruction_step,process.validation_step,process.endjob_step,process.out_step)
-process.schedule = cms.Schedule(process.digitisation_step,process.L1simulation_step,process.reconstruction_step,process.validation_step,process.user_step,process.endjob_step,process.out_step)
+process.schedule = cms.Schedule(process.mix_step,process.reconstruction_step,process.validation_step,process.user_step,process.endjob_step,process.out_step)
 
