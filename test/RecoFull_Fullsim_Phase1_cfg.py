@@ -57,7 +57,7 @@ process.output = cms.OutputModule("PoolOutputModule",
     #outputCommands = cms.untracked.vstring('keep *','drop *_mix_*_*'),
     fileName = cms.untracked.string('file:recoAODSIM.root'),
     dataset = cms.untracked.PSet(
-        dataTier = cms.untracked.string('GEN-SIM-RECO'),
+        dataTier = cms.untracked.string('AODSIM'),
         filterName = cms.untracked.string('')
     )
 )
