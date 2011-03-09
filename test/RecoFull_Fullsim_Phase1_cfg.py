@@ -26,7 +26,7 @@ process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_cff')
 process.load('Configuration.EventContent.EventContent_cff')
 
 process.configurationMetadata = cms.untracked.PSet(
-    version = cms.untracked.string('$Revision: 1.2 $'),
+    version = cms.untracked.string('$Revision: 1.2.2.2 $'),
     annotation = cms.untracked.string('step2 nevts:100'),
     name = cms.untracked.string('PyReleaseValidation')
 )
@@ -85,7 +85,7 @@ process.Timing =  cms.Service("Timing")
 
 ### if pileup we need to set the number
 process.mix.input.nbPileupEvents = cms.PSet(
-  averageNumber = cms.double(25.0)
+  averageNumber = cms.double(50.0)
 )
 ### if doing inefficiency at <PU>=50
 process.simSiPixelDigis.AddPixelInefficiency = 20
