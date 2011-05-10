@@ -2,7 +2,7 @@
 # using: 
 # Revision: 1.303 
 # Source: /cvs/CMSSW/CMSSW/Configuration/PyReleaseValidation/python/ConfigBuilder.py,v 
-# with command line options: SLHCUpgradeSimulations/Configuration/python/MinBias_14TeV_cfi.py -s GEN,SIM --conditions DESIGN42_V10::All --eventcontent FEVTDEBUG --beamspot Gauss --slhc R39F16 --datatier GEN-SIM --no_exec
+# with command line options: SLHCUpgradeSimulations/Configuration/python/MinBias_14TeV_cfi.py -s GEN,SIM --conditions DESIGN42_V10::All --eventcontent FEVTDEBUG --beamspot Gauss --slhc Phase1_R39F16 --datatier GEN-SIM --no_exec
 import FWCore.ParameterSet.Config as cms
 
 process = cms.Process('SIM')
@@ -13,7 +13,7 @@ process.load('SimGeneral.HepPDTESSource.pythiapdt_cfi')
 process.load('FWCore.MessageService.MessageLogger_cfi')
 process.load('Configuration.EventContent.EventContent_cff')
 process.load('SimGeneral.MixingModule.mixNoPU_cfi')
-process.load('SLHCUpgradeSimulations.Geometry.PhaseI_cmsSimIdealGeometryXML_R39F16_cff')
+process.load('SLHCUpgradeSimulations.Geometry.Phase1_R39F16_cmsSimIdealGeometryXML_cff')
 process.load('Configuration.StandardSequences.MagneticField_38T_cff')
 process.load('Configuration.StandardSequences.Generator_cff')
 process.load('IOMC.EventVertexGenerators.VtxSmearedGauss_cfi')
@@ -21,11 +21,10 @@ process.load('GeneratorInterface.Core.genFilterSummary_cff')
 process.load('Configuration.StandardSequences.SimIdeal_cff')
 process.load('Configuration.StandardSequences.EndOfProcess_cff')
 process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_cff')
-process.load('SLHCUpgradeSimulations.Geometry.fakeConditions_Phase1_cff')
 process.load('SLHCUpgradeSimulations.Geometry.fakeConditions_Phase1_R39F16_cff')
 
 process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(10)
+    input = cms.untracked.int32(1)
 )
 
 # Input source
