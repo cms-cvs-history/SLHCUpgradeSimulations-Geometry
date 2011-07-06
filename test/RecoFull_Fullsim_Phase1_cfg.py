@@ -26,7 +26,7 @@ process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_cff')
 process.load('Configuration.EventContent.EventContent_cff')
 
 process.configurationMetadata = cms.untracked.PSet(
-    version = cms.untracked.string('$Revision: 1.9 $'),
+    version = cms.untracked.string('$Revision: 1.10 $'),
     annotation = cms.untracked.string('step2 nevts:100'),
     name = cms.untracked.string('PyReleaseValidation')
 )
@@ -56,13 +56,17 @@ process.source = cms.Source("PoolSource",
     )
 )
 # Output definition
+extendAOD = cms.untracked.vstring('keep *_MEtoEDMConverter_*_*')
+process.AODSIMEventContent.outputCommands.extend(extendAOD)
+
 process.output = cms.OutputModule("PoolOutputModule",
     splitLevel = cms.untracked.int32(0),
-    outputCommands = process.RECOSIMEventContent.outputCommands,
+#    outputCommands = process.RECOSIMEventContent.outputCommands,
+    outputCommands = process.AODSIMEventContent.outputCommands,
     #outputCommands = cms.untracked.vstring('keep *','drop *_mix_*_*'),
-    fileName = cms.untracked.string('file:reco.root'),
+    fileName = cms.untracked.string('file:recoAODSIM.root'),
     dataset = cms.untracked.PSet(
-        dataTier = cms.untracked.string('GEN-SIM-RECO'),
+        dataTier = cms.untracked.string('AODSIM'),
         filterName = cms.untracked.string('')
     )
 )
@@ -93,7 +97,7 @@ process.mix.input.nbPileupEvents = cms.PSet(
   averageNumber = cms.double(50.0)
 )
 ### if doing inefficiency at <PU>=50
-process.simSiPixelDigis.AddPixelInefficiency = 20
+process.simSiPixelDigis.AddPixelInefficiency = 0
 ## also for strips TIB inefficiency if we want
 ## TIB1,2 inefficiency at 20%
 #process.simSiStripDigis.Inefficiency = 20
