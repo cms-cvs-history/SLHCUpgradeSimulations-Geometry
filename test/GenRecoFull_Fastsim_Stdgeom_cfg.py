@@ -111,6 +111,7 @@ process.Timing =  cms.Service("Timing")
 #process.famosPileUp.PileUpSimulator.averageNumber = 50.00
 ### if doing inefficiency at <PU>=50
 #process.simSiPixelDigis.AddPixelInefficiency = 20
+process.simSiPixelDigis.AddPixelInefficiency = 0
 
 process.maxEvents = cms.untracked.PSet(
     input = cms.untracked.int32(10)
@@ -134,10 +135,11 @@ process.configurationMetadata = cms.untracked.PSet(
 # Output definition
 process.output = cms.OutputModule("PoolOutputModule",
     splitLevel = cms.untracked.int32(0),
-    outputCommands = process.RECOSIMEventContent.outputCommands,
-    fileName = cms.untracked.string('file:reco.root'),
+    #outputCommands = process.RECOSIMEventContent.outputCommands,
+    outputCommands = process.AODSIMEventContent.outputCommands,
+    fileName = cms.untracked.string('file:recoAODSIM.root'),
     dataset = cms.untracked.PSet(
-        dataTier = cms.untracked.string('GEN-SIM-RECO'),
+        dataTier = cms.untracked.string('AODSIM'),
         filterName = cms.untracked.string('')
     )
 )
@@ -169,6 +171,18 @@ process.generator = cms.EDFilter("Pythia6GeneratorFilter",
         # This is a vector of ParameterSet names to be read, in this order
         parameterSets = cms.vstring('pythiaUESettings', 
             'processParameters')
+    ),
+    ExternalDecays = cms.PSet(
+        Tauola = cms.untracked.PSet(
+             UseTauolaPolarization = cms.bool(True),
+             InputCards = cms.PSet
+             (
+                pjak1 = cms.int32(0),
+                pjak2 = cms.int32(0),
+                mdtau = cms.int32(0)
+             )
+        ),
+        parameterSets = cms.vstring('Tauola')
     )
 )
 ##########################################################
