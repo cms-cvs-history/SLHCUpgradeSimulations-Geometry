@@ -26,7 +26,7 @@ process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_cff')
 process.load('Configuration.EventContent.EventContent_cff')
 
 process.configurationMetadata = cms.untracked.PSet(
-    version = cms.untracked.string('$Revision: 1.10 $'),
+    version = cms.untracked.string('$Revision: 1.11 $'),
     annotation = cms.untracked.string('step2 nevts:100'),
     name = cms.untracked.string('PyReleaseValidation')
 )
@@ -44,13 +44,18 @@ process.source = cms.Source("PoolSource",
     )
 )
 # Output definition
+extendAOD = cms.untracked.vstring('keep *_MEtoEDMConverter_*_*')
+process.AODSIMEventContent.outputCommands.extend(extendAOD)
 process.output = cms.OutputModule("PoolOutputModule",
     splitLevel = cms.untracked.int32(0),
-    outputCommands = process.RECOSIMEventContent.outputCommands,
+    #outputCommands = process.RECOSIMEventContent.outputCommands,
+    outputCommands = process.AODSIMEventContent.outputCommands,
     #outputCommands = cms.untracked.vstring('keep *','drop *_mix_*_*'),
-    fileName = cms.untracked.string('file:reco.root'),
+    #fileName = cms.untracked.string('file:reco.root'),
+    fileName = cms.untracked.string('file:recoAODSIM.root'),
     dataset = cms.untracked.PSet(
-        dataTier = cms.untracked.string('GEN-SIM-RECO'),
+        #dataTier = cms.untracked.string('GEN-SIM-RECO'),
+        dataTier = cms.untracked.string('AODSIM'),
         filterName = cms.untracked.string('')
     )
 )
