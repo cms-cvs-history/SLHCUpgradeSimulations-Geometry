@@ -11,8 +11,8 @@ process = cms.Process('RECO')
 process.load('Configuration.StandardSequences.Services_cff')
 process.load('SimGeneral.HepPDTESSource.pythiapdt_cfi')
 process.load('FWCore.MessageService.MessageLogger_cfi')
-process.load('SimGeneral.MixingModule.mixNoPU_cfi')
-#process.load("SLHCUpgradeSimulations.Geometry.mixLowLumPU_stdgeom_cff")
+#process.load('SimGeneral.MixingModule.mixNoPU_cfi')
+process.load("SLHCUpgradeSimulations.Geometry.mixLowLumPU_stdgeom_cff")
 process.load('Configuration.StandardSequences.GeometryExtended_cff')
 process.load('Configuration.StandardSequences.MagneticField_38T_cff')
 process.load('SLHCUpgradeSimulations.Geometry.Digi_stdgeom_cff')
@@ -26,7 +26,7 @@ process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_cff')
 process.load('Configuration.EventContent.EventContent_cff')
 
 process.configurationMetadata = cms.untracked.PSet(
-    version = cms.untracked.string('$Revision: 1.8 $'),
+    version = cms.untracked.string('$Revision: 1.9 $'),
     annotation = cms.untracked.string('step2 nevts:100'),
     name = cms.untracked.string('PyReleaseValidation')
 )
@@ -46,12 +46,17 @@ process.source = cms.Source("PoolSource",
 )
 
 # Output definition
+extendAOD = cms.untracked.vstring('keep *_MEtoEDMConverter_*_*')
+process.AODSIMEventContent.outputCommands.extend(extendAOD)
 process.output = cms.OutputModule("PoolOutputModule",
     splitLevel = cms.untracked.int32(0),
-    outputCommands = process.RECOSIMEventContent.outputCommands,
-    fileName = cms.untracked.string('file:reco.root'),
+    #outputCommands = process.RECOSIMEventContent.outputCommands,
+    outputCommands = process.AODSIMEventContent.outputCommands,
+    #fileName = cms.untracked.string('file:reco.root'),
+    fileName = cms.untracked.string('file:recoAODSIM.root'),
     dataset = cms.untracked.PSet(
-        dataTier = cms.untracked.string('GEN-SIM-RECO'),
+        #dataTier = cms.untracked.string('GEN-SIM-RECO'),
+        dataTier = cms.untracked.string('AODSIM'),
         filterName = cms.untracked.string('')
     )
 )
@@ -77,11 +82,11 @@ process.Timing =  cms.Service("Timing")
 #process.MessageLogger.destinations = cms.untracked.vstring("detailedInfo_fullph1geom")
 
 ### if pileup we need to set the number
-#process.mix.input.nbPileupEvents = cms.PSet(
-#  averageNumber = cms.double(50.0)
-#)
+process.mix.input.nbPileupEvents = cms.PSet(
+  averageNumber = cms.double(50.0)
+)
 ### if doing inefficiency at <PU>=50
-#process.simSiPixelDigis.AddPixelInefficiency = 20
+process.simSiPixelDigis.AddPixelInefficiency = 20
 ## also for strips TIB inefficiency if we want
 ## TIB1,2 inefficiency at 20%
 #process.simSiStripDigis.Inefficiency = 20
