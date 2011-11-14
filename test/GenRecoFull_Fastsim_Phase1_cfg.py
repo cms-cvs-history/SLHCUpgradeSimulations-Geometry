@@ -125,9 +125,9 @@ process.famosSimHits.TrackerSimHits.firstLoop = False
 process.Timing =  cms.Service("Timing")
 
 # If you want to turn on/off pile-up, default is no pileup
-process.famosPileUp.PileUpSimulator.averageNumber = 0.0
+process.famosPileUp.PileUpSimulator.averageNumber = 50.0
 ### if doing inefficiency at <PU>=50
-#process.simSiPixelDigis.AddPixelInefficiency = 20
+process.simSiPixelDigis.AddPixelInefficiency = 20
 
 process.maxEvents = cms.untracked.PSet(
     input = cms.untracked.int32(10)
@@ -143,18 +143,23 @@ process.options = cms.untracked.PSet(
 
 # Production Info
 process.configurationMetadata = cms.untracked.PSet(
-    version = cms.untracked.string('$Revision: 1.2 $'),
+    version = cms.untracked.string('$Revision: 1.4 $'),
     annotation = cms.untracked.string('SLHCUpgradeSimulations/Configuration/python/FourMuPt_1_50_cfi.py nevts:10'),
     name = cms.untracked.string('PyReleaseValidation')
 )
 
 # Output definition
+extendAOD = cms.untracked.vstring('keep *_MEtoEDMConverter_*_*')
+process.AODSIMEventContent.outputCommands.extend(extendAOD)
 process.output = cms.OutputModule("PoolOutputModule",
     splitLevel = cms.untracked.int32(0),
-    outputCommands = process.RECOSIMEventContent.outputCommands,
-    fileName = cms.untracked.string('file:reco.root'),
+    #outputCommands = process.RECOSIMEventContent.outputCommands,
+    outputCommands = process.AODSIMEventContent.outputCommands,
+    #fileName = cms.untracked.string('file:reco.root'),
+    fileName = cms.untracked.string('file:recoAODSIM.root'),
     dataset = cms.untracked.PSet(
-        dataTier = cms.untracked.string('GEN-SIM-RECO'),
+        #dataTier = cms.untracked.string('GEN-SIM-RECO'),
+        dataTier = cms.untracked.string('AODSIM'),
         filterName = cms.untracked.string('')
     )
 )
@@ -169,54 +174,11 @@ process.famosSimHits.VertexGenerator = process.GaussVtxSmearingParameters
 process.famosPileUp.VertexGenerator = process.GaussVtxSmearingParameters
 
 ####################
-process.load("Configuration.Generator.PythiaUESettings_cfi")
-process.generator = cms.EDFilter("Pythia6GeneratorFilter",
-    pythiaHepMCVerbosity = cms.untracked.bool(False),
-    maxEventsToPrint = cms.untracked.int32(0),
-    pythiaPylistVerbosity = cms.untracked.int32(0),
-    filterEfficiency = cms.untracked.double(1.0),
-    comEnergy = cms.double(14000.0),
-    PythiaParameters = cms.PSet(
-        process.pythiaUESettingsBlock,
-        processParameters = cms.vstring('MSEL      = 0     ! User defined processes', 
-            'MSUB(81)  = 1     ! qqbar to QQbar', 
-            'MSUB(82)  = 1     ! gg to QQbar', 
-            'MSTP(7)   = 6     ! flavour = top', 
-            'PMAS(6,1) = 175.  ! top quark mass'),
-        # This is a vector of ParameterSet names to be read, in this order
-        parameterSets = cms.vstring('pythiaUESettings', 
-            'processParameters')
-    ),
-    ExternalDecays = cms.PSet(
-        Tauola = cms.untracked.PSet(
-             UseTauolaPolarization = cms.bool(True),
-             InputCards = cms.PSet
-             (
-                pjak1 = cms.int32(0),
-                pjak2 = cms.int32(0),
-                mdtau = cms.int32(0)
-             )
-        ),
-        parameterSets = cms.vstring('Tauola')
-    )
-)
-################
-#process.generator = cms.EDProducer("FlatRandomPtGunProducer",
-#    PGunParameters = cms.PSet(
-#        MaxPt = cms.double(50.0),
-#        MinPt = cms.double(0.9),
-#        PartID = cms.vint32(-13, -13),
-#        MaxEta = cms.double(2.5),
-#        MaxPhi = cms.double(3.14159265359),
-#        MinEta = cms.double(-2.5),
-#        MinPhi = cms.double(-3.14159265359)
-#    ),
-#    Verbosity = cms.untracked.int32(0),
-#    psethack = cms.string('Four mu pt 1 to 50'),
-#    AddAntiParticle = cms.bool(True),
-#    firstRun = cms.untracked.uint32(1)
-#)
-
+process.load("SLHCUpgradeSimulations.Configuration.TTbar_Tauola_14TeV_cfi")
+#process.load("SLHCUpgradeSimulations.Configuration.HERWIGPP_POWHEG_H120_bbbar_Z_ll_14TeV_cff")
+#process.load("SLHCUpgradeSimulations.Configuration.ZZ_MMorBB_TuneZ2_14TeV_pythia6_tauola_cff")
+#process.load("SLHCUpgradeSimulations.Configuration.ZMM_14TeV_cfi")
+#process.load("SLHCUpgradeSimulations.Configuration.FourMuPt_1_200_cfi")
 ########################################
 ### produce an ntuple with hits for analysis
 process.ReadLocalMeasurement = cms.EDAnalyzer("StdHitNtuplizer",
@@ -312,7 +274,7 @@ process.reconstruction_step     = cms.Path(process.trackerlocalreco*
                                            process.ckftracks_wodEdX*process.trackExtrapolator*
                                            process.particleFlowCluster*
                                            process.ecalClusters*
-                                          process.caloTowersRec*
+                                           process.caloTowersRec*
                                            process.vertexreco*
 ###                                           process.egammaGlobalReco*
                                            process.electronGsfTracking*process.conversionTrackSequence*process.conversionTrackSequenceNoEcalSeeded*
