@@ -13,8 +13,8 @@ process.load('Configuration.StandardSequences.Services_cff')
 process.load('SimGeneral.HepPDTESSource.pythiapdt_cfi')
 process.load('FWCore.MessageService.MessageLogger_cfi')
 process.load('FastSimulation.Configuration.EventContent_cff')
-process.load('SLHCUpgradeSimulations.Geometry.mixLowLumPU_FastSim14TeV_cff')
-#process.load('FastSimulation.PileUpProducer.PileUpSimulator_NoPileUp_cff')
+#process.load('SLHCUpgradeSimulations.Geometry.mixLowLumPU_FastSim14TeV_cff')
+process.load('FastSimulation.PileUpProducer.PileUpSimulator_NoPileUp_cff')
 process.load('FastSimulation.Configuration.Geometries_MC_cff')
 process.load('Configuration.StandardSequences.MagneticField_38T_cff')
 process.load('Configuration.StandardSequences.Generator_cff')
@@ -113,9 +113,9 @@ process.famosSimHits.TrackerSimHits.firstLoop = False
 process.Timing =  cms.Service("Timing")
 
 # If you want to turn on/off pile-up, default is no pileup
-process.famosPileUp.PileUpSimulator.averageNumber = 50.00
+#process.famosPileUp.PileUpSimulator.averageNumber = 50.00
 ### if doing inefficiency at <PU>=50
-process.simSiPixelDigis.AddPixelInefficiency = 20
+process.simSiPixelDigis.AddPixelInefficiency = -1
 
 process.maxEvents = cms.untracked.PSet(
     input = cms.untracked.int32(10)
@@ -131,7 +131,7 @@ process.options = cms.untracked.PSet(
 
 # Production Info
 process.configurationMetadata = cms.untracked.PSet(
-    version = cms.untracked.string('$Revision: 1.3 $'),
+    version = cms.untracked.string('$Revision: 1.3.2.1 $'),
     annotation = cms.untracked.string('SLHCUpgradeSimulations/Configuration/python/FourMuPt_1_50_cfi.py nevts:10'),
     name = cms.untracked.string('PyReleaseValidation')
 )
