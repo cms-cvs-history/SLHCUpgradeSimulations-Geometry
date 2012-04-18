@@ -35,80 +35,52 @@ def customise(process):
     process.MeasurementTracker.UsePixelModuleQualityDB     = cms.bool(False)
     process.MeasurementTracker.UsePixelROCQualityDB        = cms.bool(False)
 
-    process.detachedTripletStepMeasurementTracker.inactiveStripDetectorLabels = cms.VInputTag()
-    process.detachedTripletStepMeasurementTracker.UseStripModuleQualityDB     = cms.bool(False)
-    process.detachedTripletStepMeasurementTracker.UseStripAPVFiberQualityDB   = cms.bool(False)
-    process.detachedTripletStepMeasurementTracker.UseStripStripQualityDB      = cms.bool(False)
-    process.detachedTripletStepMeasurementTracker.UsePixelModuleQualityDB     = cms.bool(False)
-    process.detachedTripletStepMeasurementTracker.UsePixelROCQualityDB        = cms.bool(False)
-    process.mixedTripletStepMeasurementTracker.inactiveStripDetectorLabels = cms.VInputTag()
-    process.mixedTripletStepMeasurementTracker.UseStripModuleQualityDB     = cms.bool(False)
-    process.mixedTripletStepMeasurementTracker.UseStripAPVFiberQualityDB   = cms.bool(False)
-    process.mixedTripletStepMeasurementTracker.UseStripStripQualityDB      = cms.bool(False)
-    process.mixedTripletStepMeasurementTracker.UsePixelModuleQualityDB     = cms.bool(False)
-    process.mixedTripletStepMeasurementTracker.UsePixelROCQualityDB        = cms.bool(False)
-    process.pixelLessStepMeasurementTracker.inactiveStripDetectorLabels = cms.VInputTag()
-    process.tobTecStepMeasurementTracker.inactiveStripDetectorLabels = cms.VInputTag()
-#this lines different
-#    process.muons.TrackerKinkFinderParameters.TrackerRecHitBuilder = cms.string('WithTrackAngle')
-#    # The SeedMergerPSet should be added to the following file for Phase 1
-#    # RecoTracker/SpecialSeedGenerators/python/CombinatorialSeedGeneratorForCosmicsRegionalReconstruction_cfi.py
-#    # but pixel layers are not used here for cosmic TODO: need Maria and Jan to do appropriate thing here
-#    process.regionalCosmicTrackerSeeds.SeedMergerPSet = cms.PSet(
-#                mergeTriplets = cms.bool(False),
-#                        ttrhBuilderLabel = cms.string( "PixelTTRHBuilderWithoutAngle" ),
-#                        addRemainingTriplets = cms.bool(False),
-#                        layerListName = cms.string( "PixelSeedMergerQuadruplets" )
-#                        )
-#    process.regionalCosmicTracks.TTRHBuilder = cms.string('WithTrackAngle')
-
-    process.ReadLocalMeasurement = cms.EDAnalyzer("StdHitNtuplizer",
-                                                  src = cms.InputTag("siPixelRecHits"),
-                                                  stereoRecHits = cms.InputTag("siStripMatchedRecHits","stereoRecHit"),
-                                                  rphiRecHits = cms.InputTag("siStripMatchedRecHits","rphiRecHit"),
-                                                  matchedRecHits = cms.InputTag("siStripMatchedRecHits","matchedRecHit"),
-                                                  ### if using simple (non-iterative) or old (as in 1_8_4) tracking
-                                                  trackProducer = cms.InputTag("generalTracks"),
-                                                  OutputFile = cms.string("stdgrechitfullph1g_ntuple.root"),
-                                                  ### for using track hit association
-                                                  associatePixel = cms.bool(True),
-                                                  associateStrip = cms.bool(False),
-                                                  associateRecoTracks = cms.bool(False),
-                                                  ROUList = cms.vstring('g4SimHitsTrackerHitsPixelBarrelLowTof',
-                                                                        'g4SimHitsTrackerHitsPixelBarrelHighTof',
-                                                                        'g4SimHitsTrackerHitsPixelEndcapLowTof',
-                                                                        'g4SimHitsTrackerHitsPixelEndcapHighTof')
-                                                  )
-
     ### back to standard job commands ##################################################
     process.DigiToRaw.remove(process.castorRawData)
 
-#this lines different
-#    process.DigiToRaw.remove(process.siPixelRawData)
-#    process.RawToDigi.remove(process.siPixelDigis)
-
-    ## removing large memory usage module if we don't need it
-    process.pdigi.remove(process.mergedtruth)
+    ### remove a slow module for cosmics
+    #process.reconstruction_step.remove(process.regionalCosmicCkfTrackCandidates)
 
 #this line different
     process.pdigi.remove(process.addPileupInfo)
     
     if hasattr(process,'dqmoffline_step'):
-         print 'removing some dqm modules'
-         process.dqmoffline_step.remove(process.SiPixelTrackResidualSource)
-         process.dqmoffline_step.remove(process.jetMETAnalyzer)
-         process.dqmoffline_step.remove(process.hltMonMuBits)
-         process.dqmoffline_step.remove(process.vbtfAnalyzer)
-         process.dqmoffline_step.remove(process.hltResults)
-         process.dqmoffline_step.remove(process.egHLTOffDQMSource)
-         process.dqmoffline_step.remove(process.globalAnalyzer)
-         process.dqmoffline_step.remove(process.jetMETHLTOfflineSource)
-
+        process.dqmoffline_step.remove(process.SiPixelTrackResidualSource)
+        process.dqmoffline_step.remove(process.jetMETAnalyzer)
+        process.dqmoffline_step.remove(process.hltMonMuBits)
+        process.dqmoffline_step.remove(process.vbtfAnalyzer)
+        process.dqmoffline_step.remove(process.hltResults)
+        process.dqmoffline_step.remove(process.egHLTOffDQMSource)
+        process.dqmoffline_step.remove(process.globalAnalyzer)
+        process.dqmoffline_step.remove(process.jetMETHLTOfflineSource)
+        ##
+        process.dqmoffline_step.remove(process.TrackerCollisionTrackMon)
+    if hasattr(process,'validation_step'):
+        process.validation_step.remove(process.hltHITval)
+        process.validation_step.remove(process.HLTSusyExoVal)
+        process.validation_step.remove(process.relvalMuonBits)
+        process.validation_step.remove(process.hltMuonValidator)
+    else:
+    ## removing large memory usage module if we don't need it
+        process.pdigi.remove(process.mergedtruth)
 
     return(process)
 
 
 #pileup specific stuff here
+def customise_pu15_25ns(process):
+
+    process=customise(process)
+
+    process.load("SLHCUpgradeSimulations.Geometry.mixLowLumPU_stdgeom_cff")
+
+### set the number of pileup
+    process.mix.input.nbPileupEvents = cms.PSet(
+        averageNumber = cms.double(15.0)
+        )
+    return (process)
+
+
 def customise_pu50_25ns(process):
 
     process=customise(process)
@@ -122,7 +94,7 @@ def customise_pu50_25ns(process):
     
 
 ### if doing inefficiency at <PU>=50
-    #process.simSiPixelDigis.AddPixelInefficiency = 20
+    process.simSiPixelDigis.AddPixelInefficiency = 20
     ## also for strips TIB inefficiency if we want
     ## TIB1,2 inefficiency at 20%
     #process.simSiStripDigis.Inefficiency = 20
