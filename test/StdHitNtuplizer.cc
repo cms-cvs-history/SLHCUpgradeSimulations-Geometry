@@ -379,6 +379,7 @@ void StdHitNtuplizer::analyze(const edm::Event& e, const edm::EventSetup& es)
       } //end of loop on tracking rechits
   } // end of loop on recotracks
 
+/*  Don't do strips for LB
   // now for strip rechits
   edm::Handle<SiStripRecHit2DCollection> rechitsrphi;
   edm::Handle<SiStripRecHit2DCollection> rechitsstereo;
@@ -652,7 +653,9 @@ void StdHitNtuplizer::analyze(const edm::Event& e, const edm::EventSetup& es)
       } // end of rechit loop
     } // end of detidt loop
   } // end of loop test on rechit size
-            
+*/            
+//don't do strips for LB
+
 } // end analyze function
 
 void StdHitNtuplizer::fillSRecHit(const int subid, 
