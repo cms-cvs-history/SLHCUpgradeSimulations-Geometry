@@ -1,0 +1,273 @@
+ *****************
+ * FINAL SUMMARY *
+ *****************
+
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  Stack Layer:      0
+   # Rods:          28
+   # Modules/Rod:   42
+   # Modules        1176
+  Inner sensor average radius:  31.8725 [cm]
+  Outer sensor average radius:  31.9925 [cm]
+  Average sensor separation:    1.2 [mm]
+  Max length of Stack Layer:    182.089 [cm]
+  Total active surface:         104451 [cm^2]
+  Inner sensor channels:        68608
+               rows:            1024
+               columns:         67
+  Inner sensor average pitch X: 94 [um]
+                             Y: 1381 [um]
+  Inner sensor ROCs X:          3.2381
+                    Y:          27.119
+                    total:      216.952
+  Outer sensor channels:        68608
+               rows:            1024
+               columns:         67
+  Outer sensor average pitch X: 94 [um]
+                             Y: 1381 [um]
+  Outer sensor ROCs X:          4.7619
+                    Y:          39.881
+                    total:      319.048
+
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  Stack Layer:      1
+   # Rods:          28
+   # Modules/Rod:   50
+   # Modules        1400
+  Inner sensor average radius:  35.8711 [cm]
+  Outer sensor average radius:  35.9911 [cm]
+  Average sensor separation:    1.20001 [mm]
+  Max length of Stack Layer:    215.982 [cm]
+  Total active surface:         124347 [cm^2]
+  Inner sensor channels:        68608
+               rows:            1024
+               columns:         67
+  Inner sensor average pitch X: 94 [um]
+                             Y: 1381 [um]
+  Inner sensor ROCs X:          3.68
+                    Y:          30.82
+                    total:      246.56
+  Outer sensor channels:        68608
+               rows:            1024
+               columns:         67
+  Outer sensor average pitch X: 94 [um]
+                             Y: 1381 [um]
+  Outer sensor ROCs X:          4.32
+                    Y:          36.18
+                    total:      289.44
+
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  Stack Layer:      2
+   # Rods:          36
+   # Modules/Rod:   58
+   # Modules        2088
+  Inner sensor average radius:  47.8684 [cm]
+  Outer sensor average radius:  47.9884 [cm]
+  Average sensor separation:    1.2 [mm]
+  Max length of Stack Layer:    249.449 [cm]
+  Total active surface:         185454 [cm^2]
+  Inner sensor channels:        68608
+               rows:            1024
+               columns:         67
+  Inner sensor average pitch X: 94 [um]
+                             Y: 1381 [um]
+  Inner sensor ROCs X:          3.17241
+                    Y:          26.569
+                    total:      212.552
+  Outer sensor channels:        68608
+               rows:            1024
+               columns:         67
+  Outer sensor average pitch X: 94 [um]
+                             Y: 1381 [um]
+  Outer sensor ROCs X:          4.82759
+                    Y:          40.431
+                    total:      323.448
+
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  Stack Layer:      3
+   # Rods:          36
+   # Modules/Rod:   58
+   # Modules        2088
+  Inner sensor average radius:  51.8677 [cm]
+  Outer sensor average radius:  51.9878 [cm]
+  Average sensor separation:    1.20001 [mm]
+  Max length of Stack Layer:    249.449 [cm]
+  Total active surface:         185454 [cm^2]
+  Inner sensor channels:        68608
+               rows:            1024
+               columns:         67
+  Inner sensor average pitch X: 94 [um]
+                             Y: 1381 [um]
+  Inner sensor ROCs X:          3.17241
+                    Y:          26.569
+                    total:      212.552
+  Outer sensor channels:        68608
+               rows:            1024
+               columns:         67
+  Outer sensor average pitch X: 94 [um]
+                             Y: 1381 [um]
+  Outer sensor ROCs X:          4.82759
+                    Y:          40.431
+                    total:      323.448
+
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  Stack Layer:      4
+   # Rods:          48
+   # Modules/Rod:   12
+   # Modules        576
+  Inner sensor average radius:  64.1663 [cm]
+  Outer sensor average radius:  64.2863 [cm]
+  Average sensor separation:    1.20001 [mm]
+  Max length of Stack Layer:    249.449 [cm]
+  Total active surface:         51159.9 [cm^2]
+  Inner sensor channels:        68608
+               rows:            1024
+               columns:         67
+  Inner sensor average pitch X: 94 [um]
+                             Y: 1381 [um]
+  Inner sensor ROCs X:          2.66667
+                    Y:          22.3333
+                    total:      178.667
+  Outer sensor channels:        68608
+               rows:            1024
+               columns:         67
+  Outer sensor average pitch X: 94 [um]
+                             Y: 1381 [um]
+  Outer sensor ROCs X:          5.33333
+                    Y:          44.6667
+                    total:      357.333
+
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  Stack Layer:      5
+   # Rods:          48
+   # Modules/Rod:   12
+   # Modules        576
+  Inner sensor average radius:  68.1659 [cm]
+  Outer sensor average radius:  68.2859 [cm]
+  Average sensor separation:    1.19999 [mm]
+  Max length of Stack Layer:    249.449 [cm]
+  Total active surface:         51159.9 [cm^2]
+  Inner sensor channels:        68608
+               rows:            1024
+               columns:         67
+  Inner sensor average pitch X: 94 [um]
+                             Y: 1381 [um]
+  Inner sensor ROCs X:          2.66667
+                    Y:          22.3333
+                    total:      178.667
+  Outer sensor channels:        68608
+               rows:            1024
+               columns:         67
+  Outer sensor average pitch X: 94 [um]
+                             Y: 1381 [um]
+  Outer sensor ROCs X:          5.33333
+                    Y:          44.6667
+                    total:      357.333
+
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  Stack Layer:      6
+   # Rods:          56
+   # Modules/Rod:   12
+   # Modules        672
+  Inner sensor average radius:  80.165 [cm]
+  Outer sensor average radius:  80.2851 [cm]
+  Average sensor separation:    1.20003 [mm]
+  Max length of Stack Layer:    249.449 [cm]
+  Total active surface:         59686.5 [cm^2]
+  Inner sensor channels:        68608
+               rows:            1024
+               columns:         67
+  Inner sensor average pitch X: 94 [um]
+                             Y: 1381 [um]
+  Inner sensor ROCs X:          2.66667
+                    Y:          22.3333
+                    total:      178.667
+  Outer sensor channels:        68608
+               rows:            1024
+               columns:         67
+  Outer sensor average pitch X: 94 [um]
+                             Y: 1381 [um]
+  Outer sensor ROCs X:          5.33333
+                    Y:          44.6667
+                    total:      357.333
+
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  Stack Layer:      7
+   # Rods:          56
+   # Modules/Rod:   12
+   # Modules        672
+  Inner sensor average radius:  84.1648 [cm]
+  Outer sensor average radius:  84.2848 [cm]
+  Average sensor separation:    1.20001 [mm]
+  Max length of Stack Layer:    249.449 [cm]
+  Total active surface:         59686.5 [cm^2]
+  Inner sensor channels:        68608
+               rows:            1024
+               columns:         67
+  Inner sensor average pitch X: 94 [um]
+                             Y: 1381 [um]
+  Inner sensor ROCs X:          2.66667
+                    Y:          22.3333
+                    total:      178.667
+  Outer sensor channels:        68608
+               rows:            1024
+               columns:         67
+  Outer sensor average pitch X: 94 [um]
+                             Y: 1381 [um]
+  Outer sensor ROCs X:          5.33333
+                    Y:          44.6667
+                    total:      357.333
+
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  Stack Layer:      8
+   # Rods:          68
+   # Modules/Rod:   58
+   # Modules        3944
+  Inner sensor average radius:  98.3642 [cm]
+  Outer sensor average radius:  98.4841 [cm]
+  Average sensor separation:    1.19999 [mm]
+  Max length of Stack Layer:    249.449 [cm]
+  Total active surface:         350303 [cm^2]
+  Inner sensor channels:        68608
+               rows:            1024
+               columns:         67
+  Inner sensor average pitch X: 94 [um]
+                             Y: 1381 [um]
+  Inner sensor ROCs X:          3.17241
+                    Y:          26.569
+                    total:      212.552
+  Outer sensor channels:        68608
+               rows:            1024
+               columns:         67
+  Outer sensor average pitch X: 94 [um]
+                             Y: 1381 [um]
+  Outer sensor ROCs X:          4.82759
+                    Y:          40.431
+                    total:      323.448
+
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  Stack Layer:      9
+   # Rods:          68
+   # Modules/Rod:   58
+   # Modules        3944
+  Inner sensor average radius:  102.364 [cm]
+  Outer sensor average radius:  102.484 [cm]
+  Average sensor separation:    1.2 [mm]
+  Max length of Stack Layer:    249.449 [cm]
+  Total active surface:         350303 [cm^2]
+  Inner sensor channels:        68608
+               rows:            1024
+               columns:         67
+  Inner sensor average pitch X: 94 [um]
+                             Y: 1381 [um]
+  Inner sensor ROCs X:          3.17241
+                    Y:          26.569
+                    total:      212.552
+  Outer sensor channels:        68608
+               rows:            1024
+               columns:         67
+  Outer sensor average pitch X: 94 [um]
+                             Y: 1381 [um]
+  Outer sensor ROCs X:          4.82759
+                    Y:          40.431
+                    total:      323.448
