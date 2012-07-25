@@ -2,13 +2,16 @@ import FWCore.ParameterSet.Config as cms
 
 #  Tracking Geometry
 from SLHCUpgradeSimulations.Geometry.Phase1_cmsSimIdealGeometryXML_cfi import *
-from Geometry.CommonDetUnit.globalTrackingGeometryDB_cfi import *
+from Geometry.CommonDetUnit.globalTrackingGeometry_cfi import *
+#from Geometry.CommonDetUnit.globalTrackingGeometryDB_cfi import *
 
 #Tracker
 from RecoTracker.GeometryESProducer.TrackerRecoGeometryESProducer_cfi import *
+from Geometry.TrackerNumberingBuilder.trackerNumberingGeometry_cfi import *
 
 #Muon
 from RecoMuon.DetLayers.muonDetLayerGeometry_cfi import *
+from Geometry.MuonNumbering.muonNumberingInitialization_cfi import *
 
 #  Calorimeters
 from Geometry.CaloEventSetup.CaloTopology_cfi import *
@@ -18,7 +21,8 @@ from Geometry.EcalMapping.EcalMapping_cfi import *
 from Geometry.EcalMapping.EcalMappingRecord_cfi import *
 
 #  Alignment
-from Geometry.TrackerGeometryBuilder.idealForDigiTrackerGeometryDB_cff import *
+from Geometry.TrackerGeometryBuilder.idealForDigiTrackerGeometry_cff import *
+#from Geometry.TrackerGeometryBuilder.idealForDigiTrackerGeometryDB_cff import *
 from Geometry.CSCGeometryBuilder.idealForDigiCscGeometryDB_cff import *
 from Geometry.DTGeometryBuilder.idealForDigiDtGeometryDB_cff import *
 
