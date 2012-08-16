@@ -5,6 +5,11 @@ from SLHCUpgradeSimulations.Geometry.Phase1_cmsSimIdealGeometryXML_cfi import *
 from Geometry.CommonDetUnit.globalTrackingGeometry_cfi import *
 #from Geometry.CommonDetUnit.globalTrackingGeometryDB_cfi import *
 
+#hardwire these here
+TrackerGeometricDetESModule.pixelGeometryConstants.layerNumberPXB=cms.uint32(18)
+TrackerGeometricDetESModule.pixelGeometryConstants.totalBlade=cms.uint32(56)
+
+
 #Tracker
 from RecoTracker.GeometryESProducer.TrackerRecoGeometryESProducer_cfi import *
 from Geometry.TrackerNumberingBuilder.trackerNumberingGeometry_cfi import *
