@@ -2,10 +2,6 @@ import FWCore.ParameterSet.Config as cms
 
 def phase1Mods(process):
 
-#    process.pixelseedmergerlayers.BPix.TTRHBuilder = cms.string("PixelTTRHBuilderWithoutAngle" )
-#    process.pixelseedmergerlayers.BPix.HitProducer = cms.string("siPixelRecHits" )
-#    process.pixelseedmergerlayers.FPix.TTRHBuilder = cms.string("PixelTTRHBuilderWithoutAngle" )
-#    process.pixelseedmergerlayers.FPix.HitProducer = cms.string("siPixelRecHits" )
     
     # new layer list (3/4 pixel seeding) in stepZero
     process.pixellayertriplets.layerList = cms.vstring( 'BPix1+BPix2+BPix3',
@@ -141,6 +137,8 @@ def phase1Mods(process):
     process.initialStepTracks.TTRHBuilder=cms.string('WithTrackAngle')
     process.pixelPairStepTracks.TTRHBuilder=cms.string('WithTrackAngle')
     process.lowPtTripletStepTracks.TTRHBuilder=cms.string('WithTrackAngle')
+    process.convStepTracks.TTRHBuilder=cms.string('WithTrackAngle')
+    process.mixedTripletStepTracks.TTRHBuilder=cms.string('WithTrackAngle')
     
     process.muons1stStep.TrackerKinkFinderParameters.TrackerRecHitBuilder=cms.string('WithTrackAngle')
     
