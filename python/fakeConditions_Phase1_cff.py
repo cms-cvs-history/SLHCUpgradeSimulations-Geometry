@@ -84,5 +84,3 @@ from SimGeneral.TrackingAnalysis.trackingParticles_cfi import *
 mergedtruth.volumeRadius = cms.double(100.0)
 mergedtruth.volumeZ = cms.double(900.0)
 mergedtruth.discardOutVolume = cms.bool(True)
-
-from Geometry.TrackerNumberingBuilder.pixelSLHCGeometryConstants_cfi import *
