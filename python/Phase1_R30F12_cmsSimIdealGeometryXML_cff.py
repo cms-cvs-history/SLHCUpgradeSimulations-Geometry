@@ -2,17 +2,33 @@ import FWCore.ParameterSet.Config as cms
 
 #  Tracking Geometry
 from SLHCUpgradeSimulations.Geometry.Phase1_cmsSimIdealGeometryXML_cfi import *
-from Geometry.CommonDetUnit.globalTrackingGeometry_cfi import *
+#from Geometry.CommonDetUnit.globalTrackingGeometry_cfi import *
 #from Geometry.CommonDetUnit.globalTrackingGeometryDB_cfi import *
+from Geometry.CommonDetUnit.globalTrackingSLHCGeometry_cfi import *
+#from Geometry.TrackerGeometryBuilder.idealForDigiTrackerSLHCGeometry_cff import *
+#es_prefer_TrackerEP = cms.ESPrefer("TrackerGeometricDetESModule", "trackerNumberingSLHCGeometry")
+es_prefer_TrackerEP = cms.ESPrefer("TrackerGeometricDetESModule", "trackerNumberingGeometry")
+es_prefer_Trackerdigi = cms.ESPrefer("TrackerDigiGeometryESModule","trackerSLHCGeometry")
 
 #hardwire these here
-TrackerGeometricDetESModule.pixelGeometryConstants.layerNumberPXB=cms.uint32(18)
-TrackerGeometricDetESModule.pixelGeometryConstants.totalBlade=cms.uint32(56)
-
+#trackerGeometry.trackerGeometryConstants = cms.PSet(
+#    upgradeGeometry = cms.bool(True),
+#    ROWS_PER_ROC = cms.int32(80),
+#    COLS_PER_ROC = cms.int32(52),
+#    BIG_PIX_PER_ROC_X = cms.int32(0),
+#    BIG_PIX_PER_ROC_Y = cms.int32(0),
+#    ROCS_X = cms.int32(2),
+#    ROCS_Y = cms.int32(8)
+#    )
 
 #Tracker
+#Configuration/ Geometry/ python/ GeometrySLHCReco_cff.py
 from RecoTracker.GeometryESProducer.TrackerRecoGeometryESProducer_cfi import *
 from Geometry.TrackerNumberingBuilder.trackerNumberingGeometry_cfi import *
+trackerNumberingGeometry.fromDDD = cms.bool(True)
+trackerNumberingGeometry.layerNumberPXB = cms.uint32(18)
+trackerNumberingGeometry.totalBlade = cms.uint32(56)
+trackerSLHCGeometry.applyAlignment = cms.bool(False)
 
 #Muon
 from RecoMuon.DetLayers.muonDetLayerGeometry_cfi import *

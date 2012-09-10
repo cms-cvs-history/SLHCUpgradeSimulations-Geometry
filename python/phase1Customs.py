@@ -141,7 +141,9 @@ def phase1Mods(process):
     process.mixedTripletStepTracks.TTRHBuilder=cms.string('WithTrackAngle')
     
     process.muons1stStep.TrackerKinkFinderParameters.TrackerRecHitBuilder=cms.string('WithTrackAngle')
-    
+    process.regionalCosmicTracks.TTRHBuilder=cms.string('WithTrackAngle')
+    process.cosmicsVetoTracksRaw.TTRHBuilder=cms.string('WithTrackAngle')
+
     #well, this needs to move input the default configs
     SeedMergerPSet = cms.PSet(
         layerListName = cms.string('PixelSeedMergerQuadruplets'),
@@ -151,7 +153,8 @@ def phase1Mods(process):
         )
     
     process.regionalCosmicTrackerSeeds.SeedMergerPSet=SeedMergerPSet
-    
+    process.pixelPairStepSeeds.SeedMergerPSet.mergeTriplets = cms.bool(False)
+
     
     #done
     return process
