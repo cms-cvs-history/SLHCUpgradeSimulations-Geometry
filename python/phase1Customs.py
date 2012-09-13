@@ -158,3 +158,21 @@ def phase1Mods(process):
     
     #done
     return process
+
+
+# DQM steps change
+def customise_DQM(process):
+    # We cut down the number of iterative tracking steps
+    process.dqmoffline_step.remove(process.TrackMonStep3)
+    process.dqmoffline_step.remove(process.TrackMonStep5)
+    process.dqmoffline_step.remove(process.TrackMonStep6)
+    #
+    process.dqmoffline_step.remove(process.muonAnalyzer)
+    process.dqmoffline_step.remove(process.jetMETAnalyzer)
+    process.dqmoffline_step.remove(process.PixelTrackingRecHitsValid)
+    process.validation_step.remove(process.PixelTrackingRecHitsValid)
+    # We don't run the HLT
+    process.validation_step.remove(process.HLTSusyExoVal)
+    process.validation_step.remove(process.hltHiggsValidator)
+    return process
+
