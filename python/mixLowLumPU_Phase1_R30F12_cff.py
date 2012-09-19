@@ -3,6 +3,7 @@
 import FWCore.ParameterSet.Config as cms
 
 # this is the configuration to model pileup in the design LHC (10**34)
+from SimGeneral.MixingModule.aliases_cfi import *
 from SimGeneral.MixingModule.mixObjects_cfi import *
 from SimGeneral.MixingModule.pixelDigitizer_cfi import *
 from SimGeneral.MixingModule.stripDigitizer_cfi import *
