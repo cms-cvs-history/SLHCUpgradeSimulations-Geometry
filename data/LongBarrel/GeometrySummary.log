@@ -3,271 +3,271 @@
  *****************
 
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  Stack Layer:      0
-   # Rods:          28
-   # Modules/Rod:   42
-   # Modules        1176
-  Inner sensor average radius:  31.8725 [cm]
-  Outer sensor average radius:  31.9925 [cm]
-  Average sensor separation:    1.2 [mm]
-  Max length of Stack Layer:    182.089 [cm]
-  Total active surface:         104451 [cm^2]
+  Barrel Stack Layer: 0
+   # Rods:            28
+   # Modules/Rod:     44
+   # Modules          1232
+  Inner sensor average radius:  31.8625 [cm]
+    Outer sensor average radius:  31.9625 [cm]
+      Average sensor separation:    0.999992 [mm]
+  Max length of Stack Layer:    192.752 [cm]
+  Total active surface:         218851 [cm^2]
   Inner sensor channels:        68608
                rows:            1024
                columns:         67
   Inner sensor average pitch X: 94 [um]
                              Y: 1381 [um]
-  Inner sensor ROCs X:          3.2381
-                    Y:          27.119
-                    total:      216.952
+  Inner sensor ROCs X:          8
+                    Y:          67
+                    total:      536
   Outer sensor channels:        68608
                rows:            1024
                columns:         67
   Outer sensor average pitch X: 94 [um]
                              Y: 1381 [um]
-  Outer sensor ROCs X:          4.7619
-                    Y:          39.881
-                    total:      319.048
+  Outer sensor ROCs X:          8
+                    Y:          67
+                    total:      536
 
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  Stack Layer:      1
-   # Rods:          28
-   # Modules/Rod:   50
-   # Modules        1400
-  Inner sensor average radius:  35.8711 [cm]
-  Outer sensor average radius:  35.9911 [cm]
-  Average sensor separation:    1.20001 [mm]
+  Barrel Stack Layer: 1
+   # Rods:            28
+   # Modules/Rod:     50
+   # Modules          1400
+  Inner sensor average radius:  35.8611 [cm]
+    Outer sensor average radius:  35.9611 [cm]
+      Average sensor separation:    0.999996 [mm]
   Max length of Stack Layer:    215.982 [cm]
-  Total active surface:         124347 [cm^2]
+  Total active surface:         248694 [cm^2]
   Inner sensor channels:        68608
                rows:            1024
                columns:         67
   Inner sensor average pitch X: 94 [um]
                              Y: 1381 [um]
-  Inner sensor ROCs X:          3.68
-                    Y:          30.82
-                    total:      246.56
+  Inner sensor ROCs X:          8
+                    Y:          67
+                    total:      536
   Outer sensor channels:        68608
                rows:            1024
                columns:         67
   Outer sensor average pitch X: 94 [um]
                              Y: 1381 [um]
-  Outer sensor ROCs X:          4.32
-                    Y:          36.18
-                    total:      289.44
+  Outer sensor ROCs X:          8
+                    Y:          67
+                    total:      536
 
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  Stack Layer:      2
-   # Rods:          36
-   # Modules/Rod:   58
-   # Modules        2088
-  Inner sensor average radius:  47.8684 [cm]
-  Outer sensor average radius:  47.9884 [cm]
-  Average sensor separation:    1.2 [mm]
+  Barrel Stack Layer: 2
+   # Rods:            36
+   # Modules/Rod:     58
+   # Modules          2088
+  Inner sensor average radius:  47.8584 [cm]
+    Outer sensor average radius:  47.9584 [cm]
+      Average sensor separation:    0.99999 [mm]
   Max length of Stack Layer:    249.449 [cm]
-  Total active surface:         185454 [cm^2]
+  Total active surface:         370909 [cm^2]
   Inner sensor channels:        68608
                rows:            1024
                columns:         67
   Inner sensor average pitch X: 94 [um]
                              Y: 1381 [um]
-  Inner sensor ROCs X:          3.17241
-                    Y:          26.569
-                    total:      212.552
+  Inner sensor ROCs X:          8
+                    Y:          67
+                    total:      536
   Outer sensor channels:        68608
                rows:            1024
                columns:         67
   Outer sensor average pitch X: 94 [um]
                              Y: 1381 [um]
-  Outer sensor ROCs X:          4.82759
-                    Y:          40.431
-                    total:      323.448
+  Outer sensor ROCs X:          8
+                    Y:          67
+                    total:      536
 
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  Stack Layer:      3
-   # Rods:          36
-   # Modules/Rod:   58
-   # Modules        2088
-  Inner sensor average radius:  51.8677 [cm]
-  Outer sensor average radius:  51.9878 [cm]
-  Average sensor separation:    1.20001 [mm]
+  Barrel Stack Layer: 3
+   # Rods:            36
+   # Modules/Rod:     58
+   # Modules          2088
+  Inner sensor average radius:  51.8577 [cm]
+    Outer sensor average radius:  51.9578 [cm]
+      Average sensor separation:    1 [mm]
   Max length of Stack Layer:    249.449 [cm]
-  Total active surface:         185454 [cm^2]
+  Total active surface:         370909 [cm^2]
   Inner sensor channels:        68608
                rows:            1024
                columns:         67
   Inner sensor average pitch X: 94 [um]
                              Y: 1381 [um]
-  Inner sensor ROCs X:          3.17241
-                    Y:          26.569
-                    total:      212.552
+  Inner sensor ROCs X:          8
+                    Y:          67
+                    total:      536
   Outer sensor channels:        68608
                rows:            1024
                columns:         67
   Outer sensor average pitch X: 94 [um]
                              Y: 1381 [um]
-  Outer sensor ROCs X:          4.82759
-                    Y:          40.431
-                    total:      323.448
+  Outer sensor ROCs X:          8
+                    Y:          67
+                    total:      536
 
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  Stack Layer:      4
-   # Rods:          48
-   # Modules/Rod:   12
-   # Modules        576
-  Inner sensor average radius:  64.1663 [cm]
-  Outer sensor average radius:  64.2863 [cm]
-  Average sensor separation:    1.20001 [mm]
+  Barrel Stack Layer: 4
+   # Rods:            48
+   # Modules/Rod:     12
+   # Modules          576
+  Inner sensor average radius:  64.1563 [cm]
+    Outer sensor average radius:  64.2563 [cm]
+      Average sensor separation:    1.00001 [mm]
   Max length of Stack Layer:    249.449 [cm]
-  Total active surface:         51159.9 [cm^2]
+  Total active surface:         102320 [cm^2]
   Inner sensor channels:        68608
                rows:            1024
                columns:         67
   Inner sensor average pitch X: 94 [um]
                              Y: 1381 [um]
-  Inner sensor ROCs X:          2.66667
-                    Y:          22.3333
-                    total:      178.667
+  Inner sensor ROCs X:          8
+                    Y:          67
+                    total:      536
   Outer sensor channels:        68608
                rows:            1024
                columns:         67
   Outer sensor average pitch X: 94 [um]
                              Y: 1381 [um]
-  Outer sensor ROCs X:          5.33333
-                    Y:          44.6667
-                    total:      357.333
+  Outer sensor ROCs X:          8
+                    Y:          67
+                    total:      536
 
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  Stack Layer:      5
-   # Rods:          48
-   # Modules/Rod:   12
-   # Modules        576
-  Inner sensor average radius:  68.1659 [cm]
-  Outer sensor average radius:  68.2859 [cm]
-  Average sensor separation:    1.19999 [mm]
+  Barrel Stack Layer: 5
+   # Rods:            48
+   # Modules/Rod:     12
+   # Modules          576
+  Inner sensor average radius:  68.1559 [cm]
+    Outer sensor average radius:  68.2559 [cm]
+      Average sensor separation:    1 [mm]
   Max length of Stack Layer:    249.449 [cm]
-  Total active surface:         51159.9 [cm^2]
+  Total active surface:         102320 [cm^2]
   Inner sensor channels:        68608
                rows:            1024
                columns:         67
   Inner sensor average pitch X: 94 [um]
                              Y: 1381 [um]
-  Inner sensor ROCs X:          2.66667
-                    Y:          22.3333
-                    total:      178.667
+  Inner sensor ROCs X:          8
+                    Y:          67
+                    total:      536
   Outer sensor channels:        68608
                rows:            1024
                columns:         67
   Outer sensor average pitch X: 94 [um]
                              Y: 1381 [um]
-  Outer sensor ROCs X:          5.33333
-                    Y:          44.6667
-                    total:      357.333
+  Outer sensor ROCs X:          8
+                    Y:          67
+                    total:      536
 
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  Stack Layer:      6
-   # Rods:          56
-   # Modules/Rod:   12
-   # Modules        672
-  Inner sensor average radius:  80.165 [cm]
-  Outer sensor average radius:  80.2851 [cm]
-  Average sensor separation:    1.20003 [mm]
+  Barrel Stack Layer: 6
+   # Rods:            56
+   # Modules/Rod:     12
+   # Modules          672
+  Inner sensor average radius:  80.155 [cm]
+    Outer sensor average radius:  80.2551 [cm]
+      Average sensor separation:    1.00002 [mm]
   Max length of Stack Layer:    249.449 [cm]
-  Total active surface:         59686.5 [cm^2]
+  Total active surface:         119373 [cm^2]
   Inner sensor channels:        68608
                rows:            1024
                columns:         67
   Inner sensor average pitch X: 94 [um]
                              Y: 1381 [um]
-  Inner sensor ROCs X:          2.66667
-                    Y:          22.3333
-                    total:      178.667
+  Inner sensor ROCs X:          8
+                    Y:          67
+                    total:      536
   Outer sensor channels:        68608
                rows:            1024
                columns:         67
   Outer sensor average pitch X: 94 [um]
                              Y: 1381 [um]
-  Outer sensor ROCs X:          5.33333
-                    Y:          44.6667
-                    total:      357.333
+  Outer sensor ROCs X:          8
+                    Y:          67
+                    total:      536
 
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  Stack Layer:      7
-   # Rods:          56
-   # Modules/Rod:   12
-   # Modules        672
-  Inner sensor average radius:  84.1648 [cm]
-  Outer sensor average radius:  84.2848 [cm]
-  Average sensor separation:    1.20001 [mm]
+  Barrel Stack Layer: 7
+   # Rods:            56
+   # Modules/Rod:     12
+   # Modules          672
+  Inner sensor average radius:  84.1548 [cm]
+    Outer sensor average radius:  84.2548 [cm]
+      Average sensor separation:    1.00001 [mm]
   Max length of Stack Layer:    249.449 [cm]
-  Total active surface:         59686.5 [cm^2]
+  Total active surface:         119373 [cm^2]
   Inner sensor channels:        68608
                rows:            1024
                columns:         67
   Inner sensor average pitch X: 94 [um]
                              Y: 1381 [um]
-  Inner sensor ROCs X:          2.66667
-                    Y:          22.3333
-                    total:      178.667
+  Inner sensor ROCs X:          8
+                    Y:          67
+                    total:      536
   Outer sensor channels:        68608
                rows:            1024
                columns:         67
   Outer sensor average pitch X: 94 [um]
                              Y: 1381 [um]
-  Outer sensor ROCs X:          5.33333
-                    Y:          44.6667
-                    total:      357.333
+  Outer sensor ROCs X:          8
+                    Y:          67
+                    total:      536
 
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  Stack Layer:      8
-   # Rods:          68
-   # Modules/Rod:   58
-   # Modules        3944
-  Inner sensor average radius:  98.3642 [cm]
-  Outer sensor average radius:  98.4841 [cm]
-  Average sensor separation:    1.19999 [mm]
+  Barrel Stack Layer: 8
+   # Rods:            68
+   # Modules/Rod:     58
+   # Modules          3944
+  Inner sensor average radius:  98.3542 [cm]
+    Outer sensor average radius:  98.4541 [cm]
+      Average sensor separation:    0.99999 [mm]
   Max length of Stack Layer:    249.449 [cm]
-  Total active surface:         350303 [cm^2]
+  Total active surface:         700606 [cm^2]
   Inner sensor channels:        68608
                rows:            1024
                columns:         67
   Inner sensor average pitch X: 94 [um]
                              Y: 1381 [um]
-  Inner sensor ROCs X:          3.17241
-                    Y:          26.569
-                    total:      212.552
+  Inner sensor ROCs X:          8
+                    Y:          67
+                    total:      536
   Outer sensor channels:        68608
                rows:            1024
                columns:         67
   Outer sensor average pitch X: 94 [um]
                              Y: 1381 [um]
-  Outer sensor ROCs X:          4.82759
-                    Y:          40.431
-                    total:      323.448
+  Outer sensor ROCs X:          8
+                    Y:          67
+                    total:      536
 
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  Stack Layer:      9
-   # Rods:          68
-   # Modules/Rod:   58
-   # Modules        3944
-  Inner sensor average radius:  102.364 [cm]
-  Outer sensor average radius:  102.484 [cm]
-  Average sensor separation:    1.2 [mm]
+  Barrel Stack Layer: 9
+   # Rods:            68
+   # Modules/Rod:     58
+   # Modules          3944
+  Inner sensor average radius:  102.354 [cm]
+    Outer sensor average radius:  102.454 [cm]
+      Average sensor separation:    1 [mm]
   Max length of Stack Layer:    249.449 [cm]
-  Total active surface:         350303 [cm^2]
+  Total active surface:         700606 [cm^2]
   Inner sensor channels:        68608
                rows:            1024
                columns:         67
   Inner sensor average pitch X: 94 [um]
                              Y: 1381 [um]
-  Inner sensor ROCs X:          3.17241
-                    Y:          26.569
-                    total:      212.552
+  Inner sensor ROCs X:          8
+                    Y:          67
+                    total:      536
   Outer sensor channels:        68608
                rows:            1024
                columns:         67
   Outer sensor average pitch X: 94 [um]
                              Y: 1381 [um]
-  Outer sensor ROCs X:          4.82759
-                    Y:          40.431
-                    total:      323.448
+  Outer sensor ROCs X:          8
+                    Y:          67
+                    total:      536

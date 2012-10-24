@@ -15,7 +15,7 @@ process.load('Configuration.EventContent.EventContent_cff')
 process.load('SimGeneral.MixingModule.mixNoPU_cfi')
 #process.load('SLHCUpgradeSimulations.Geometry.Phase1_R30F12_cmsSimIdealGeometryXML_cff')
 #process.load('SLHCUpgradeSimulations.Geometry.BarrelEndcap_cmsSimIdealGeometryXML_R39F16_cff')
-process.load('SLHCUpgradeSimulations.Geometry.LongBarrel_cmsSimIdealGeometryXML_cff')
+process.load('SLHCUpgradeSimulations.Geometry.BarrelEndcap_cmsSimIdealGeometryXML_cff')
 process.load('Configuration.StandardSequences.MagneticField_38T_cff')
 process.load('Configuration.StandardSequences.Generator_cff')
 process.load('IOMC.EventVertexGenerators.VtxSmearedGauss_cfi')
@@ -23,9 +23,9 @@ process.load('GeneratorInterface.Core.genFilterSummary_cff')
 process.load('Configuration.StandardSequences.SimIdeal_cff')
 process.load('Configuration.StandardSequences.EndOfProcess_cff')
 process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_cff')
-process.load('SLHCUpgradeSimulations.Geometry.fakeConditions_LongBarrel_cff')
-process.load('SLHCUpgradeSimulations.Geometry.Digi_LongBarrel_cff')
-process.load('SLHCUpgradeSimulations.Geometry.recoFromSimDigis_LongBarrel_cff')
+process.load('SLHCUpgradeSimulations.Geometry.fakeConditions_BarrelEndcap_cff')
+process.load('SLHCUpgradeSimulations.Geometry.Digi_BarrelEndcap_cff')
+process.load('SLHCUpgradeSimulations.Geometry.recoFromSimDigis_BarrelEndcap_cff')
 
 
 #process.load("SLHCUpgradeSimulations.Utilities.StackedTrackerGeometry_cfi")
@@ -37,7 +37,7 @@ process.load('SLHCUpgradeSimulations.Geometry.recoFromSimDigis_LongBarrel_cff')
 #process.load("SLHCUpgradeSimulations.L1TrackTrigger.Cluster_cfi")
 
 process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(100)
+    input = cms.untracked.int32(40)
 )
 
 # Input source
@@ -50,7 +50,7 @@ process.source = cms.Source("EmptySource")
 
 # Production Info
 process.configurationMetadata = cms.untracked.PSet(
-    version = cms.untracked.string('$Revision: 1.1.2.1 $'),
+    version = cms.untracked.string('$Revision: 1.1 $'),
     annotation = cms.untracked.string('SLHCUpgradeSimulations/Configuration/python/FourMuPt_1_50_cfi.py nevts:1'),
     name = cms.untracked.string('PyReleaseValidation')
 )
@@ -83,12 +83,12 @@ process.GlobalTag.globaltag = 'DESIGN42_V11::All'
 
 #NP#
 process.siPixelFakeGainOfflineESSource = cms.ESSource("SiPixelFakeGainOfflineESSource",
-    file = cms.FileInPath('SLHCUpgradeSimulations/Geometry/data/LongBarrel/EmptyPixelSkimmedGeometry.txt')
+    file = cms.FileInPath('SLHCUpgradeSimulations/Geometry/data/BarrelEndcap/EmptyPixelSkimmedGeometry.txt')
 )
 process.es_prefer_fake_gain = cms.ESPrefer("SiPixelFakeGainOfflineESSource","siPixelFakeGainOfflineESSource")
 
 process.siPixelFakeLorentzAngleESSource = cms.ESSource("SiPixelFakeLorentzAngleESSource",
-    file = cms.FileInPath('SLHCUpgradeSimulations/Geometry/data/LongBarrel/PixelSkimmedGeometry.txt')
+    file = cms.FileInPath('SLHCUpgradeSimulations/Geometry/data/BarrelEndcap/PixelSkimmedGeometry.txt')
 )
 process.es_prefer_fake_lorentz = cms.ESPrefer("SiPixelFakeLorentzAngleESSource","siPixelFakeLorentzAngleESSource")
 

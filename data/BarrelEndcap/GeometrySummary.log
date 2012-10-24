@@ -1,0 +1,2132 @@
+ *****************
+ * FINAL SUMMARY *
+ *****************
+
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  Barrel Stack Layer: 0
+   # Rods:            16
+   # Modules/Rod:     62
+   # Modules          992
+  Inner sensor average radius:  23.3471 [cm]
+    Outer sensor average radius:  23.6072 [cm]
+      Average sensor separation:    2.6 [mm]
+  Max length of Stack Layer:    114.167 [cm]
+  Total active surface:         88108.6 [cm^2]
+  Inner sensor channels:        2048
+               rows:            1024
+               columns:         2
+  Inner sensor average pitch X: 94 [um]
+                             Y: 23130 [um]
+  Inner sensor ROCs X:          8
+                    Y:          2
+                    total:      16
+  Outer sensor channels:        2048
+               rows:            1024
+               columns:         2
+  Outer sensor average pitch X: 94 [um]
+                             Y: 23130 [um]
+  Outer sensor ROCs X:          8
+                    Y:          2
+                    total:      16
+
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  Barrel Stack Layer: 1
+   # Rods:            26
+   # Modules/Rod:     62
+   # Modules          1612
+  Inner sensor average radius:  38.8056 [cm]
+    Outer sensor average radius:  38.9655 [cm]
+      Average sensor separation:    1.6 [mm]
+  Max length of Stack Layer:    114.167 [cm]
+  Total active surface:         143177 [cm^2]
+  Inner sensor channels:        2048
+               rows:            1024
+               columns:         2
+  Inner sensor average pitch X: 94 [um]
+                             Y: 23130 [um]
+  Inner sensor ROCs X:          8
+                    Y:          2
+                    total:      16
+  Outer sensor channels:        2048
+               rows:            1024
+               columns:         2
+  Outer sensor average pitch X: 94 [um]
+                             Y: 23130 [um]
+  Outer sensor ROCs X:          8
+                    Y:          2
+                    total:      16
+
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  Barrel Stack Layer: 2
+   # Rods:            36
+   # Modules/Rod:     62
+   # Modules          2232
+  Inner sensor average radius:  52.3221 [cm]
+    Outer sensor average radius:  52.4421 [cm]
+      Average sensor separation:    1.2 [mm]
+  Max length of Stack Layer:    114.167 [cm]
+  Total active surface:         198244 [cm^2]
+  Inner sensor channels:        2048
+               rows:            1024
+               columns:         2
+  Inner sensor average pitch X: 94 [um]
+                             Y: 23130 [um]
+  Inner sensor ROCs X:          8
+                    Y:          2
+                    total:      16
+  Outer sensor channels:        2048
+               rows:            1024
+               columns:         2
+  Outer sensor average pitch X: 94 [um]
+                             Y: 23130 [um]
+  Outer sensor ROCs X:          8
+                    Y:          2
+                    total:      16
+
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  Barrel Stack Layer: 3
+   # Rods:            50
+   # Modules/Rod:     24
+   # Modules          1200
+  Inner sensor average radius:  69.7448 [cm]
+    Outer sensor average radius:  69.8248 [cm]
+      Average sensor separation:    0.799993 [mm]
+  Max length of Stack Layer:    113.609 [cm]
+  Total active surface:         220553 [cm^2]
+  Inner sensor channels:        2048
+               rows:            1024
+               columns:         2
+  Inner sensor average pitch X: 89 [um]
+                             Y: 50249 [um]
+  Inner sensor ROCs X:          8
+                    Y:          2
+                    total:      16
+  Outer sensor channels:        2048
+               rows:            1024
+               columns:         2
+  Outer sensor average pitch X: 89 [um]
+                             Y: 50249 [um]
+  Outer sensor ROCs X:          8
+                    Y:          2
+                    total:      16
+
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  Barrel Stack Layer: 4
+   # Rods:            62
+   # Modules/Rod:     24
+   # Modules          1488
+  Inner sensor average radius:  88.7903 [cm]
+    Outer sensor average radius:  88.8703 [cm]
+      Average sensor separation:    0.799997 [mm]
+  Max length of Stack Layer:    113.609 [cm]
+  Total active surface:         273486 [cm^2]
+  Inner sensor channels:        2048
+               rows:            1024
+               columns:         2
+  Inner sensor average pitch X: 89 [um]
+                             Y: 50249 [um]
+  Inner sensor ROCs X:          8
+                    Y:          2
+                    total:      16
+  Outer sensor channels:        2048
+               rows:            1024
+               columns:         2
+  Outer sensor average pitch X: 89 [um]
+                             Y: 50249 [um]
+  Outer sensor ROCs X:          8
+                    Y:          2
+                    total:      16
+
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  Barrel Stack Layer: 5
+   # Rods:            76
+   # Modules/Rod:     24
+   # Modules          1824
+  Inner sensor average radius:  107.85 [cm]
+    Outer sensor average radius:  107.93 [cm]
+      Average sensor separation:    0.800002 [mm]
+  Max length of Stack Layer:    113.609 [cm]
+  Total active surface:         335241 [cm^2]
+  Inner sensor channels:        2048
+               rows:            1024
+               columns:         2
+  Inner sensor average pitch X: 89 [um]
+                             Y: 50250 [um]
+  Inner sensor ROCs X:          8
+                    Y:          2
+                    total:      16
+  Outer sensor channels:        2048
+               rows:            1024
+               columns:         2
+  Outer sensor average pitch X: 89 [um]
+                             Y: 50250 [um]
+  Outer sensor ROCs X:          8
+                    Y:          2
+                    total:      16
+
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  Endcap Stack Layer: 0
+   # Rings:           14
+   # Modules/Ring:    22 in Ring 0
+   # Modules/Ring:    24 in Ring 1
+   # Modules/Ring:    28 in Ring 2
+   # Modules/Ring:    30 in Ring 3
+   # Modules/Ring:    32 in Ring 4
+   # Modules/Ring:    34 in Ring 5
+   # Modules/Ring:    38 in Ring 6
+   # Modules/Ring:    40 in Ring 7
+   # Modules/Ring:    48 in Ring 8
+   # Modules/Ring:    54 in Ring 9
+   # Modules/Ring:    62 in Ring 10
+   # Modules/Ring:    66 in Ring 11
+   # Modules/Ring:    72 in Ring 12
+   # Modules/Ring:    78 in Ring 13
+   # Modules          628
+  Inner sensor average z:  134.684 [cm] in Ring 0
+  Inner sensor average z:  131.384 [cm] in Ring 1
+  Inner sensor average z:  134.684 [cm] in Ring 2
+  Inner sensor average z:  131.384 [cm] in Ring 3
+  Inner sensor average z:  134.684 [cm] in Ring 4
+  Inner sensor average z:  131.384 [cm] in Ring 5
+  Inner sensor average z:  134.684 [cm] in Ring 6
+  Inner sensor average z:  131.384 [cm] in Ring 7
+  Inner sensor average z:  134.684 [cm] in Ring 8
+  Inner sensor average z:  131.384 [cm] in Ring 9
+  Inner sensor average z:  134.754 [cm] in Ring 10
+  Inner sensor average z:  131.454 [cm] in Ring 11
+  Inner sensor average z:  134.824 [cm] in Ring 12
+  Inner sensor average z:  131.524 [cm] in Ring 13
+    Outer sensor average z:  135.084 [cm] in Ring 0
+    Outer sensor average z:  131.784 [cm] in Ring 1
+    Outer sensor average z:  135.084 [cm] in Ring 2
+    Outer sensor average z:  131.784 [cm] in Ring 3
+    Outer sensor average z:  135.084 [cm] in Ring 4
+    Outer sensor average z:  131.784 [cm] in Ring 5
+    Outer sensor average z:  135.084 [cm] in Ring 6
+    Outer sensor average z:  131.784 [cm] in Ring 7
+    Outer sensor average z:  135.084 [cm] in Ring 8
+    Outer sensor average z:  131.784 [cm] in Ring 9
+    Outer sensor average z:  135.014 [cm] in Ring 10
+    Outer sensor average z:  131.714 [cm] in Ring 11
+    Outer sensor average z:  134.944 [cm] in Ring 12
+    Outer sensor average z:  131.644 [cm] in Ring 13
+      Average sensor separation:    4.00002 [mm] in Ring 0
+      Average sensor separation:    3.99994 [mm] in Ring 1
+      Average sensor separation:    4.00002 [mm] in Ring 2
+      Average sensor separation:    3.99994 [mm] in Ring 3
+      Average sensor separation:    4.00002 [mm] in Ring 4
+      Average sensor separation:    3.99994 [mm] in Ring 5
+      Average sensor separation:    4.00002 [mm] in Ring 6
+      Average sensor separation:    3.99994 [mm] in Ring 7
+      Average sensor separation:    4.00002 [mm] in Ring 8
+      Average sensor separation:    3.99994 [mm] in Ring 9
+      Average sensor separation:    2.60002 [mm] in Ring 10
+      Average sensor separation:    2.60002 [mm] in Ring 11
+      Average sensor separation:    1.20003 [mm] in Ring 12
+      Average sensor separation:    1.19995 [mm] in Ring 13
+  Total active surface:         1954.02 [cm^2] in Ring 0
+  Total active surface:         2131.66 [cm^2] in Ring 1
+  Total active surface:         2486.94 [cm^2] in Ring 2
+  Total active surface:         2664.58 [cm^2] in Ring 3
+  Total active surface:         2842.21 [cm^2] in Ring 4
+  Total active surface:         3019.85 [cm^2] in Ring 5
+  Total active surface:         3375.13 [cm^2] in Ring 6
+  Total active surface:         3552.77 [cm^2] in Ring 7
+  Total active surface:         8822.13 [cm^2] in Ring 8
+  Total active surface:         9924.9 [cm^2] in Ring 9
+  Total active surface:         11395.3 [cm^2] in Ring 10
+  Total active surface:         12130.4 [cm^2] in Ring 11
+  Total active surface:         13233.2 [cm^2] in Ring 12
+  Total active surface:         14336 [cm^2] in Ring 13
+  Inner sensor channels:        2048 in Ring 0
+  Inner sensor channels:        2048 in Ring 1
+  Inner sensor channels:        2048 in Ring 2
+  Inner sensor channels:        2048 in Ring 3
+  Inner sensor channels:        2048 in Ring 4
+  Inner sensor channels:        2048 in Ring 5
+  Inner sensor channels:        2048 in Ring 6
+  Inner sensor channels:        2048 in Ring 7
+  Inner sensor channels:        2048 in Ring 8
+  Inner sensor channels:        2048 in Ring 9
+  Inner sensor channels:        2048 in Ring 10
+  Inner sensor channels:        2048 in Ring 11
+  Inner sensor channels:        2048 in Ring 12
+  Inner sensor channels:        2048 in Ring 13
+               rows:            1024 in Ring 0
+               rows:            1024 in Ring 1
+               rows:            1024 in Ring 2
+               rows:            1024 in Ring 3
+               rows:            1024 in Ring 4
+               rows:            1024 in Ring 5
+               rows:            1024 in Ring 6
+               rows:            1024 in Ring 7
+               rows:            1024 in Ring 8
+               rows:            1024 in Ring 9
+               rows:            1024 in Ring 10
+               rows:            1024 in Ring 11
+               rows:            1024 in Ring 12
+               rows:            1024 in Ring 13
+               columns:         2 in Ring 0
+               columns:         2 in Ring 1
+               columns:         2 in Ring 2
+               columns:         2 in Ring 3
+               columns:         2 in Ring 4
+               columns:         2 in Ring 5
+               columns:         2 in Ring 6
+               columns:         2 in Ring 7
+               columns:         2 in Ring 8
+               columns:         2 in Ring 9
+               columns:         2 in Ring 10
+               columns:         2 in Ring 11
+               columns:         2 in Ring 12
+               columns:         2 in Ring 13
+  Inner sensor average pitch X: 93.75 [um] in Ring 0
+  Inner sensor average pitch X: 93.75 [um] in Ring 1
+  Inner sensor average pitch X: 93.75 [um] in Ring 2
+  Inner sensor average pitch X: 93.75 [um] in Ring 3
+  Inner sensor average pitch X: 93.75 [um] in Ring 4
+  Inner sensor average pitch X: 93.75 [um] in Ring 5
+  Inner sensor average pitch X: 93.75 [um] in Ring 6
+  Inner sensor average pitch X: 93.75 [um] in Ring 7
+  Inner sensor average pitch X: 89.2917 [um] in Ring 8
+  Inner sensor average pitch X: 89.2963 [um] in Ring 9
+  Inner sensor average pitch X: 89.2984 [um] in Ring 10
+  Inner sensor average pitch X: 89.2955 [um] in Ring 11
+  Inner sensor average pitch X: 89.2986 [um] in Ring 12
+  Inner sensor average pitch X: 89.2949 [um] in Ring 13
+                             Y: 23130 [um] in Ring 0
+                             Y: 23130 [um] in Ring 1
+                             Y: 23130 [um] in Ring 2
+                             Y: 23130 [um] in Ring 3
+                             Y: 23130 [um] in Ring 4
+                             Y: 23130 [um] in Ring 5
+                             Y: 23130 [um] in Ring 6
+                             Y: 23130 [um] in Ring 7
+                             Y: 50250 [um] in Ring 8
+                             Y: 50250 [um] in Ring 9
+                             Y: 50250 [um] in Ring 10
+                             Y: 50250 [um] in Ring 11
+                             Y: 50250 [um] in Ring 12
+                             Y: 50250.1 [um] in Ring 13
+  Inner sensor ROCs X:          8 in Ring 0
+  Inner sensor ROCs X:          8 in Ring 1
+  Inner sensor ROCs X:          8 in Ring 2
+  Inner sensor ROCs X:          8 in Ring 3
+  Inner sensor ROCs X:          8 in Ring 4
+  Inner sensor ROCs X:          8 in Ring 5
+  Inner sensor ROCs X:          8 in Ring 6
+  Inner sensor ROCs X:          8 in Ring 7
+  Inner sensor ROCs X:          8 in Ring 8
+  Inner sensor ROCs X:          8 in Ring 9
+  Inner sensor ROCs X:          8 in Ring 10
+  Inner sensor ROCs X:          8 in Ring 11
+  Inner sensor ROCs X:          8 in Ring 12
+  Inner sensor ROCs X:          8 in Ring 13
+                    Y:          2 in Ring 0
+                    Y:          2 in Ring 1
+                    Y:          2 in Ring 2
+                    Y:          2 in Ring 3
+                    Y:          2 in Ring 4
+                    Y:          2 in Ring 5
+                    Y:          2 in Ring 6
+                    Y:          2 in Ring 7
+                    Y:          2 in Ring 8
+                    Y:          2 in Ring 9
+                    Y:          2 in Ring 10
+                    Y:          2 in Ring 11
+                    Y:          2 in Ring 12
+                    Y:          2 in Ring 13
+                    total:      16 in Ring 0
+                    total:      16 in Ring 1
+                    total:      16 in Ring 2
+                    total:      16 in Ring 3
+                    total:      16 in Ring 4
+                    total:      16 in Ring 5
+                    total:      16 in Ring 6
+                    total:      16 in Ring 7
+                    total:      16 in Ring 8
+                    total:      16 in Ring 9
+                    total:      16 in Ring 10
+                    total:      16 in Ring 11
+                    total:      16 in Ring 12
+                    total:      16 in Ring 13
+  Outer sensor channels:        2048 in Ring 0
+  Outer sensor channels:        2048 in Ring 1
+  Outer sensor channels:        2048 in Ring 2
+  Outer sensor channels:        2048 in Ring 3
+  Outer sensor channels:        2048 in Ring 4
+  Outer sensor channels:        2048 in Ring 5
+  Outer sensor channels:        2048 in Ring 6
+  Outer sensor channels:        2048 in Ring 7
+  Outer sensor channels:        2048 in Ring 8
+  Outer sensor channels:        2048 in Ring 9
+  Outer sensor channels:        2048 in Ring 10
+  Outer sensor channels:        2048 in Ring 11
+  Outer sensor channels:        2048 in Ring 12
+  Outer sensor channels:        2048 in Ring 13
+               rows:            1024 in Ring 0
+               rows:            1024 in Ring 1
+               rows:            1024 in Ring 2
+               rows:            1024 in Ring 3
+               rows:            1024 in Ring 4
+               rows:            1024 in Ring 5
+               rows:            1024 in Ring 6
+               rows:            1024 in Ring 7
+               rows:            1024 in Ring 8
+               rows:            1024 in Ring 9
+               rows:            1024 in Ring 10
+               rows:            1024 in Ring 11
+               rows:            1024 in Ring 12
+               rows:            1024 in Ring 13
+               columns:         2 in Ring 0
+               columns:         2 in Ring 1
+               columns:         2 in Ring 2
+               columns:         2 in Ring 3
+               columns:         2 in Ring 4
+               columns:         2 in Ring 5
+               columns:         2 in Ring 6
+               columns:         2 in Ring 7
+               columns:         2 in Ring 8
+               columns:         2 in Ring 9
+               columns:         2 in Ring 10
+               columns:         2 in Ring 11
+               columns:         2 in Ring 12
+               columns:         2 in Ring 13
+  Outer sensor average pitch X: 93.75 [um] in Ring 0
+  Outer sensor average pitch X: 93.75 [um] in Ring 1
+  Outer sensor average pitch X: 93.75 [um] in Ring 2
+  Outer sensor average pitch X: 93.75 [um] in Ring 3
+  Outer sensor average pitch X: 93.75 [um] in Ring 4
+  Outer sensor average pitch X: 93.75 [um] in Ring 5
+  Outer sensor average pitch X: 93.75 [um] in Ring 6
+  Outer sensor average pitch X: 93.75 [um] in Ring 7
+  Outer sensor average pitch X: 89.2917 [um] in Ring 8
+  Outer sensor average pitch X: 89.2963 [um] in Ring 9
+  Outer sensor average pitch X: 89.2984 [um] in Ring 10
+  Outer sensor average pitch X: 89.2955 [um] in Ring 11
+  Outer sensor average pitch X: 89.2986 [um] in Ring 12
+  Outer sensor average pitch X: 89.2949 [um] in Ring 13
+                             Y: 23130 [um] in Ring 0
+                             Y: 23130 [um] in Ring 1
+                             Y: 23130 [um] in Ring 2
+                             Y: 23130 [um] in Ring 3
+                             Y: 23130 [um] in Ring 4
+                             Y: 23130 [um] in Ring 5
+                             Y: 23130 [um] in Ring 6
+                             Y: 23130 [um] in Ring 7
+                             Y: 50250 [um] in Ring 8
+                             Y: 50250 [um] in Ring 9
+                             Y: 50250 [um] in Ring 10
+                             Y: 50250 [um] in Ring 11
+                             Y: 50250 [um] in Ring 12
+                             Y: 50250.1 [um] in Ring 13
+  Outer sensor ROCs X:          0 in Ring 0
+  Outer sensor ROCs X:          0 in Ring 1
+  Outer sensor ROCs X:          0 in Ring 2
+  Outer sensor ROCs X:          0 in Ring 3
+  Outer sensor ROCs X:          0 in Ring 4
+  Outer sensor ROCs X:          0 in Ring 5
+  Outer sensor ROCs X:          0 in Ring 6
+  Outer sensor ROCs X:          0 in Ring 7
+  Outer sensor ROCs X:          0 in Ring 8
+  Outer sensor ROCs X:          0 in Ring 9
+  Outer sensor ROCs X:          0 in Ring 10
+  Outer sensor ROCs X:          0 in Ring 11
+  Outer sensor ROCs X:          0 in Ring 12
+  Outer sensor ROCs X:          0 in Ring 13
+                    Y:          0 in Ring 0
+                    Y:          0 in Ring 1
+                    Y:          0 in Ring 2
+                    Y:          0 in Ring 3
+                    Y:          0 in Ring 4
+                    Y:          0 in Ring 5
+                    Y:          0 in Ring 6
+                    Y:          0 in Ring 7
+                    Y:          0 in Ring 8
+                    Y:          0 in Ring 9
+                    Y:          0 in Ring 10
+                    Y:          0 in Ring 11
+                    Y:          0 in Ring 12
+                    Y:          0 in Ring 13
+                    total:      0 in Ring 0
+                    total:      0 in Ring 1
+                    total:      0 in Ring 2
+                    total:      0 in Ring 3
+                    total:      0 in Ring 4
+                    total:      0 in Ring 5
+                    total:      0 in Ring 6
+                    total:      0 in Ring 7
+                    total:      0 in Ring 8
+                    total:      0 in Ring 9
+                    total:      0 in Ring 10
+                    total:      0 in Ring 11
+                    total:      0 in Ring 12
+                    total:      0 in Ring 13
+
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  Endcap Stack Layer: 1
+   # Rings:           14
+   # Modules/Ring:    22 in Ring 0
+   # Modules/Ring:    24 in Ring 1
+   # Modules/Ring:    28 in Ring 2
+   # Modules/Ring:    30 in Ring 3
+   # Modules/Ring:    32 in Ring 4
+   # Modules/Ring:    34 in Ring 5
+   # Modules/Ring:    38 in Ring 6
+   # Modules/Ring:    40 in Ring 7
+   # Modules/Ring:    48 in Ring 8
+   # Modules/Ring:    54 in Ring 9
+   # Modules/Ring:    62 in Ring 10
+   # Modules/Ring:    66 in Ring 11
+   # Modules/Ring:    72 in Ring 12
+   # Modules/Ring:    78 in Ring 13
+   # Modules          628
+  Inner sensor average z:  150.633 [cm] in Ring 0
+  Inner sensor average z:  147.333 [cm] in Ring 1
+  Inner sensor average z:  150.633 [cm] in Ring 2
+  Inner sensor average z:  147.333 [cm] in Ring 3
+  Inner sensor average z:  150.633 [cm] in Ring 4
+  Inner sensor average z:  147.333 [cm] in Ring 5
+  Inner sensor average z:  150.633 [cm] in Ring 6
+  Inner sensor average z:  147.333 [cm] in Ring 7
+  Inner sensor average z:  150.633 [cm] in Ring 8
+  Inner sensor average z:  147.333 [cm] in Ring 9
+  Inner sensor average z:  150.703 [cm] in Ring 10
+  Inner sensor average z:  147.403 [cm] in Ring 11
+  Inner sensor average z:  150.703 [cm] in Ring 12
+  Inner sensor average z:  147.473 [cm] in Ring 13
+    Outer sensor average z:  151.033 [cm] in Ring 0
+    Outer sensor average z:  147.733 [cm] in Ring 1
+    Outer sensor average z:  151.033 [cm] in Ring 2
+    Outer sensor average z:  147.733 [cm] in Ring 3
+    Outer sensor average z:  151.033 [cm] in Ring 4
+    Outer sensor average z:  147.733 [cm] in Ring 5
+    Outer sensor average z:  151.033 [cm] in Ring 6
+    Outer sensor average z:  147.733 [cm] in Ring 7
+    Outer sensor average z:  151.033 [cm] in Ring 8
+    Outer sensor average z:  147.733 [cm] in Ring 9
+    Outer sensor average z:  150.963 [cm] in Ring 10
+    Outer sensor average z:  147.663 [cm] in Ring 11
+    Outer sensor average z:  150.963 [cm] in Ring 12
+    Outer sensor average z:  147.593 [cm] in Ring 13
+      Average sensor separation:    4.00002 [mm] in Ring 0
+      Average sensor separation:    4.00002 [mm] in Ring 1
+      Average sensor separation:    4.00002 [mm] in Ring 2
+      Average sensor separation:    4.00002 [mm] in Ring 3
+      Average sensor separation:    4.00002 [mm] in Ring 4
+      Average sensor separation:    4.00002 [mm] in Ring 5
+      Average sensor separation:    4.00002 [mm] in Ring 6
+      Average sensor separation:    4.00002 [mm] in Ring 7
+      Average sensor separation:    4.00002 [mm] in Ring 8
+      Average sensor separation:    4.00002 [mm] in Ring 9
+      Average sensor separation:    2.59995 [mm] in Ring 10
+      Average sensor separation:    2.60002 [mm] in Ring 11
+      Average sensor separation:    2.59995 [mm] in Ring 12
+      Average sensor separation:    1.20003 [mm] in Ring 13
+  Total active surface:         1954.02 [cm^2] in Ring 0
+  Total active surface:         2131.66 [cm^2] in Ring 1
+  Total active surface:         2486.94 [cm^2] in Ring 2
+  Total active surface:         2664.58 [cm^2] in Ring 3
+  Total active surface:         2842.21 [cm^2] in Ring 4
+  Total active surface:         3019.85 [cm^2] in Ring 5
+  Total active surface:         3375.13 [cm^2] in Ring 6
+  Total active surface:         3552.77 [cm^2] in Ring 7
+  Total active surface:         8822.13 [cm^2] in Ring 8
+  Total active surface:         9924.9 [cm^2] in Ring 9
+  Total active surface:         11395.3 [cm^2] in Ring 10
+  Total active surface:         12130.4 [cm^2] in Ring 11
+  Total active surface:         13233.2 [cm^2] in Ring 12
+  Total active surface:         14336 [cm^2] in Ring 13
+  Inner sensor channels:        2048 in Ring 0
+  Inner sensor channels:        2048 in Ring 1
+  Inner sensor channels:        2048 in Ring 2
+  Inner sensor channels:        2048 in Ring 3
+  Inner sensor channels:        2048 in Ring 4
+  Inner sensor channels:        2048 in Ring 5
+  Inner sensor channels:        2048 in Ring 6
+  Inner sensor channels:        2048 in Ring 7
+  Inner sensor channels:        2048 in Ring 8
+  Inner sensor channels:        2048 in Ring 9
+  Inner sensor channels:        2048 in Ring 10
+  Inner sensor channels:        2048 in Ring 11
+  Inner sensor channels:        2048 in Ring 12
+  Inner sensor channels:        2048 in Ring 13
+               rows:            1024 in Ring 0
+               rows:            1024 in Ring 1
+               rows:            1024 in Ring 2
+               rows:            1024 in Ring 3
+               rows:            1024 in Ring 4
+               rows:            1024 in Ring 5
+               rows:            1024 in Ring 6
+               rows:            1024 in Ring 7
+               rows:            1024 in Ring 8
+               rows:            1024 in Ring 9
+               rows:            1024 in Ring 10
+               rows:            1024 in Ring 11
+               rows:            1024 in Ring 12
+               rows:            1024 in Ring 13
+               columns:         2 in Ring 0
+               columns:         2 in Ring 1
+               columns:         2 in Ring 2
+               columns:         2 in Ring 3
+               columns:         2 in Ring 4
+               columns:         2 in Ring 5
+               columns:         2 in Ring 6
+               columns:         2 in Ring 7
+               columns:         2 in Ring 8
+               columns:         2 in Ring 9
+               columns:         2 in Ring 10
+               columns:         2 in Ring 11
+               columns:         2 in Ring 12
+               columns:         2 in Ring 13
+  Inner sensor average pitch X: 93.75 [um] in Ring 0
+  Inner sensor average pitch X: 93.75 [um] in Ring 1
+  Inner sensor average pitch X: 93.75 [um] in Ring 2
+  Inner sensor average pitch X: 93.75 [um] in Ring 3
+  Inner sensor average pitch X: 93.75 [um] in Ring 4
+  Inner sensor average pitch X: 93.75 [um] in Ring 5
+  Inner sensor average pitch X: 93.75 [um] in Ring 6
+  Inner sensor average pitch X: 93.75 [um] in Ring 7
+  Inner sensor average pitch X: 89.2917 [um] in Ring 8
+  Inner sensor average pitch X: 89.2963 [um] in Ring 9
+  Inner sensor average pitch X: 89.2984 [um] in Ring 10
+  Inner sensor average pitch X: 89.2955 [um] in Ring 11
+  Inner sensor average pitch X: 89.2986 [um] in Ring 12
+  Inner sensor average pitch X: 89.2949 [um] in Ring 13
+                             Y: 23130 [um] in Ring 0
+                             Y: 23130 [um] in Ring 1
+                             Y: 23130 [um] in Ring 2
+                             Y: 23130 [um] in Ring 3
+                             Y: 23130 [um] in Ring 4
+                             Y: 23130 [um] in Ring 5
+                             Y: 23130 [um] in Ring 6
+                             Y: 23130 [um] in Ring 7
+                             Y: 50250 [um] in Ring 8
+                             Y: 50250 [um] in Ring 9
+                             Y: 50250 [um] in Ring 10
+                             Y: 50250 [um] in Ring 11
+                             Y: 50250 [um] in Ring 12
+                             Y: 50250.1 [um] in Ring 13
+  Inner sensor ROCs X:          8 in Ring 0
+  Inner sensor ROCs X:          8 in Ring 1
+  Inner sensor ROCs X:          8 in Ring 2
+  Inner sensor ROCs X:          8 in Ring 3
+  Inner sensor ROCs X:          8 in Ring 4
+  Inner sensor ROCs X:          8 in Ring 5
+  Inner sensor ROCs X:          8 in Ring 6
+  Inner sensor ROCs X:          8 in Ring 7
+  Inner sensor ROCs X:          8 in Ring 8
+  Inner sensor ROCs X:          8 in Ring 9
+  Inner sensor ROCs X:          8 in Ring 10
+  Inner sensor ROCs X:          8 in Ring 11
+  Inner sensor ROCs X:          8 in Ring 12
+  Inner sensor ROCs X:          8 in Ring 13
+                    Y:          2 in Ring 0
+                    Y:          2 in Ring 1
+                    Y:          2 in Ring 2
+                    Y:          2 in Ring 3
+                    Y:          2 in Ring 4
+                    Y:          2 in Ring 5
+                    Y:          2 in Ring 6
+                    Y:          2 in Ring 7
+                    Y:          2 in Ring 8
+                    Y:          2 in Ring 9
+                    Y:          2 in Ring 10
+                    Y:          2 in Ring 11
+                    Y:          2 in Ring 12
+                    Y:          2 in Ring 13
+                    total:      16 in Ring 0
+                    total:      16 in Ring 1
+                    total:      16 in Ring 2
+                    total:      16 in Ring 3
+                    total:      16 in Ring 4
+                    total:      16 in Ring 5
+                    total:      16 in Ring 6
+                    total:      16 in Ring 7
+                    total:      16 in Ring 8
+                    total:      16 in Ring 9
+                    total:      16 in Ring 10
+                    total:      16 in Ring 11
+                    total:      16 in Ring 12
+                    total:      16 in Ring 13
+  Outer sensor channels:        2048 in Ring 0
+  Outer sensor channels:        2048 in Ring 1
+  Outer sensor channels:        2048 in Ring 2
+  Outer sensor channels:        2048 in Ring 3
+  Outer sensor channels:        2048 in Ring 4
+  Outer sensor channels:        2048 in Ring 5
+  Outer sensor channels:        2048 in Ring 6
+  Outer sensor channels:        2048 in Ring 7
+  Outer sensor channels:        2048 in Ring 8
+  Outer sensor channels:        2048 in Ring 9
+  Outer sensor channels:        2048 in Ring 10
+  Outer sensor channels:        2048 in Ring 11
+  Outer sensor channels:        2048 in Ring 12
+  Outer sensor channels:        2048 in Ring 13
+               rows:            1024 in Ring 0
+               rows:            1024 in Ring 1
+               rows:            1024 in Ring 2
+               rows:            1024 in Ring 3
+               rows:            1024 in Ring 4
+               rows:            1024 in Ring 5
+               rows:            1024 in Ring 6
+               rows:            1024 in Ring 7
+               rows:            1024 in Ring 8
+               rows:            1024 in Ring 9
+               rows:            1024 in Ring 10
+               rows:            1024 in Ring 11
+               rows:            1024 in Ring 12
+               rows:            1024 in Ring 13
+               columns:         2 in Ring 0
+               columns:         2 in Ring 1
+               columns:         2 in Ring 2
+               columns:         2 in Ring 3
+               columns:         2 in Ring 4
+               columns:         2 in Ring 5
+               columns:         2 in Ring 6
+               columns:         2 in Ring 7
+               columns:         2 in Ring 8
+               columns:         2 in Ring 9
+               columns:         2 in Ring 10
+               columns:         2 in Ring 11
+               columns:         2 in Ring 12
+               columns:         2 in Ring 13
+  Outer sensor average pitch X: 93.75 [um] in Ring 0
+  Outer sensor average pitch X: 93.75 [um] in Ring 1
+  Outer sensor average pitch X: 93.75 [um] in Ring 2
+  Outer sensor average pitch X: 93.75 [um] in Ring 3
+  Outer sensor average pitch X: 93.75 [um] in Ring 4
+  Outer sensor average pitch X: 93.75 [um] in Ring 5
+  Outer sensor average pitch X: 93.75 [um] in Ring 6
+  Outer sensor average pitch X: 93.75 [um] in Ring 7
+  Outer sensor average pitch X: 89.2917 [um] in Ring 8
+  Outer sensor average pitch X: 89.2963 [um] in Ring 9
+  Outer sensor average pitch X: 89.2984 [um] in Ring 10
+  Outer sensor average pitch X: 89.2955 [um] in Ring 11
+  Outer sensor average pitch X: 89.2986 [um] in Ring 12
+  Outer sensor average pitch X: 89.2949 [um] in Ring 13
+                             Y: 23130 [um] in Ring 0
+                             Y: 23130 [um] in Ring 1
+                             Y: 23130 [um] in Ring 2
+                             Y: 23130 [um] in Ring 3
+                             Y: 23130 [um] in Ring 4
+                             Y: 23130 [um] in Ring 5
+                             Y: 23130 [um] in Ring 6
+                             Y: 23130 [um] in Ring 7
+                             Y: 50250 [um] in Ring 8
+                             Y: 50250 [um] in Ring 9
+                             Y: 50250 [um] in Ring 10
+                             Y: 50250 [um] in Ring 11
+                             Y: 50250 [um] in Ring 12
+                             Y: 50250.1 [um] in Ring 13
+  Outer sensor ROCs X:          0 in Ring 0
+  Outer sensor ROCs X:          0 in Ring 1
+  Outer sensor ROCs X:          0 in Ring 2
+  Outer sensor ROCs X:          0 in Ring 3
+  Outer sensor ROCs X:          0 in Ring 4
+  Outer sensor ROCs X:          0 in Ring 5
+  Outer sensor ROCs X:          0 in Ring 6
+  Outer sensor ROCs X:          0 in Ring 7
+  Outer sensor ROCs X:          0 in Ring 8
+  Outer sensor ROCs X:          0 in Ring 9
+  Outer sensor ROCs X:          0 in Ring 10
+  Outer sensor ROCs X:          0 in Ring 11
+  Outer sensor ROCs X:          0 in Ring 12
+  Outer sensor ROCs X:          0 in Ring 13
+                    Y:          0 in Ring 0
+                    Y:          0 in Ring 1
+                    Y:          0 in Ring 2
+                    Y:          0 in Ring 3
+                    Y:          0 in Ring 4
+                    Y:          0 in Ring 5
+                    Y:          0 in Ring 6
+                    Y:          0 in Ring 7
+                    Y:          0 in Ring 8
+                    Y:          0 in Ring 9
+                    Y:          0 in Ring 10
+                    Y:          0 in Ring 11
+                    Y:          0 in Ring 12
+                    Y:          0 in Ring 13
+                    total:      0 in Ring 0
+                    total:      0 in Ring 1
+                    total:      0 in Ring 2
+                    total:      0 in Ring 3
+                    total:      0 in Ring 4
+                    total:      0 in Ring 5
+                    total:      0 in Ring 6
+                    total:      0 in Ring 7
+                    total:      0 in Ring 8
+                    total:      0 in Ring 9
+                    total:      0 in Ring 10
+                    total:      0 in Ring 11
+                    total:      0 in Ring 12
+                    total:      0 in Ring 13
+
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  Endcap Stack Layer: 2
+   # Rings:           14
+   # Modules/Ring:    22 in Ring 0
+   # Modules/Ring:    24 in Ring 1
+   # Modules/Ring:    28 in Ring 2
+   # Modules/Ring:    30 in Ring 3
+   # Modules/Ring:    32 in Ring 4
+   # Modules/Ring:    34 in Ring 5
+   # Modules/Ring:    38 in Ring 6
+   # Modules/Ring:    40 in Ring 7
+   # Modules/Ring:    48 in Ring 8
+   # Modules/Ring:    54 in Ring 9
+   # Modules/Ring:    62 in Ring 10
+   # Modules/Ring:    66 in Ring 11
+   # Modules/Ring:    72 in Ring 12
+   # Modules/Ring:    78 in Ring 13
+   # Modules          628
+  Inner sensor average z:  168.444 [cm] in Ring 0
+  Inner sensor average z:  165.144 [cm] in Ring 1
+  Inner sensor average z:  168.444 [cm] in Ring 2
+  Inner sensor average z:  165.144 [cm] in Ring 3
+  Inner sensor average z:  168.444 [cm] in Ring 4
+  Inner sensor average z:  165.144 [cm] in Ring 5
+  Inner sensor average z:  168.444 [cm] in Ring 6
+  Inner sensor average z:  165.144 [cm] in Ring 7
+  Inner sensor average z:  168.444 [cm] in Ring 8
+  Inner sensor average z:  165.144 [cm] in Ring 9
+  Inner sensor average z:  168.514 [cm] in Ring 10
+  Inner sensor average z:  165.214 [cm] in Ring 11
+  Inner sensor average z:  168.514 [cm] in Ring 12
+  Inner sensor average z:  165.284 [cm] in Ring 13
+    Outer sensor average z:  168.844 [cm] in Ring 0
+    Outer sensor average z:  165.544 [cm] in Ring 1
+    Outer sensor average z:  168.844 [cm] in Ring 2
+    Outer sensor average z:  165.544 [cm] in Ring 3
+    Outer sensor average z:  168.844 [cm] in Ring 4
+    Outer sensor average z:  165.544 [cm] in Ring 5
+    Outer sensor average z:  168.844 [cm] in Ring 6
+    Outer sensor average z:  165.544 [cm] in Ring 7
+    Outer sensor average z:  168.844 [cm] in Ring 8
+    Outer sensor average z:  165.544 [cm] in Ring 9
+    Outer sensor average z:  168.774 [cm] in Ring 10
+    Outer sensor average z:  165.474 [cm] in Ring 11
+    Outer sensor average z:  168.774 [cm] in Ring 12
+    Outer sensor average z:  165.404 [cm] in Ring 13
+      Average sensor separation:    4.00002 [mm] in Ring 0
+      Average sensor separation:    4.00002 [mm] in Ring 1
+      Average sensor separation:    4.00002 [mm] in Ring 2
+      Average sensor separation:    4.00002 [mm] in Ring 3
+      Average sensor separation:    4.00002 [mm] in Ring 4
+      Average sensor separation:    4.00002 [mm] in Ring 5
+      Average sensor separation:    4.00002 [mm] in Ring 6
+      Average sensor separation:    4.00002 [mm] in Ring 7
+      Average sensor separation:    4.00002 [mm] in Ring 8
+      Average sensor separation:    4.00002 [mm] in Ring 9
+      Average sensor separation:    2.60002 [mm] in Ring 10
+      Average sensor separation:    2.59995 [mm] in Ring 11
+      Average sensor separation:    2.60002 [mm] in Ring 12
+      Average sensor separation:    1.20003 [mm] in Ring 13
+  Total active surface:         1954.02 [cm^2] in Ring 0
+  Total active surface:         2131.66 [cm^2] in Ring 1
+  Total active surface:         2486.94 [cm^2] in Ring 2
+  Total active surface:         2664.58 [cm^2] in Ring 3
+  Total active surface:         2842.21 [cm^2] in Ring 4
+  Total active surface:         3019.85 [cm^2] in Ring 5
+  Total active surface:         3375.13 [cm^2] in Ring 6
+  Total active surface:         3552.77 [cm^2] in Ring 7
+  Total active surface:         8822.13 [cm^2] in Ring 8
+  Total active surface:         9924.9 [cm^2] in Ring 9
+  Total active surface:         11395.3 [cm^2] in Ring 10
+  Total active surface:         12130.4 [cm^2] in Ring 11
+  Total active surface:         13233.2 [cm^2] in Ring 12
+  Total active surface:         14336 [cm^2] in Ring 13
+  Inner sensor channels:        2048 in Ring 0
+  Inner sensor channels:        2048 in Ring 1
+  Inner sensor channels:        2048 in Ring 2
+  Inner sensor channels:        2048 in Ring 3
+  Inner sensor channels:        2048 in Ring 4
+  Inner sensor channels:        2048 in Ring 5
+  Inner sensor channels:        2048 in Ring 6
+  Inner sensor channels:        2048 in Ring 7
+  Inner sensor channels:        2048 in Ring 8
+  Inner sensor channels:        2048 in Ring 9
+  Inner sensor channels:        2048 in Ring 10
+  Inner sensor channels:        2048 in Ring 11
+  Inner sensor channels:        2048 in Ring 12
+  Inner sensor channels:        2048 in Ring 13
+               rows:            1024 in Ring 0
+               rows:            1024 in Ring 1
+               rows:            1024 in Ring 2
+               rows:            1024 in Ring 3
+               rows:            1024 in Ring 4
+               rows:            1024 in Ring 5
+               rows:            1024 in Ring 6
+               rows:            1024 in Ring 7
+               rows:            1024 in Ring 8
+               rows:            1024 in Ring 9
+               rows:            1024 in Ring 10
+               rows:            1024 in Ring 11
+               rows:            1024 in Ring 12
+               rows:            1024 in Ring 13
+               columns:         2 in Ring 0
+               columns:         2 in Ring 1
+               columns:         2 in Ring 2
+               columns:         2 in Ring 3
+               columns:         2 in Ring 4
+               columns:         2 in Ring 5
+               columns:         2 in Ring 6
+               columns:         2 in Ring 7
+               columns:         2 in Ring 8
+               columns:         2 in Ring 9
+               columns:         2 in Ring 10
+               columns:         2 in Ring 11
+               columns:         2 in Ring 12
+               columns:         2 in Ring 13
+  Inner sensor average pitch X: 93.75 [um] in Ring 0
+  Inner sensor average pitch X: 93.75 [um] in Ring 1
+  Inner sensor average pitch X: 93.75 [um] in Ring 2
+  Inner sensor average pitch X: 93.75 [um] in Ring 3
+  Inner sensor average pitch X: 93.75 [um] in Ring 4
+  Inner sensor average pitch X: 93.75 [um] in Ring 5
+  Inner sensor average pitch X: 93.75 [um] in Ring 6
+  Inner sensor average pitch X: 93.75 [um] in Ring 7
+  Inner sensor average pitch X: 89.2917 [um] in Ring 8
+  Inner sensor average pitch X: 89.2963 [um] in Ring 9
+  Inner sensor average pitch X: 89.2984 [um] in Ring 10
+  Inner sensor average pitch X: 89.2955 [um] in Ring 11
+  Inner sensor average pitch X: 89.2986 [um] in Ring 12
+  Inner sensor average pitch X: 89.2949 [um] in Ring 13
+                             Y: 23130 [um] in Ring 0
+                             Y: 23130 [um] in Ring 1
+                             Y: 23130 [um] in Ring 2
+                             Y: 23130 [um] in Ring 3
+                             Y: 23130 [um] in Ring 4
+                             Y: 23130 [um] in Ring 5
+                             Y: 23130 [um] in Ring 6
+                             Y: 23130 [um] in Ring 7
+                             Y: 50250 [um] in Ring 8
+                             Y: 50250 [um] in Ring 9
+                             Y: 50250 [um] in Ring 10
+                             Y: 50250 [um] in Ring 11
+                             Y: 50250 [um] in Ring 12
+                             Y: 50250.1 [um] in Ring 13
+  Inner sensor ROCs X:          8 in Ring 0
+  Inner sensor ROCs X:          8 in Ring 1
+  Inner sensor ROCs X:          8 in Ring 2
+  Inner sensor ROCs X:          8 in Ring 3
+  Inner sensor ROCs X:          8 in Ring 4
+  Inner sensor ROCs X:          8 in Ring 5
+  Inner sensor ROCs X:          8 in Ring 6
+  Inner sensor ROCs X:          8 in Ring 7
+  Inner sensor ROCs X:          8 in Ring 8
+  Inner sensor ROCs X:          8 in Ring 9
+  Inner sensor ROCs X:          8 in Ring 10
+  Inner sensor ROCs X:          8 in Ring 11
+  Inner sensor ROCs X:          8 in Ring 12
+  Inner sensor ROCs X:          8 in Ring 13
+                    Y:          2 in Ring 0
+                    Y:          2 in Ring 1
+                    Y:          2 in Ring 2
+                    Y:          2 in Ring 3
+                    Y:          2 in Ring 4
+                    Y:          2 in Ring 5
+                    Y:          2 in Ring 6
+                    Y:          2 in Ring 7
+                    Y:          2 in Ring 8
+                    Y:          2 in Ring 9
+                    Y:          2 in Ring 10
+                    Y:          2 in Ring 11
+                    Y:          2 in Ring 12
+                    Y:          2 in Ring 13
+                    total:      16 in Ring 0
+                    total:      16 in Ring 1
+                    total:      16 in Ring 2
+                    total:      16 in Ring 3
+                    total:      16 in Ring 4
+                    total:      16 in Ring 5
+                    total:      16 in Ring 6
+                    total:      16 in Ring 7
+                    total:      16 in Ring 8
+                    total:      16 in Ring 9
+                    total:      16 in Ring 10
+                    total:      16 in Ring 11
+                    total:      16 in Ring 12
+                    total:      16 in Ring 13
+  Outer sensor channels:        2048 in Ring 0
+  Outer sensor channels:        2048 in Ring 1
+  Outer sensor channels:        2048 in Ring 2
+  Outer sensor channels:        2048 in Ring 3
+  Outer sensor channels:        2048 in Ring 4
+  Outer sensor channels:        2048 in Ring 5
+  Outer sensor channels:        2048 in Ring 6
+  Outer sensor channels:        2048 in Ring 7
+  Outer sensor channels:        2048 in Ring 8
+  Outer sensor channels:        2048 in Ring 9
+  Outer sensor channels:        2048 in Ring 10
+  Outer sensor channels:        2048 in Ring 11
+  Outer sensor channels:        2048 in Ring 12
+  Outer sensor channels:        2048 in Ring 13
+               rows:            1024 in Ring 0
+               rows:            1024 in Ring 1
+               rows:            1024 in Ring 2
+               rows:            1024 in Ring 3
+               rows:            1024 in Ring 4
+               rows:            1024 in Ring 5
+               rows:            1024 in Ring 6
+               rows:            1024 in Ring 7
+               rows:            1024 in Ring 8
+               rows:            1024 in Ring 9
+               rows:            1024 in Ring 10
+               rows:            1024 in Ring 11
+               rows:            1024 in Ring 12
+               rows:            1024 in Ring 13
+               columns:         2 in Ring 0
+               columns:         2 in Ring 1
+               columns:         2 in Ring 2
+               columns:         2 in Ring 3
+               columns:         2 in Ring 4
+               columns:         2 in Ring 5
+               columns:         2 in Ring 6
+               columns:         2 in Ring 7
+               columns:         2 in Ring 8
+               columns:         2 in Ring 9
+               columns:         2 in Ring 10
+               columns:         2 in Ring 11
+               columns:         2 in Ring 12
+               columns:         2 in Ring 13
+  Outer sensor average pitch X: 93.75 [um] in Ring 0
+  Outer sensor average pitch X: 93.75 [um] in Ring 1
+  Outer sensor average pitch X: 93.75 [um] in Ring 2
+  Outer sensor average pitch X: 93.75 [um] in Ring 3
+  Outer sensor average pitch X: 93.75 [um] in Ring 4
+  Outer sensor average pitch X: 93.75 [um] in Ring 5
+  Outer sensor average pitch X: 93.75 [um] in Ring 6
+  Outer sensor average pitch X: 93.75 [um] in Ring 7
+  Outer sensor average pitch X: 89.2917 [um] in Ring 8
+  Outer sensor average pitch X: 89.2963 [um] in Ring 9
+  Outer sensor average pitch X: 89.2984 [um] in Ring 10
+  Outer sensor average pitch X: 89.2955 [um] in Ring 11
+  Outer sensor average pitch X: 89.2986 [um] in Ring 12
+  Outer sensor average pitch X: 89.2949 [um] in Ring 13
+                             Y: 23130 [um] in Ring 0
+                             Y: 23130 [um] in Ring 1
+                             Y: 23130 [um] in Ring 2
+                             Y: 23130 [um] in Ring 3
+                             Y: 23130 [um] in Ring 4
+                             Y: 23130 [um] in Ring 5
+                             Y: 23130 [um] in Ring 6
+                             Y: 23130 [um] in Ring 7
+                             Y: 50250 [um] in Ring 8
+                             Y: 50250 [um] in Ring 9
+                             Y: 50250 [um] in Ring 10
+                             Y: 50250 [um] in Ring 11
+                             Y: 50250 [um] in Ring 12
+                             Y: 50250.1 [um] in Ring 13
+  Outer sensor ROCs X:          0 in Ring 0
+  Outer sensor ROCs X:          0 in Ring 1
+  Outer sensor ROCs X:          0 in Ring 2
+  Outer sensor ROCs X:          0 in Ring 3
+  Outer sensor ROCs X:          0 in Ring 4
+  Outer sensor ROCs X:          0 in Ring 5
+  Outer sensor ROCs X:          0 in Ring 6
+  Outer sensor ROCs X:          0 in Ring 7
+  Outer sensor ROCs X:          0 in Ring 8
+  Outer sensor ROCs X:          0 in Ring 9
+  Outer sensor ROCs X:          0 in Ring 10
+  Outer sensor ROCs X:          0 in Ring 11
+  Outer sensor ROCs X:          0 in Ring 12
+  Outer sensor ROCs X:          0 in Ring 13
+                    Y:          0 in Ring 0
+                    Y:          0 in Ring 1
+                    Y:          0 in Ring 2
+                    Y:          0 in Ring 3
+                    Y:          0 in Ring 4
+                    Y:          0 in Ring 5
+                    Y:          0 in Ring 6
+                    Y:          0 in Ring 7
+                    Y:          0 in Ring 8
+                    Y:          0 in Ring 9
+                    Y:          0 in Ring 10
+                    Y:          0 in Ring 11
+                    Y:          0 in Ring 12
+                    Y:          0 in Ring 13
+                    total:      0 in Ring 0
+                    total:      0 in Ring 1
+                    total:      0 in Ring 2
+                    total:      0 in Ring 3
+                    total:      0 in Ring 4
+                    total:      0 in Ring 5
+                    total:      0 in Ring 6
+                    total:      0 in Ring 7
+                    total:      0 in Ring 8
+                    total:      0 in Ring 9
+                    total:      0 in Ring 10
+                    total:      0 in Ring 11
+                    total:      0 in Ring 12
+                    total:      0 in Ring 13
+
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  Endcap Stack Layer: 3
+   # Rings:           14
+   # Modules/Ring:    10 in Ring 0
+   # Modules/Ring:    24 in Ring 1
+   # Modules/Ring:    28 in Ring 2
+   # Modules/Ring:    30 in Ring 3
+   # Modules/Ring:    32 in Ring 4
+   # Modules/Ring:    34 in Ring 5
+   # Modules/Ring:    38 in Ring 6
+   # Modules/Ring:    40 in Ring 7
+   # Modules/Ring:    48 in Ring 8
+   # Modules/Ring:    54 in Ring 9
+   # Modules/Ring:    62 in Ring 10
+   # Modules/Ring:    66 in Ring 11
+   # Modules/Ring:    72 in Ring 12
+   # Modules/Ring:    78 in Ring 13
+   # Modules          616
+  Inner sensor average z:  188.334 [cm] in Ring 0
+  Inner sensor average z:  185.034 [cm] in Ring 1
+  Inner sensor average z:  188.334 [cm] in Ring 2
+  Inner sensor average z:  185.034 [cm] in Ring 3
+  Inner sensor average z:  188.334 [cm] in Ring 4
+  Inner sensor average z:  185.034 [cm] in Ring 5
+  Inner sensor average z:  188.334 [cm] in Ring 6
+  Inner sensor average z:  185.034 [cm] in Ring 7
+  Inner sensor average z:  188.334 [cm] in Ring 8
+  Inner sensor average z:  185.034 [cm] in Ring 9
+  Inner sensor average z:  188.334 [cm] in Ring 10
+  Inner sensor average z:  185.104 [cm] in Ring 11
+  Inner sensor average z:  188.404 [cm] in Ring 12
+  Inner sensor average z:  185.104 [cm] in Ring 13
+    Outer sensor average z:  188.734 [cm] in Ring 0
+    Outer sensor average z:  185.434 [cm] in Ring 1
+    Outer sensor average z:  188.734 [cm] in Ring 2
+    Outer sensor average z:  185.434 [cm] in Ring 3
+    Outer sensor average z:  188.734 [cm] in Ring 4
+    Outer sensor average z:  185.434 [cm] in Ring 5
+    Outer sensor average z:  188.734 [cm] in Ring 6
+    Outer sensor average z:  185.434 [cm] in Ring 7
+    Outer sensor average z:  188.734 [cm] in Ring 8
+    Outer sensor average z:  185.434 [cm] in Ring 9
+    Outer sensor average z:  188.734 [cm] in Ring 10
+    Outer sensor average z:  185.364 [cm] in Ring 11
+    Outer sensor average z:  188.664 [cm] in Ring 12
+    Outer sensor average z:  185.364 [cm] in Ring 13
+      Average sensor separation:    4.00002 [mm] in Ring 0
+      Average sensor separation:    4.00002 [mm] in Ring 1
+      Average sensor separation:    4.00002 [mm] in Ring 2
+      Average sensor separation:    4.00002 [mm] in Ring 3
+      Average sensor separation:    4.00002 [mm] in Ring 4
+      Average sensor separation:    4.00002 [mm] in Ring 5
+      Average sensor separation:    4.00002 [mm] in Ring 6
+      Average sensor separation:    4.00002 [mm] in Ring 7
+      Average sensor separation:    4.00002 [mm] in Ring 8
+      Average sensor separation:    4.00002 [mm] in Ring 9
+      Average sensor separation:    4.00002 [mm] in Ring 10
+      Average sensor separation:    2.59995 [mm] in Ring 11
+      Average sensor separation:    2.60002 [mm] in Ring 12
+      Average sensor separation:    2.59995 [mm] in Ring 13
+  Total active surface:         888.192 [cm^2] in Ring 0
+  Total active surface:         2131.66 [cm^2] in Ring 1
+  Total active surface:         2486.94 [cm^2] in Ring 2
+  Total active surface:         2664.58 [cm^2] in Ring 3
+  Total active surface:         2842.21 [cm^2] in Ring 4
+  Total active surface:         3019.85 [cm^2] in Ring 5
+  Total active surface:         3375.13 [cm^2] in Ring 6
+  Total active surface:         3552.77 [cm^2] in Ring 7
+  Total active surface:         8822.13 [cm^2] in Ring 8
+  Total active surface:         9924.9 [cm^2] in Ring 9
+  Total active surface:         11395.3 [cm^2] in Ring 10
+  Total active surface:         12130.4 [cm^2] in Ring 11
+  Total active surface:         13233.2 [cm^2] in Ring 12
+  Total active surface:         14336 [cm^2] in Ring 13
+  Inner sensor channels:        2048 in Ring 0
+  Inner sensor channels:        2048 in Ring 1
+  Inner sensor channels:        2048 in Ring 2
+  Inner sensor channels:        2048 in Ring 3
+  Inner sensor channels:        2048 in Ring 4
+  Inner sensor channels:        2048 in Ring 5
+  Inner sensor channels:        2048 in Ring 6
+  Inner sensor channels:        2048 in Ring 7
+  Inner sensor channels:        2048 in Ring 8
+  Inner sensor channels:        2048 in Ring 9
+  Inner sensor channels:        2048 in Ring 10
+  Inner sensor channels:        2048 in Ring 11
+  Inner sensor channels:        2048 in Ring 12
+  Inner sensor channels:        2048 in Ring 13
+               rows:            1024 in Ring 0
+               rows:            1024 in Ring 1
+               rows:            1024 in Ring 2
+               rows:            1024 in Ring 3
+               rows:            1024 in Ring 4
+               rows:            1024 in Ring 5
+               rows:            1024 in Ring 6
+               rows:            1024 in Ring 7
+               rows:            1024 in Ring 8
+               rows:            1024 in Ring 9
+               rows:            1024 in Ring 10
+               rows:            1024 in Ring 11
+               rows:            1024 in Ring 12
+               rows:            1024 in Ring 13
+               columns:         2 in Ring 0
+               columns:         2 in Ring 1
+               columns:         2 in Ring 2
+               columns:         2 in Ring 3
+               columns:         2 in Ring 4
+               columns:         2 in Ring 5
+               columns:         2 in Ring 6
+               columns:         2 in Ring 7
+               columns:         2 in Ring 8
+               columns:         2 in Ring 9
+               columns:         2 in Ring 10
+               columns:         2 in Ring 11
+               columns:         2 in Ring 12
+               columns:         2 in Ring 13
+  Inner sensor average pitch X: 93.75 [um] in Ring 0
+  Inner sensor average pitch X: 93.75 [um] in Ring 1
+  Inner sensor average pitch X: 93.75 [um] in Ring 2
+  Inner sensor average pitch X: 93.75 [um] in Ring 3
+  Inner sensor average pitch X: 93.75 [um] in Ring 4
+  Inner sensor average pitch X: 93.75 [um] in Ring 5
+  Inner sensor average pitch X: 93.75 [um] in Ring 6
+  Inner sensor average pitch X: 93.75 [um] in Ring 7
+  Inner sensor average pitch X: 89.2917 [um] in Ring 8
+  Inner sensor average pitch X: 89.2963 [um] in Ring 9
+  Inner sensor average pitch X: 89.2984 [um] in Ring 10
+  Inner sensor average pitch X: 89.2955 [um] in Ring 11
+  Inner sensor average pitch X: 89.2986 [um] in Ring 12
+  Inner sensor average pitch X: 89.2949 [um] in Ring 13
+                             Y: 23130 [um] in Ring 0
+                             Y: 23130 [um] in Ring 1
+                             Y: 23130 [um] in Ring 2
+                             Y: 23130 [um] in Ring 3
+                             Y: 23130 [um] in Ring 4
+                             Y: 23130 [um] in Ring 5
+                             Y: 23130 [um] in Ring 6
+                             Y: 23130 [um] in Ring 7
+                             Y: 50250 [um] in Ring 8
+                             Y: 50250 [um] in Ring 9
+                             Y: 50250 [um] in Ring 10
+                             Y: 50250 [um] in Ring 11
+                             Y: 50250 [um] in Ring 12
+                             Y: 50250.1 [um] in Ring 13
+  Inner sensor ROCs X:          8 in Ring 0
+  Inner sensor ROCs X:          8 in Ring 1
+  Inner sensor ROCs X:          8 in Ring 2
+  Inner sensor ROCs X:          8 in Ring 3
+  Inner sensor ROCs X:          8 in Ring 4
+  Inner sensor ROCs X:          8 in Ring 5
+  Inner sensor ROCs X:          8 in Ring 6
+  Inner sensor ROCs X:          8 in Ring 7
+  Inner sensor ROCs X:          8 in Ring 8
+  Inner sensor ROCs X:          8 in Ring 9
+  Inner sensor ROCs X:          8 in Ring 10
+  Inner sensor ROCs X:          8 in Ring 11
+  Inner sensor ROCs X:          8 in Ring 12
+  Inner sensor ROCs X:          8 in Ring 13
+                    Y:          2 in Ring 0
+                    Y:          2 in Ring 1
+                    Y:          2 in Ring 2
+                    Y:          2 in Ring 3
+                    Y:          2 in Ring 4
+                    Y:          2 in Ring 5
+                    Y:          2 in Ring 6
+                    Y:          2 in Ring 7
+                    Y:          2 in Ring 8
+                    Y:          2 in Ring 9
+                    Y:          2 in Ring 10
+                    Y:          2 in Ring 11
+                    Y:          2 in Ring 12
+                    Y:          2 in Ring 13
+                    total:      16 in Ring 0
+                    total:      16 in Ring 1
+                    total:      16 in Ring 2
+                    total:      16 in Ring 3
+                    total:      16 in Ring 4
+                    total:      16 in Ring 5
+                    total:      16 in Ring 6
+                    total:      16 in Ring 7
+                    total:      16 in Ring 8
+                    total:      16 in Ring 9
+                    total:      16 in Ring 10
+                    total:      16 in Ring 11
+                    total:      16 in Ring 12
+                    total:      16 in Ring 13
+  Outer sensor channels:        2048 in Ring 0
+  Outer sensor channels:        2048 in Ring 1
+  Outer sensor channels:        2048 in Ring 2
+  Outer sensor channels:        2048 in Ring 3
+  Outer sensor channels:        2048 in Ring 4
+  Outer sensor channels:        2048 in Ring 5
+  Outer sensor channels:        2048 in Ring 6
+  Outer sensor channels:        2048 in Ring 7
+  Outer sensor channels:        2048 in Ring 8
+  Outer sensor channels:        2048 in Ring 9
+  Outer sensor channels:        2048 in Ring 10
+  Outer sensor channels:        2048 in Ring 11
+  Outer sensor channels:        2048 in Ring 12
+  Outer sensor channels:        2048 in Ring 13
+               rows:            1024 in Ring 0
+               rows:            1024 in Ring 1
+               rows:            1024 in Ring 2
+               rows:            1024 in Ring 3
+               rows:            1024 in Ring 4
+               rows:            1024 in Ring 5
+               rows:            1024 in Ring 6
+               rows:            1024 in Ring 7
+               rows:            1024 in Ring 8
+               rows:            1024 in Ring 9
+               rows:            1024 in Ring 10
+               rows:            1024 in Ring 11
+               rows:            1024 in Ring 12
+               rows:            1024 in Ring 13
+               columns:         2 in Ring 0
+               columns:         2 in Ring 1
+               columns:         2 in Ring 2
+               columns:         2 in Ring 3
+               columns:         2 in Ring 4
+               columns:         2 in Ring 5
+               columns:         2 in Ring 6
+               columns:         2 in Ring 7
+               columns:         2 in Ring 8
+               columns:         2 in Ring 9
+               columns:         2 in Ring 10
+               columns:         2 in Ring 11
+               columns:         2 in Ring 12
+               columns:         2 in Ring 13
+  Outer sensor average pitch X: 93.75 [um] in Ring 0
+  Outer sensor average pitch X: 93.75 [um] in Ring 1
+  Outer sensor average pitch X: 93.75 [um] in Ring 2
+  Outer sensor average pitch X: 93.75 [um] in Ring 3
+  Outer sensor average pitch X: 93.75 [um] in Ring 4
+  Outer sensor average pitch X: 93.75 [um] in Ring 5
+  Outer sensor average pitch X: 93.75 [um] in Ring 6
+  Outer sensor average pitch X: 93.75 [um] in Ring 7
+  Outer sensor average pitch X: 89.2917 [um] in Ring 8
+  Outer sensor average pitch X: 89.2963 [um] in Ring 9
+  Outer sensor average pitch X: 89.2984 [um] in Ring 10
+  Outer sensor average pitch X: 89.2955 [um] in Ring 11
+  Outer sensor average pitch X: 89.2986 [um] in Ring 12
+  Outer sensor average pitch X: 89.2949 [um] in Ring 13
+                             Y: 23130 [um] in Ring 0
+                             Y: 23130 [um] in Ring 1
+                             Y: 23130 [um] in Ring 2
+                             Y: 23130 [um] in Ring 3
+                             Y: 23130 [um] in Ring 4
+                             Y: 23130 [um] in Ring 5
+                             Y: 23130 [um] in Ring 6
+                             Y: 23130 [um] in Ring 7
+                             Y: 50250 [um] in Ring 8
+                             Y: 50250 [um] in Ring 9
+                             Y: 50250 [um] in Ring 10
+                             Y: 50250 [um] in Ring 11
+                             Y: 50250 [um] in Ring 12
+                             Y: 50250.1 [um] in Ring 13
+  Outer sensor ROCs X:          0 in Ring 0
+  Outer sensor ROCs X:          0 in Ring 1
+  Outer sensor ROCs X:          0 in Ring 2
+  Outer sensor ROCs X:          0 in Ring 3
+  Outer sensor ROCs X:          0 in Ring 4
+  Outer sensor ROCs X:          0 in Ring 5
+  Outer sensor ROCs X:          0 in Ring 6
+  Outer sensor ROCs X:          0 in Ring 7
+  Outer sensor ROCs X:          0 in Ring 8
+  Outer sensor ROCs X:          0 in Ring 9
+  Outer sensor ROCs X:          0 in Ring 10
+  Outer sensor ROCs X:          0 in Ring 11
+  Outer sensor ROCs X:          0 in Ring 12
+  Outer sensor ROCs X:          0 in Ring 13
+                    Y:          0 in Ring 0
+                    Y:          0 in Ring 1
+                    Y:          0 in Ring 2
+                    Y:          0 in Ring 3
+                    Y:          0 in Ring 4
+                    Y:          0 in Ring 5
+                    Y:          0 in Ring 6
+                    Y:          0 in Ring 7
+                    Y:          0 in Ring 8
+                    Y:          0 in Ring 9
+                    Y:          0 in Ring 10
+                    Y:          0 in Ring 11
+                    Y:          0 in Ring 12
+                    Y:          0 in Ring 13
+                    total:      0 in Ring 0
+                    total:      0 in Ring 1
+                    total:      0 in Ring 2
+                    total:      0 in Ring 3
+                    total:      0 in Ring 4
+                    total:      0 in Ring 5
+                    total:      0 in Ring 6
+                    total:      0 in Ring 7
+                    total:      0 in Ring 8
+                    total:      0 in Ring 9
+                    total:      0 in Ring 10
+                    total:      0 in Ring 11
+                    total:      0 in Ring 12
+                    total:      0 in Ring 13
+
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  Endcap Stack Layer: 4
+   # Rings:           13
+   # Modules/Ring:    24 in Ring 0
+   # Modules/Ring:    28 in Ring 1
+   # Modules/Ring:    30 in Ring 2
+   # Modules/Ring:    32 in Ring 3
+   # Modules/Ring:    34 in Ring 4
+   # Modules/Ring:    38 in Ring 5
+   # Modules/Ring:    40 in Ring 6
+   # Modules/Ring:    48 in Ring 7
+   # Modules/Ring:    54 in Ring 8
+   # Modules/Ring:    62 in Ring 9
+   # Modules/Ring:    66 in Ring 10
+   # Modules/Ring:    72 in Ring 11
+   # Modules/Ring:    78 in Ring 12
+   # Modules          606
+  Inner sensor average z:  207.246 [cm] in Ring 0
+  Inner sensor average z:  210.546 [cm] in Ring 1
+  Inner sensor average z:  207.246 [cm] in Ring 2
+  Inner sensor average z:  210.546 [cm] in Ring 3
+  Inner sensor average z:  207.246 [cm] in Ring 4
+  Inner sensor average z:  210.546 [cm] in Ring 5
+  Inner sensor average z:  207.246 [cm] in Ring 6
+  Inner sensor average z:  210.546 [cm] in Ring 7
+  Inner sensor average z:  207.246 [cm] in Ring 8
+  Inner sensor average z:  210.546 [cm] in Ring 9
+  Inner sensor average z:  207.246 [cm] in Ring 10
+  Inner sensor average z:  210.616 [cm] in Ring 11
+  Inner sensor average z:  207.316 [cm] in Ring 12
+    Outer sensor average z:  207.646 [cm] in Ring 0
+    Outer sensor average z:  210.946 [cm] in Ring 1
+    Outer sensor average z:  207.646 [cm] in Ring 2
+    Outer sensor average z:  210.946 [cm] in Ring 3
+    Outer sensor average z:  207.646 [cm] in Ring 4
+    Outer sensor average z:  210.946 [cm] in Ring 5
+    Outer sensor average z:  207.646 [cm] in Ring 6
+    Outer sensor average z:  210.946 [cm] in Ring 7
+    Outer sensor average z:  207.646 [cm] in Ring 8
+    Outer sensor average z:  210.946 [cm] in Ring 9
+    Outer sensor average z:  207.646 [cm] in Ring 10
+    Outer sensor average z:  210.876 [cm] in Ring 11
+    Outer sensor average z:  207.576 [cm] in Ring 12
+      Average sensor separation:    3.99994 [mm] in Ring 0
+      Average sensor separation:    4.00002 [mm] in Ring 1
+      Average sensor separation:    3.99994 [mm] in Ring 2
+      Average sensor separation:    4.00002 [mm] in Ring 3
+      Average sensor separation:    3.99994 [mm] in Ring 4
+      Average sensor separation:    4.00002 [mm] in Ring 5
+      Average sensor separation:    3.99994 [mm] in Ring 6
+      Average sensor separation:    4.00002 [mm] in Ring 7
+      Average sensor separation:    3.99994 [mm] in Ring 8
+      Average sensor separation:    4.00002 [mm] in Ring 9
+      Average sensor separation:    3.99994 [mm] in Ring 10
+      Average sensor separation:    2.60002 [mm] in Ring 11
+      Average sensor separation:    2.60002 [mm] in Ring 12
+  Total active surface:         2131.66 [cm^2] in Ring 0
+  Total active surface:         2486.94 [cm^2] in Ring 1
+  Total active surface:         2664.58 [cm^2] in Ring 2
+  Total active surface:         2842.21 [cm^2] in Ring 3
+  Total active surface:         3019.85 [cm^2] in Ring 4
+  Total active surface:         3375.13 [cm^2] in Ring 5
+  Total active surface:         3552.77 [cm^2] in Ring 6
+  Total active surface:         8822.13 [cm^2] in Ring 7
+  Total active surface:         9924.9 [cm^2] in Ring 8
+  Total active surface:         11395.3 [cm^2] in Ring 9
+  Total active surface:         12130.4 [cm^2] in Ring 10
+  Total active surface:         13233.2 [cm^2] in Ring 11
+  Total active surface:         14336 [cm^2] in Ring 12
+  Inner sensor channels:        2048 in Ring 0
+  Inner sensor channels:        2048 in Ring 1
+  Inner sensor channels:        2048 in Ring 2
+  Inner sensor channels:        2048 in Ring 3
+  Inner sensor channels:        2048 in Ring 4
+  Inner sensor channels:        2048 in Ring 5
+  Inner sensor channels:        2048 in Ring 6
+  Inner sensor channels:        2048 in Ring 7
+  Inner sensor channels:        2048 in Ring 8
+  Inner sensor channels:        2048 in Ring 9
+  Inner sensor channels:        2048 in Ring 10
+  Inner sensor channels:        2048 in Ring 11
+  Inner sensor channels:        2048 in Ring 12
+               rows:            1024 in Ring 0
+               rows:            1024 in Ring 1
+               rows:            1024 in Ring 2
+               rows:            1024 in Ring 3
+               rows:            1024 in Ring 4
+               rows:            1024 in Ring 5
+               rows:            1024 in Ring 6
+               rows:            1024 in Ring 7
+               rows:            1024 in Ring 8
+               rows:            1024 in Ring 9
+               rows:            1024 in Ring 10
+               rows:            1024 in Ring 11
+               rows:            1024 in Ring 12
+               columns:         2 in Ring 0
+               columns:         2 in Ring 1
+               columns:         2 in Ring 2
+               columns:         2 in Ring 3
+               columns:         2 in Ring 4
+               columns:         2 in Ring 5
+               columns:         2 in Ring 6
+               columns:         2 in Ring 7
+               columns:         2 in Ring 8
+               columns:         2 in Ring 9
+               columns:         2 in Ring 10
+               columns:         2 in Ring 11
+               columns:         2 in Ring 12
+  Inner sensor average pitch X: 93.75 [um] in Ring 0
+  Inner sensor average pitch X: 93.75 [um] in Ring 1
+  Inner sensor average pitch X: 93.75 [um] in Ring 2
+  Inner sensor average pitch X: 93.75 [um] in Ring 3
+  Inner sensor average pitch X: 93.75 [um] in Ring 4
+  Inner sensor average pitch X: 93.75 [um] in Ring 5
+  Inner sensor average pitch X: 93.75 [um] in Ring 6
+  Inner sensor average pitch X: 89.2917 [um] in Ring 7
+  Inner sensor average pitch X: 89.2963 [um] in Ring 8
+  Inner sensor average pitch X: 89.2984 [um] in Ring 9
+  Inner sensor average pitch X: 89.2955 [um] in Ring 10
+  Inner sensor average pitch X: 89.2986 [um] in Ring 11
+  Inner sensor average pitch X: 89.2949 [um] in Ring 12
+                             Y: 23130 [um] in Ring 0
+                             Y: 23130 [um] in Ring 1
+                             Y: 23130 [um] in Ring 2
+                             Y: 23130 [um] in Ring 3
+                             Y: 23130 [um] in Ring 4
+                             Y: 23130 [um] in Ring 5
+                             Y: 23130 [um] in Ring 6
+                             Y: 50250 [um] in Ring 7
+                             Y: 50250 [um] in Ring 8
+                             Y: 50250 [um] in Ring 9
+                             Y: 50250 [um] in Ring 10
+                             Y: 50250 [um] in Ring 11
+                             Y: 50250.1 [um] in Ring 12
+  Inner sensor ROCs X:          8 in Ring 0
+  Inner sensor ROCs X:          8 in Ring 1
+  Inner sensor ROCs X:          8 in Ring 2
+  Inner sensor ROCs X:          8 in Ring 3
+  Inner sensor ROCs X:          8 in Ring 4
+  Inner sensor ROCs X:          8 in Ring 5
+  Inner sensor ROCs X:          8 in Ring 6
+  Inner sensor ROCs X:          8 in Ring 7
+  Inner sensor ROCs X:          8 in Ring 8
+  Inner sensor ROCs X:          8 in Ring 9
+  Inner sensor ROCs X:          8 in Ring 10
+  Inner sensor ROCs X:          8 in Ring 11
+  Inner sensor ROCs X:          8 in Ring 12
+                    Y:          2 in Ring 0
+                    Y:          2 in Ring 1
+                    Y:          2 in Ring 2
+                    Y:          2 in Ring 3
+                    Y:          2 in Ring 4
+                    Y:          2 in Ring 5
+                    Y:          2 in Ring 6
+                    Y:          2 in Ring 7
+                    Y:          2 in Ring 8
+                    Y:          2 in Ring 9
+                    Y:          2 in Ring 10
+                    Y:          2 in Ring 11
+                    Y:          2 in Ring 12
+                    total:      16 in Ring 0
+                    total:      16 in Ring 1
+                    total:      16 in Ring 2
+                    total:      16 in Ring 3
+                    total:      16 in Ring 4
+                    total:      16 in Ring 5
+                    total:      16 in Ring 6
+                    total:      16 in Ring 7
+                    total:      16 in Ring 8
+                    total:      16 in Ring 9
+                    total:      16 in Ring 10
+                    total:      16 in Ring 11
+                    total:      16 in Ring 12
+  Outer sensor channels:        2048 in Ring 0
+  Outer sensor channels:        2048 in Ring 1
+  Outer sensor channels:        2048 in Ring 2
+  Outer sensor channels:        2048 in Ring 3
+  Outer sensor channels:        2048 in Ring 4
+  Outer sensor channels:        2048 in Ring 5
+  Outer sensor channels:        2048 in Ring 6
+  Outer sensor channels:        2048 in Ring 7
+  Outer sensor channels:        2048 in Ring 8
+  Outer sensor channels:        2048 in Ring 9
+  Outer sensor channels:        2048 in Ring 10
+  Outer sensor channels:        2048 in Ring 11
+  Outer sensor channels:        2048 in Ring 12
+               rows:            1024 in Ring 0
+               rows:            1024 in Ring 1
+               rows:            1024 in Ring 2
+               rows:            1024 in Ring 3
+               rows:            1024 in Ring 4
+               rows:            1024 in Ring 5
+               rows:            1024 in Ring 6
+               rows:            1024 in Ring 7
+               rows:            1024 in Ring 8
+               rows:            1024 in Ring 9
+               rows:            1024 in Ring 10
+               rows:            1024 in Ring 11
+               rows:            1024 in Ring 12
+               columns:         2 in Ring 0
+               columns:         2 in Ring 1
+               columns:         2 in Ring 2
+               columns:         2 in Ring 3
+               columns:         2 in Ring 4
+               columns:         2 in Ring 5
+               columns:         2 in Ring 6
+               columns:         2 in Ring 7
+               columns:         2 in Ring 8
+               columns:         2 in Ring 9
+               columns:         2 in Ring 10
+               columns:         2 in Ring 11
+               columns:         2 in Ring 12
+  Outer sensor average pitch X: 93.75 [um] in Ring 0
+  Outer sensor average pitch X: 93.75 [um] in Ring 1
+  Outer sensor average pitch X: 93.75 [um] in Ring 2
+  Outer sensor average pitch X: 93.75 [um] in Ring 3
+  Outer sensor average pitch X: 93.75 [um] in Ring 4
+  Outer sensor average pitch X: 93.75 [um] in Ring 5
+  Outer sensor average pitch X: 93.75 [um] in Ring 6
+  Outer sensor average pitch X: 89.2917 [um] in Ring 7
+  Outer sensor average pitch X: 89.2963 [um] in Ring 8
+  Outer sensor average pitch X: 89.2984 [um] in Ring 9
+  Outer sensor average pitch X: 89.2955 [um] in Ring 10
+  Outer sensor average pitch X: 89.2986 [um] in Ring 11
+  Outer sensor average pitch X: 89.2949 [um] in Ring 12
+                             Y: 23130 [um] in Ring 0
+                             Y: 23130 [um] in Ring 1
+                             Y: 23130 [um] in Ring 2
+                             Y: 23130 [um] in Ring 3
+                             Y: 23130 [um] in Ring 4
+                             Y: 23130 [um] in Ring 5
+                             Y: 23130 [um] in Ring 6
+                             Y: 50250 [um] in Ring 7
+                             Y: 50250 [um] in Ring 8
+                             Y: 50250 [um] in Ring 9
+                             Y: 50250 [um] in Ring 10
+                             Y: 50250 [um] in Ring 11
+                             Y: 50250.1 [um] in Ring 12
+  Outer sensor ROCs X:          0 in Ring 0
+  Outer sensor ROCs X:          0 in Ring 1
+  Outer sensor ROCs X:          0 in Ring 2
+  Outer sensor ROCs X:          0 in Ring 3
+  Outer sensor ROCs X:          0 in Ring 4
+  Outer sensor ROCs X:          0 in Ring 5
+  Outer sensor ROCs X:          0 in Ring 6
+  Outer sensor ROCs X:          0 in Ring 7
+  Outer sensor ROCs X:          0 in Ring 8
+  Outer sensor ROCs X:          0 in Ring 9
+  Outer sensor ROCs X:          0 in Ring 10
+  Outer sensor ROCs X:          0 in Ring 11
+  Outer sensor ROCs X:          0 in Ring 12
+                    Y:          0 in Ring 0
+                    Y:          0 in Ring 1
+                    Y:          0 in Ring 2
+                    Y:          0 in Ring 3
+                    Y:          0 in Ring 4
+                    Y:          0 in Ring 5
+                    Y:          0 in Ring 6
+                    Y:          0 in Ring 7
+                    Y:          0 in Ring 8
+                    Y:          0 in Ring 9
+                    Y:          0 in Ring 10
+                    Y:          0 in Ring 11
+                    Y:          0 in Ring 12
+                    total:      0 in Ring 0
+                    total:      0 in Ring 1
+                    total:      0 in Ring 2
+                    total:      0 in Ring 3
+                    total:      0 in Ring 4
+                    total:      0 in Ring 5
+                    total:      0 in Ring 6
+                    total:      0 in Ring 7
+                    total:      0 in Ring 8
+                    total:      0 in Ring 9
+                    total:      0 in Ring 10
+                    total:      0 in Ring 11
+                    total:      0 in Ring 12
+
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  Endcap Stack Layer: 5
+   # Rings:           12
+   # Modules/Ring:    28 in Ring 0
+   # Modules/Ring:    30 in Ring 1
+   # Modules/Ring:    32 in Ring 2
+   # Modules/Ring:    34 in Ring 3
+   # Modules/Ring:    38 in Ring 4
+   # Modules/Ring:    40 in Ring 5
+   # Modules/Ring:    48 in Ring 6
+   # Modules/Ring:    54 in Ring 7
+   # Modules/Ring:    62 in Ring 8
+   # Modules/Ring:    66 in Ring 9
+   # Modules/Ring:    72 in Ring 10
+   # Modules/Ring:    78 in Ring 11
+   # Modules          582
+  Inner sensor average z:  235.35 [cm] in Ring 0
+  Inner sensor average z:  232.05 [cm] in Ring 1
+  Inner sensor average z:  235.35 [cm] in Ring 2
+  Inner sensor average z:  232.05 [cm] in Ring 3
+  Inner sensor average z:  235.35 [cm] in Ring 4
+  Inner sensor average z:  232.05 [cm] in Ring 5
+  Inner sensor average z:  235.35 [cm] in Ring 6
+  Inner sensor average z:  232.05 [cm] in Ring 7
+  Inner sensor average z:  235.35 [cm] in Ring 8
+  Inner sensor average z:  232.05 [cm] in Ring 9
+  Inner sensor average z:  235.42 [cm] in Ring 10
+  Inner sensor average z:  232.12 [cm] in Ring 11
+    Outer sensor average z:  235.75 [cm] in Ring 0
+    Outer sensor average z:  232.45 [cm] in Ring 1
+    Outer sensor average z:  235.75 [cm] in Ring 2
+    Outer sensor average z:  232.45 [cm] in Ring 3
+    Outer sensor average z:  235.75 [cm] in Ring 4
+    Outer sensor average z:  232.45 [cm] in Ring 5
+    Outer sensor average z:  235.75 [cm] in Ring 6
+    Outer sensor average z:  232.45 [cm] in Ring 7
+    Outer sensor average z:  235.75 [cm] in Ring 8
+    Outer sensor average z:  232.45 [cm] in Ring 9
+    Outer sensor average z:  235.68 [cm] in Ring 10
+    Outer sensor average z:  232.38 [cm] in Ring 11
+      Average sensor separation:    4.00002 [mm] in Ring 0
+      Average sensor separation:    3.99994 [mm] in Ring 1
+      Average sensor separation:    4.00002 [mm] in Ring 2
+      Average sensor separation:    3.99994 [mm] in Ring 3
+      Average sensor separation:    4.00002 [mm] in Ring 4
+      Average sensor separation:    3.99994 [mm] in Ring 5
+      Average sensor separation:    4.00002 [mm] in Ring 6
+      Average sensor separation:    3.99994 [mm] in Ring 7
+      Average sensor separation:    4.00002 [mm] in Ring 8
+      Average sensor separation:    3.99994 [mm] in Ring 9
+      Average sensor separation:    2.60002 [mm] in Ring 10
+      Average sensor separation:    2.59995 [mm] in Ring 11
+  Total active surface:         2486.94 [cm^2] in Ring 0
+  Total active surface:         2664.58 [cm^2] in Ring 1
+  Total active surface:         2842.21 [cm^2] in Ring 2
+  Total active surface:         3019.85 [cm^2] in Ring 3
+  Total active surface:         3375.13 [cm^2] in Ring 4
+  Total active surface:         3552.77 [cm^2] in Ring 5
+  Total active surface:         8822.13 [cm^2] in Ring 6
+  Total active surface:         9924.9 [cm^2] in Ring 7
+  Total active surface:         11395.3 [cm^2] in Ring 8
+  Total active surface:         12130.4 [cm^2] in Ring 9
+  Total active surface:         13233.2 [cm^2] in Ring 10
+  Total active surface:         14336 [cm^2] in Ring 11
+  Inner sensor channels:        2048 in Ring 0
+  Inner sensor channels:        2048 in Ring 1
+  Inner sensor channels:        2048 in Ring 2
+  Inner sensor channels:        2048 in Ring 3
+  Inner sensor channels:        2048 in Ring 4
+  Inner sensor channels:        2048 in Ring 5
+  Inner sensor channels:        2048 in Ring 6
+  Inner sensor channels:        2048 in Ring 7
+  Inner sensor channels:        2048 in Ring 8
+  Inner sensor channels:        2048 in Ring 9
+  Inner sensor channels:        2048 in Ring 10
+  Inner sensor channels:        2048 in Ring 11
+               rows:            1024 in Ring 0
+               rows:            1024 in Ring 1
+               rows:            1024 in Ring 2
+               rows:            1024 in Ring 3
+               rows:            1024 in Ring 4
+               rows:            1024 in Ring 5
+               rows:            1024 in Ring 6
+               rows:            1024 in Ring 7
+               rows:            1024 in Ring 8
+               rows:            1024 in Ring 9
+               rows:            1024 in Ring 10
+               rows:            1024 in Ring 11
+               columns:         2 in Ring 0
+               columns:         2 in Ring 1
+               columns:         2 in Ring 2
+               columns:         2 in Ring 3
+               columns:         2 in Ring 4
+               columns:         2 in Ring 5
+               columns:         2 in Ring 6
+               columns:         2 in Ring 7
+               columns:         2 in Ring 8
+               columns:         2 in Ring 9
+               columns:         2 in Ring 10
+               columns:         2 in Ring 11
+  Inner sensor average pitch X: 93.75 [um] in Ring 0
+  Inner sensor average pitch X: 93.75 [um] in Ring 1
+  Inner sensor average pitch X: 93.75 [um] in Ring 2
+  Inner sensor average pitch X: 93.75 [um] in Ring 3
+  Inner sensor average pitch X: 93.75 [um] in Ring 4
+  Inner sensor average pitch X: 93.75 [um] in Ring 5
+  Inner sensor average pitch X: 89.2917 [um] in Ring 6
+  Inner sensor average pitch X: 89.2963 [um] in Ring 7
+  Inner sensor average pitch X: 89.2984 [um] in Ring 8
+  Inner sensor average pitch X: 89.2955 [um] in Ring 9
+  Inner sensor average pitch X: 89.2986 [um] in Ring 10
+  Inner sensor average pitch X: 89.2949 [um] in Ring 11
+                             Y: 23130 [um] in Ring 0
+                             Y: 23130 [um] in Ring 1
+                             Y: 23130 [um] in Ring 2
+                             Y: 23130 [um] in Ring 3
+                             Y: 23130 [um] in Ring 4
+                             Y: 23130 [um] in Ring 5
+                             Y: 50250 [um] in Ring 6
+                             Y: 50250 [um] in Ring 7
+                             Y: 50250 [um] in Ring 8
+                             Y: 50250 [um] in Ring 9
+                             Y: 50250 [um] in Ring 10
+                             Y: 50250.1 [um] in Ring 11
+  Inner sensor ROCs X:          8 in Ring 0
+  Inner sensor ROCs X:          8 in Ring 1
+  Inner sensor ROCs X:          8 in Ring 2
+  Inner sensor ROCs X:          8 in Ring 3
+  Inner sensor ROCs X:          8 in Ring 4
+  Inner sensor ROCs X:          8 in Ring 5
+  Inner sensor ROCs X:          8 in Ring 6
+  Inner sensor ROCs X:          8 in Ring 7
+  Inner sensor ROCs X:          8 in Ring 8
+  Inner sensor ROCs X:          8 in Ring 9
+  Inner sensor ROCs X:          8 in Ring 10
+  Inner sensor ROCs X:          8 in Ring 11
+                    Y:          2 in Ring 0
+                    Y:          2 in Ring 1
+                    Y:          2 in Ring 2
+                    Y:          2 in Ring 3
+                    Y:          2 in Ring 4
+                    Y:          2 in Ring 5
+                    Y:          2 in Ring 6
+                    Y:          2 in Ring 7
+                    Y:          2 in Ring 8
+                    Y:          2 in Ring 9
+                    Y:          2 in Ring 10
+                    Y:          2 in Ring 11
+                    total:      16 in Ring 0
+                    total:      16 in Ring 1
+                    total:      16 in Ring 2
+                    total:      16 in Ring 3
+                    total:      16 in Ring 4
+                    total:      16 in Ring 5
+                    total:      16 in Ring 6
+                    total:      16 in Ring 7
+                    total:      16 in Ring 8
+                    total:      16 in Ring 9
+                    total:      16 in Ring 10
+                    total:      16 in Ring 11
+  Outer sensor channels:        2048 in Ring 0
+  Outer sensor channels:        2048 in Ring 1
+  Outer sensor channels:        2048 in Ring 2
+  Outer sensor channels:        2048 in Ring 3
+  Outer sensor channels:        2048 in Ring 4
+  Outer sensor channels:        2048 in Ring 5
+  Outer sensor channels:        2048 in Ring 6
+  Outer sensor channels:        2048 in Ring 7
+  Outer sensor channels:        2048 in Ring 8
+  Outer sensor channels:        2048 in Ring 9
+  Outer sensor channels:        2048 in Ring 10
+  Outer sensor channels:        2048 in Ring 11
+               rows:            1024 in Ring 0
+               rows:            1024 in Ring 1
+               rows:            1024 in Ring 2
+               rows:            1024 in Ring 3
+               rows:            1024 in Ring 4
+               rows:            1024 in Ring 5
+               rows:            1024 in Ring 6
+               rows:            1024 in Ring 7
+               rows:            1024 in Ring 8
+               rows:            1024 in Ring 9
+               rows:            1024 in Ring 10
+               rows:            1024 in Ring 11
+               columns:         2 in Ring 0
+               columns:         2 in Ring 1
+               columns:         2 in Ring 2
+               columns:         2 in Ring 3
+               columns:         2 in Ring 4
+               columns:         2 in Ring 5
+               columns:         2 in Ring 6
+               columns:         2 in Ring 7
+               columns:         2 in Ring 8
+               columns:         2 in Ring 9
+               columns:         2 in Ring 10
+               columns:         2 in Ring 11
+  Outer sensor average pitch X: 93.75 [um] in Ring 0
+  Outer sensor average pitch X: 93.75 [um] in Ring 1
+  Outer sensor average pitch X: 93.75 [um] in Ring 2
+  Outer sensor average pitch X: 93.75 [um] in Ring 3
+  Outer sensor average pitch X: 93.75 [um] in Ring 4
+  Outer sensor average pitch X: 93.75 [um] in Ring 5
+  Outer sensor average pitch X: 89.2917 [um] in Ring 6
+  Outer sensor average pitch X: 89.2963 [um] in Ring 7
+  Outer sensor average pitch X: 89.2984 [um] in Ring 8
+  Outer sensor average pitch X: 89.2955 [um] in Ring 9
+  Outer sensor average pitch X: 89.2986 [um] in Ring 10
+  Outer sensor average pitch X: 89.2949 [um] in Ring 11
+                             Y: 23130 [um] in Ring 0
+                             Y: 23130 [um] in Ring 1
+                             Y: 23130 [um] in Ring 2
+                             Y: 23130 [um] in Ring 3
+                             Y: 23130 [um] in Ring 4
+                             Y: 23130 [um] in Ring 5
+                             Y: 50250 [um] in Ring 6
+                             Y: 50250 [um] in Ring 7
+                             Y: 50250 [um] in Ring 8
+                             Y: 50250 [um] in Ring 9
+                             Y: 50250 [um] in Ring 10
+                             Y: 50250.1 [um] in Ring 11
+  Outer sensor ROCs X:          0 in Ring 0
+  Outer sensor ROCs X:          0 in Ring 1
+  Outer sensor ROCs X:          0 in Ring 2
+  Outer sensor ROCs X:          0 in Ring 3
+  Outer sensor ROCs X:          0 in Ring 4
+  Outer sensor ROCs X:          0 in Ring 5
+  Outer sensor ROCs X:          0 in Ring 6
+  Outer sensor ROCs X:          0 in Ring 7
+  Outer sensor ROCs X:          0 in Ring 8
+  Outer sensor ROCs X:          0 in Ring 9
+  Outer sensor ROCs X:          0 in Ring 10
+  Outer sensor ROCs X:          0 in Ring 11
+                    Y:          0 in Ring 0
+                    Y:          0 in Ring 1
+                    Y:          0 in Ring 2
+                    Y:          0 in Ring 3
+                    Y:          0 in Ring 4
+                    Y:          0 in Ring 5
+                    Y:          0 in Ring 6
+                    Y:          0 in Ring 7
+                    Y:          0 in Ring 8
+                    Y:          0 in Ring 9
+                    Y:          0 in Ring 10
+                    Y:          0 in Ring 11
+                    total:      0 in Ring 0
+                    total:      0 in Ring 1
+                    total:      0 in Ring 2
+                    total:      0 in Ring 3
+                    total:      0 in Ring 4
+                    total:      0 in Ring 5
+                    total:      0 in Ring 6
+                    total:      0 in Ring 7
+                    total:      0 in Ring 8
+                    total:      0 in Ring 9
+                    total:      0 in Ring 10
+                    total:      0 in Ring 11
+
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  Endcap Stack Layer: 6
+   # Rings:           11
+   # Modules/Ring:    14 in Ring 0
+   # Modules/Ring:    32 in Ring 1
+   # Modules/Ring:    34 in Ring 2
+   # Modules/Ring:    38 in Ring 3
+   # Modules/Ring:    40 in Ring 4
+   # Modules/Ring:    48 in Ring 5
+   # Modules/Ring:    54 in Ring 6
+   # Modules/Ring:    62 in Ring 7
+   # Modules/Ring:    66 in Ring 8
+   # Modules/Ring:    72 in Ring 9
+   # Modules/Ring:    78 in Ring 10
+   # Modules          538
+  Inner sensor average z:  259.75 [cm] in Ring 0
+  Inner sensor average z:  263.05 [cm] in Ring 1
+  Inner sensor average z:  259.75 [cm] in Ring 2
+  Inner sensor average z:  263.05 [cm] in Ring 3
+  Inner sensor average z:  259.75 [cm] in Ring 4
+  Inner sensor average z:  263.05 [cm] in Ring 5
+  Inner sensor average z:  259.75 [cm] in Ring 6
+  Inner sensor average z:  263.05 [cm] in Ring 7
+  Inner sensor average z:  259.75 [cm] in Ring 8
+  Inner sensor average z:  263.12 [cm] in Ring 9
+  Inner sensor average z:  259.82 [cm] in Ring 10
+    Outer sensor average z:  260.15 [cm] in Ring 0
+    Outer sensor average z:  263.45 [cm] in Ring 1
+    Outer sensor average z:  260.15 [cm] in Ring 2
+    Outer sensor average z:  263.45 [cm] in Ring 3
+    Outer sensor average z:  260.15 [cm] in Ring 4
+    Outer sensor average z:  263.45 [cm] in Ring 5
+    Outer sensor average z:  260.15 [cm] in Ring 6
+    Outer sensor average z:  263.45 [cm] in Ring 7
+    Outer sensor average z:  260.15 [cm] in Ring 8
+    Outer sensor average z:  263.38 [cm] in Ring 9
+    Outer sensor average z:  260.08 [cm] in Ring 10
+      Average sensor separation:    4.00009 [mm] in Ring 0
+      Average sensor separation:    3.99994 [mm] in Ring 1
+      Average sensor separation:    4.00009 [mm] in Ring 2
+      Average sensor separation:    3.99994 [mm] in Ring 3
+      Average sensor separation:    4.00009 [mm] in Ring 4
+      Average sensor separation:    3.99994 [mm] in Ring 5
+      Average sensor separation:    4.00009 [mm] in Ring 6
+      Average sensor separation:    3.99994 [mm] in Ring 7
+      Average sensor separation:    4.00009 [mm] in Ring 8
+      Average sensor separation:    2.59979 [mm] in Ring 9
+      Average sensor separation:    2.6001 [mm] in Ring 10
+  Total active surface:         1243.47 [cm^2] in Ring 0
+  Total active surface:         2842.21 [cm^2] in Ring 1
+  Total active surface:         3019.85 [cm^2] in Ring 2
+  Total active surface:         3375.13 [cm^2] in Ring 3
+  Total active surface:         3552.77 [cm^2] in Ring 4
+  Total active surface:         8822.13 [cm^2] in Ring 5
+  Total active surface:         9924.9 [cm^2] in Ring 6
+  Total active surface:         11395.3 [cm^2] in Ring 7
+  Total active surface:         12130.4 [cm^2] in Ring 8
+  Total active surface:         13233.2 [cm^2] in Ring 9
+  Total active surface:         14336 [cm^2] in Ring 10
+  Inner sensor channels:        2048 in Ring 0
+  Inner sensor channels:        2048 in Ring 1
+  Inner sensor channels:        2048 in Ring 2
+  Inner sensor channels:        2048 in Ring 3
+  Inner sensor channels:        2048 in Ring 4
+  Inner sensor channels:        2048 in Ring 5
+  Inner sensor channels:        2048 in Ring 6
+  Inner sensor channels:        2048 in Ring 7
+  Inner sensor channels:        2048 in Ring 8
+  Inner sensor channels:        2048 in Ring 9
+  Inner sensor channels:        2048 in Ring 10
+               rows:            1024 in Ring 0
+               rows:            1024 in Ring 1
+               rows:            1024 in Ring 2
+               rows:            1024 in Ring 3
+               rows:            1024 in Ring 4
+               rows:            1024 in Ring 5
+               rows:            1024 in Ring 6
+               rows:            1024 in Ring 7
+               rows:            1024 in Ring 8
+               rows:            1024 in Ring 9
+               rows:            1024 in Ring 10
+               columns:         2 in Ring 0
+               columns:         2 in Ring 1
+               columns:         2 in Ring 2
+               columns:         2 in Ring 3
+               columns:         2 in Ring 4
+               columns:         2 in Ring 5
+               columns:         2 in Ring 6
+               columns:         2 in Ring 7
+               columns:         2 in Ring 8
+               columns:         2 in Ring 9
+               columns:         2 in Ring 10
+  Inner sensor average pitch X: 93.75 [um] in Ring 0
+  Inner sensor average pitch X: 93.75 [um] in Ring 1
+  Inner sensor average pitch X: 93.75 [um] in Ring 2
+  Inner sensor average pitch X: 93.75 [um] in Ring 3
+  Inner sensor average pitch X: 93.75 [um] in Ring 4
+  Inner sensor average pitch X: 89.2917 [um] in Ring 5
+  Inner sensor average pitch X: 89.2963 [um] in Ring 6
+  Inner sensor average pitch X: 89.2984 [um] in Ring 7
+  Inner sensor average pitch X: 89.2955 [um] in Ring 8
+  Inner sensor average pitch X: 89.2986 [um] in Ring 9
+  Inner sensor average pitch X: 89.2949 [um] in Ring 10
+                             Y: 23130 [um] in Ring 0
+                             Y: 23130 [um] in Ring 1
+                             Y: 23130 [um] in Ring 2
+                             Y: 23130 [um] in Ring 3
+                             Y: 23130 [um] in Ring 4
+                             Y: 50250 [um] in Ring 5
+                             Y: 50250 [um] in Ring 6
+                             Y: 50250 [um] in Ring 7
+                             Y: 50250 [um] in Ring 8
+                             Y: 50250 [um] in Ring 9
+                             Y: 50250.1 [um] in Ring 10
+  Inner sensor ROCs X:          8 in Ring 0
+  Inner sensor ROCs X:          8 in Ring 1
+  Inner sensor ROCs X:          8 in Ring 2
+  Inner sensor ROCs X:          8 in Ring 3
+  Inner sensor ROCs X:          8 in Ring 4
+  Inner sensor ROCs X:          8 in Ring 5
+  Inner sensor ROCs X:          8 in Ring 6
+  Inner sensor ROCs X:          8 in Ring 7
+  Inner sensor ROCs X:          8 in Ring 8
+  Inner sensor ROCs X:          8 in Ring 9
+  Inner sensor ROCs X:          8 in Ring 10
+                    Y:          2 in Ring 0
+                    Y:          2 in Ring 1
+                    Y:          2 in Ring 2
+                    Y:          2 in Ring 3
+                    Y:          2 in Ring 4
+                    Y:          2 in Ring 5
+                    Y:          2 in Ring 6
+                    Y:          2 in Ring 7
+                    Y:          2 in Ring 8
+                    Y:          2 in Ring 9
+                    Y:          2 in Ring 10
+                    total:      16 in Ring 0
+                    total:      16 in Ring 1
+                    total:      16 in Ring 2
+                    total:      16 in Ring 3
+                    total:      16 in Ring 4
+                    total:      16 in Ring 5
+                    total:      16 in Ring 6
+                    total:      16 in Ring 7
+                    total:      16 in Ring 8
+                    total:      16 in Ring 9
+                    total:      16 in Ring 10
+  Outer sensor channels:        2048 in Ring 0
+  Outer sensor channels:        2048 in Ring 1
+  Outer sensor channels:        2048 in Ring 2
+  Outer sensor channels:        2048 in Ring 3
+  Outer sensor channels:        2048 in Ring 4
+  Outer sensor channels:        2048 in Ring 5
+  Outer sensor channels:        2048 in Ring 6
+  Outer sensor channels:        2048 in Ring 7
+  Outer sensor channels:        2048 in Ring 8
+  Outer sensor channels:        2048 in Ring 9
+  Outer sensor channels:        2048 in Ring 10
+               rows:            1024 in Ring 0
+               rows:            1024 in Ring 1
+               rows:            1024 in Ring 2
+               rows:            1024 in Ring 3
+               rows:            1024 in Ring 4
+               rows:            1024 in Ring 5
+               rows:            1024 in Ring 6
+               rows:            1024 in Ring 7
+               rows:            1024 in Ring 8
+               rows:            1024 in Ring 9
+               rows:            1024 in Ring 10
+               columns:         2 in Ring 0
+               columns:         2 in Ring 1
+               columns:         2 in Ring 2
+               columns:         2 in Ring 3
+               columns:         2 in Ring 4
+               columns:         2 in Ring 5
+               columns:         2 in Ring 6
+               columns:         2 in Ring 7
+               columns:         2 in Ring 8
+               columns:         2 in Ring 9
+               columns:         2 in Ring 10
+  Outer sensor average pitch X: 93.75 [um] in Ring 0
+  Outer sensor average pitch X: 93.75 [um] in Ring 1
+  Outer sensor average pitch X: 93.75 [um] in Ring 2
+  Outer sensor average pitch X: 93.75 [um] in Ring 3
+  Outer sensor average pitch X: 93.75 [um] in Ring 4
+  Outer sensor average pitch X: 89.2917 [um] in Ring 5
+  Outer sensor average pitch X: 89.2963 [um] in Ring 6
+  Outer sensor average pitch X: 89.2984 [um] in Ring 7
+  Outer sensor average pitch X: 89.2955 [um] in Ring 8
+  Outer sensor average pitch X: 89.2986 [um] in Ring 9
+  Outer sensor average pitch X: 89.2949 [um] in Ring 10
+                             Y: 23130 [um] in Ring 0
+                             Y: 23130 [um] in Ring 1
+                             Y: 23130 [um] in Ring 2
+                             Y: 23130 [um] in Ring 3
+                             Y: 23130 [um] in Ring 4
+                             Y: 50250 [um] in Ring 5
+                             Y: 50250 [um] in Ring 6
+                             Y: 50250 [um] in Ring 7
+                             Y: 50250 [um] in Ring 8
+                             Y: 50250 [um] in Ring 9
+                             Y: 50250.1 [um] in Ring 10
+  Outer sensor ROCs X:          0 in Ring 0
+  Outer sensor ROCs X:          0 in Ring 1
+  Outer sensor ROCs X:          0 in Ring 2
+  Outer sensor ROCs X:          0 in Ring 3
+  Outer sensor ROCs X:          0 in Ring 4
+  Outer sensor ROCs X:          0 in Ring 5
+  Outer sensor ROCs X:          0 in Ring 6
+  Outer sensor ROCs X:          0 in Ring 7
+  Outer sensor ROCs X:          0 in Ring 8
+  Outer sensor ROCs X:          0 in Ring 9
+  Outer sensor ROCs X:          0 in Ring 10
+                    Y:          0 in Ring 0
+                    Y:          0 in Ring 1
+                    Y:          0 in Ring 2
+                    Y:          0 in Ring 3
+                    Y:          0 in Ring 4
+                    Y:          0 in Ring 5
+                    Y:          0 in Ring 6
+                    Y:          0 in Ring 7
+                    Y:          0 in Ring 8
+                    Y:          0 in Ring 9
+                    Y:          0 in Ring 10
+                    total:      0 in Ring 0
+                    total:      0 in Ring 1
+                    total:      0 in Ring 2
+                    total:      0 in Ring 3
+                    total:      0 in Ring 4
+                    total:      0 in Ring 5
+                    total:      0 in Ring 6
+                    total:      0 in Ring 7
+                    total:      0 in Ring 8
+                    total:      0 in Ring 9
+                    total:      0 in Ring 10
