@@ -37,7 +37,7 @@ process.load('SLHCUpgradeSimulations.Geometry.recoFromSimDigis_LongBarrel_cff')
 #process.load("SLHCUpgradeSimulations.L1TrackTrigger.Cluster_cfi")
 
 process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(100)
+    input = cms.untracked.int32(4)
 )
 
 # Input source
@@ -50,7 +50,7 @@ process.source = cms.Source("EmptySource")
 
 # Production Info
 process.configurationMetadata = cms.untracked.PSet(
-    version = cms.untracked.string('$Revision: 1.1.2.1 $'),
+    version = cms.untracked.string('$Revision: 1.1 $'),
     annotation = cms.untracked.string('SLHCUpgradeSimulations/Configuration/python/FourMuPt_1_50_cfi.py nevts:1'),
     name = cms.untracked.string('PyReleaseValidation')
 )

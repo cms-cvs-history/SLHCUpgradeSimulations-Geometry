@@ -73,242 +73,232 @@
       <Parameter name="TrackerRadLength" value="0.031"/>
       <Parameter name="TrackerXi" value="0.0003217"/>
     </SpecPar>
-
-<SpecPar name="TrackerRecMaterialTOBPixelBarrelLayer1" eval="true">
-<PartSelector path="//PixelBarrel/Layer1/Rod1/BModule1Layer1/BModule1Layer1wafer/BModule1Layer1active"/>
-<PartSelector path="//PixelBarrel/Layer1/Rod1/BModule2Layer1/BModule2Layer1wafer/BModule2Layer1active"/>
-<PartSelector path="//PixelBarrel/Layer1/Rod1/BModule3Layer1/BModule3Layer1wafer/BModule3Layer1active"/>
-<PartSelector path="//PixelBarrel/Layer1/Rod1/BModule4Layer1/BModule4Layer1wafer/BModule4Layer1active"/>
-<PartSelector path="//PixelBarrel/Layer1/Rod1/BModule5Layer1/BModule5Layer1wafer/BModule5Layer1active"/>
-<PartSelector path="//PixelBarrel/Layer1/Rod1/BModule6Layer1/BModule6Layer1wafer/BModule6Layer1active"/>
-<PartSelector path="//PixelBarrel/Layer1/Rod1/BModule7Layer1/BModule7Layer1wafer/BModule7Layer1active"/>
-<PartSelector path="//PixelBarrel/Layer1/Rod1/BModule8Layer1/BModule8Layer1wafer/BModule8Layer1active"/>
-<PartSelector path="//PixelBarrel/Layer1/Rod1/BModule9Layer1/BModule9Layer1wafer/BModule9Layer1active"/>
-<PartSelector path="//PixelBarrel/Layer1/Rod1/BModule10Layer1/BModule10Layer1wafer/BModule10Layer1active"/>
-<PartSelector path="//PixelBarrel/Layer1/Rod1/BModule11Layer1/BModule11Layer1wafer/BModule11Layer1active"/>
-<PartSelector path="//PixelBarrel/Layer1/Rod1/BModule12Layer1/BModule12Layer1wafer/BModule12Layer1active"/>
-<PartSelector path="//PixelBarrel/Layer1/Rod1/BModule13Layer1/BModule13Layer1wafer/BModule13Layer1active"/>
-<PartSelector path="//PixelBarrel/Layer1/Rod1/BModule14Layer1/BModule14Layer1wafer/BModule14Layer1active"/>
-<PartSelector path="//PixelBarrel/Layer1/Rod1/BModule15Layer1/BModule15Layer1wafer/BModule15Layer1active"/>
-<PartSelector path="//PixelBarrel/Layer1/Rod1/BModule16Layer1/BModule16Layer1wafer/BModule16Layer1active"/>
-<PartSelector path="//PixelBarrel/Layer1/Rod1/BModule17Layer1/BModule17Layer1wafer/BModule17Layer1active"/>
-<PartSelector path="//PixelBarrel/Layer1/Rod1/BModule18Layer1/BModule18Layer1wafer/BModule18Layer1active"/>
-<PartSelector path="//PixelBarrel/Layer1/Rod1/BModule19Layer1/BModule19Layer1wafer/BModule19Layer1active"/>
-<PartSelector path="//PixelBarrel/Layer1/Rod1/BModule20Layer1/BModule20Layer1wafer/BModule20Layer1active"/>
-<PartSelector path="//PixelBarrel/Layer1/Rod1/BModule21Layer1/BModule21Layer1wafer/BModule21Layer1active"/>
-<Parameter name="TrackerRadLength" value="0.0344655"/>
-<Parameter name="TrackerXi" value="0.00943089"/>
-</SpecPar>
-
-<SpecPar name="TrackerRecMaterialTOBPixelBarrelLayer2" eval="true">
-<PartSelector path="//PixelBarrel/Layer2/Rod2/BModule1Layer2/BModule1Layer2wafer/BModule1Layer2active"/>
-<PartSelector path="//PixelBarrel/Layer2/Rod2/BModule2Layer2/BModule2Layer2wafer/BModule2Layer2active"/>
-<PartSelector path="//PixelBarrel/Layer2/Rod2/BModule3Layer2/BModule3Layer2wafer/BModule3Layer2active"/>
-<PartSelector path="//PixelBarrel/Layer2/Rod2/BModule4Layer2/BModule4Layer2wafer/BModule4Layer2active"/>
-<PartSelector path="//PixelBarrel/Layer2/Rod2/BModule5Layer2/BModule5Layer2wafer/BModule5Layer2active"/>
-<PartSelector path="//PixelBarrel/Layer2/Rod2/BModule6Layer2/BModule6Layer2wafer/BModule6Layer2active"/>
-<PartSelector path="//PixelBarrel/Layer2/Rod2/BModule7Layer2/BModule7Layer2wafer/BModule7Layer2active"/>
-<PartSelector path="//PixelBarrel/Layer2/Rod2/BModule8Layer2/BModule8Layer2wafer/BModule8Layer2active"/>
-<PartSelector path="//PixelBarrel/Layer2/Rod2/BModule9Layer2/BModule9Layer2wafer/BModule9Layer2active"/>
-<PartSelector path="//PixelBarrel/Layer2/Rod2/BModule10Layer2/BModule10Layer2wafer/BModule10Layer2active"/>
-<PartSelector path="//PixelBarrel/Layer2/Rod2/BModule11Layer2/BModule11Layer2wafer/BModule11Layer2active"/>
-<PartSelector path="//PixelBarrel/Layer2/Rod2/BModule12Layer2/BModule12Layer2wafer/BModule12Layer2active"/>
-<PartSelector path="//PixelBarrel/Layer2/Rod2/BModule13Layer2/BModule13Layer2wafer/BModule13Layer2active"/>
-<PartSelector path="//PixelBarrel/Layer2/Rod2/BModule14Layer2/BModule14Layer2wafer/BModule14Layer2active"/>
-<PartSelector path="//PixelBarrel/Layer2/Rod2/BModule15Layer2/BModule15Layer2wafer/BModule15Layer2active"/>
-<PartSelector path="//PixelBarrel/Layer2/Rod2/BModule16Layer2/BModule16Layer2wafer/BModule16Layer2active"/>
-<PartSelector path="//PixelBarrel/Layer2/Rod2/BModule17Layer2/BModule17Layer2wafer/BModule17Layer2active"/>
-<PartSelector path="//PixelBarrel/Layer2/Rod2/BModule18Layer2/BModule18Layer2wafer/BModule18Layer2active"/>
-<PartSelector path="//PixelBarrel/Layer2/Rod2/BModule19Layer2/BModule19Layer2wafer/BModule19Layer2active"/>
-<PartSelector path="//PixelBarrel/Layer2/Rod2/BModule20Layer2/BModule20Layer2wafer/BModule20Layer2active"/>
-<PartSelector path="//PixelBarrel/Layer2/Rod2/BModule21Layer2/BModule21Layer2wafer/BModule21Layer2active"/>
-<PartSelector path="//PixelBarrel/Layer2/Rod2/BModule22Layer2/BModule22Layer2wafer/BModule22Layer2active"/>
-<PartSelector path="//PixelBarrel/Layer2/Rod2/BModule23Layer2/BModule23Layer2wafer/BModule23Layer2active"/>
-<PartSelector path="//PixelBarrel/Layer2/Rod2/BModule24Layer2/BModule24Layer2wafer/BModule24Layer2active"/>
-<Parameter name="TrackerRadLength" value="0.0354435"/>
-<Parameter name="TrackerXi" value="0.00965301"/>
-</SpecPar>
-
-<SpecPar name="TrackerRecMaterialTOBPixelBarrelLayer3" eval="true">
-<PartSelector path="//PixelBarrel/Layer3/Rod3/BModule1Layer3/BModule1Layer3wafer/BModule1Layer3active"/>
-<PartSelector path="//PixelBarrel/Layer3/Rod3/BModule2Layer3/BModule2Layer3wafer/BModule2Layer3active"/>
-<PartSelector path="//PixelBarrel/Layer3/Rod3/BModule3Layer3/BModule3Layer3wafer/BModule3Layer3active"/>
-<PartSelector path="//PixelBarrel/Layer3/Rod3/BModule4Layer3/BModule4Layer3wafer/BModule4Layer3active"/>
-<PartSelector path="//PixelBarrel/Layer3/Rod3/BModule5Layer3/BModule5Layer3wafer/BModule5Layer3active"/>
-<PartSelector path="//PixelBarrel/Layer3/Rod3/BModule6Layer3/BModule6Layer3wafer/BModule6Layer3active"/>
-<Parameter name="TrackerRadLength" value="0.0295757"/>
-<Parameter name="TrackerXi" value="0.00832028"/>
-</SpecPar>
-
-<SpecPar name="TrackerRecMaterialTOBPixelBarrelLayer4" eval="true">
-<PartSelector path="//PixelBarrel/Layer4/Rod4/BModule1Layer4/BModule1Layer4wafer/BModule1Layer4active"/>
-<PartSelector path="//PixelBarrel/Layer4/Rod4/BModule2Layer4/BModule2Layer4wafer/BModule2Layer4active"/>
-<PartSelector path="//PixelBarrel/Layer4/Rod4/BModule3Layer4/BModule3Layer4wafer/BModule3Layer4active"/>
-<PartSelector path="//PixelBarrel/Layer4/Rod4/BModule4Layer4/BModule4Layer4wafer/BModule4Layer4active"/>
-<PartSelector path="//PixelBarrel/Layer4/Rod4/BModule5Layer4/BModule5Layer4wafer/BModule5Layer4active"/>
-<PartSelector path="//PixelBarrel/Layer4/Rod4/BModule6Layer4/BModule6Layer4wafer/BModule6Layer4active"/>
-<Parameter name="TrackerRadLength" value="0.0295757"/>
-<Parameter name="TrackerXi" value="0.00832028"/>
-</SpecPar>
-
-<SpecPar name="TrackerRecMaterialTOBPixelBarrelLayer5" eval="true">
-<PartSelector path="//PixelBarrel/Layer5/Rod5/BModule1Layer5/BModule1Layer5wafer/BModule1Layer5active"/>
-<PartSelector path="//PixelBarrel/Layer5/Rod5/BModule2Layer5/BModule2Layer5wafer/BModule2Layer5active"/>
-<PartSelector path="//PixelBarrel/Layer5/Rod5/BModule3Layer5/BModule3Layer5wafer/BModule3Layer5active"/>
-<PartSelector path="//PixelBarrel/Layer5/Rod5/BModule4Layer5/BModule4Layer5wafer/BModule4Layer5active"/>
-<PartSelector path="//PixelBarrel/Layer5/Rod5/BModule5Layer5/BModule5Layer5wafer/BModule5Layer5active"/>
-<PartSelector path="//PixelBarrel/Layer5/Rod5/BModule6Layer5/BModule6Layer5wafer/BModule6Layer5active"/>
-<PartSelector path="//PixelBarrel/Layer5/Rod5/BModule7Layer5/BModule7Layer5wafer/BModule7Layer5active"/>
-<PartSelector path="//PixelBarrel/Layer5/Rod5/BModule8Layer5/BModule8Layer5wafer/BModule8Layer5active"/>
-<PartSelector path="//PixelBarrel/Layer5/Rod5/BModule9Layer5/BModule9Layer5wafer/BModule9Layer5active"/>
-<PartSelector path="//PixelBarrel/Layer5/Rod5/BModule10Layer5/BModule10Layer5wafer/BModule10Layer5active"/>
-<PartSelector path="//PixelBarrel/Layer5/Rod5/BModule11Layer5/BModule11Layer5wafer/BModule11Layer5active"/>
-<PartSelector path="//PixelBarrel/Layer5/Rod5/BModule12Layer5/BModule12Layer5wafer/BModule12Layer5active"/>
-<PartSelector path="//PixelBarrel/Layer5/Rod5/BModule13Layer5/BModule13Layer5wafer/BModule13Layer5active"/>
-<PartSelector path="//PixelBarrel/Layer5/Rod5/BModule14Layer5/BModule14Layer5wafer/BModule14Layer5active"/>
-<PartSelector path="//PixelBarrel/Layer5/Rod5/BModule15Layer5/BModule15Layer5wafer/BModule15Layer5active"/>
-<PartSelector path="//PixelBarrel/Layer5/Rod5/BModule16Layer5/BModule16Layer5wafer/BModule16Layer5active"/>
-<PartSelector path="//PixelBarrel/Layer5/Rod5/BModule17Layer5/BModule17Layer5wafer/BModule17Layer5active"/>
-<PartSelector path="//PixelBarrel/Layer5/Rod5/BModule18Layer5/BModule18Layer5wafer/BModule18Layer5active"/>
-<PartSelector path="//PixelBarrel/Layer5/Rod5/BModule19Layer5/BModule19Layer5wafer/BModule19Layer5active"/>
-<PartSelector path="//PixelBarrel/Layer5/Rod5/BModule20Layer5/BModule20Layer5wafer/BModule20Layer5active"/>
-<PartSelector path="//PixelBarrel/Layer5/Rod5/BModule21Layer5/BModule21Layer5wafer/BModule21Layer5active"/>
-<PartSelector path="//PixelBarrel/Layer5/Rod5/BModule22Layer5/BModule22Layer5wafer/BModule22Layer5active"/>
-<PartSelector path="//PixelBarrel/Layer5/Rod5/BModule23Layer5/BModule23Layer5wafer/BModule23Layer5active"/>
-<PartSelector path="//PixelBarrel/Layer5/Rod5/BModule24Layer5/BModule24Layer5wafer/BModule24Layer5active"/>
-<PartSelector path="//PixelBarrel/Layer5/Rod5/BModule25Layer5/BModule25Layer5wafer/BModule25Layer5active"/>
-<PartSelector path="//PixelBarrel/Layer5/Rod5/BModule26Layer5/BModule26Layer5wafer/BModule26Layer5active"/>
-<PartSelector path="//PixelBarrel/Layer5/Rod5/BModule27Layer5/BModule27Layer5wafer/BModule27Layer5active"/>
-<PartSelector path="//PixelBarrel/Layer5/Rod5/BModule28Layer5/BModule28Layer5wafer/BModule28Layer5active"/>
-<PartSelector path="//PixelBarrel/Layer5/Rod5/BModule29Layer5/BModule29Layer5wafer/BModule29Layer5active"/>
-<Parameter name="TrackerRadLength" value="0.0370734"/>
-<Parameter name="TrackerXi" value="0.0100232"/>
-</SpecPar>
-
-<SpecPar name="TrackerRecMaterialTOBPixelBarrelLayer6" eval="true">
-<PartSelector path="//PixelBarrel/Layer6/Rod6/BModule1Layer6/BModule1Layer6wafer/BModule1Layer6active"/>
-<PartSelector path="//PixelBarrel/Layer6/Rod6/BModule2Layer6/BModule2Layer6wafer/BModule2Layer6active"/>
-<PartSelector path="//PixelBarrel/Layer6/Rod6/BModule3Layer6/BModule3Layer6wafer/BModule3Layer6active"/>
-<PartSelector path="//PixelBarrel/Layer6/Rod6/BModule4Layer6/BModule4Layer6wafer/BModule4Layer6active"/>
-<PartSelector path="//PixelBarrel/Layer6/Rod6/BModule5Layer6/BModule5Layer6wafer/BModule5Layer6active"/>
-<PartSelector path="//PixelBarrel/Layer6/Rod6/BModule6Layer6/BModule6Layer6wafer/BModule6Layer6active"/>
-<PartSelector path="//PixelBarrel/Layer6/Rod6/BModule7Layer6/BModule7Layer6wafer/BModule7Layer6active"/>
-<PartSelector path="//PixelBarrel/Layer6/Rod6/BModule8Layer6/BModule8Layer6wafer/BModule8Layer6active"/>
-<PartSelector path="//PixelBarrel/Layer6/Rod6/BModule9Layer6/BModule9Layer6wafer/BModule9Layer6active"/>
-<PartSelector path="//PixelBarrel/Layer6/Rod6/BModule10Layer6/BModule10Layer6wafer/BModule10Layer6active"/>
-<PartSelector path="//PixelBarrel/Layer6/Rod6/BModule11Layer6/BModule11Layer6wafer/BModule11Layer6active"/>
-<PartSelector path="//PixelBarrel/Layer6/Rod6/BModule12Layer6/BModule12Layer6wafer/BModule12Layer6active"/>
-<PartSelector path="//PixelBarrel/Layer6/Rod6/BModule13Layer6/BModule13Layer6wafer/BModule13Layer6active"/>
-<PartSelector path="//PixelBarrel/Layer6/Rod6/BModule14Layer6/BModule14Layer6wafer/BModule14Layer6active"/>
-<PartSelector path="//PixelBarrel/Layer6/Rod6/BModule15Layer6/BModule15Layer6wafer/BModule15Layer6active"/>
-<PartSelector path="//PixelBarrel/Layer6/Rod6/BModule16Layer6/BModule16Layer6wafer/BModule16Layer6active"/>
-<PartSelector path="//PixelBarrel/Layer6/Rod6/BModule17Layer6/BModule17Layer6wafer/BModule17Layer6active"/>
-<PartSelector path="//PixelBarrel/Layer6/Rod6/BModule18Layer6/BModule18Layer6wafer/BModule18Layer6active"/>
-<PartSelector path="//PixelBarrel/Layer6/Rod6/BModule19Layer6/BModule19Layer6wafer/BModule19Layer6active"/>
-<PartSelector path="//PixelBarrel/Layer6/Rod6/BModule20Layer6/BModule20Layer6wafer/BModule20Layer6active"/>
-<PartSelector path="//PixelBarrel/Layer6/Rod6/BModule21Layer6/BModule21Layer6wafer/BModule21Layer6active"/>
-<PartSelector path="//PixelBarrel/Layer6/Rod6/BModule22Layer6/BModule22Layer6wafer/BModule22Layer6active"/>
-<PartSelector path="//PixelBarrel/Layer6/Rod6/BModule23Layer6/BModule23Layer6wafer/BModule23Layer6active"/>
-<PartSelector path="//PixelBarrel/Layer6/Rod6/BModule24Layer6/BModule24Layer6wafer/BModule24Layer6active"/>
-<PartSelector path="//PixelBarrel/Layer6/Rod6/BModule25Layer6/BModule25Layer6wafer/BModule25Layer6active"/>
-<PartSelector path="//PixelBarrel/Layer6/Rod6/BModule26Layer6/BModule26Layer6wafer/BModule26Layer6active"/>
-<PartSelector path="//PixelBarrel/Layer6/Rod6/BModule27Layer6/BModule27Layer6wafer/BModule27Layer6active"/>
-<PartSelector path="//PixelBarrel/Layer6/Rod6/BModule28Layer6/BModule28Layer6wafer/BModule28Layer6active"/>
-<PartSelector path="//PixelBarrel/Layer6/Rod6/BModule29Layer6/BModule29Layer6wafer/BModule29Layer6active"/>
-<Parameter name="TrackerRadLength" value="0.0370734"/>
-<Parameter name="TrackerXi" value="0.0100232"/>
-</SpecPar>
-
-<SpecPar name="TrackerRecMaterialTOBPixelBarrelLayer7" eval="true">
-<PartSelector path="//PixelBarrel/Layer7/Rod7/BModule1Layer7/BModule1Layer7wafer/BModule1Layer7active"/>
-<PartSelector path="//PixelBarrel/Layer7/Rod7/BModule2Layer7/BModule2Layer7wafer/BModule2Layer7active"/>
-<PartSelector path="//PixelBarrel/Layer7/Rod7/BModule3Layer7/BModule3Layer7wafer/BModule3Layer7active"/>
-<PartSelector path="//PixelBarrel/Layer7/Rod7/BModule4Layer7/BModule4Layer7wafer/BModule4Layer7active"/>
-<PartSelector path="//PixelBarrel/Layer7/Rod7/BModule5Layer7/BModule5Layer7wafer/BModule5Layer7active"/>
-<PartSelector path="//PixelBarrel/Layer7/Rod7/BModule6Layer7/BModule6Layer7wafer/BModule6Layer7active"/>
-<Parameter name="TrackerRadLength" value="0.0295757"/>
-<Parameter name="TrackerXi" value="0.00832028"/>
-</SpecPar>
-
-<SpecPar name="TrackerRecMaterialTOBPixelBarrelLayer8" eval="true">
-<PartSelector path="//PixelBarrel/Layer8/Rod8/BModule1Layer8/BModule1Layer8wafer/BModule1Layer8active"/>
-<PartSelector path="//PixelBarrel/Layer8/Rod8/BModule2Layer8/BModule2Layer8wafer/BModule2Layer8active"/>
-<PartSelector path="//PixelBarrel/Layer8/Rod8/BModule3Layer8/BModule3Layer8wafer/BModule3Layer8active"/>
-<PartSelector path="//PixelBarrel/Layer8/Rod8/BModule4Layer8/BModule4Layer8wafer/BModule4Layer8active"/>
-<PartSelector path="//PixelBarrel/Layer8/Rod8/BModule5Layer8/BModule5Layer8wafer/BModule5Layer8active"/>
-<PartSelector path="//PixelBarrel/Layer8/Rod8/BModule6Layer8/BModule6Layer8wafer/BModule6Layer8active"/>
-<Parameter name="TrackerRadLength" value="0.0295757"/>
-<Parameter name="TrackerXi" value="0.00832028"/>
-</SpecPar>
-
-<SpecPar name="TrackerRecMaterialTOBPixelBarrelLayer9" eval="true">
-<PartSelector path="//PixelBarrel/Layer9/Rod9/BModule1Layer9/BModule1Layer9wafer/BModule1Layer9active"/>
-<PartSelector path="//PixelBarrel/Layer9/Rod9/BModule2Layer9/BModule2Layer9wafer/BModule2Layer9active"/>
-<PartSelector path="//PixelBarrel/Layer9/Rod9/BModule3Layer9/BModule3Layer9wafer/BModule3Layer9active"/>
-<PartSelector path="//PixelBarrel/Layer9/Rod9/BModule4Layer9/BModule4Layer9wafer/BModule4Layer9active"/>
-<PartSelector path="//PixelBarrel/Layer9/Rod9/BModule5Layer9/BModule5Layer9wafer/BModule5Layer9active"/>
-<PartSelector path="//PixelBarrel/Layer9/Rod9/BModule6Layer9/BModule6Layer9wafer/BModule6Layer9active"/>
-<PartSelector path="//PixelBarrel/Layer9/Rod9/BModule7Layer9/BModule7Layer9wafer/BModule7Layer9active"/>
-<PartSelector path="//PixelBarrel/Layer9/Rod9/BModule8Layer9/BModule8Layer9wafer/BModule8Layer9active"/>
-<PartSelector path="//PixelBarrel/Layer9/Rod9/BModule9Layer9/BModule9Layer9wafer/BModule9Layer9active"/>
-<PartSelector path="//PixelBarrel/Layer9/Rod9/BModule10Layer9/BModule10Layer9wafer/BModule10Layer9active"/>
-<PartSelector path="//PixelBarrel/Layer9/Rod9/BModule11Layer9/BModule11Layer9wafer/BModule11Layer9active"/>
-<PartSelector path="//PixelBarrel/Layer9/Rod9/BModule12Layer9/BModule12Layer9wafer/BModule12Layer9active"/>
-<PartSelector path="//PixelBarrel/Layer9/Rod9/BModule13Layer9/BModule13Layer9wafer/BModule13Layer9active"/>
-<PartSelector path="//PixelBarrel/Layer9/Rod9/BModule14Layer9/BModule14Layer9wafer/BModule14Layer9active"/>
-<PartSelector path="//PixelBarrel/Layer9/Rod9/BModule15Layer9/BModule15Layer9wafer/BModule15Layer9active"/>
-<PartSelector path="//PixelBarrel/Layer9/Rod9/BModule16Layer9/BModule16Layer9wafer/BModule16Layer9active"/>
-<PartSelector path="//PixelBarrel/Layer9/Rod9/BModule17Layer9/BModule17Layer9wafer/BModule17Layer9active"/>
-<PartSelector path="//PixelBarrel/Layer9/Rod9/BModule18Layer9/BModule18Layer9wafer/BModule18Layer9active"/>
-<PartSelector path="//PixelBarrel/Layer9/Rod9/BModule19Layer9/BModule19Layer9wafer/BModule19Layer9active"/>
-<PartSelector path="//PixelBarrel/Layer9/Rod9/BModule20Layer9/BModule20Layer9wafer/BModule20Layer9active"/>
-<PartSelector path="//PixelBarrel/Layer9/Rod9/BModule21Layer9/BModule21Layer9wafer/BModule21Layer9active"/>
-<PartSelector path="//PixelBarrel/Layer9/Rod9/BModule22Layer9/BModule22Layer9wafer/BModule22Layer9active"/>
-<PartSelector path="//PixelBarrel/Layer9/Rod9/BModule23Layer9/BModule23Layer9wafer/BModule23Layer9active"/>
-<PartSelector path="//PixelBarrel/Layer9/Rod9/BModule24Layer9/BModule24Layer9wafer/BModule24Layer9active"/>
-<PartSelector path="//PixelBarrel/Layer9/Rod9/BModule25Layer9/BModule25Layer9wafer/BModule25Layer9active"/>
-<PartSelector path="//PixelBarrel/Layer9/Rod9/BModule26Layer9/BModule26Layer9wafer/BModule26Layer9active"/>
-<PartSelector path="//PixelBarrel/Layer9/Rod9/BModule27Layer9/BModule27Layer9wafer/BModule27Layer9active"/>
-<PartSelector path="//PixelBarrel/Layer9/Rod9/BModule28Layer9/BModule28Layer9wafer/BModule28Layer9active"/>
-<PartSelector path="//PixelBarrel/Layer9/Rod9/BModule29Layer9/BModule29Layer9wafer/BModule29Layer9active"/>
-<Parameter name="TrackerRadLength" value="0.0370734"/>
-<Parameter name="TrackerXi" value="0.0100232"/>
-</SpecPar>
-
-<SpecPar name="TrackerRecMaterialTOBPixelBarrelLayer10" eval="true">
-<PartSelector path="//PixelBarrel/Layer10/Rod10/BModule1Layer10/BModule1Layer10wafer/BModule1Layer10active"/>
-<PartSelector path="//PixelBarrel/Layer10/Rod10/BModule2Layer10/BModule2Layer10wafer/BModule2Layer10active"/>
-<PartSelector path="//PixelBarrel/Layer10/Rod10/BModule3Layer10/BModule3Layer10wafer/BModule3Layer10active"/>
-<PartSelector path="//PixelBarrel/Layer10/Rod10/BModule4Layer10/BModule4Layer10wafer/BModule4Layer10active"/>
-<PartSelector path="//PixelBarrel/Layer10/Rod10/BModule5Layer10/BModule5Layer10wafer/BModule5Layer10active"/>
-<PartSelector path="//PixelBarrel/Layer10/Rod10/BModule6Layer10/BModule6Layer10wafer/BModule6Layer10active"/>
-<PartSelector path="//PixelBarrel/Layer10/Rod10/BModule7Layer10/BModule7Layer10wafer/BModule7Layer10active"/>
-<PartSelector path="//PixelBarrel/Layer10/Rod10/BModule8Layer10/BModule8Layer10wafer/BModule8Layer10active"/>
-<PartSelector path="//PixelBarrel/Layer10/Rod10/BModule9Layer10/BModule9Layer10wafer/BModule9Layer10active"/>
-<PartSelector path="//PixelBarrel/Layer10/Rod10/BModule10Layer10/BModule10Layer10wafer/BModule10Layer10active"/>
-<PartSelector path="//PixelBarrel/Layer10/Rod10/BModule11Layer10/BModule11Layer10wafer/BModule11Layer10active"/>
-<PartSelector path="//PixelBarrel/Layer10/Rod10/BModule12Layer10/BModule12Layer10wafer/BModule12Layer10active"/>
-<PartSelector path="//PixelBarrel/Layer10/Rod10/BModule13Layer10/BModule13Layer10wafer/BModule13Layer10active"/>
-<PartSelector path="//PixelBarrel/Layer10/Rod10/BModule14Layer10/BModule14Layer10wafer/BModule14Layer10active"/>
-<PartSelector path="//PixelBarrel/Layer10/Rod10/BModule15Layer10/BModule15Layer10wafer/BModule15Layer10active"/>
-<PartSelector path="//PixelBarrel/Layer10/Rod10/BModule16Layer10/BModule16Layer10wafer/BModule16Layer10active"/>
-<PartSelector path="//PixelBarrel/Layer10/Rod10/BModule17Layer10/BModule17Layer10wafer/BModule17Layer10active"/>
-<PartSelector path="//PixelBarrel/Layer10/Rod10/BModule18Layer10/BModule18Layer10wafer/BModule18Layer10active"/>
-<PartSelector path="//PixelBarrel/Layer10/Rod10/BModule19Layer10/BModule19Layer10wafer/BModule19Layer10active"/>
-<PartSelector path="//PixelBarrel/Layer10/Rod10/BModule20Layer10/BModule20Layer10wafer/BModule20Layer10active"/>
-<PartSelector path="//PixelBarrel/Layer10/Rod10/BModule21Layer10/BModule21Layer10wafer/BModule21Layer10active"/>
-<PartSelector path="//PixelBarrel/Layer10/Rod10/BModule22Layer10/BModule22Layer10wafer/BModule22Layer10active"/>
-<PartSelector path="//PixelBarrel/Layer10/Rod10/BModule23Layer10/BModule23Layer10wafer/BModule23Layer10active"/>
-<PartSelector path="//PixelBarrel/Layer10/Rod10/BModule24Layer10/BModule24Layer10wafer/BModule24Layer10active"/>
-<PartSelector path="//PixelBarrel/Layer10/Rod10/BModule25Layer10/BModule25Layer10wafer/BModule25Layer10active"/>
-<PartSelector path="//PixelBarrel/Layer10/Rod10/BModule26Layer10/BModule26Layer10wafer/BModule26Layer10active"/>
-<PartSelector path="//PixelBarrel/Layer10/Rod10/BModule27Layer10/BModule27Layer10wafer/BModule27Layer10active"/>
-<PartSelector path="//PixelBarrel/Layer10/Rod10/BModule28Layer10/BModule28Layer10wafer/BModule28Layer10active"/>
-<PartSelector path="//PixelBarrel/Layer10/Rod10/BModule29Layer10/BModule29Layer10wafer/BModule29Layer10active"/>
-<Parameter name="TrackerRadLength" value="0.0370734"/>
-<Parameter name="TrackerXi" value="0.0100232"/>
-</SpecPar>
-
-
+    <SpecPar name="TrackerRecMaterialTOBPixelBarrelLayer1" eval="true">
+      <PartSelector path="//PixelBarrel/Layer1/Rod1/BModule1Layer1/BModule1Layer1wafer/BModule1Layer1active"/>
+      <PartSelector path="//PixelBarrel/Layer1/Rod1/BModule2Layer1/BModule2Layer1wafer/BModule2Layer1active"/>
+      <PartSelector path="//PixelBarrel/Layer1/Rod1/BModule3Layer1/BModule3Layer1wafer/BModule3Layer1active"/>
+      <PartSelector path="//PixelBarrel/Layer1/Rod1/BModule4Layer1/BModule4Layer1wafer/BModule4Layer1active"/>
+      <PartSelector path="//PixelBarrel/Layer1/Rod1/BModule5Layer1/BModule5Layer1wafer/BModule5Layer1active"/>
+      <PartSelector path="//PixelBarrel/Layer1/Rod1/BModule6Layer1/BModule6Layer1wafer/BModule6Layer1active"/>
+      <PartSelector path="//PixelBarrel/Layer1/Rod1/BModule7Layer1/BModule7Layer1wafer/BModule7Layer1active"/>
+      <PartSelector path="//PixelBarrel/Layer1/Rod1/BModule8Layer1/BModule8Layer1wafer/BModule8Layer1active"/>
+      <PartSelector path="//PixelBarrel/Layer1/Rod1/BModule9Layer1/BModule9Layer1wafer/BModule9Layer1active"/>
+      <PartSelector path="//PixelBarrel/Layer1/Rod1/BModule10Layer1/BModule10Layer1wafer/BModule10Layer1active"/>
+      <PartSelector path="//PixelBarrel/Layer1/Rod1/BModule11Layer1/BModule11Layer1wafer/BModule11Layer1active"/>
+      <PartSelector path="//PixelBarrel/Layer1/Rod1/BModule12Layer1/BModule12Layer1wafer/BModule12Layer1active"/>
+      <PartSelector path="//PixelBarrel/Layer1/Rod1/BModule13Layer1/BModule13Layer1wafer/BModule13Layer1active"/>
+      <PartSelector path="//PixelBarrel/Layer1/Rod1/BModule14Layer1/BModule14Layer1wafer/BModule14Layer1active"/>
+      <PartSelector path="//PixelBarrel/Layer1/Rod1/BModule15Layer1/BModule15Layer1wafer/BModule15Layer1active"/>
+      <PartSelector path="//PixelBarrel/Layer1/Rod1/BModule16Layer1/BModule16Layer1wafer/BModule16Layer1active"/>
+      <PartSelector path="//PixelBarrel/Layer1/Rod1/BModule17Layer1/BModule17Layer1wafer/BModule17Layer1active"/>
+      <PartSelector path="//PixelBarrel/Layer1/Rod1/BModule18Layer1/BModule18Layer1wafer/BModule18Layer1active"/>
+      <PartSelector path="//PixelBarrel/Layer1/Rod1/BModule19Layer1/BModule19Layer1wafer/BModule19Layer1active"/>
+      <PartSelector path="//PixelBarrel/Layer1/Rod1/BModule20Layer1/BModule20Layer1wafer/BModule20Layer1active"/>
+      <PartSelector path="//PixelBarrel/Layer1/Rod1/BModule21Layer1/BModule21Layer1wafer/BModule21Layer1active"/>
+      <Parameter name="TrackerRadLength" value="0.0344655"/>
+      <Parameter name="TrackerXi" value="0.00943089"/>
+    </SpecPar>
+    <SpecPar name="TrackerRecMaterialTOBPixelBarrelLayer2" eval="true">
+      <PartSelector path="//PixelBarrel/Layer2/Rod2/BModule1Layer2/BModule1Layer2wafer/BModule1Layer2active"/>
+      <PartSelector path="//PixelBarrel/Layer2/Rod2/BModule2Layer2/BModule2Layer2wafer/BModule2Layer2active"/>
+      <PartSelector path="//PixelBarrel/Layer2/Rod2/BModule3Layer2/BModule3Layer2wafer/BModule3Layer2active"/>
+      <PartSelector path="//PixelBarrel/Layer2/Rod2/BModule4Layer2/BModule4Layer2wafer/BModule4Layer2active"/>
+      <PartSelector path="//PixelBarrel/Layer2/Rod2/BModule5Layer2/BModule5Layer2wafer/BModule5Layer2active"/>
+      <PartSelector path="//PixelBarrel/Layer2/Rod2/BModule6Layer2/BModule6Layer2wafer/BModule6Layer2active"/>
+      <PartSelector path="//PixelBarrel/Layer2/Rod2/BModule7Layer2/BModule7Layer2wafer/BModule7Layer2active"/>
+      <PartSelector path="//PixelBarrel/Layer2/Rod2/BModule8Layer2/BModule8Layer2wafer/BModule8Layer2active"/>
+      <PartSelector path="//PixelBarrel/Layer2/Rod2/BModule9Layer2/BModule9Layer2wafer/BModule9Layer2active"/>
+      <PartSelector path="//PixelBarrel/Layer2/Rod2/BModule10Layer2/BModule10Layer2wafer/BModule10Layer2active"/>
+      <PartSelector path="//PixelBarrel/Layer2/Rod2/BModule11Layer2/BModule11Layer2wafer/BModule11Layer2active"/>
+      <PartSelector path="//PixelBarrel/Layer2/Rod2/BModule12Layer2/BModule12Layer2wafer/BModule12Layer2active"/>
+      <PartSelector path="//PixelBarrel/Layer2/Rod2/BModule13Layer2/BModule13Layer2wafer/BModule13Layer2active"/>
+      <PartSelector path="//PixelBarrel/Layer2/Rod2/BModule14Layer2/BModule14Layer2wafer/BModule14Layer2active"/>
+      <PartSelector path="//PixelBarrel/Layer2/Rod2/BModule15Layer2/BModule15Layer2wafer/BModule15Layer2active"/>
+      <PartSelector path="//PixelBarrel/Layer2/Rod2/BModule16Layer2/BModule16Layer2wafer/BModule16Layer2active"/>
+      <PartSelector path="//PixelBarrel/Layer2/Rod2/BModule17Layer2/BModule17Layer2wafer/BModule17Layer2active"/>
+      <PartSelector path="//PixelBarrel/Layer2/Rod2/BModule18Layer2/BModule18Layer2wafer/BModule18Layer2active"/>
+      <PartSelector path="//PixelBarrel/Layer2/Rod2/BModule19Layer2/BModule19Layer2wafer/BModule19Layer2active"/>
+      <PartSelector path="//PixelBarrel/Layer2/Rod2/BModule20Layer2/BModule20Layer2wafer/BModule20Layer2active"/>
+      <PartSelector path="//PixelBarrel/Layer2/Rod2/BModule21Layer2/BModule21Layer2wafer/BModule21Layer2active"/>
+      <PartSelector path="//PixelBarrel/Layer2/Rod2/BModule22Layer2/BModule22Layer2wafer/BModule22Layer2active"/>
+      <PartSelector path="//PixelBarrel/Layer2/Rod2/BModule23Layer2/BModule23Layer2wafer/BModule23Layer2active"/>
+<!--
+      <PartSelector path="//PixelBarrel/Layer2/Rod2/BModule24Layer2/BModule24Layer2wafer/BModule24Layer2active"/>
+-->
+      <Parameter name="TrackerRadLength" value="0.0354435"/>
+      <Parameter name="TrackerXi" value="0.00965301"/>
+    </SpecPar>
+    <SpecPar name="TrackerRecMaterialTOBPixelBarrelLayer3" eval="true">
+      <PartSelector path="//PixelBarrel/Layer3/Rod3/BModule1Layer3/BModule1Layer3wafer/BModule1Layer3active"/>
+      <PartSelector path="//PixelBarrel/Layer3/Rod3/BModule2Layer3/BModule2Layer3wafer/BModule2Layer3active"/>
+      <PartSelector path="//PixelBarrel/Layer3/Rod3/BModule3Layer3/BModule3Layer3wafer/BModule3Layer3active"/>
+      <PartSelector path="//PixelBarrel/Layer3/Rod3/BModule4Layer3/BModule4Layer3wafer/BModule4Layer3active"/>
+      <PartSelector path="//PixelBarrel/Layer3/Rod3/BModule5Layer3/BModule5Layer3wafer/BModule5Layer3active"/>
+      <PartSelector path="//PixelBarrel/Layer3/Rod3/BModule6Layer3/BModule6Layer3wafer/BModule6Layer3active"/>
+      <Parameter name="TrackerRadLength" value="0.0295757"/>
+      <Parameter name="TrackerXi" value="0.00832028"/>
+    </SpecPar>
+    <SpecPar name="TrackerRecMaterialTOBPixelBarrelLayer4" eval="true">
+      <PartSelector path="//PixelBarrel/Layer4/Rod4/BModule1Layer4/BModule1Layer4wafer/BModule1Layer4active"/>
+      <PartSelector path="//PixelBarrel/Layer4/Rod4/BModule2Layer4/BModule2Layer4wafer/BModule2Layer4active"/>
+      <PartSelector path="//PixelBarrel/Layer4/Rod4/BModule3Layer4/BModule3Layer4wafer/BModule3Layer4active"/>
+      <PartSelector path="//PixelBarrel/Layer4/Rod4/BModule4Layer4/BModule4Layer4wafer/BModule4Layer4active"/>
+      <PartSelector path="//PixelBarrel/Layer4/Rod4/BModule5Layer4/BModule5Layer4wafer/BModule5Layer4active"/>
+      <PartSelector path="//PixelBarrel/Layer4/Rod4/BModule6Layer4/BModule6Layer4wafer/BModule6Layer4active"/>
+      <Parameter name="TrackerRadLength" value="0.0295757"/>
+      <Parameter name="TrackerXi" value="0.00832028"/>
+    </SpecPar>
+    <SpecPar name="TrackerRecMaterialTOBPixelBarrelLayer5" eval="true">
+      <PartSelector path="//PixelBarrel/Layer5/Rod5/BModule1Layer5/BModule1Layer5wafer/BModule1Layer5active"/>
+      <PartSelector path="//PixelBarrel/Layer5/Rod5/BModule2Layer5/BModule2Layer5wafer/BModule2Layer5active"/>
+      <PartSelector path="//PixelBarrel/Layer5/Rod5/BModule3Layer5/BModule3Layer5wafer/BModule3Layer5active"/>
+      <PartSelector path="//PixelBarrel/Layer5/Rod5/BModule4Layer5/BModule4Layer5wafer/BModule4Layer5active"/>
+      <PartSelector path="//PixelBarrel/Layer5/Rod5/BModule5Layer5/BModule5Layer5wafer/BModule5Layer5active"/>
+      <PartSelector path="//PixelBarrel/Layer5/Rod5/BModule6Layer5/BModule6Layer5wafer/BModule6Layer5active"/>
+      <PartSelector path="//PixelBarrel/Layer5/Rod5/BModule7Layer5/BModule7Layer5wafer/BModule7Layer5active"/>
+      <PartSelector path="//PixelBarrel/Layer5/Rod5/BModule8Layer5/BModule8Layer5wafer/BModule8Layer5active"/>
+      <PartSelector path="//PixelBarrel/Layer5/Rod5/BModule9Layer5/BModule9Layer5wafer/BModule9Layer5active"/>
+      <PartSelector path="//PixelBarrel/Layer5/Rod5/BModule10Layer5/BModule10Layer5wafer/BModule10Layer5active"/>
+      <PartSelector path="//PixelBarrel/Layer5/Rod5/BModule11Layer5/BModule11Layer5wafer/BModule11Layer5active"/>
+      <PartSelector path="//PixelBarrel/Layer5/Rod5/BModule12Layer5/BModule12Layer5wafer/BModule12Layer5active"/>
+      <PartSelector path="//PixelBarrel/Layer5/Rod5/BModule13Layer5/BModule13Layer5wafer/BModule13Layer5active"/>
+      <PartSelector path="//PixelBarrel/Layer5/Rod5/BModule14Layer5/BModule14Layer5wafer/BModule14Layer5active"/>
+      <PartSelector path="//PixelBarrel/Layer5/Rod5/BModule15Layer5/BModule15Layer5wafer/BModule15Layer5active"/>
+      <PartSelector path="//PixelBarrel/Layer5/Rod5/BModule16Layer5/BModule16Layer5wafer/BModule16Layer5active"/>
+      <PartSelector path="//PixelBarrel/Layer5/Rod5/BModule17Layer5/BModule17Layer5wafer/BModule17Layer5active"/>
+      <PartSelector path="//PixelBarrel/Layer5/Rod5/BModule18Layer5/BModule18Layer5wafer/BModule18Layer5active"/>
+      <PartSelector path="//PixelBarrel/Layer5/Rod5/BModule19Layer5/BModule19Layer5wafer/BModule19Layer5active"/>
+      <PartSelector path="//PixelBarrel/Layer5/Rod5/BModule20Layer5/BModule20Layer5wafer/BModule20Layer5active"/>
+      <PartSelector path="//PixelBarrel/Layer5/Rod5/BModule21Layer5/BModule21Layer5wafer/BModule21Layer5active"/>
+      <PartSelector path="//PixelBarrel/Layer5/Rod5/BModule22Layer5/BModule22Layer5wafer/BModule22Layer5active"/>
+      <PartSelector path="//PixelBarrel/Layer5/Rod5/BModule23Layer5/BModule23Layer5wafer/BModule23Layer5active"/>
+      <PartSelector path="//PixelBarrel/Layer5/Rod5/BModule24Layer5/BModule24Layer5wafer/BModule24Layer5active"/>
+      <PartSelector path="//PixelBarrel/Layer5/Rod5/BModule25Layer5/BModule25Layer5wafer/BModule25Layer5active"/>
+      <PartSelector path="//PixelBarrel/Layer5/Rod5/BModule26Layer5/BModule26Layer5wafer/BModule26Layer5active"/>
+      <PartSelector path="//PixelBarrel/Layer5/Rod5/BModule27Layer5/BModule27Layer5wafer/BModule27Layer5active"/>
+      <PartSelector path="//PixelBarrel/Layer5/Rod5/BModule28Layer5/BModule28Layer5wafer/BModule28Layer5active"/>
+      <PartSelector path="//PixelBarrel/Layer5/Rod5/BModule29Layer5/BModule29Layer5wafer/BModule29Layer5active"/>
+      <Parameter name="TrackerRadLength" value="0.0370734"/>
+      <Parameter name="TrackerXi" value="0.0100232"/>
+    </SpecPar>
+    <SpecPar name="TrackerRecMaterialTOBPixelBarrelLayer6" eval="true">
+      <PartSelector path="//PixelBarrel/Layer6/Rod6/BModule1Layer6/BModule1Layer6wafer/BModule1Layer6active"/>
+      <PartSelector path="//PixelBarrel/Layer6/Rod6/BModule2Layer6/BModule2Layer6wafer/BModule2Layer6active"/>
+      <PartSelector path="//PixelBarrel/Layer6/Rod6/BModule3Layer6/BModule3Layer6wafer/BModule3Layer6active"/>
+      <PartSelector path="//PixelBarrel/Layer6/Rod6/BModule4Layer6/BModule4Layer6wafer/BModule4Layer6active"/>
+      <PartSelector path="//PixelBarrel/Layer6/Rod6/BModule5Layer6/BModule5Layer6wafer/BModule5Layer6active"/>
+      <PartSelector path="//PixelBarrel/Layer6/Rod6/BModule6Layer6/BModule6Layer6wafer/BModule6Layer6active"/>
+      <PartSelector path="//PixelBarrel/Layer6/Rod6/BModule7Layer6/BModule7Layer6wafer/BModule7Layer6active"/>
+      <PartSelector path="//PixelBarrel/Layer6/Rod6/BModule8Layer6/BModule8Layer6wafer/BModule8Layer6active"/>
+      <PartSelector path="//PixelBarrel/Layer6/Rod6/BModule9Layer6/BModule9Layer6wafer/BModule9Layer6active"/>
+      <PartSelector path="//PixelBarrel/Layer6/Rod6/BModule10Layer6/BModule10Layer6wafer/BModule10Layer6active"/>
+      <PartSelector path="//PixelBarrel/Layer6/Rod6/BModule11Layer6/BModule11Layer6wafer/BModule11Layer6active"/>
+      <PartSelector path="//PixelBarrel/Layer6/Rod6/BModule12Layer6/BModule12Layer6wafer/BModule12Layer6active"/>
+      <PartSelector path="//PixelBarrel/Layer6/Rod6/BModule13Layer6/BModule13Layer6wafer/BModule13Layer6active"/>
+      <PartSelector path="//PixelBarrel/Layer6/Rod6/BModule14Layer6/BModule14Layer6wafer/BModule14Layer6active"/>
+      <PartSelector path="//PixelBarrel/Layer6/Rod6/BModule15Layer6/BModule15Layer6wafer/BModule15Layer6active"/>
+      <PartSelector path="//PixelBarrel/Layer6/Rod6/BModule16Layer6/BModule16Layer6wafer/BModule16Layer6active"/>
+      <PartSelector path="//PixelBarrel/Layer6/Rod6/BModule17Layer6/BModule17Layer6wafer/BModule17Layer6active"/>
+      <PartSelector path="//PixelBarrel/Layer6/Rod6/BModule18Layer6/BModule18Layer6wafer/BModule18Layer6active"/>
+      <PartSelector path="//PixelBarrel/Layer6/Rod6/BModule19Layer6/BModule19Layer6wafer/BModule19Layer6active"/>
+      <PartSelector path="//PixelBarrel/Layer6/Rod6/BModule20Layer6/BModule20Layer6wafer/BModule20Layer6active"/>
+      <PartSelector path="//PixelBarrel/Layer6/Rod6/BModule21Layer6/BModule21Layer6wafer/BModule21Layer6active"/>
+      <PartSelector path="//PixelBarrel/Layer6/Rod6/BModule22Layer6/BModule22Layer6wafer/BModule22Layer6active"/>
+      <PartSelector path="//PixelBarrel/Layer6/Rod6/BModule23Layer6/BModule23Layer6wafer/BModule23Layer6active"/>
+      <PartSelector path="//PixelBarrel/Layer6/Rod6/BModule24Layer6/BModule24Layer6wafer/BModule24Layer6active"/>
+      <PartSelector path="//PixelBarrel/Layer6/Rod6/BModule25Layer6/BModule25Layer6wafer/BModule25Layer6active"/>
+      <PartSelector path="//PixelBarrel/Layer6/Rod6/BModule26Layer6/BModule26Layer6wafer/BModule26Layer6active"/>
+      <PartSelector path="//PixelBarrel/Layer6/Rod6/BModule27Layer6/BModule27Layer6wafer/BModule27Layer6active"/>
+      <PartSelector path="//PixelBarrel/Layer6/Rod6/BModule28Layer6/BModule28Layer6wafer/BModule28Layer6active"/>
+      <PartSelector path="//PixelBarrel/Layer6/Rod6/BModule29Layer6/BModule29Layer6wafer/BModule29Layer6active"/>
+      <Parameter name="TrackerRadLength" value="0.0370734"/>
+      <Parameter name="TrackerXi" value="0.0100232"/>
+    </SpecPar>
+    <SpecPar name="TrackerRecMaterialTOBPixelBarrelLayer7" eval="true">
+      <PartSelector path="//PixelBarrel/Layer7/Rod7/BModule1Layer7/BModule1Layer7wafer/BModule1Layer7active"/>
+      <PartSelector path="//PixelBarrel/Layer7/Rod7/BModule2Layer7/BModule2Layer7wafer/BModule2Layer7active"/>
+      <PartSelector path="//PixelBarrel/Layer7/Rod7/BModule3Layer7/BModule3Layer7wafer/BModule3Layer7active"/>
+      <PartSelector path="//PixelBarrel/Layer7/Rod7/BModule4Layer7/BModule4Layer7wafer/BModule4Layer7active"/>
+      <PartSelector path="//PixelBarrel/Layer7/Rod7/BModule5Layer7/BModule5Layer7wafer/BModule5Layer7active"/>
+      <PartSelector path="//PixelBarrel/Layer7/Rod7/BModule6Layer7/BModule6Layer7wafer/BModule6Layer7active"/>
+      <Parameter name="TrackerRadLength" value="0.0295757"/>
+      <Parameter name="TrackerXi" value="0.00832028"/>
+    </SpecPar>
+    <SpecPar name="TrackerRecMaterialTOBPixelBarrelLayer8" eval="true">
+      <PartSelector path="//PixelBarrel/Layer8/Rod8/BModule1Layer8/BModule1Layer8wafer/BModule1Layer8active"/>
+      <PartSelector path="//PixelBarrel/Layer8/Rod8/BModule2Layer8/BModule2Layer8wafer/BModule2Layer8active"/>
+      <PartSelector path="//PixelBarrel/Layer8/Rod8/BModule3Layer8/BModule3Layer8wafer/BModule3Layer8active"/>
+      <PartSelector path="//PixelBarrel/Layer8/Rod8/BModule4Layer8/BModule4Layer8wafer/BModule4Layer8active"/>
+      <PartSelector path="//PixelBarrel/Layer8/Rod8/BModule5Layer8/BModule5Layer8wafer/BModule5Layer8active"/>
+      <PartSelector path="//PixelBarrel/Layer8/Rod8/BModule6Layer8/BModule6Layer8wafer/BModule6Layer8active"/>
+      <Parameter name="TrackerRadLength" value="0.0295757"/>
+      <Parameter name="TrackerXi" value="0.00832028"/>
+    </SpecPar>
+    <SpecPar name="TrackerRecMaterialTOBPixelBarrelLayer9" eval="true">
+      <PartSelector path="//PixelBarrel/Layer9/Rod9/BModule1Layer9/BModule1Layer9wafer/BModule1Layer9active"/>
+      <PartSelector path="//PixelBarrel/Layer9/Rod9/BModule2Layer9/BModule2Layer9wafer/BModule2Layer9active"/>
+      <PartSelector path="//PixelBarrel/Layer9/Rod9/BModule3Layer9/BModule3Layer9wafer/BModule3Layer9active"/>
+      <PartSelector path="//PixelBarrel/Layer9/Rod9/BModule4Layer9/BModule4Layer9wafer/BModule4Layer9active"/>
+      <PartSelector path="//PixelBarrel/Layer9/Rod9/BModule5Layer9/BModule5Layer9wafer/BModule5Layer9active"/>
+      <PartSelector path="//PixelBarrel/Layer9/Rod9/BModule6Layer9/BModule6Layer9wafer/BModule6Layer9active"/>
+      <PartSelector path="//PixelBarrel/Layer9/Rod9/BModule7Layer9/BModule7Layer9wafer/BModule7Layer9active"/>
+      <PartSelector path="//PixelBarrel/Layer9/Rod9/BModule8Layer9/BModule8Layer9wafer/BModule8Layer9active"/>
+      <PartSelector path="//PixelBarrel/Layer9/Rod9/BModule9Layer9/BModule9Layer9wafer/BModule9Layer9active"/>
+      <PartSelector path="//PixelBarrel/Layer9/Rod9/BModule10Layer9/BModule10Layer9wafer/BModule10Layer9active"/>
+      <PartSelector path="//PixelBarrel/Layer9/Rod9/BModule11Layer9/BModule11Layer9wafer/BModule11Layer9active"/>
+      <PartSelector path="//PixelBarrel/Layer9/Rod9/BModule12Layer9/BModule12Layer9wafer/BModule12Layer9active"/>
+      <PartSelector path="//PixelBarrel/Layer9/Rod9/BModule13Layer9/BModule13Layer9wafer/BModule13Layer9active"/>
+      <PartSelector path="//PixelBarrel/Layer9/Rod9/BModule14Layer9/BModule14Layer9wafer/BModule14Layer9active"/>
+      <PartSelector path="//PixelBarrel/Layer9/Rod9/BModule15Layer9/BModule15Layer9wafer/BModule15Layer9active"/>
+      <PartSelector path="//PixelBarrel/Layer9/Rod9/BModule16Layer9/BModule16Layer9wafer/BModule16Layer9active"/>
+      <PartSelector path="//PixelBarrel/Layer9/Rod9/BModule17Layer9/BModule17Layer9wafer/BModule17Layer9active"/>
+      <PartSelector path="//PixelBarrel/Layer9/Rod9/BModule18Layer9/BModule18Layer9wafer/BModule18Layer9active"/>
+      <PartSelector path="//PixelBarrel/Layer9/Rod9/BModule19Layer9/BModule19Layer9wafer/BModule19Layer9active"/>
+      <PartSelector path="//PixelBarrel/Layer9/Rod9/BModule20Layer9/BModule20Layer9wafer/BModule20Layer9active"/>
+      <PartSelector path="//PixelBarrel/Layer9/Rod9/BModule21Layer9/BModule21Layer9wafer/BModule21Layer9active"/>
+      <PartSelector path="//PixelBarrel/Layer9/Rod9/BModule22Layer9/BModule22Layer9wafer/BModule22Layer9active"/>
+      <PartSelector path="//PixelBarrel/Layer9/Rod9/BModule23Layer9/BModule23Layer9wafer/BModule23Layer9active"/>
+      <PartSelector path="//PixelBarrel/Layer9/Rod9/BModule24Layer9/BModule24Layer9wafer/BModule24Layer9active"/>
+      <PartSelector path="//PixelBarrel/Layer9/Rod9/BModule25Layer9/BModule25Layer9wafer/BModule25Layer9active"/>
+      <PartSelector path="//PixelBarrel/Layer9/Rod9/BModule26Layer9/BModule26Layer9wafer/BModule26Layer9active"/>
+      <PartSelector path="//PixelBarrel/Layer9/Rod9/BModule27Layer9/BModule27Layer9wafer/BModule27Layer9active"/>
+      <PartSelector path="//PixelBarrel/Layer9/Rod9/BModule28Layer9/BModule28Layer9wafer/BModule28Layer9active"/>
+      <PartSelector path="//PixelBarrel/Layer9/Rod9/BModule29Layer9/BModule29Layer9wafer/BModule29Layer9active"/>
+      <Parameter name="TrackerRadLength" value="0.0370734"/>
+      <Parameter name="TrackerXi" value="0.0100232"/>
+    </SpecPar>
+    <SpecPar name="TrackerRecMaterialTOBPixelBarrelLayer10" eval="true">
+      <PartSelector path="//PixelBarrel/Layer10/Rod10/BModule1Layer10/BModule1Layer10wafer/BModule1Layer10active"/>
+      <PartSelector path="//PixelBarrel/Layer10/Rod10/BModule2Layer10/BModule2Layer10wafer/BModule2Layer10active"/>
+      <PartSelector path="//PixelBarrel/Layer10/Rod10/BModule3Layer10/BModule3Layer10wafer/BModule3Layer10active"/>
+      <PartSelector path="//PixelBarrel/Layer10/Rod10/BModule4Layer10/BModule4Layer10wafer/BModule4Layer10active"/>
+      <PartSelector path="//PixelBarrel/Layer10/Rod10/BModule5Layer10/BModule5Layer10wafer/BModule5Layer10active"/>
+      <PartSelector path="//PixelBarrel/Layer10/Rod10/BModule6Layer10/BModule6Layer10wafer/BModule6Layer10active"/>
+      <PartSelector path="//PixelBarrel/Layer10/Rod10/BModule7Layer10/BModule7Layer10wafer/BModule7Layer10active"/>
+      <PartSelector path="//PixelBarrel/Layer10/Rod10/BModule8Layer10/BModule8Layer10wafer/BModule8Layer10active"/>
+      <PartSelector path="//PixelBarrel/Layer10/Rod10/BModule9Layer10/BModule9Layer10wafer/BModule9Layer10active"/>
+      <PartSelector path="//PixelBarrel/Layer10/Rod10/BModule10Layer10/BModule10Layer10wafer/BModule10Layer10active"/>
+      <PartSelector path="//PixelBarrel/Layer10/Rod10/BModule11Layer10/BModule11Layer10wafer/BModule11Layer10active"/>
+      <PartSelector path="//PixelBarrel/Layer10/Rod10/BModule12Layer10/BModule12Layer10wafer/BModule12Layer10active"/>
+      <PartSelector path="//PixelBarrel/Layer10/Rod10/BModule13Layer10/BModule13Layer10wafer/BModule13Layer10active"/>
+      <PartSelector path="//PixelBarrel/Layer10/Rod10/BModule14Layer10/BModule14Layer10wafer/BModule14Layer10active"/>
+      <PartSelector path="//PixelBarrel/Layer10/Rod10/BModule15Layer10/BModule15Layer10wafer/BModule15Layer10active"/>
+      <PartSelector path="//PixelBarrel/Layer10/Rod10/BModule16Layer10/BModule16Layer10wafer/BModule16Layer10active"/>
+      <PartSelector path="//PixelBarrel/Layer10/Rod10/BModule17Layer10/BModule17Layer10wafer/BModule17Layer10active"/>
+      <PartSelector path="//PixelBarrel/Layer10/Rod10/BModule18Layer10/BModule18Layer10wafer/BModule18Layer10active"/>
+      <PartSelector path="//PixelBarrel/Layer10/Rod10/BModule19Layer10/BModule19Layer10wafer/BModule19Layer10active"/>
+      <PartSelector path="//PixelBarrel/Layer10/Rod10/BModule20Layer10/BModule20Layer10wafer/BModule20Layer10active"/>
+      <PartSelector path="//PixelBarrel/Layer10/Rod10/BModule21Layer10/BModule21Layer10wafer/BModule21Layer10active"/>
+      <PartSelector path="//PixelBarrel/Layer10/Rod10/BModule22Layer10/BModule22Layer10wafer/BModule22Layer10active"/>
+      <PartSelector path="//PixelBarrel/Layer10/Rod10/BModule23Layer10/BModule23Layer10wafer/BModule23Layer10active"/>
+      <PartSelector path="//PixelBarrel/Layer10/Rod10/BModule24Layer10/BModule24Layer10wafer/BModule24Layer10active"/>
+      <PartSelector path="//PixelBarrel/Layer10/Rod10/BModule25Layer10/BModule25Layer10wafer/BModule25Layer10active"/>
+      <PartSelector path="//PixelBarrel/Layer10/Rod10/BModule26Layer10/BModule26Layer10wafer/BModule26Layer10active"/>
+      <PartSelector path="//PixelBarrel/Layer10/Rod10/BModule27Layer10/BModule27Layer10wafer/BModule27Layer10active"/>
+      <PartSelector path="//PixelBarrel/Layer10/Rod10/BModule28Layer10/BModule28Layer10wafer/BModule28Layer10active"/>
+      <PartSelector path="//PixelBarrel/Layer10/Rod10/BModule29Layer10/BModule29Layer10wafer/BModule29Layer10active"/>
+      <Parameter name="TrackerRadLength" value="0.0370734"/>
+      <Parameter name="TrackerXi" value="0.0100232"/>
+    </SpecPar>
   </SpecParSection>
 </DDDefinition>
