@@ -76,8 +76,7 @@ StdHitNtuplizer::StdHitNtuplizer(edm::ParameterSet const& conf) :
   matchedRecHits_( conf.getParameter<edm::InputTag>("matchedRecHits") ),
   tfile_(0), 
   pixeltree_(0), 
-  striptree_(0),
-  pixeltree2_(0)
+  striptree_(0)
 {
 }
 
@@ -101,16 +100,12 @@ void StdHitNtuplizer::beginJob()
   tfile_ = new TFile ( outputFile.c_str() , "RECREATE" );
   pixeltree_ = new TTree("PixelNtuple","Pixel hit analyzer ntuple");
   striptree_ = new TTree("StripNtuple","Strip hit analyzer ntuple");
-  pixeltree2_ = new TTree("Pixel2Ntuple","Track Pixel hit analyzer ntuple");
 
   int bufsize = 64000;
 
   //Common Branch
   pixeltree_->Branch("evt",    &evt_,      "run/I:evtnum/I", bufsize);
   pixeltree_->Branch("pixel_recHit", &recHit_, 
-    "x/F:y:xx:xy:yy:row:col:gx:gy:gz:subid/I:layer:nsimhit:hx/F:hy:tx:ty:theta:phi", bufsize);
-  pixeltree2_->Branch("evt",    &evt_,      "run/I:evtnum/I", bufsize);
-  pixeltree2_->Branch("pixel_recHit", &recHit_, 
     "x/F:y:xx:xy:yy:row:col:gx:gy:gz:subid/I:layer:nsimhit:hx/F:hy:tx:ty:theta:phi", bufsize);
   
   // Strip Branches 
@@ -129,17 +124,11 @@ void StdHitNtuplizer::analyze(const edm::Event& e, const edm::EventSetup& es)
   es.get<TrackerDigiGeometryRecord>().get(geometry);
   const TrackerGeometry*  theGeometry = &(*geometry);
 
-  // fastsim rechits
-  //edm::Handle<SiTrackerGSRecHit2DCollection> theGSRecHits;
-  //edm::InputTag hitProducer;
-  //hitProducer = conf_.getParameter<edm::InputTag>("HitProducer");
-  //e.getByLabel(hitProducer, theGSRecHits);
-
   edm::Handle<SiPixelRecHitCollection> recHitColl;
   e.getByLabel( src_, recHitColl);
 
   // for finding matched simhit
-  TrackerHitAssociator associate( e, conf_ );
+  //TrackerHitAssociator associate( e, conf_ );
 
 //  std::cout << " Step A: Standard RecHits found " << (recHitColl.product())->dataSize() << std::endl;
   if((recHitColl.product())->dataSize() > 0) {
@@ -168,7 +157,7 @@ void StdHitNtuplizer::analyze(const edm::Event& e, const edm::EventSetup& es)
            iterRecHit != rechitRangeIteratorEnd; ++iterRecHit) {
         // get matched simhit
         matched.clear();
-        matched = associate.associateHit(*iterRecHit);
+        //matched = associate.associateHit(*iterRecHit);
         if ( !matched.empty() ) {
           float closest = 9999.9;
           std::vector<PSimHit>::const_iterator closestit = matched.begin();
@@ -195,58 +184,6 @@ void StdHitNtuplizer::analyze(const edm::Event& e, const edm::EventSetup& es)
           } // end of simhit loop
           closest_simhit = closestit;
         } // end matched emtpy
-/////comment out begin
-	/*
-	unsigned int subdetId = detId.subdetId();
-	int layerNumber=0;
-	int ringNumber = 0;
-	int stereo = 0;
-	if ( subdetId == StripSubdetector::TIB) {
-	  detname = "TIB";
-	  TIBDetId tibid(detId.rawId());
-	  layerNumber = tibid.layer();
-	  stereo = tibid.stereo();
-	} else if ( subdetId ==  StripSubdetector::TOB ) {
-	  detname = "TOB";
-	  TOBDetId tobid(detId.rawId());
-	  layerNumber = tobid.layer();
-	  stereo = tobid.stereo();
-	} else if ( subdetId ==  StripSubdetector::TID) {
-	  detname = "TID";
-	  TIDDetId tidid(detId.rawId());
-	  layerNumber = tidid.wheel();
-	  ringNumber = tidid.ring();
-	  stereo = tidid.stereo();
-	} else if ( subdetId ==  StripSubdetector::TEC ) {
-	  detname = "TEC";
-	  TECDetId tecid(detId.rawId());
-	  layerNumber = tecid.wheel();
-	  ringNumber = tecid.ring();
-	  stereo = tecid.stereo();
-	} else if ( subdetId ==  PixelSubdetector::PixelBarrel ) {
-	  detname = "PXB";
-	  PXBDetId pxbid(detId.rawId());
-	  layerNumber = pxbid.layer();
-	  stereo = 1;
-	} else if ( subdetId ==  PixelSubdetector::PixelEndcap ) {
-	  detname = "PXF";
-	  PXFDetId pxfid(detId.rawId());
-	  layerNumber = pxfid.disk();
-	  stereo = 1;
-	}
-	
-        std::cout << "Found SiPixelRecHit in " << detname << " from detid " << detId.rawId()
-                  << " subdet = " << subdetId
-                  << " layer = " << layerNumber
-                  << " Stereo = " << stereo
-                  << std::endl;
-        std::cout << "Rechit global x/y/z/r : "
-                  << geomDet->surface().toGlobal(iterRecHit->localPosition()).x() << " " 
-                  << geomDet->surface().toGlobal(iterRecHit->localPosition()).y() << " " 
-                  << geomDet->surface().toGlobal(iterRecHit->localPosition()).z() << " " 
-                  << geomDet->surface().toGlobal(iterRecHit->localPosition()).perp() << std::endl;
-*/
-//comment out end
         unsigned int subid = detId.subdetId();
         int layer_num = 0;
         if ( (subid==1)||(subid==2) ) {
@@ -258,26 +195,12 @@ void StdHitNtuplizer::analyze(const edm::Event& e, const edm::EventSetup& es)
             PXFDetId pxfid(detId.rawId());
             layer_num   = pxfid.disk();
           }
+	  std::cout <<"\nsubid = "<<subid<<" \tlayer/disk = "<<layer_num;
           int num_simhit = matched.size();
           fillPRecHit(subid, layer_num, iterRecHit, num_simhit, closest_simhit, geomDet);
           fillEvt(e);
           pixeltree_->Fill();
           init();
-// more info
-/*
-          LocalPoint lp = iterRecHit->localPosition();
-          LocalError le = iterRecHit->localPositionError();
-          std::cout << "Filled SiPixelRecHit in " << detname << " from detid " << detId.rawId()
-                    << " subdet = " << subdetId
-                    << " layer = " << layerNumber
-                    << "global x/y/z/r = "
-                    << geomDet->surface().toGlobal(lp).x() << " " 
-                    << geomDet->surface().toGlobal(lp).y() << " " 
-                    << geomDet->surface().toGlobal(lp).z() << " " 
-                    << geomDet->surface().toGlobal(lp).perp() 
-                    << " err x/y = " << sqrt(le.xx()) << " " << sqrt(le.yy()) 
-                    << " and num matched simhits = " << num_simhit << std::endl;
-*/
         }
       } // end of rechit loop
     } // end of detid loop
@@ -297,91 +220,6 @@ void StdHitNtuplizer::analyze(const edm::Event& e, const edm::EventSetup& es)
             << trackProducer.instance()
             << ": " << trackCollection->size() << "\n";
 */
-  int rT = 0;
-  for(View<reco::Track>::size_type i=0; i<trackCollection->size(); ++i){
-      ++rT;
-      RefToBase<reco::Track> track(trackCollection, i);
-//      std::cout << " num of hits for track " << rT << " = " << track->recHitsSize() << std::endl;
-      for(trackingRecHit_iterator ih=track->recHitsBegin(); ih != track->recHitsEnd(); ++ih) {
-        TrackingRecHit * hit = (*ih)->clone();
-        const DetId& detId =  hit->geographicalId();
-        const GeomDet* geomDet( theGeometry->idToDet(detId) );
-
-/////comment out begin
-/*
-        unsigned int subdetId = detId.subdetId();
-        int layerNumber=0;
-        int ringNumber = 0;
-        int stereo = 0;
-        std::string detname;
-        if ( subdetId == StripSubdetector::TIB) {
-          detname = "TIB";
-          TIBDetId tibid(detId.rawId());
-          layerNumber = tibid.layer();
-          stereo = tibid.stereo();
-        } else if ( subdetId ==  StripSubdetector::TOB ) {
-          detname = "TOB";
-	  TOBDetId tobid(detId.rawId());
-          layerNumber = tobid.layer();
-          stereo = tobid.stereo();
-        } else if ( subdetId ==  StripSubdetector::TID) {
-          detname = "TID";
-          TIDDetId tidid(detId.rawId());
-          layerNumber = tidid.wheel();
-          ringNumber = tidid.ring();
-          stereo = tidid.stereo();
-        } else if ( subdetId ==  StripSubdetector::TEC ) {
-          detname = "TEC";
-          TECDetId tecid(detId.rawId());
-          layerNumber = tecid.wheel();
-          ringNumber = tecid.ring();
-          stereo = tecid.stereo();
-        } else if ( subdetId ==  PixelSubdetector::PixelBarrel ) {
-          detname = "PXB";
-          PXBDetId pxbid(detId.rawId());
-          layerNumber = pxbid.layer();
-          stereo = 1;
-        } else if ( subdetId ==  PixelSubdetector::PixelEndcap ) {
-          detname = "PXF";
-          PXFDetId pxfid(detId.rawId());
-          layerNumber = pxfid.disk();
-          stereo = 1;
-        }
-*/
-//        std::cout << "RecHit in " << detname << " from detid " << detId.rawId()
-//                  << " subdet = " << subdetId
-//                  << " layer = " << layerNumber
-//                  << " Stereo = " << stereo
-//                  << std::endl;
-        if(hit->isValid()) {
-          unsigned int subid = detId.subdetId();
-          if ( (subid==1)||(subid==2) ) {
-            // 1 = PXB, 2 = PXF
-            fillPRecHit(subid, ih, geomDet);
-            fillEvt(e);
-            pixeltree2_->Fill();
-            init();
-/*
-            TrackingRecHit * hit = (*ih)->clone();
-            LocalPoint lp = hit->localPosition();
-            LocalError le = hit->localPositionError();
-//            std::cout << "   lp x,y = " << lp.x() << " " << lp.y() << " lpe xx,xy,yy = "
-//                  << le.xx() << " " << le.xy() << " " << le.yy() << std::endl;
-            std::cout << "Found RecHit in " << detname << " from detid " << detId.rawId()
-		<< " subdet = " << subdetId
-		<< " layer = " << layerNumber
-                << "global x/y/z/r = "
-                 << geomDet->surface().toGlobal(lp).x() << " " 
-                 << geomDet->surface().toGlobal(lp).y() << " " 
-                 << geomDet->surface().toGlobal(lp).z() << " " 
-                 << geomDet->surface().toGlobal(lp).perp() 
-                << " err x/y = " << sqrt(le.xx()) << " " << sqrt(le.yy()) << std::endl;
-*/
-          }
-        }
-	delete hit;
-      } //end of loop on tracking rechits
-  } // end of loop on recotracks
 
   // now for strip rechits
   edm::Handle<SiStripRecHit2DCollection> rechitsrphi;
@@ -423,58 +261,6 @@ void StdHitNtuplizer::analyze(const edm::Event& e, const edm::EventSetup& es)
       SiStripRecHit2DCollection::DetSet::const_iterator iterRecHit;
       for ( iterRecHit = rechitRangeIteratorBegin;
            iterRecHit != rechitRangeIteratorEnd; ++iterRecHit) {
-
-/////comment out begin
-/*
-	unsigned int subdetId = detId.subdetId();
-	int layerNumber=0;
-	int ringNumber = 0;
-	int stereo = 0;
-	if ( subdetId == StripSubdetector::TIB) {
-	  detname = "TIB";
-	  TIBDetId tibid(detId.rawId());
-	  layerNumber = tibid.layer();
-	  stereo = tibid.stereo();
-	} else if ( subdetId ==  StripSubdetector::TOB ) {
-	  detname = "TOB";
-	  TOBDetId tobid(detId.rawId());
-	  layerNumber = tobid.layer();
-	  stereo = tobid.stereo();
-	} else if ( subdetId ==  StripSubdetector::TID) {
-	  detname = "TID";
-	  TIDDetId tidid(detId.rawId());
-	  layerNumber = tidid.wheel();
-	  ringNumber = tidid.ring();
-	  stereo = tidid.stereo();
-	} else if ( subdetId ==  StripSubdetector::TEC ) {
-	  detname = "TEC";
-	  TECDetId tecid(detId.rawId());
-	  layerNumber = tecid.wheel();
-	  ringNumber = tecid.ring();
-	  stereo = tecid.stereo();
-	} else if ( subdetId ==  PixelSubdetector::PixelBarrel ) {
-	  detname = "PXB";
-	  PXBDetId pxbid(detId.rawId());
-	  layerNumber = pxbid.layer();
-	  stereo = 1;
-	} else if ( subdetId ==  PixelSubdetector::PixelEndcap ) {
-	  detname = "PXF";
-	  PXFDetId pxfid(detId.rawId());
-	  layerNumber = pxfid.disk();
-	  stereo = 1;
-	}
-*/	
-//      std::cout << "Found SiStripRPhiRecHit in " << detname << " from detid " << detId.rawId()
-//                << " subdet = " << subdetId
-//                << " layer = " << layerNumber
-//                << " Stereo = " << stereo
-//                << std::endl;
-//      std::cout << "Rechit global x/y/z/r : "
-//                << geomDet->surface().toGlobal(iterRecHit->localPosition()).x() << " " 
-//                << geomDet->surface().toGlobal(iterRecHit->localPosition()).y() << " " 
-//                << geomDet->surface().toGlobal(iterRecHit->localPosition()).z() << " " 
-//                << geomDet->surface().toGlobal(iterRecHit->localPosition()).perp() << std::endl;
-//comment out end
         unsigned int subid = detId.subdetId();
         fillSRecHit(subid, iterRecHit, geomDet);
         fillEvt(e);
@@ -487,9 +273,6 @@ void StdHitNtuplizer::analyze(const edm::Event& e, const edm::EventSetup& es)
   // now stereo hits
   if(rechitsstereo.product()->dataSize() > 0) {
     //Loop over all rechits in RPHI collection (can also loop only over DetId)
-//    SiStripRecHit2DCollectionOld::const_iterator theRecHitRangeIteratorBegin = rechitsstereo->begin();
-//    SiStripRecHit2DCollectionOld::const_iterator theRecHitRangeIteratorEnd   = rechitsstereo->end();
-//    SiStripRecHit2DCollectionOld::const_iterator iterRecHit;
     SiStripRecHit2DCollection::const_iterator recHitIdIterator      = (rechitsstereo.product())->begin();
     SiStripRecHit2DCollection::const_iterator recHitIdIteratorEnd   = (rechitsstereo.product())->end();
 
@@ -498,13 +281,10 @@ void StdHitNtuplizer::analyze(const edm::Event& e, const edm::EventSetup& es)
 // Loop over Detector IDs
     for ( ; recHitIdIterator != recHitIdIteratorEnd; recHitIdIterator++) {
       SiStripRecHit2DCollection::DetSet detset = *recHitIdIterator;
-//    for ( iterRecHit = theRecHitRangeIteratorBegin; 
-//          iterRecHit != theRecHitRangeIteratorEnd; ++iterRecHit) {
 
       if( detset.empty() ) continue;
       DetId detId = DetId(detset.detId()); // Get the Detid object
 
-//      const DetId& detId =  iterRecHit->geographicalId();
       const GeomDet* geomDet( theGeometry->idToDet(detId) );
 
       // Loop over rechits for this detid
@@ -513,57 +293,6 @@ void StdHitNtuplizer::analyze(const edm::Event& e, const edm::EventSetup& es)
       SiStripRecHit2DCollection::DetSet::const_iterator iterRecHit;
       for ( iterRecHit = rechitRangeIteratorBegin;
            iterRecHit != rechitRangeIteratorEnd; ++iterRecHit) {
-/////comment out begin
-
-/*	unsigned int subdetId = detId.subdetId();
-	int layerNumber=0;
-	int ringNumber = 0;
-	int stereo = 0;
-	if ( subdetId == StripSubdetector::TIB) {
-	  detname = "TIB";
-	  TIBDetId tibid(detId.rawId());
-	  layerNumber = tibid.layer();
-	  stereo = tibid.stereo();
-	} else if ( subdetId ==  StripSubdetector::TOB ) {
-	  detname = "TOB";
-	  TOBDetId tobid(detId.rawId());
-	  layerNumber = tobid.layer();
-	  stereo = tobid.stereo();
-	} else if ( subdetId ==  StripSubdetector::TID) {
-	  detname = "TID";
-	  TIDDetId tidid(detId.rawId());
-	  layerNumber = tidid.wheel();
-	  ringNumber = tidid.ring();
-	  stereo = tidid.stereo();
-	} else if ( subdetId ==  StripSubdetector::TEC ) {
-	  detname = "TEC";
-	  TECDetId tecid(detId.rawId());
-	  layerNumber = tecid.wheel();
-	  ringNumber = tecid.ring();
-	  stereo = tecid.stereo();
-	} else if ( subdetId ==  PixelSubdetector::PixelBarrel ) {
-	  detname = "PXB";
-	  PXBDetId pxbid(detId.rawId());
-	  layerNumber = pxbid.layer();
-	  stereo = 1;
-	} else if ( subdetId ==  PixelSubdetector::PixelEndcap ) {
-	  detname = "PXF";
-	  PXFDetId pxfid(detId.rawId());
-	  layerNumber = pxfid.disk();
-	  stereo = 1;
-	}
-*/
-//      std::cout << "Found SiStripStereoRecHit in " << detname << " from detid " << detId.rawId()
-//                << " subdet = " << subdetId
-//                << " layer = " << layerNumber
-//                << " Stereo = " << stereo
-//                << std::endl;
-//      std::cout << "Rechit global x/y/z/r : "
-//                << geomDet->surface().toGlobal(iterRecHit->localPosition()).x() << " " 
-//                << geomDet->surface().toGlobal(iterRecHit->localPosition()).y() << " " 
-//                << geomDet->surface().toGlobal(iterRecHit->localPosition()).z() << " " 
-//                << geomDet->surface().toGlobal(iterRecHit->localPosition()).perp() << std::endl;
-//comment out end
         unsigned int subid = detId.subdetId();
         fillSRecHit(subid, iterRecHit, geomDet);
         fillEvt(e);
@@ -576,9 +305,6 @@ void StdHitNtuplizer::analyze(const edm::Event& e, const edm::EventSetup& es)
   // now matched hits
   if(rechitsmatched.product()->dataSize() > 0) {
     //Loop over all rechits in RPHI collection (can also loop only over DetId)
-    //SiStripMatchedRecHit2DCollectionOld::const_iterator theRecHitRangeIteratorBegin = rechitsmatched->begin();
-    //SiStripMatchedRecHit2DCollectionOld::const_iterator theRecHitRangeIteratorEnd   = rechitsmatched->end();
-    //SiStripMatchedRecHit2DCollectionOld::const_iterator iterRecHit;
     SiStripMatchedRecHit2DCollection::const_iterator recHitIdIterator      = (rechitsmatched.product())->begin();
     SiStripMatchedRecHit2DCollection::const_iterator recHitIdIteratorEnd   = (rechitsmatched.product())->end();
 
@@ -591,10 +317,6 @@ void StdHitNtuplizer::analyze(const edm::Event& e, const edm::EventSetup& es)
       if( detset.empty() ) continue;
       DetId detId = DetId(detset.detId()); // Get the Detid object
 
-//    for ( iterRecHit = theRecHitRangeIteratorBegin; 
-//          iterRecHit != theRecHitRangeIteratorEnd; ++iterRecHit) {
-
-//      const DetId& detId =  iterRecHit->geographicalId();
       const GeomDet* geomDet( theGeometry->idToDet(detId) );
 
       // Loop over rechits for this detid
@@ -603,58 +325,6 @@ void StdHitNtuplizer::analyze(const edm::Event& e, const edm::EventSetup& es)
       SiStripMatchedRecHit2DCollection::DetSet::const_iterator iterRecHit;
       for ( iterRecHit = rechitRangeIteratorBegin;
            iterRecHit != rechitRangeIteratorEnd; ++iterRecHit) {
-/////comment out begin
-/*
-	unsigned int subdetId = detId.subdetId();
-	int layerNumber=0;
-	int ringNumber = 0;
-	int stereo = 0;
-	if ( subdetId == StripSubdetector::TIB) {
-	  detname = "TIB";
-	  TIBDetId tibid(detId.rawId());
-	  layerNumber = tibid.layer();
-	  stereo = tibid.stereo();
-	} else if ( subdetId ==  StripSubdetector::TOB ) {
-	  detname = "TOB";
-	  TOBDetId tobid(detId.rawId());
-	  layerNumber = tobid.layer();
-	  stereo = tobid.stereo();
-	} else if ( subdetId ==  StripSubdetector::TID) {
-	  detname = "TID";
-	  TIDDetId tidid(detId.rawId());
-	  layerNumber = tidid.wheel();
-	  ringNumber = tidid.ring();
-	  stereo = tidid.stereo();
-	} else if ( subdetId ==  StripSubdetector::TEC ) {
-	  detname = "TEC";
-	  TECDetId tecid(detId.rawId());
-	  layerNumber = tecid.wheel();
-	  ringNumber = tecid.ring();
-	  stereo = tecid.stereo();
-	} else if ( subdetId ==  PixelSubdetector::PixelBarrel ) {
-	  detname = "PXB";
-	  PXBDetId pxbid(detId.rawId());
-	  layerNumber = pxbid.layer();
-	  stereo = 1;
-	} else if ( subdetId ==  PixelSubdetector::PixelEndcap ) {
-	  detname = "PXF";
-	  PXFDetId pxfid(detId.rawId());
-	  layerNumber = pxfid.disk();
-	  stereo = 1;
-	}
-	
-*/
-//      std::cout << "Found SiStripMatchedRecHit in " << detname << " from detid " << detId.rawId()
-//                << " subdet = " << subdetId
-//                << " layer = " << layerNumber
-//                << " Stereo = " << stereo
-//                << std::endl;
-//      std::cout << "Rechit global x/y/z/r : "
-//                << geomDet->surface().toGlobal(iterRecHit->localPosition()).x() << " " 
-//                << geomDet->surface().toGlobal(iterRecHit->localPosition()).y() << " " 
-//                << geomDet->surface().toGlobal(iterRecHit->localPosition()).z() << " " 
-//                << geomDet->surface().toGlobal(iterRecHit->localPosition()).perp() << std::endl;
-//comment out end
         unsigned int subid = detId.subdetId();
         fillSRecHit(subid, iterRecHit, geomDet);
         fillEvt(e);

@@ -114,7 +114,6 @@ class StdHitNtuplizer : public edm::EDAnalyzer
   TFile * tfile_;
   TTree * pixeltree_;
   TTree * striptree_;
-  TTree * pixeltree2_;
 };
 
 #endif
