@@ -46,7 +46,8 @@ mix = cms.EDProducer("MixingModule",
         type = cms.string('poisson'),
     sequential = cms.untracked.bool(False),
         fileNames = cms.untracked.vstring(
-	'file:MinBias_TuneZ2star_14TeV_pythia6_cff_GEN_SIM.root'
+	'/store/relval/CMSSW_6_1_1_SLHCphase1tk1-POSTLS161_V15/RelValMinBias_TuneZ2star_UPG2017_14/GEN-SIM/v1/00000/0024398F-5D81-E211-8132-00259029D2E2.root',
+	'/store/relval/CMSSW_6_1_1_SLHCphase1tk1-POSTLS161_V15/RelValMinBias_TuneZ2star_UPG2017_14/GEN-SIM/v1/00000/2EC041F5-6081-E211-BF25-003048FEB93E.root'
     )
     ),
     mixObjects = cms.PSet(
